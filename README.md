@@ -10,6 +10,7 @@ Sitio de Fifty Six South (56°S), expediciones privadas en Chile. Es un sitio es
 | `assets/hero.jpg` | Imagen de fondo de la portada |
 | `assets/routes/` | Foto de referencia de cada expedición (960×640) |
 | `assets/chile.png` | Silueta de Chile que usa el mapa 3D de la portada |
+| `assets/chile-relief.jpg` | Relieve real de Chile (Natural Earth, dominio público) ajustado a la silueta |
 | `assets/logo-light.png`, `assets/logo-mark-light.png` | Logo para fondo oscuro: completo (pie de página) y sin el lema (menú) |
 | `assets/logo-dark.png` | Logo para fondo claro, sin fondo, para otros usos |
 | `favicon.png`, `apple-touch-icon.png` | Ícono de la pestaña y del acceso directo en el celular |

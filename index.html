@@ -16,6 +16,7 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preload" href="assets/fonts/space-grotesk-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/chile.png" as="image" crossorigin>
+<link rel="preload" href="assets/chile-relief.jpg" as="image">
 <link rel="preload" href="assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <style>
 @font-face{font-family:"Space Grotesk";font-weight:500;font-style:normal;font-display:swap;src:url(assets/fonts/space-grotesk-latin-500-normal.woff2) format("woff2")}
@@ -102,7 +103,8 @@ a{color:inherit}
 .map-3d{position:relative;height:min(660px,74vh);aspect-ratio:275/1200;margin-right:170px;transform-style:preserve-3d;transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .5s cubic-bezier(.2,.7,.2,1)}
 .map-slab{position:absolute;inset:0;transform-style:preserve-3d}
 .map-layer{position:absolute;inset:0;-webkit-mask:url(assets/chile.png) center/100% 100% no-repeat;mask:url(assets/chile.png) center/100% 100% no-repeat;background:#1B3038;transform:translateZ(calc(var(--i) * -5px));animation:unroll 2.4s cubic-bezier(.6,0,.2,1) .3s both}
-.map-layer[style*="--i:0"]{background:linear-gradient(180deg,#E3A857 0%,#C9D3D4 34%,#8FB7C4 70%,#EEF2F1 100%)}
+.map-layer[style*="--i:0"]{background:url(assets/chile-relief.jpg) center/100% 100% no-repeat}
+.map-layer[style*="--i:0"]::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,rgba(255,255,255,.16) 0%,transparent 45%,rgba(10,19,23,.28) 100%)}
 .map-layer[style*="--i:7"]{background:#000;opacity:.45;filter:blur(10px);transform:translateZ(-70px) translateX(26px)}
 @keyframes unroll{from{clip-path:inset(0 0 100% 0)}to{clip-path:inset(0 0 0 0)}}
 .pin{position:absolute;left:0;right:0;top:var(--y);height:0;text-decoration:none;color:var(--paper);transform:translateZ(34px);transform-style:preserve-3d;animation:pin-in .7s cubic-bezier(.2,.7,.2,1) var(--d) both}
@@ -279,7 +281,7 @@ form .btn{align-self:flex-start}
       <div class="map-float">
       <div class="map-3d" id="map-3d">
         <p class="map-tag map-tag-top">+56 · Chile</p>
-        <div class="map-slab" role="img" aria-label="Map of Chile, from the Atacama Desert in the north to Cape Horn in the south">
+        <div class="map-slab" role="img" aria-label="Relief map of Chile, from the Atacama Desert in the north to Cape Horn in the south">
           <div class="map-layer" style="--i:7"></div>
           <div class="map-layer" style="--i:6"></div>
           <div class="map-layer" style="--i:5"></div>
@@ -289,9 +291,9 @@ form .btn{align-self:flex-start}
           <div class="map-layer" style="--i:1"></div>
           <div class="map-layer" style="--i:0"></div>
         </div>
-        <a class="pin" href="#expeditions" style="--x:34.0%;--y:12.7%;--d:1.10s" aria-label="23°S, Atacama"><span class="pin-line"></span><span class="pin-dot"></span><span class="pin-label"><b>23°S</b><i>Atacama</i></span></a>
-        <a class="pin" href="#expeditions" style="--x:25%;--y:72.4%;--d:2.06s" aria-label="47°S, Laguna San Rafael"><span class="pin-line"></span><span class="pin-dot"></span><span class="pin-label"><b>47°S</b><i>Laguna San Rafael</i></span></a>
-        <a class="pin" href="#expeditions" style="--x:37.6%;--y:85.2%;--d:2.26s" aria-label="51°S, Glaciar Grey"><span class="pin-line"></span><span class="pin-dot"></span><span class="pin-label"><b>51°S</b><i>Glaciar Grey</i></span></a>
+        <a class="pin" href="#expeditions" style="--x:33.3%;--y:12.3%;--d:1.10s" aria-label="23°S, Atacama"><span class="pin-line"></span><span class="pin-dot"></span><span class="pin-label"><b>23°S</b><i>Atacama</i></span></a>
+        <a class="pin" href="#expeditions" style="--x:18.0%;--y:72.9%;--d:2.07s" aria-label="47°S, Laguna San Rafael"><span class="pin-line"></span><span class="pin-dot"></span><span class="pin-label"><b>47°S</b><i>Laguna San Rafael</i></span></a>
+        <a class="pin" href="#expeditions" style="--x:35.4%;--y:85.4%;--d:2.27s" aria-label="51°S, Glaciar Grey"><span class="pin-line"></span><span class="pin-dot"></span><span class="pin-label"><b>51°S</b><i>Glaciar Grey</i></span></a>
         <a class="pin" href="#expeditions" style="--x:93.8%;--y:99.4%;--d:2.49s" aria-label="56°S, Cape Horn"><span class="pin-line"></span><span class="pin-dot"></span><span class="pin-label"><b>56°S</b><i>Cape Horn</i></span></a>
         <p class="map-tag map-tag-bottom"><span></span>only ocean below</p>
       </div>
