@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>56°S — Private Expeditions, Chile</title>
+<meta name="description" content="Private, unconventional expeditions across Chile, from the Atacama Desert to Cape Horn. One party, one concierge, no one else on the route.">
+<!-- LANZAMIENTO: borrar la línea "robots noindex" cuando el sitio tenga dominio propio y los textos estén completos -->
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0A1317">
+<meta property="og:type" content="website">
+<meta property="og:title" content="56°S — Private Expeditions, Chile">
+<meta property="og:description" content="+56 is how the world calls Chile. 56° South is where the map runs out. Everything in between, we'll show you privately.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/space-grotesk-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:"Space Grotesk";font-weight:500;font-style:normal;font-display:swap;src:url(assets/fonts/space-grotesk-latin-500-normal.woff2) format("woff2")}
+@font-face{font-family:"Space Grotesk";font-weight:700;font-style:normal;font-display:swap;src:url(assets/fonts/space-grotesk-latin-700-normal.woff2) format("woff2")}
+@font-face{font-family:"Inter";font-weight:400;font-style:normal;font-display:swap;src:url(assets/fonts/inter-latin-400-normal.woff2) format("woff2")}
+@font-face{font-family:"Inter";font-weight:600;font-style:normal;font-display:swap;src:url(assets/fonts/inter-latin-600-normal.woff2) format("woff2")}
+@font-face{font-family:"JetBrains Mono";font-weight:400;font-style:normal;font-display:swap;src:url(assets/fonts/jetbrains-mono-latin-400-normal.woff2) format("woff2")}
+
+:root{
+  /* Colores de marca: cambiar aquí cambia todo el sitio */
+  --ink:#0A1317;
+  --ink-2:#101C21;
+  --line:#25353A;
+  --line-2:#5B6E72;
+  --paper:#EEF2F1;
+  --text-dim:#C9D3D4;
+  --text-mute:#9FB0B3;
+  --text-on-paper:#3B4A4E;
+  --accent:#E3A857;
+  --display:"Space Grotesk",system-ui,sans-serif;
+  --body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,monospace;
+  --wrap:1240px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--ink);color:var(--paper);font-family:var(--body);font-size:1rem;line-height:1.6;-webkit-font-smoothing:antialiased}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--accent);color:var(--ink);padding:10px 16px;border-radius:6px;font-weight:600;text-decoration:none;z-index:10}
+.skip:focus{left:16px}
+.wrap{max-width:var(--wrap);margin:0 auto;padding-left:32px;padding-right:32px}
+@media (max-width:640px){.wrap{padding-left:20px;padding-right:20px}}
+
+.eyebrow{margin:0;font-family:var(--mono);font-size:.8125rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.h1{margin:0;font-family:var(--display);font-weight:700;font-size:clamp(2.75rem,7vw,6rem);line-height:.98;letter-spacing:-.03em}
+.h2{margin:0;font-family:var(--display);font-weight:700;font-size:clamp(2rem,4.2vw,3.5rem);line-height:1.05;letter-spacing:-.02em}
+.h3{margin:0;font-family:var(--display);font-weight:500;font-size:1.5rem;line-height:1.25}
+.lead{margin:0;max-width:34rem;font-size:1.1875rem;color:var(--text-dim)}
+.dim{color:var(--text-dim)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 28px;border-radius:999px;font:inherit;font-weight:600;text-decoration:none;cursor:pointer;border:1px solid transparent;transition:background-color .15s,color .15s,border-color .15s}
+.btn-solid{background:var(--accent);color:var(--ink)}
+.btn-solid:hover{background:#EDBB74}
+.btn-line{border-color:var(--line-2);color:var(--paper)}
+.btn-line:hover{border-color:var(--paper)}
+.btn-ghost{padding-left:8px;padding-right:8px;color:var(--paper)}
+.btn-ghost:hover{color:var(--accent)}
+
+/* Header */
+.site-header{position:sticky;top:0;z-index:5;background:rgba(10,19,23,.88);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid transparent}
+.site-header .wrap{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;align-items:center;padding-top:16px;padding-bottom:16px}
+.logo{font-family:var(--display);font-weight:700;font-size:1.5rem;letter-spacing:.02em;text-decoration:none;padding:6px 0}
+.nav{display:flex;flex-wrap:wrap;gap:4px 28px;align-items:center}
+.nav a.link{text-decoration:none;font-size:.9375rem;color:var(--text-dim);padding:12px 0}
+.nav a.link:hover{color:var(--paper)}
+.nav .btn{min-height:44px;padding:8px 22px;font-size:.9375rem}
+@media (max-width:640px){.nav a.link{display:none}}
+
+/* Hero */
+.hero .wrap{display:flex;flex-wrap:wrap;gap:56px;align-items:center;padding-top:72px;padding-bottom:104px}
+.hero-copy{flex:1 1 520px;min-width:0;display:flex;flex-direction:column;gap:28px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px 16px;align-items:center}
+.ruler{flex:1 1 320px;min-width:0;max-width:420px;margin-left:auto}
+.ruler svg{width:100%;height:auto}
+.ruler text{font-family:var(--mono)}
+@media (max-width:900px){.ruler{margin:0 auto;max-width:360px}}
+@media (max-width:640px){.ruler{max-width:260px}.hero .wrap{padding-top:48px;padding-bottom:72px}}
+
+/* Expeditions */
+.light{background:var(--paper);color:var(--ink)}
+.section{padding-top:104px;padding-bottom:104px}
+@media (max-width:640px){.section{padding-top:72px;padding-bottom:72px}}
+.section-head{display:flex;flex-wrap:wrap;gap:24px 64px;justify-content:space-between;align-items:flex-end;margin-bottom:56px}
+.section-head .h2{flex:1 1 420px}
+.section-head p{margin:0;flex:1 1 320px;max-width:30rem;color:var(--text-on-paper)}
+.exp{display:flex;flex-wrap:wrap;gap:16px 40px;align-items:center;padding:36px 0;border-top:1px solid var(--ink)}
+.exp-lat{flex:0 0 180px;font-family:var(--display);font-weight:700;font-size:3.5rem;line-height:1;letter-spacing:-.03em}
+.exp-body{flex:1 1 320px;min-width:0;display:flex;flex-direction:column;gap:6px}
+.exp-body p{margin:0;color:var(--text-on-paper)}
+.exp-meta{flex:0 1 220px;margin:0;font-family:var(--mono);font-size:.8125rem;color:var(--text-on-paper)}
+.exp .btn{border-color:var(--ink);color:var(--ink);min-height:44px;padding:8px 24px}
+.exp .btn:hover{background:var(--ink);color:var(--paper)}
+.exp-signature{background:var(--ink);color:var(--paper);border:0;border-radius:6px;padding:36px 28px;margin:8px -28px 0}
+.exp-signature .exp-lat{color:var(--accent)}
+.exp-signature .exp-body p,.exp-signature .exp-meta{color:var(--text-dim)}
+.exp-signature .btn{background:var(--accent);border-color:var(--accent);color:var(--ink)}
+.exp-signature .btn:hover{background:#EDBB74;color:var(--ink)}
+@media (max-width:1300px){.exp-signature{margin:8px 0 0}}
+@media (max-width:640px){.exp-lat{flex-basis:100%;font-size:3rem}.exp-signature{padding:28px 20px}}
+
+/* Approach */
+.pillars{display:flex;flex-wrap:wrap;gap:40px;margin-top:56px}
+.pillar{flex:1 1 280px;min-width:0;display:flex;flex-direction:column;gap:12px;padding-top:24px;border-top:1px solid var(--line-2)}
+.pillar .num{font-family:var(--mono);font-size:.8125rem;color:var(--accent)}
+.pillar .h3{font-size:1.375rem}
+.pillar p{margin:0;color:var(--text-dim)}
+
+/* Name */
+.name{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.name .wrap{display:flex;flex-wrap:wrap;gap:40px 56px;align-items:center}
+.big-mark{flex:1 1 320px;min-width:0;margin:0;font-family:var(--display);font-weight:700;font-size:clamp(5rem,15vw,12rem);line-height:.9;letter-spacing:-.05em;color:var(--accent)}
+.name-copy{flex:1 1 420px;min-width:0;display:flex;flex-direction:column;gap:20px}
+.name-copy .h3{font-size:1.75rem;line-height:1.2}
+.name-copy p{margin:0;color:var(--text-dim)}
+
+/* Contact */
+.contact .wrap{display:flex;flex-wrap:wrap;gap:56px}
+.contact-copy{flex:1 1 420px;min-width:0;display:flex;flex-direction:column;gap:20px}
+.contact-copy p{margin:0;max-width:30rem;color:var(--text-dim)}
+.contact-mail{font-family:var(--display);font-weight:500;font-size:clamp(1.25rem,2.6vw,2rem);padding:8px 0;overflow-wrap:anywhere}
+.contact-mail:hover{color:var(--accent)}
+.contact-links{display:flex;flex-wrap:wrap;gap:12px}
+form{flex:1 1 420px;min-width:0;display:flex;flex-direction:column;gap:18px}
+.field{display:flex;flex-direction:column;gap:6px}
+label{font-size:.875rem;color:var(--text-dim)}
+input,select,textarea{font:inherit;color:var(--paper);background:var(--ink-2);border:1px solid var(--line-2);border-radius:6px;padding:13px 16px;min-height:48px;width:100%}
+textarea{resize:vertical;min-height:120px}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+.form-note{margin:0;font-size:.875rem;color:var(--text-mute)}
+.form-status{margin:0;font-size:.9375rem;color:var(--accent);min-height:1.5em}
+form .btn{align-self:flex-start}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.hp{position:absolute;left:-5000px;width:1px;height:1px;overflow:hidden}
+
+/* Footer */
+.site-footer{border-top:1px solid var(--line)}
+.site-footer .wrap{display:flex;flex-wrap:wrap;gap:12px 32px;justify-content:space-between;padding-top:32px;padding-bottom:32px;font-size:.875rem;color:var(--text-mute)}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="56°S, home">56°S</a>
+    <nav class="nav" aria-label="Main">
+      <a class="link" href="#expeditions">Expeditions</a>
+      <a class="link" href="#approach">Approach</a>
+      <a class="link" href="#name">The name</a>
+      <a class="btn btn-line" href="#contact">Enquire</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============ PORTADA ============ -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-copy">
+      <p class="eyebrow">Private expeditions · Chile</p>
+      <h1 class="h1">Where the map runs out.</h1>
+      <p class="lead">+56 is how the world calls Chile. 56° South is where the map runs out. Everything in between, we'll show you privately.</p>
+      <div class="hero-actions">
+        <a class="btn btn-solid" href="#contact">Plan your expedition</a>
+        <a class="btn btn-ghost" href="#expeditions">See the latitudes ↓</a>
+      </div>
+    </div>
+    <div class="ruler">
+      <svg viewBox="0 0 320 600" role="img" aria-label="Expedition latitudes along Chile: 23 degrees south, Atacama; 47 south, Laguna San Rafael; 51 south, Glaciar Grey; 56 south, Cape Horn.">
+      <line x1="120" y1="30" x2="120" y2="562" stroke="#5B6E72" stroke-width="1"/>
+      <line x1="110" y1="30" x2="120" y2="30" stroke="#25353A" stroke-width="1"/>
+      <line x1="110" y1="44" x2="120" y2="44" stroke="#25353A" stroke-width="1"/>
+      <line x1="100" y1="58" x2="120" y2="58" stroke="#5B6E72" stroke-width="1"/>
+      <text x="92" y="62" text-anchor="end" font-size="11" fill="#9FB0B3">20°</text>
+      <line x1="110" y1="72" x2="120" y2="72" stroke="#25353A" stroke-width="1"/>
+      <line x1="110" y1="86" x2="120" y2="86" stroke="#25353A" stroke-width="1"/>
+      <line x1="110" y1="100" x2="120" y2="100" stroke="#25353A" stroke-width="1"/>
+      <line x1="110" y1="114" x2="120" y2="114" stroke="#25353A" stroke-width="1"/>
+      <line x1="100" y1="128" x2="120" y2="128" stroke="#5B6E72" stroke-width="1"/>
+      <text x="92" y="132" text-anchor="end" font-size="11" fill="#9FB0B3">25°</text>
+      <line x1="110" y1="142" x2="120" y2="142" stroke="#25353A" stroke-width="1"/>
+      <line x1="110" y1="156" x2="120" y2="156" stroke="#25353A" stroke-width="1"/>
+      <line x1="110" y1="170" x2="120" y2="170" stroke="#25353A" stroke-width="1"/>
+      <line x1="110" y1="184" x2="120" y2="184" stroke="#25353A" stroke-width="1"/>
+      <line x1="100" y1="198" x2="120" y2="198" stroke="#5B6E72" stroke-width="1"/>
+      <text x="92" y="202" text-anchor="end" font-size="11" fill="#9FB0B3">30°</text>
+      <line x1="110" y1="212" x2="120" y2="212" stroke="#25353A" stroke-width="1"/>
+      <line x1="110" y1="226" x2="120" y2="226" stroke="#25353A" stroke-width="1"/>
+      <line x1="110" y1="240" x2="120" y2="240" stroke="#25353A" stroke-width="1"/>
+      <line x1="110" y1="254" x2="120" y2="254" stroke="#25353A" stroke-width="1"/>
+      <line x1="100" y1="268" x2="120" y2="268" stroke="#5B6E72" stroke-width="1"/>
+      <text x="92" y="272" text-anchor="end" font-size="11" fill="#9FB0B3">35°</text>
+      <line x1="110" y1="282" x2="120" y2="282" stroke="#25353A" stroke-width="1"/>
+      <line x1="110" y1="296" x2="120" y2="296" stroke="#25353A" stroke-width="1"/>
+      <line x1="110" y1="310" x2="120" y2="310" stroke="#25353A" stroke-width="1"/>
+      <line x1="110" y1="324" x2="120" y2="324" stroke="#25353A" stroke-width="1"/>
+      <line x1="100" y1="338" x2="120" y2="338" stroke="#5B6E72" stroke-width="1"/>
+      <text x="92" y="342" text-anchor="end" font-size="11" fill="#9FB0B3">40°</text>
+      <line x1="110" y1="352" x2="120" y2="352" stroke="#25353A" stroke-width="1"/>
+      <line x1="110" y1="366" x2="120" y2="366" stroke="#25353A" stroke-width="1"/>
+      <line x1="110" y1="380" x2="120" y2="380" stroke="#25353A" stroke-width="1"/>
+      <line x1="110" y1="394" x2="120" y2="394" stroke="#25353A" stroke-width="1"/>
+      <line x1="100" y1="408" x2="120" y2="408" stroke="#5B6E72" stroke-width="1"/>
+      <text x="92" y="412" text-anchor="end" font-size="11" fill="#9FB0B3">45°</text>
+      <line x1="110" y1="422" x2="120" y2="422" stroke="#25353A" stroke-width="1"/>
+      <line x1="110" y1="436" x2="120" y2="436" stroke="#25353A" stroke-width="1"/>
+      <line x1="110" y1="450" x2="120" y2="450" stroke="#25353A" stroke-width="1"/>
+      <line x1="110" y1="464" x2="120" y2="464" stroke="#25353A" stroke-width="1"/>
+      <line x1="100" y1="478" x2="120" y2="478" stroke="#5B6E72" stroke-width="1"/>
+      <text x="92" y="482" text-anchor="end" font-size="11" fill="#9FB0B3">50°</text>
+      <line x1="110" y1="492" x2="120" y2="492" stroke="#25353A" stroke-width="1"/>
+      <line x1="110" y1="506" x2="120" y2="506" stroke="#25353A" stroke-width="1"/>
+      <line x1="110" y1="520" x2="120" y2="520" stroke="#25353A" stroke-width="1"/>
+      <line x1="110" y1="534" x2="120" y2="534" stroke="#25353A" stroke-width="1"/>
+      <line x1="100" y1="548" x2="120" y2="548" stroke="#5B6E72" stroke-width="1"/>
+      <text x="92" y="552" text-anchor="end" font-size="11" fill="#9FB0B3">55°</text>
+      <line x1="110" y1="562" x2="120" y2="562" stroke="#25353A" stroke-width="1"/>
+      <line x1="0" y1="562" x2="108" y2="562" stroke="#E3A857" stroke-width="1" stroke-dasharray="3 4"/>
+      <text x="108" y="584" text-anchor="end" font-size="11" fill="#9FB0B3">only ocean below</text>
+      <line x1="120" y1="100" x2="136" y2="100" stroke="#E3A857" stroke-width="1.5"/>
+      <circle cx="120" cy="100" r="5" fill="#E3A857"/>
+      <text x="144" y="106" font-size="17" fill="#EEF2F1">23°S</text>
+      <text x="144" y="125" font-size="12" fill="#9FB0B3">Atacama</text>
+      <line x1="120" y1="436" x2="136" y2="436" stroke="#E3A857" stroke-width="1.5"/>
+      <circle cx="120" cy="436" r="5" fill="#E3A857"/>
+      <text x="144" y="442" font-size="17" fill="#EEF2F1">47°S</text>
+      <text x="144" y="461" font-size="12" fill="#9FB0B3">Laguna San Rafael</text>
+      <line x1="120" y1="492" x2="136" y2="492" stroke="#E3A857" stroke-width="1.5"/>
+      <circle cx="120" cy="492" r="5" fill="#E3A857"/>
+      <text x="144" y="498" font-size="17" fill="#EEF2F1">51°S</text>
+      <text x="144" y="517" font-size="12" fill="#9FB0B3">Glaciar Grey</text>
+      <line x1="120" y1="562" x2="136" y2="562" stroke="#E3A857" stroke-width="1.5"/>
+      <circle cx="120" cy="562" r="5" fill="#E3A857"/>
+      <text x="144" y="568" font-size="17" fill="#EEF2F1">56°S</text>
+      <text x="144" y="587" font-size="12" fill="#9FB0B3">Cape Horn</text>
+      <text x="144" y="34" font-size="12" fill="#9FB0B3">+56 · Chile</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EXPEDICIONES ============
+     Para agregar una expedición: copiar un bloque <article class="exp"> completo y cambiar sus textos.
+     La insignia (56°S) usa además la clase exp-signature. -->
+<section class="light" id="expeditions">
+  <div class="wrap section">
+    <div class="section-head">
+      <h2 class="h2">Four latitudes. One country. No one else on the route.</h2>
+      <p>Each expedition is named for its parallel. Travel south one line at a time, or go straight to the edge.</p>
+    </div>
+
+    <article class="exp">
+      <div class="exp-lat" aria-hidden="true">23°S</div>
+      <div class="exp-body">
+        <h3 class="h3">Atacama <span class="sr">23 degrees south</span></h3>
+        <p>A private rally across the driest desert on Earth and its salt flats.</p>
+      </div>
+      <p class="exp-meta">[DAYS] days · from [PRICE]</p>
+      <a class="btn" href="#contact" data-exp="23°S — Atacama">Enquire</a>
+    </article>
+
+    <article class="exp">
+      <div class="exp-lat" aria-hidden="true">47°S</div>
+      <div class="exp-body">
+        <h3 class="h3">Laguna San Rafael <span class="sr">47 degrees south</span></h3>
+        <p>By jet ski through the fjords to the face of the glacier.</p>
+      </div>
+      <p class="exp-meta">[DAYS] days · from [PRICE]</p>
+      <a class="btn" href="#contact" data-exp="47°S — Laguna San Rafael">Enquire</a>
+    </article>
+
+    <article class="exp">
+      <div class="exp-lat" aria-hidden="true">51°S</div>
+      <div class="exp-body">
+        <h3 class="h3">Glaciar Grey · Torres del Paine <span class="sr">51 degrees south</span></h3>
+        <p>[EXPEDITION TO DEFINE — one line on what the guest does here]</p>
+      </div>
+      <p class="exp-meta">[DAYS] days · from [PRICE]</p>
+      <a class="btn" href="#contact" data-exp="51°S — Glaciar Grey">Enquire</a>
+    </article>
+
+    <article class="exp exp-signature">
+      <div class="exp-lat" aria-hidden="true">56°S</div>
+      <div class="exp-body">
+        <h3 class="h3">Cape Horn — the signature expedition <span class="sr">56 degrees south</span></h3>
+        <p>The last land before the parallel that touches only ocean. [EXPEDITION TO DEFINE]</p>
+      </div>
+      <p class="exp-meta">[DAYS] days · from [PRICE]</p>
+      <a class="btn" href="#contact" data-exp="56°S — Cape Horn">Enquire</a>
+    </article>
+  </div>
+</section>
+
+<!-- ============ ENFOQUE ============ -->
+<section id="approach">
+  <div class="wrap section">
+    <h2 class="h2" style="max-width:46rem">Not a tour. An expedition built for one party.</h2>
+    <div class="pillars">
+      <div class="pillar">
+        <span class="num">01</span>
+        <h3 class="h3">Private by default</h3>
+        <p>Your party, your dates, your pace. Expeditions are never shared with other guests.</p>
+      </div>
+      <div class="pillar">
+        <span class="num">02</span>
+        <h3 class="h3">Engineered, not improvised</h3>
+        <p>[YOUR SAFETY AND LOGISTICS STANDARD — vehicles, guides, support crew, insurance]</p>
+      </div>
+      <div class="pillar">
+        <span class="num">03</span>
+        <h3 class="h3">One point of contact</h3>
+        <p>A single concierge from first message to the flight home. [LANGUAGES SPOKEN]</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EL NOMBRE ============ -->
+<section class="name" id="name">
+  <div class="wrap section">
+    <p class="big-mark" aria-hidden="true">56°S</p>
+    <div class="name-copy">
+      <h2 class="h3">Two meanings, one country.</h2>
+      <p>Dial +56 and you reach Chile. Follow the 56th parallel south and you pass just below Cape Horn — the first line on Earth that touches only ocean.</p>
+      <p>Everything we do happens between those two numbers.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACTO ============
+     data-email: correo que recibe las consultas.
+     data-endpoint: dirección de un servicio de formularios (por ejemplo Formspree). Si queda vacío,
+     el formulario abre el programa de correo del visitante con el mensaje ya escrito. -->
+<section class="contact" id="contact">
+  <div class="wrap section">
+    <div class="contact-copy">
+      <h2 class="h2">Tell us which latitude.</h2>
+      <p>Write to the concierge with your dates and the size of your party. We reply personally.</p>
+      <a class="contact-mail" href="mailto:concierge@[YOUR-DOMAIN]">concierge@[YOUR-DOMAIN]</a>
+      <div class="contact-links">
+        <a class="btn btn-line" href="https://wa.me/[YOUR-NUMBER]" rel="noopener">WhatsApp</a>
+        <a class="btn btn-line" href="https://t.me/[YOUR-HANDLE]" rel="noopener">Telegram</a>
+      </div>
+    </div>
+
+    <form id="enquiry" data-email="concierge@[YOUR-DOMAIN]" data-endpoint="" novalidate>
+      <div class="field">
+        <label for="f-name">Name</label>
+        <input id="f-name" name="name" type="text" autocomplete="name" required>
+      </div>
+      <div class="field">
+        <label for="f-email">Email</label>
+        <input id="f-email" name="email" type="email" autocomplete="email" required>
+      </div>
+      <div class="field">
+        <label for="f-exp">Expedition</label>
+        <select id="f-exp" name="expedition">
+          <option>Not sure yet</option>
+          <option>23°S — Atacama</option>
+          <option>47°S — Laguna San Rafael</option>
+          <option>51°S — Glaciar Grey</option>
+          <option>56°S — Cape Horn</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="f-msg">Dates and party size</label>
+        <textarea id="f-msg" name="message" rows="4"></textarea>
+      </div>
+      <div class="hp" aria-hidden="true"><label for="f-web">Leave empty</label><input id="f-web" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+      <button class="btn btn-solid" type="submit">Send enquiry</button>
+      <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>56°S — Private Expeditions, Chile</span>
+    <span>[LEGAL NAME] · [CITY], Chile · © <span id="year">2026</span></span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var y = document.getElementById("year");
+  if (y) y.textContent = new Date().getFullYear();
+
+  var form = document.getElementById("enquiry");
+  var status = document.getElementById("form-status");
+  var select = document.getElementById("f-exp");
+
+  // "Enquire" en una expedición deja esa expedición elegida en el formulario
+  document.querySelectorAll("[data-exp]").forEach(function (a) {
+    a.addEventListener("click", function () {
+      var want = a.getAttribute("data-exp");
+      for (var i = 0; i < select.options.length; i++) {
+        if (select.options[i].text === want) { select.selectedIndex = i; break; }
+      }
+    });
+  });
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var name = form.name.value.trim();
+    var email = form.email.value.trim();
+    if (form.website.value) return; // filtro anti-spam
+    if (!name || !email || !form.email.checkValidity()) {
+      status.textContent = "Please add your name and a valid email.";
+      (name ? form.email : form.name).focus();
+      return;
+    }
+    var endpoint = form.getAttribute("data-endpoint");
+    if (endpoint) {
+      status.textContent = "Sending…";
+      fetch(endpoint, { method: "POST", body: new FormData(form), headers: { Accept: "application/json" } })
+        .then(function (r) {
+          if (!r.ok) throw new Error();
+          form.reset();
+          status.textContent = "Thank you. The concierge will reply personally.";
+        })
+        .catch(function () {
+          status.textContent = "Something went wrong. Please write to " + form.getAttribute("data-email") + ".";
+        });
+      return;
+    }
+    var subject = "Expedition enquiry — " + form.expedition.value;
+    var body = "Name: " + name + "\nEmail: " + email + "\nExpedition: " + form.expedition.value + "\n\n" + form.message.value;
+    window.location.href = "mailto:" + form.getAttribute("data-email") +
+      "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+    status.textContent = "Your email app should open with the message ready to send.";
+  });
+})();
+</script>
+</body>
+</html>
