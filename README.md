@@ -29,9 +29,13 @@ Cada cambio queda en el historial del repositorio y se puede deshacer.
 
 Dentro de `index.html`, los comentarios en español (`<!-- ... -->`) marcan cada sección. Los colores de la marca están todos juntos al inicio, en `:root`.
 
+## Expediciones
+
+Hay seis planes, uno por latitud: 23°S Atacama, 33°S The Andes, 34°S Pacific, 35°S Wine valleys, 39°S Lakes & volcanoes y 51°S Patagonia. En `index.html` cada uno es un bloque `<article class="plan" id="plan-23">` (el número es la latitud) con su botón `tab-23` y su marcador en el mapa (`data-plan="23"`). Para poner una foto a un plan que hoy muestra el mapa, guarda la imagen en `assets/routes/` y reemplaza su `<div class="plan-map">…</div>` por `<img src="assets/routes/archivo.jpg" alt="descripción">`.
+
 ## Mapa y animaciones
 
-El mapa de la portada es `assets/chile.png` apilado en capas para dar volumen. Cada expedición tiene un marcador (`<a class="pin">`) cuya posición se ajusta con `--x` y `--y`, en porcentaje del mapa. Las animaciones se desactivan solas para quien tiene "reducir movimiento" activado en su equipo.
+El mapa de la portada es `assets/chile.png` apilado en capas para dar volumen, con el relieve real encima. Cada expedición tiene un marcador (`<a class="pin">`) cuya posición se ajusta con `--x` y `--y`, en porcentaje del mapa. Las animaciones se desactivan solas para quien tiene "reducir movimiento" activado en su equipo.
 
 ## Antes del lanzamiento
 
