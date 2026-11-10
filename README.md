@@ -7,6 +7,7 @@ Sitio de Fifty Six South (56°S), expediciones privadas en Chile. Es un sitio es
 | Archivo | Qué contiene |
 | --- | --- |
 | `index.html` | Toda la página: textos, estilos y el script del formulario |
+| `assets/chile.png` | Silueta de Chile que usa el mapa 3D de la portada |
 | `favicon.svg` | Ícono de la pestaña del navegador |
 | `assets/fonts/` | Tipografías (Space Grotesk, Inter, JetBrains Mono), alojadas en el mismo sitio |
 | `.nojekyll` | Le indica a GitHub Pages que publique los archivos tal cual |
@@ -22,6 +23,10 @@ Las fuentes van dentro del sitio y no se cargan desde Google. Así se evitan pro
 Cada cambio queda en el historial del repositorio y se puede deshacer.
 
 Dentro de `index.html`, los comentarios en español (`<!-- ... -->`) marcan cada sección. Los colores de la marca están todos juntos al inicio, en `:root`.
+
+## Mapa y animaciones
+
+El mapa de la portada es `assets/chile.png` apilado en capas para dar volumen. Cada expedición tiene un marcador (`<a class="pin">`) cuya posición se ajusta con `--x` y `--y`, en porcentaje del mapa. Las animaciones se desactivan solas para quien tiene "reducir movimiento" activado en su equipo.
 
 ## Antes del lanzamiento
 

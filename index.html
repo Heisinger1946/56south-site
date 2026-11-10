@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<script>document.documentElement.className="js"</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>56°S — Private Expeditions, Chile</title>
 <meta name="description" content="Private, unconventional expeditions across Chile, from the Atacama Desert to Cape Horn. One party, one concierge, no one else on the route.">
@@ -13,6 +14,7 @@
 <meta property="og:description" content="+56 is how the world calls Chile. 56° South is where the map runs out. Everything in between, we'll show you privately.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preload" href="assets/fonts/space-grotesk-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/chile.png" as="image" crossorigin>
 <link rel="preload" href="assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <style>
 @font-face{font-family:"Space Grotesk";font-weight:500;font-style:normal;font-display:swap;src:url(assets/fonts/space-grotesk-latin-500-normal.woff2) format("woff2")}
@@ -78,11 +80,84 @@ a{color:inherit}
 .hero .wrap{display:flex;flex-wrap:wrap;gap:56px;align-items:center;padding-top:72px;padding-bottom:104px}
 .hero-copy{flex:1 1 520px;min-width:0;display:flex;flex-direction:column;gap:28px}
 .hero-actions{display:flex;flex-wrap:wrap;gap:12px 16px;align-items:center}
-.ruler{flex:1 1 320px;min-width:0;max-width:420px;margin-left:auto}
-.ruler svg{width:100%;height:auto}
-.ruler text{font-family:var(--mono)}
-@media (max-width:900px){.ruler{margin:0 auto;max-width:360px}}
-@media (max-width:640px){.ruler{max-width:260px}.hero .wrap{padding-top:48px;padding-bottom:72px}}
+/* Mapa 3D de la portada */
+.hero{position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:-40% -10% -10%;background:repeating-linear-gradient(to bottom,transparent 0 47px,rgba(91,110,114,.16) 47px 48px);transform:perspective(900px) rotateX(58deg);transform-origin:50% 100%;-webkit-mask-image:radial-gradient(ellipse at 70% 60%,#000 0,transparent 68%);mask-image:radial-gradient(ellipse at 70% 60%,#000 0,transparent 68%);animation:drift 14s linear infinite;pointer-events:none}
+@keyframes drift{to{background-position:0 48px}}
+.hero .wrap{position:relative}
+.map-stage{flex:0 1 440px;min-width:0;display:flex;justify-content:center;perspective:1100px;padding:24px 0}
+.map-float{transform-style:preserve-3d;animation:sway 9s ease-in-out infinite alternate}
+@keyframes sway{from{transform:rotateY(-24deg) rotateX(7deg) translateY(-6px)}to{transform:rotateY(-10deg) rotateX(3deg) translateY(6px)}}
+.map-3d{position:relative;height:min(660px,74vh);aspect-ratio:275/1200;margin-right:170px;transform-style:preserve-3d;transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.map-slab{position:absolute;inset:0;transform-style:preserve-3d}
+.map-layer{position:absolute;inset:0;-webkit-mask:url(assets/chile.png) center/100% 100% no-repeat;mask:url(assets/chile.png) center/100% 100% no-repeat;background:#1B3038;transform:translateZ(calc(var(--i) * -5px));animation:unroll 2.4s cubic-bezier(.6,0,.2,1) .3s both}
+.map-layer[style*="--i:0"]{background:linear-gradient(180deg,#E3A857 0%,#C9D3D4 34%,#8FB7C4 70%,#EEF2F1 100%)}
+.map-layer[style*="--i:7"]{background:#000;opacity:.45;filter:blur(10px);transform:translateZ(-70px) translateX(26px)}
+@keyframes unroll{from{clip-path:inset(0 0 100% 0)}to{clip-path:inset(0 0 0 0)}}
+.pin{position:absolute;left:0;right:0;top:var(--y);height:0;text-decoration:none;color:var(--paper);transform:translateZ(34px);transform-style:preserve-3d;animation:pin-in .7s cubic-bezier(.2,.7,.2,1) var(--d) both}
+@keyframes pin-in{from{opacity:0;transform:translateZ(34px) translateX(18px)}to{opacity:1;transform:translateZ(34px)}}
+.pin-dot{position:absolute;left:var(--x);top:0;width:12px;height:12px;margin:-6px 0 0 -6px;border-radius:50%;background:#fff;box-shadow:0 0 0 3px rgba(10,19,23,.9),0 0 0 4.5px var(--accent)}
+.pin-dot::after{content:"";position:absolute;inset:-2px;border-radius:50%;border:1.5px solid var(--accent);animation:ping 2.6s ease-out infinite;animation-delay:var(--d)}
+@keyframes ping{0%{transform:scale(1);opacity:.9}70%,100%{transform:scale(3.4);opacity:0}}
+.pin-line{position:absolute;left:var(--x);right:-22px;top:0;border-top:1px solid var(--accent);opacity:.75;transform-origin:0 0}
+.pin-label{position:absolute;left:calc(100% + 30px);top:-13px;width:160px;display:flex;flex-direction:column;font-family:var(--mono);line-height:1.25;transition:transform .25s,color .25s}
+.pin-label b{font-weight:400;font-size:1.0625rem}
+.pin-label i{font-style:normal;font-size:.75rem;color:var(--text-mute)}
+.pin:hover .pin-label{transform:translateX(6px);color:var(--accent)}
+.pin:hover .pin-dot{transform:scale(1.35)}
+.pin-dot{transition:transform .25s}
+.map-tag{position:absolute;margin:0;font-family:var(--mono);font-size:.75rem;color:var(--text-mute);white-space:nowrap;transform:translateZ(20px);animation:pin-in .7s ease 2.7s both}
+.map-tag-top{left:calc(100% + 30px);top:-4px;animation-delay:.6s}
+.map-tag-bottom{right:calc(100% - 78%);top:calc(100% + 14px);display:flex;align-items:center;gap:10px}
+.map-tag-bottom span{display:block;width:90px;border-top:1px dashed var(--accent)}
+@media (max-width:900px){.map-3d{height:520px}}
+@media (max-width:640px){.map-3d{height:440px;margin-right:150px}.hero .wrap{padding-top:48px;padding-bottom:88px}.pin-label{width:140px}}
+
+/* Titular animado */
+.h1 .line{display:block;overflow:hidden;padding-bottom:.08em}
+.js .h1 .line>span{display:block;animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+.js .h1 .line:nth-child(2)>span{animation-delay:.12s}
+@keyframes rise{from{transform:translateY(110%) rotate(3deg)}to{transform:none}}
+.js .hero-copy>.eyebrow,.js .hero-copy>.lead,.js .hero-copy>.hero-actions{animation:fade-up .8s ease both}
+.js .hero-copy>.lead{animation-delay:.35s}
+.js .hero-copy>.hero-actions{animation-delay:.5s}
+@keyframes fade-up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+
+/* Aparición al hacer scroll */
+.js .reveal{opacity:0;transform:translateY(34px) rotateX(8deg);transform-origin:50% 100%;transition:opacity .8s ease,transform .9s cubic-bezier(.2,.7,.2,1);transition-delay:var(--rd,0s)}
+.js .reveal.in{opacity:1;transform:none}
+
+/* Barra de avance y header */
+.progress{position:absolute;left:0;bottom:-1px;height:2px;width:100%;background:var(--accent);transform:scaleX(var(--p,0));transform-origin:0 50%}
+.site-header{transition:border-color .3s}
+.site-header.scrolled{border-bottom-color:var(--line)}
+
+/* Movimiento en botones, filas y tarjetas */
+.btn{transition:background-color .2s,color .2s,border-color .2s,transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn-solid:hover{box-shadow:0 10px 24px -10px rgba(227,168,87,.7)}
+.btn:active{transform:translateY(0) scale(.98)}
+.exp{transition:padding .35s cubic-bezier(.2,.7,.2,1),background-color .35s}
+.exp-lat{transition:transform .35s cubic-bezier(.2,.7,.2,1),letter-spacing .35s}
+.exp:not(.exp-signature):hover{padding-left:16px;padding-right:16px;background:rgba(10,19,23,.045)}
+.exp:hover .exp-lat{transform:translateX(6px);letter-spacing:-.01em}
+.tilt{transform-style:preserve-3d;transform:perspective(900px) rotateX(var(--tx,0deg)) rotateY(var(--ty,0deg));transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s}
+.exp-signature.tilt:hover{box-shadow:0 30px 50px -28px rgba(10,19,23,.6)}
+.exp-signature.tilt:hover .exp-lat{transform:translateZ(30px)}
+.pillar{transition:border-color .3s,transform .35s cubic-bezier(.2,.7,.2,1)}
+.pillar:hover{border-top-color:var(--accent)}
+.pillar .num,.pillar .h3{transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.pillar.tilt:hover .num,.pillar.tilt:hover .h3{transform:translateZ(22px)}
+.big-mark{text-shadow:1px 1px 0 #B98440,2px 2px 0 #B98440,3px 3px 0 #A87636,4px 4px 0 #A87636,5px 5px 0 #96682D,6px 6px 0 #96682D,7px 7px 0 #855B26,8px 8px 0 #855B26,16px 22px 30px rgba(0,0,0,.55);transform:perspective(800px) rotateY(var(--my,-14deg)) rotateX(4deg);transform-origin:30% 50%;will-change:transform}
+input,select,textarea{transition:border-color .2s,box-shadow .2s,background-color .2s}
+input:focus,select:focus,textarea:focus{box-shadow:0 0 0 4px rgba(227,168,87,.18)}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .js .reveal{opacity:1;transform:none}
+  .map-float{transform:rotateY(-16deg) rotateX(5deg)}
+  .big-mark{transform:none}
+}
 
 /* Expeditions */
 .light{background:var(--paper);color:var(--ink)}
@@ -149,6 +224,7 @@ form .btn{align-self:flex-start}
 <a class="skip" href="#main">Skip to content</a>
 
 <header class="site-header">
+  <div class="progress" aria-hidden="true"></div>
   <div class="wrap">
     <a class="logo" href="#top" aria-label="56°S, home">56°S</a>
     <nav class="nav" aria-label="Main">
@@ -167,83 +243,34 @@ form .btn{align-self:flex-start}
   <div class="wrap">
     <div class="hero-copy">
       <p class="eyebrow">Private expeditions · Chile</p>
-      <h1 class="h1">Where the map runs out.</h1>
+      <h1 class="h1" aria-label="Where the map runs out."><span class="line"><span>Where the map</span></span> <span class="line"><span>runs out.</span></span></h1>
       <p class="lead">+56 is how the world calls Chile. 56° South is where the map runs out. Everything in between, we'll show you privately.</p>
       <div class="hero-actions">
         <a class="btn btn-solid" href="#contact">Plan your expedition</a>
         <a class="btn btn-ghost" href="#expeditions">See the latitudes ↓</a>
       </div>
     </div>
-    <div class="ruler">
-      <svg viewBox="0 0 320 600" role="img" aria-label="Expedition latitudes along Chile: 23 degrees south, Atacama; 47 south, Laguna San Rafael; 51 south, Glaciar Grey; 56 south, Cape Horn.">
-      <line x1="120" y1="30" x2="120" y2="562" stroke="#5B6E72" stroke-width="1"/>
-      <line x1="110" y1="30" x2="120" y2="30" stroke="#25353A" stroke-width="1"/>
-      <line x1="110" y1="44" x2="120" y2="44" stroke="#25353A" stroke-width="1"/>
-      <line x1="100" y1="58" x2="120" y2="58" stroke="#5B6E72" stroke-width="1"/>
-      <text x="92" y="62" text-anchor="end" font-size="11" fill="#9FB0B3">20°</text>
-      <line x1="110" y1="72" x2="120" y2="72" stroke="#25353A" stroke-width="1"/>
-      <line x1="110" y1="86" x2="120" y2="86" stroke="#25353A" stroke-width="1"/>
-      <line x1="110" y1="100" x2="120" y2="100" stroke="#25353A" stroke-width="1"/>
-      <line x1="110" y1="114" x2="120" y2="114" stroke="#25353A" stroke-width="1"/>
-      <line x1="100" y1="128" x2="120" y2="128" stroke="#5B6E72" stroke-width="1"/>
-      <text x="92" y="132" text-anchor="end" font-size="11" fill="#9FB0B3">25°</text>
-      <line x1="110" y1="142" x2="120" y2="142" stroke="#25353A" stroke-width="1"/>
-      <line x1="110" y1="156" x2="120" y2="156" stroke="#25353A" stroke-width="1"/>
-      <line x1="110" y1="170" x2="120" y2="170" stroke="#25353A" stroke-width="1"/>
-      <line x1="110" y1="184" x2="120" y2="184" stroke="#25353A" stroke-width="1"/>
-      <line x1="100" y1="198" x2="120" y2="198" stroke="#5B6E72" stroke-width="1"/>
-      <text x="92" y="202" text-anchor="end" font-size="11" fill="#9FB0B3">30°</text>
-      <line x1="110" y1="212" x2="120" y2="212" stroke="#25353A" stroke-width="1"/>
-      <line x1="110" y1="226" x2="120" y2="226" stroke="#25353A" stroke-width="1"/>
-      <line x1="110" y1="240" x2="120" y2="240" stroke="#25353A" stroke-width="1"/>
-      <line x1="110" y1="254" x2="120" y2="254" stroke="#25353A" stroke-width="1"/>
-      <line x1="100" y1="268" x2="120" y2="268" stroke="#5B6E72" stroke-width="1"/>
-      <text x="92" y="272" text-anchor="end" font-size="11" fill="#9FB0B3">35°</text>
-      <line x1="110" y1="282" x2="120" y2="282" stroke="#25353A" stroke-width="1"/>
-      <line x1="110" y1="296" x2="120" y2="296" stroke="#25353A" stroke-width="1"/>
-      <line x1="110" y1="310" x2="120" y2="310" stroke="#25353A" stroke-width="1"/>
-      <line x1="110" y1="324" x2="120" y2="324" stroke="#25353A" stroke-width="1"/>
-      <line x1="100" y1="338" x2="120" y2="338" stroke="#5B6E72" stroke-width="1"/>
-      <text x="92" y="342" text-anchor="end" font-size="11" fill="#9FB0B3">40°</text>
-      <line x1="110" y1="352" x2="120" y2="352" stroke="#25353A" stroke-width="1"/>
-      <line x1="110" y1="366" x2="120" y2="366" stroke="#25353A" stroke-width="1"/>
-      <line x1="110" y1="380" x2="120" y2="380" stroke="#25353A" stroke-width="1"/>
-      <line x1="110" y1="394" x2="120" y2="394" stroke="#25353A" stroke-width="1"/>
-      <line x1="100" y1="408" x2="120" y2="408" stroke="#5B6E72" stroke-width="1"/>
-      <text x="92" y="412" text-anchor="end" font-size="11" fill="#9FB0B3">45°</text>
-      <line x1="110" y1="422" x2="120" y2="422" stroke="#25353A" stroke-width="1"/>
-      <line x1="110" y1="436" x2="120" y2="436" stroke="#25353A" stroke-width="1"/>
-      <line x1="110" y1="450" x2="120" y2="450" stroke="#25353A" stroke-width="1"/>
-      <line x1="110" y1="464" x2="120" y2="464" stroke="#25353A" stroke-width="1"/>
-      <line x1="100" y1="478" x2="120" y2="478" stroke="#5B6E72" stroke-width="1"/>
-      <text x="92" y="482" text-anchor="end" font-size="11" fill="#9FB0B3">50°</text>
-      <line x1="110" y1="492" x2="120" y2="492" stroke="#25353A" stroke-width="1"/>
-      <line x1="110" y1="506" x2="120" y2="506" stroke="#25353A" stroke-width="1"/>
-      <line x1="110" y1="520" x2="120" y2="520" stroke="#25353A" stroke-width="1"/>
-      <line x1="110" y1="534" x2="120" y2="534" stroke="#25353A" stroke-width="1"/>
-      <line x1="100" y1="548" x2="120" y2="548" stroke="#5B6E72" stroke-width="1"/>
-      <text x="92" y="552" text-anchor="end" font-size="11" fill="#9FB0B3">55°</text>
-      <line x1="110" y1="562" x2="120" y2="562" stroke="#25353A" stroke-width="1"/>
-      <line x1="0" y1="562" x2="108" y2="562" stroke="#E3A857" stroke-width="1" stroke-dasharray="3 4"/>
-      <text x="108" y="584" text-anchor="end" font-size="11" fill="#9FB0B3">only ocean below</text>
-      <line x1="120" y1="100" x2="136" y2="100" stroke="#E3A857" stroke-width="1.5"/>
-      <circle cx="120" cy="100" r="5" fill="#E3A857"/>
-      <text x="144" y="106" font-size="17" fill="#EEF2F1">23°S</text>
-      <text x="144" y="125" font-size="12" fill="#9FB0B3">Atacama</text>
-      <line x1="120" y1="436" x2="136" y2="436" stroke="#E3A857" stroke-width="1.5"/>
-      <circle cx="120" cy="436" r="5" fill="#E3A857"/>
-      <text x="144" y="442" font-size="17" fill="#EEF2F1">47°S</text>
-      <text x="144" y="461" font-size="12" fill="#9FB0B3">Laguna San Rafael</text>
-      <line x1="120" y1="492" x2="136" y2="492" stroke="#E3A857" stroke-width="1.5"/>
-      <circle cx="120" cy="492" r="5" fill="#E3A857"/>
-      <text x="144" y="498" font-size="17" fill="#EEF2F1">51°S</text>
-      <text x="144" y="517" font-size="12" fill="#9FB0B3">Glaciar Grey</text>
-      <line x1="120" y1="562" x2="136" y2="562" stroke="#E3A857" stroke-width="1.5"/>
-      <circle cx="120" cy="562" r="5" fill="#E3A857"/>
-      <text x="144" y="568" font-size="17" fill="#EEF2F1">56°S</text>
-      <text x="144" y="587" font-size="12" fill="#9FB0B3">Cape Horn</text>
-      <text x="144" y="34" font-size="12" fill="#9FB0B3">+56 · Chile</text>
-      </svg>
+    <div class="map-stage" id="map-stage">
+      <div class="map-float">
+      <div class="map-3d" id="map-3d">
+        <p class="map-tag map-tag-top">+56 · Chile</p>
+        <div class="map-slab" role="img" aria-label="Map of Chile, from the Atacama Desert in the north to Cape Horn in the south">
+          <div class="map-layer" style="--i:7"></div>
+          <div class="map-layer" style="--i:6"></div>
+          <div class="map-layer" style="--i:5"></div>
+          <div class="map-layer" style="--i:4"></div>
+          <div class="map-layer" style="--i:3"></div>
+          <div class="map-layer" style="--i:2"></div>
+          <div class="map-layer" style="--i:1"></div>
+          <div class="map-layer" style="--i:0"></div>
+        </div>
+        <a class="pin" href="#expeditions" style="--x:34.0%;--y:12.7%;--d:1.10s" aria-label="23°S, Atacama"><span class="pin-line"></span><span class="pin-dot"></span><span class="pin-label"><b>23°S</b><i>Atacama</i></span></a>
+        <a class="pin" href="#expeditions" style="--x:25%;--y:72.4%;--d:2.06s" aria-label="47°S, Laguna San Rafael"><span class="pin-line"></span><span class="pin-dot"></span><span class="pin-label"><b>47°S</b><i>Laguna San Rafael</i></span></a>
+        <a class="pin" href="#expeditions" style="--x:37.6%;--y:85.2%;--d:2.26s" aria-label="51°S, Glaciar Grey"><span class="pin-line"></span><span class="pin-dot"></span><span class="pin-label"><b>51°S</b><i>Glaciar Grey</i></span></a>
+        <a class="pin" href="#expeditions" style="--x:93.8%;--y:99.4%;--d:2.49s" aria-label="56°S, Cape Horn"><span class="pin-line"></span><span class="pin-dot"></span><span class="pin-label"><b>56°S</b><i>Cape Horn</i></span></a>
+        <p class="map-tag map-tag-bottom"><span></span>only ocean below</p>
+      </div>
+      </div>
     </div>
   </div>
 </section>
@@ -440,6 +467,96 @@ form .btn{align-self:flex-start}
       "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
     status.textContent = "Your email app should open with the message ready to send.";
   });
+})();
+
+/* Movimiento: aparición al hacer scroll, inclinación 3D y barra de avance */
+(function () {
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var root = document.documentElement;
+
+  // Aparición escalonada
+  var groups = [".section-head", ".exp", ".pillar", "#approach .h2", ".big-mark", ".name-copy", ".contact-copy", "#enquiry .field", "#enquiry .btn"];
+  var items = [];
+  groups.forEach(function (sel) {
+    document.querySelectorAll(sel).forEach(function (el, i) {
+      el.classList.add("reveal");
+      el.style.setProperty("--rd", Math.min(i, 5) * 0.09 + "s");
+      items.push(el);
+    });
+  });
+  if ("IntersectionObserver" in window && !reduce) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.classList.add("in");
+          io.unobserve(e.target);
+          // al terminar, se libera la transición para que el hover responda al instante
+          setTimeout(function () { e.target.classList.remove("reveal", "in"); }, 1600);
+        }
+      });
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
+    items.forEach(function (el) { io.observe(el); });
+  } else {
+    items.forEach(function (el) { el.classList.remove("reveal"); });
+  }
+  if (reduce) return;
+
+  // Barra de avance, borde del header y giro del 56°S grande
+  var header = document.querySelector(".site-header");
+  var mark = document.querySelector(".big-mark");
+  var ticking = false;
+  function onScroll() {
+    ticking = false;
+    var max = root.scrollHeight - window.innerHeight;
+    header.style.setProperty("--p", max > 0 ? (window.scrollY / max).toFixed(4) : 0);
+    header.classList.toggle("scrolled", window.scrollY > 8);
+    if (mark) {
+      var r = mark.getBoundingClientRect();
+      var t = (r.top + r.height / 2) / window.innerHeight; // 0 arriba, 1 abajo
+      mark.style.setProperty("--my", (Math.max(0, Math.min(1, t)) * 44 - 30).toFixed(1) + "deg");
+    }
+  }
+  window.addEventListener("scroll", function () {
+    if (!ticking) { ticking = true; requestAnimationFrame(onScroll); }
+  }, { passive: true });
+  onScroll();
+
+  // El mapa sigue al puntero
+  var stage = document.getElementById("map-stage");
+  var map = document.getElementById("map-3d");
+  var hero = document.querySelector(".hero");
+  if (stage && map && window.matchMedia("(hover: hover)").matches) {
+    hero.addEventListener("pointermove", function (e) {
+      var r = hero.getBoundingClientRect();
+      var x = (e.clientX - r.left) / r.width - 0.5;
+      var y = (e.clientY - r.top) / r.height - 0.5;
+      map.style.setProperty("--ry", (x * 26).toFixed(1) + "deg");
+      map.style.setProperty("--rx", (-y * 14).toFixed(1) + "deg");
+    });
+    hero.addEventListener("pointerleave", function () {
+      map.style.setProperty("--ry", "0deg");
+      map.style.setProperty("--rx", "0deg");
+    });
+  }
+
+  // Tarjetas que se inclinan con el puntero
+  if (window.matchMedia("(hover: hover)").matches) {
+    document.querySelectorAll(".exp-signature, .pillar").forEach(function (el) {
+      el.classList.add("tilt");
+      el.addEventListener("pointermove", function (e) {
+        var r = el.getBoundingClientRect();
+        var x = (e.clientX - r.left) / r.width - 0.5;
+        var y = (e.clientY - r.top) / r.height - 0.5;
+        var k = el.classList.contains("pillar") ? 10 : 4;
+        el.style.setProperty("--ty", (x * k).toFixed(2) + "deg");
+        el.style.setProperty("--tx", (-y * k).toFixed(2) + "deg");
+      });
+      el.addEventListener("pointerleave", function () {
+        el.style.setProperty("--ty", "0deg");
+        el.style.setProperty("--tx", "0deg");
+      });
+    });
+  }
 })();
 </script>
 </body>
