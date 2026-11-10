@@ -152,7 +152,7 @@ a{color:inherit}
 .pillar:hover{border-top-color:var(--accent)}
 .pillar .num,.pillar .h3{transition:transform .35s cubic-bezier(.2,.7,.2,1)}
 .pillar.tilt:hover .num,.pillar.tilt:hover .h3{transform:translateZ(22px)}
-.big-mark{text-shadow:1px 1px 0 #B98440,2px 2px 0 #B98440,3px 3px 0 #A87636,4px 4px 0 #A87636,5px 5px 0 #96682D,6px 6px 0 #96682D,7px 7px 0 #855B26,8px 8px 0 #855B26,16px 22px 30px rgba(0,0,0,.55);transform:perspective(800px) rotateY(var(--my,-14deg)) rotateX(4deg);transform-origin:30% 50%;will-change:transform}
+.big-mark{transform:perspective(800px) rotateY(var(--my,-14deg)) rotateX(4deg);transform-origin:30% 50%;will-change:transform;filter:drop-shadow(3px 4px 0 rgba(0,0,0,.55)) drop-shadow(18px 26px 28px rgba(0,0,0,.5))}
 input,select,textarea{transition:border-color .2s,box-shadow .2s,background-color .2s}
 input:focus,select:focus,textarea:focus{box-shadow:0 0 0 4px rgba(227,168,87,.18)}
 
@@ -195,7 +195,8 @@ input:focus,select:focus,textarea:focus{box-shadow:0 0 0 4px rgba(227,168,87,.18
 /* Name */
 .name{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .name .wrap{display:flex;flex-wrap:wrap;gap:40px 56px;align-items:center}
-.big-mark{flex:1 1 320px;min-width:0;margin:0;font-family:var(--display);font-weight:700;font-size:clamp(5rem,15vw,12rem);line-height:.9;letter-spacing:-.05em;color:var(--accent)}
+.big-mark{flex:1 1 320px;min-width:0;margin:0}
+.big-mark img{width:min(100%,440px);height:auto}
 .name-copy{flex:1 1 420px;min-width:0;display:flex;flex-direction:column;gap:20px}
 .name-copy .h3{font-size:1.75rem;line-height:1.2}
 .name-copy p{margin:0;color:var(--text-dim)}
@@ -360,7 +361,7 @@ form .btn{align-self:flex-start}
 <!-- ============ EL NOMBRE ============ -->
 <section class="name" id="name">
   <div class="wrap section">
-    <p class="big-mark" aria-hidden="true">56°S</p>
+    <div class="big-mark"><img src="assets/logo-light.png" width="771" height="520" alt="56°S Travel &amp; Adventure" loading="lazy"></div>
     <div class="name-copy">
       <h2 class="h3">Two meanings, one country.</h2>
       <p>Dial +56 and you reach Chile. Follow the 56th parallel south and you pass just below Cape Horn — the first line on Earth that touches only ocean.</p>
