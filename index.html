@@ -148,7 +148,7 @@ a{color:inherit}
 .btn:active{transform:translateY(0) scale(.98)}
 .exp{transition:padding .35s cubic-bezier(.2,.7,.2,1),background-color .35s}
 .exp-lat{transition:transform .35s cubic-bezier(.2,.7,.2,1),letter-spacing .35s}
-.exp:not(.exp-signature):hover{padding-left:16px;padding-right:16px;background:rgba(10,19,23,.045)}
+.exp:not(.exp-signature):hover{padding-left:12px;padding-right:12px;background:rgba(10,19,23,.045)}
 .exp:hover .exp-lat{transform:translateX(6px);letter-spacing:-.01em}
 .tilt{transform-style:preserve-3d;transform:perspective(900px) rotateX(var(--tx,0deg)) rotateY(var(--ty,0deg));transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s}
 .exp-signature.tilt:hover{box-shadow:0 30px 50px -28px rgba(10,19,23,.6)}
@@ -175,20 +175,28 @@ input:focus,select:focus,textarea:focus{box-shadow:0 0 0 4px rgba(227,168,87,.18
 .section-head{display:flex;flex-wrap:wrap;gap:24px 64px;justify-content:space-between;align-items:flex-end;margin-bottom:56px}
 .section-head .h2{flex:1 1 420px}
 .section-head p{margin:0;flex:1 1 320px;max-width:30rem;color:var(--text-on-paper)}
-.exp{display:flex;flex-wrap:wrap;gap:16px 40px;align-items:center;padding:36px 0;border-top:1px solid var(--ink)}
+.exp{display:grid;grid-template-columns:280px 170px minmax(0,1fr) auto;grid-template-areas:"photo lat body btn" "photo lat meta btn";column-gap:36px;row-gap:10px;align-items:center;padding:28px 0;border-top:1px solid var(--ink)}
+.exp-photo{grid-area:photo;aspect-ratio:3/2;overflow:hidden;border-radius:6px;background:var(--line)}
+.exp-photo img{width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.exp:hover .exp-photo img{transform:scale(1.07)}
+.exp-lat{grid-area:lat}
+.exp-body{grid-area:body;align-self:end}
+.exp-meta{grid-area:meta;align-self:start}
+.exp>.btn{grid-area:btn}
 .exp-lat{flex:0 0 180px;font-family:var(--display);font-weight:700;font-size:3.5rem;line-height:1;letter-spacing:-.03em}
 .exp-body{flex:1 1 320px;min-width:0;display:flex;flex-direction:column;gap:6px}
 .exp-body p{margin:0;color:var(--text-on-paper)}
 .exp-meta{flex:0 1 220px;margin:0;font-family:var(--mono);font-size:.8125rem;color:var(--text-on-paper)}
 .exp .btn{border-color:var(--ink);color:var(--ink);min-height:44px;padding:8px 24px}
 .exp .btn:hover{background:var(--ink);color:var(--paper)}
-.exp-signature{background:var(--ink);color:var(--paper);border:0;border-radius:6px;padding:36px 28px;margin:8px -28px 0}
+.exp-signature{background:var(--ink);color:var(--paper);border:0;border-radius:6px;padding:28px;margin:8px -28px 0}
 .exp-signature .exp-lat{color:var(--accent)}
 .exp-signature .exp-body p,.exp-signature .exp-meta{color:var(--text-dim)}
 .exp-signature .btn{background:var(--accent);border-color:var(--accent);color:var(--ink)}
 .exp-signature .btn:hover{background:#EDBB74;color:var(--ink)}
 @media (max-width:1300px){.exp-signature{margin:8px 0 0}}
-@media (max-width:640px){.exp-lat{flex-basis:100%;font-size:3rem}.exp-signature{padding:28px 20px}}
+@media (max-width:1000px){.exp{grid-template-columns:220px minmax(0,1fr) auto;grid-template-areas:"photo lat btn" "photo body body" "photo meta meta";align-items:start}.exp-lat{font-size:2.75rem}.exp>.btn{align-self:center}}
+@media (max-width:640px){.exp{grid-template-columns:1fr;grid-template-areas:"photo" "lat" "body" "meta" "btn";row-gap:12px}.exp-lat{font-size:3rem;margin-top:8px}.exp>.btn{justify-self:start;margin-top:6px}.exp-signature{padding:20px}}
 
 /* Approach */
 .pillars{display:flex;flex-wrap:wrap;gap:40px;margin-top:56px}
@@ -301,6 +309,7 @@ form .btn{align-self:flex-start}
     </div>
 
     <article class="exp">
+      <div class="exp-photo"><img src="assets/routes/atacama.jpg" width="960" height="640" alt="Reddish volcanic hills of the Atacama Desert at sunset" loading="lazy"></div>
       <div class="exp-lat" aria-hidden="true">23°S</div>
       <div class="exp-body">
         <h3 class="h3">Atacama <span class="sr">23 degrees south</span></h3>
@@ -311,6 +320,7 @@ form .btn{align-self:flex-start}
     </article>
 
     <article class="exp">
+      <div class="exp-photo"><img src="assets/routes/san-rafael.jpg" width="960" height="640" alt="Blue ice wall of a Patagonian glacier rising from the water" loading="lazy"></div>
       <div class="exp-lat" aria-hidden="true">47°S</div>
       <div class="exp-body">
         <h3 class="h3">Laguna San Rafael <span class="sr">47 degrees south</span></h3>
@@ -321,6 +331,7 @@ form .btn{align-self:flex-start}
     </article>
 
     <article class="exp">
+      <div class="exp-photo"><img src="assets/routes/torres-del-paine.jpg" width="960" height="640" alt="The Cuernos del Paine peaks above a turquoise lake at sunrise" loading="lazy"></div>
       <div class="exp-lat" aria-hidden="true">51°S</div>
       <div class="exp-body">
         <h3 class="h3">Glaciar Grey · Torres del Paine <span class="sr">51 degrees south</span></h3>
@@ -331,6 +342,7 @@ form .btn{align-self:flex-start}
     </article>
 
     <article class="exp exp-signature">
+      <div class="exp-photo"><img src="assets/routes/cabo-de-hornos.jpg" width="960" height="640" alt="Aerial view of Cape Horn island surrounded by open ocean" loading="lazy"></div>
       <div class="exp-lat" aria-hidden="true">56°S</div>
       <div class="exp-body">
         <h3 class="h3">Cape Horn — the signature expedition <span class="sr">56 degrees south</span></h3>
@@ -519,6 +531,7 @@ form .btn{align-self:flex-start}
   }
   var bg = document.querySelector(".hero-video");
   if (bg && reduce) { bg.removeAttribute("autoplay"); bg.pause(); }
+  if (bg && !reduce) { bg.muted = true; var tryPlay = function () { var q = bg.play(); if (q && q.catch) q.catch(function () {}); }; tryPlay(); document.addEventListener("visibilitychange", function () { if (!document.hidden) tryPlay(); }); }
   if (reduce) return;
 
   // Barra de avance, borde del header y giro del 56°S grande
