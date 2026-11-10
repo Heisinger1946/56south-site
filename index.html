@@ -269,7 +269,10 @@ input:focus,select:focus,textarea:focus{box-shadow:0 0 0 4px rgba(227,168,87,.18
 .pin-left .pin-label{left:auto;right:calc(100% + 22px);width:auto;white-space:nowrap}
 .pin:hover.pin-left .pin-label{transform:translateX(-6px)}
 .pin-end .pin-label b{color:var(--accent)}
-@media (max-width:640px){.map-3d{margin-left:58px;margin-right:158px}.pin-dot{width:10px;height:10px;margin:-5px 0 0 -5px;box-shadow:0 0 0 2px rgba(10,19,23,.9),0 0 0 3px var(--accent)}.pin-left .pin-label i{display:none}}
+.pin-sm{--ps:1.6}
+.pin-sm .pin-dot::after{animation-name:ping-sm}
+@keyframes ping-sm{0%{transform:scale(1);opacity:.9}70%,100%{transform:scale(var(--ps,1.6));opacity:0}}
+@media (max-width:640px){.map-3d{margin-left:58px;margin-right:158px}.pin-sm{--ps:1.35}.pin-dot{width:10px;height:10px;margin:-5px 0 0 -5px;box-shadow:0 0 0 2px rgba(10,19,23,.9),0 0 0 3px var(--accent)}.pin-left .pin-label i{display:none}}
 
 /* Approach */
 .pillars{display:flex;flex-wrap:wrap;gap:40px;margin-top:56px}
