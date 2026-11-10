@@ -8,7 +8,7 @@ Sitio de Fifty Six South (56°S), expediciones privadas en Chile. Es un sitio es
 | --- | --- |
 | `index.html` | Toda la página: textos, estilos y el script del formulario |
 | `assets/hero.jpg` | Imagen de fondo de la portada |
-| `assets/routes/` | Foto de referencia de cada expedición (960×640) |
+| `assets/routes/` | Foto de cada plan |
 | `assets/chile.png` | Silueta de Chile que usa el mapa 3D de la portada |
 | `assets/chile-relief.jpg` | Relieve real de Chile (Natural Earth, dominio público) ajustado a la silueta |
 | `assets/logo-light.png`, `assets/logo-mark-light.png` | Logo para fondo oscuro: completo (pie de página) y sin el lema (menú) |
@@ -31,7 +31,7 @@ Dentro de `index.html`, los comentarios en español (`<!-- ... -->`) marcan cada
 
 ## Expediciones
 
-Hay seis planes, uno por latitud: 23°S Atacama, 33°S The Andes, 34°S Pacific, 35°S Wine valleys, 39°S Lakes & volcanoes y 51°S Patagonia. En `index.html` cada uno es un bloque `<article class="plan" id="plan-23">` (el número es la latitud) con su botón `tab-23` y su marcador en el mapa (`data-plan="23"`). Para poner una foto a un plan que hoy muestra el mapa, guarda la imagen en `assets/routes/` y reemplaza su `<div class="plan-map">…</div>` por `<img src="assets/routes/archivo.jpg" alt="descripción">`.
+Hay seis planes, uno por latitud: 23°S Atacama, 33°S The Andes, 34°S Pacific, 35°S Wine valleys, 39°S Lakes & volcanoes y 51°S Patagonia. En `index.html` cada uno es un bloque `<article class="plan" id="plan-23">` (el número es la latitud) con su botón `tab-23` y su marcador en el mapa (`data-plan="23"`). Para cambiar la foto de un plan, guarda la imagen nueva en `assets/routes/` y cambia el `src` del `<img>` que está dentro de su `<div class="plan-visual">`. El `object-position` de ese `<img>` indica qué parte de la foto queda visible cuando se recorta.
 
 ## Mapa y animaciones
 
