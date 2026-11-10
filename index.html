@@ -109,8 +109,8 @@ a{color:inherit}
 @keyframes unroll{from{clip-path:inset(0 0 100% 0)}to{clip-path:inset(0 0 0 0)}}
 .pin{position:absolute;left:0;right:0;top:var(--y);height:0;text-decoration:none;color:var(--paper);transform:translateZ(34px);transform-style:preserve-3d;animation:pin-in .7s cubic-bezier(.2,.7,.2,1) var(--d) both}
 @keyframes pin-in{from{opacity:0;transform:translateZ(34px) translateX(18px)}to{opacity:1;transform:translateZ(34px)}}
-.pin-dot{position:absolute;left:var(--x);top:0;width:12px;height:12px;margin:-6px 0 0 -6px;border-radius:50%;background:#fff;box-shadow:0 0 0 3px rgba(10,19,23,.9),0 0 0 4.5px var(--accent)}
-.pin-dot::after{content:"";position:absolute;inset:-2px;border-radius:50%;border:1.5px solid var(--accent);animation:ping 2.6s ease-out infinite;animation-delay:var(--d)}
+.pin-dot{position:absolute;left:var(--x);top:0;width:8px;height:8px;margin:-4px 0 0 -4px;border-radius:50%;background:#fff;box-shadow:0 0 0 2px rgba(10,19,23,.9),0 0 0 3px var(--accent)}
+.pin-dot::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:1.5px solid var(--accent);animation:ping 2.6s ease-out infinite;animation-delay:var(--d)}
 @keyframes ping{0%{transform:scale(1);opacity:.9}70%,100%{transform:scale(3.4);opacity:0}}
 .pin-line{position:absolute;left:var(--x);right:-22px;top:0;border-top:1px solid var(--accent);opacity:.75;transform-origin:0 0}
 .pin-label{position:absolute;left:calc(100% + 30px);top:-13px;width:160px;display:flex;flex-direction:column;font-family:var(--mono);line-height:1.25;transition:transform .25s,color .25s}
@@ -269,10 +269,7 @@ input:focus,select:focus,textarea:focus{box-shadow:0 0 0 4px rgba(227,168,87,.18
 .pin-left .pin-label{left:auto;right:calc(100% + 22px);width:auto;white-space:nowrap}
 .pin:hover.pin-left .pin-label{transform:translateX(-6px)}
 .pin-end .pin-label b{color:var(--accent)}
-.pin-sm{--ps:1.6}
-.pin-sm .pin-dot::after{animation-name:ping-sm}
-@keyframes ping-sm{0%{transform:scale(1);opacity:.9}70%,100%{transform:scale(var(--ps,1.6));opacity:0}}
-@media (max-width:640px){.map-3d{margin-left:58px;margin-right:158px}.pin-sm{--ps:1.35}.pin-dot{width:10px;height:10px;margin:-5px 0 0 -5px;box-shadow:0 0 0 2px rgba(10,19,23,.9),0 0 0 3px var(--accent)}.pin-left .pin-label i{display:none}}
+@media (max-width:640px){.map-3d{margin-left:58px;margin-right:158px}.pin-dot{width:7px;height:7px;margin:-3.5px 0 0 -3.5px;box-shadow:0 0 0 1.5px rgba(10,19,23,.9),0 0 0 2.5px var(--accent)}.pin-dot::after{inset:-3.5px}.pin-left .pin-label i{display:none}}
 
 /* Approach */
 .pillars{display:flex;flex-wrap:wrap;gap:40px;margin-top:56px}
