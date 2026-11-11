@@ -419,15 +419,16 @@ form .btn{align-self:flex-start}
 .footer-ig{display:inline-flex;align-items:center;gap:6px}
 .footer-ig svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transition:transform .45s cubic-bezier(.25,1,.5,1)}
 .footer-ig:hover svg{transform:rotate(-45deg)}
-/* Botón de Instagram: se rellena de ámbar de izquierda a derecha y la flecha apunta hacia afuera */
-.btn-ig{position:relative;overflow:hidden;isolation:isolate;gap:10px}
-.btn-ig::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--accent);transform:scaleX(0);transform-origin:0 50%;transition:transform .45s cubic-bezier(.2,.7,.2,1)}
-.btn-ig:hover,.btn-ig:focus-visible{color:var(--ink);border-color:var(--accent)}
-.btn-ig:hover::before,.btn-ig:focus-visible::before{transform:scaleX(1)}
-.btn-ig .ig-handle{font-family:var(--mono);font-size:.8125rem;font-weight:400;color:var(--text-mute);transition:color .3s}
-.btn-ig:hover .ig-handle,.btn-ig:focus-visible .ig-handle{color:var(--ink)}
-.btn-ig svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transition:transform .45s cubic-bezier(.25,1,.5,1)}
-.btn-ig:hover svg,.btn-ig:focus-visible svg{transform:rotate(-45deg)}
+/* Botones de contacto (correo e Instagram): rectángulo con brillo diagonal, flecha que sale y vuelve a entrar */
+.btn-ig{position:relative;overflow:hidden;isolation:isolate;gap:12px;border-radius:12px;padding:14px 22px;background:rgba(238,242,241,.04);border-color:var(--line-2);font-family:var(--display);font-weight:700;font-size:.8125rem;letter-spacing:.12em;text-transform:uppercase}
+.btn-ig::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(105deg,transparent 35%,rgba(227,168,87,.32) 50%,transparent 65%);transform:translateX(-110%);transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.btn-ig:hover,.btn-ig:focus-visible{color:var(--accent);border-color:var(--accent);box-shadow:0 0 0 4px rgba(227,168,87,.12)}
+.btn-ig:hover::before,.btn-ig:focus-visible::before{transform:translateX(110%)}
+.btn-ig .ig-handle{font-family:var(--mono);font-size:.75rem;font-weight:400;letter-spacing:.02em;text-transform:none;color:var(--text-mute);padding-left:12px;border-left:1px solid var(--line-2);transition:color .3s,border-color .3s}
+.btn-ig:hover .ig-handle,.btn-ig:focus-visible .ig-handle{color:var(--paper);border-color:rgba(227,168,87,.5)}
+.btn-ig svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.btn-ig:hover svg,.btn-ig:focus-visible svg{animation:arrow-loop .6s cubic-bezier(.5,0,.3,1)}
+@keyframes arrow-loop{0%{transform:none;opacity:1}45%{transform:translateX(16px);opacity:0}46%{transform:translateX(-16px);opacity:0}100%{transform:none;opacity:1}}
 </style>
 </head>
 <body>
