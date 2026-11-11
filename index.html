@@ -23,6 +23,7 @@
 <link rel="preload" href="assets/fonts/space-grotesk-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/chile.png" as="image" crossorigin>
 <link rel="preload" href="assets/chile-relief.jpg" as="image">
+<link rel="preload" href="assets/chile-shadow.png" as="image">
 <link rel="preload" href="assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <style>
 /* Tipografías: Latin para inglés y español; cirílico para ruso (Manrope reemplaza a Space Grotesk, que no tiene cirílico) */
@@ -119,10 +120,11 @@ a{color:inherit}
 @keyframes sway{from{transform:rotateY(-24deg) rotateX(7deg) translateY(-6px)}to{transform:rotateY(-10deg) rotateX(3deg) translateY(6px)}}
 .map-3d{position:relative;height:min(660px,74vh);aspect-ratio:275/1200;margin-right:170px;transform-style:preserve-3d;transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .5s cubic-bezier(.2,.7,.2,1)}
 .map-slab{position:absolute;inset:0;transform-style:preserve-3d}
-.map-layer{position:absolute;inset:0;-webkit-mask:url(assets/chile.png) center/100% 100% no-repeat;mask:url(assets/chile.png) center/100% 100% no-repeat;background:#1B3038;transform:translateZ(calc(var(--i) * -5px));animation:unroll 2.4s cubic-bezier(.6,0,.2,1) .3s both}
+.map-layer{position:absolute;inset:0;-webkit-mask:url(assets/chile.png) center/100% 100% no-repeat;mask:url(assets/chile.png) center/100% 100% no-repeat;background:#1B3038;background:color-mix(in srgb,#4A6873,#0B161B calc(max(var(--i) - 1,0) * 14%));transform:translateZ(calc(var(--i) * -4.5px));animation:unroll 2.4s cubic-bezier(.6,0,.2,1) .3s both}
 .map-layer[style*="--i:0"]{background:url(assets/chile-relief.jpg) center/100% 100% no-repeat}
 .map-layer[style*="--i:0"]::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,rgba(255,255,255,.16) 0%,transparent 45%,rgba(10,19,23,.28) 100%)}
-.map-layer[style*="--i:7"]{background:#000;opacity:.45;filter:blur(10px);transform:translateZ(-70px) translateX(26px)}
+.map-shadow{position:absolute;inset:-14.167% -61.818%;background:url(assets/chile-shadow.png) center/100% 100% no-repeat;transform:translateZ(-46px) translate(12px,14px);opacity:.62;pointer-events:none;animation:shadow-in 2.8s ease .6s both}
+@keyframes shadow-in{from{opacity:0}to{opacity:.62}}
 @keyframes unroll{from{clip-path:inset(0 0 100% 0)}to{clip-path:inset(0 0 0 0)}}
 .pin{position:absolute;left:0;right:0;top:var(--y);height:0;text-decoration:none;color:var(--paper);transform:translateZ(34px);transform-style:preserve-3d;animation:pin-in .7s cubic-bezier(.2,.7,.2,1) var(--d) both}
 @keyframes pin-in{from{opacity:0;transform:translateZ(34px) translateX(18px)}to{opacity:1;transform:translateZ(34px)}}
@@ -142,6 +144,48 @@ a{color:inherit}
 .map-tag-bottom span{display:block;width:90px;border-top:1px dashed var(--accent)}
 @media (max-width:900px){.map-3d{height:520px}}
 @media (max-width:640px){.map-3d{height:440px;margin-right:150px}.hero .wrap{padding-top:48px;padding-bottom:88px}.pin-label{width:140px}}
+
+/* Vida en el mapa: ballenas en el sur, aves en la costa y viento en la cordillera.
+   Las tres capas usan las mismas coordenadas del mapa (275 x 1200) y flotan a distinta altura. */
+.map-fx{position:absolute;left:-72.727%;top:-3.333%;width:245.455%;height:106.667%;overflow:visible;pointer-events:none;max-width:none}
+.fx-sea{transform:translateZ(-30px)}
+.fx-wind{transform:translateZ(10px)}
+.fx-sky{transform:translateZ(46px)}
+.whale{opacity:0}
+.whale.on{animation:fx-fade 11.5s ease-in-out both}
+@keyframes fx-fade{0%,100%{opacity:0}9%,84%{opacity:1}}
+.w-body{fill:#DCE4E6;fill-opacity:.86}
+.w-rip{fill:none;stroke:#EEF2F1;stroke-width:1;vector-effect:non-scaling-stroke;opacity:0}
+.whale.on .w-rip{animation:w-rip 5.4s ease-out .2s both}
+.whale.on .w-rip.r2{animation-delay:1.5s}
+.whale.on .w-rip.r3{animation-delay:6s}
+@keyframes w-rip{0%{transform:scale(.22);opacity:0}20%{opacity:.5}100%{transform:scale(1);opacity:0}}
+.w-back{transform:translate(8px,17px)}
+.whale.on .w-back{animation:w-back 5.6s cubic-bezier(.4,0,.3,1) .5s both}
+@keyframes w-back{0%{transform:translate(8px,17px) rotate(7deg)}34%,58%{transform:translate(0,0) rotate(0deg)}100%{transform:translate(-10px,17px) rotate(-9deg)}}
+.w-spout{fill:none;stroke:#EEF2F1;stroke-width:1.3;stroke-linecap:round;opacity:0}
+.whale.on .w-spout{animation:w-spout 2.8s ease-out 2.1s both}
+@keyframes w-spout{0%{transform:translateY(3px) scale(.3);opacity:0}28%{opacity:.85}100%{transform:translateY(-6px) scale(1.2);opacity:0}}
+.w-fluke{transform:translateY(27px)}
+.whale.on .w-fluke{animation:w-fluke 4.4s cubic-bezier(.4,0,.3,1) 5.9s both}
+@keyframes w-fluke{0%{transform:translateY(27px) rotate(10deg)}42%,56%{transform:translateY(0) rotate(0deg)}100%{transform:translateY(27px) rotate(-12deg)}}
+.bird{opacity:0}
+.bird path{fill:none;stroke:#EEF2F1;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.gull.on path{animation:flap 2.7s ease-in-out infinite}
+.gull.on:nth-child(2) path{animation-duration:3.3s}
+.gull.on:nth-child(3) path{animation-duration:2.3s}
+@keyframes flap{0%,48%,100%{transform:scaleY(1)}9%,29%{transform:scaleY(-.55)}19%,38%{transform:scaleY(1)}}
+.condor path{stroke:#11171A;stroke-width:2.2}
+.condor.on path{animation:bank 4.6s ease-in-out infinite alternate}
+@keyframes bank{from{transform:rotate(-10deg)}to{transform:rotate(10deg)}}
+.gust{opacity:0}
+.gust path{fill:none;stroke:#fff;stroke-width:var(--sw,1.8px);stroke-linecap:round;stroke-dasharray:var(--seg,60px) 3000px;stroke-dashoffset:var(--seg,60px)}
+.gust .g-under{stroke:#0A1317;stroke-width:calc(var(--sw,1.8px) * 2.6);opacity:.26}
+.gust .g-tail{opacity:.4}
+.gust.on{animation:gust-fade var(--dur,4s) ease-in-out var(--dl,0s) both}
+.gust.on path{animation:gust-run var(--dur,4s) cubic-bezier(.45,.05,.35,1) var(--dl,0s) both}
+@keyframes gust-run{from{stroke-dashoffset:var(--seg,60px)}to{stroke-dashoffset:var(--end,-200px)}}
+@keyframes gust-fade{0%,100%{opacity:0}28%,68%{opacity:.9}}
 
 /* Titular animado */
 .h1 .line{display:block;overflow:hidden;padding-bottom:.08em}
@@ -186,6 +230,7 @@ input:focus,select:focus,textarea:focus{box-shadow:0 0 0 4px rgba(227,168,87,.18
   *,*::before,*::after{animation:none!important;transition:none!important}
   .js .reveal{opacity:1;transform:none}
   .map-float{transform:rotateY(-16deg) rotateX(5deg)}
+  .map-fx{display:none}
   .big-mark{transform:none}
 }
 
@@ -373,6 +418,8 @@ form .btn{align-self:flex-start}
       <div class="map-3d" id="map-3d">
         <p class="map-tag map-tag-top">+56 · Chile</p>
         <div class="map-slab" role="img" aria-label="Relief map of Chile, from the Atacama Desert in the north to Cape Horn in the south">
+          <div class="map-shadow"></div>
+          <div class="map-layer" style="--i:8"></div>
           <div class="map-layer" style="--i:7"></div>
           <div class="map-layer" style="--i:6"></div>
           <div class="map-layer" style="--i:5"></div>
@@ -382,6 +429,10 @@ form .btn{align-self:flex-start}
           <div class="map-layer" style="--i:1"></div>
           <div class="map-layer" style="--i:0"></div>
         </div>
+        <!-- Vida en el mapa (decorativo): las figuras las crea el script "Vida en el mapa", al final de la página -->
+        <svg class="map-fx fx-sea" viewBox="-200 -40 675 1280" aria-hidden="true" focusable="false"><defs><clipPath id="fx-above"><rect x="-80" y="-70" width="160" height="70"/></clipPath></defs></svg>
+        <svg class="map-fx fx-wind" viewBox="-200 -40 675 1280" aria-hidden="true" focusable="false"></svg>
+        <svg class="map-fx fx-sky" viewBox="-200 -40 675 1280" aria-hidden="true" focusable="false"></svg>
         <a class="pin " href="#expeditions" data-plan="23" style="--x:33.3%;--y:12.3%;--d:1.10s" aria-label="23°S, Atacama"><span class="pin-line"></span><span class="pin-dot"></span><span class="pin-label"><b>23°S</b><i>Atacama</i></span></a>
         <a class="pin pin-sm" href="#expeditions" data-plan="33" style="--x:23.3%;--y:35.4%;--d:1.47s" aria-label="33°S, The Andes"><span class="pin-line"></span><span class="pin-dot"></span><span class="pin-label"><b>33°S</b><i>The Andes</i></span></a>
         <a class="pin pin-left pin-sm" href="#expeditions" data-plan="34" style="--x:13.1%;--y:38.8%;--d:1.52s" aria-label="34°S, Pacific"><span class="pin-line"></span><span class="pin-dot"></span><span class="pin-label"><b>34°S</b><i>Pacific</i></span></a>
@@ -857,6 +908,133 @@ form .btn{align-self:flex-start}
       document.querySelector(".lat-tabs").scrollIntoView({ behavior: "smooth", block: "start" });
     });
   });
+})();
+</script>
+<script>
+/* Vida en el mapa: ballenas en el sur, gaviotas por la costa, un cóndor y ráfagas de viento en la cordillera.
+   Cada figura aparece en un lugar y un momento al azar, y se desvanece sola. Es solo decorativo. */
+(function () {
+  var stage = document.getElementById("map-stage"), map = document.getElementById("map-3d");
+  var sea = document.querySelector(".fx-sea"), air = document.querySelector(".fx-wind"), sky = document.querySelector(".fx-sky");
+  if (!stage || !map || !sea || !air || !sky || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  // Borde de la costa (W) y de la cordillera (E): posición x cada 25 unidades de alto, en un mapa de 275 x 1200
+  var W = [26,26,27,27,28,28,28,29,29,29,28,26,24,23,22,23,24,24,23,21,15,10,6,4,4,6,8,10,10,9,7,5,4,3,2,6,9,12,18,25,32,38,48,58,68,84,108,118,130];
+  var E = [58,64,71,81,89,104,112,110,100,92,92,86,77,69,65,64,67,73,79,78,76,72,70,70,72,71,66,65,68,73,77,85,93,99,101,101,101,100,94,100];
+  function edge(a, y) { var i = Math.max(0, Math.min(a.length - 1.001, y / 25)), k = Math.floor(i); return a[k] + (a[k + 1] - a[k]) * (i - k); }
+  function rnd(a, b) { return a + Math.random() * (b - a); }
+  function big() { return map.offsetHeight < 500 ? 1.3 : 1; } // en pantallas chicas las figuras van un poco más grandes
+  function free(sel) { return document.querySelector(sel + ":not(.on)"); }
+  function show(el, ms) { el.classList.add("on"); setTimeout(function () { el.classList.remove("on"); }, ms); }
+
+  // Las figuras se crean una vez y se reutilizan
+  var whale = '<g class="whale"><ellipse class="w-rip" rx="32" ry="7"/><ellipse class="w-rip r2" rx="42" ry="9"/><g transform="translate(-5 0)"><ellipse class="w-rip r3" rx="34" ry="8"/></g>' +
+    '<g clip-path="url(#fx-above)"><path class="w-body w-back" d="M-34 0C-27-4.5-14-7.8 2-8L7.5-12.5Q10-11 11-7.6C19-6.2 26-3.4 31 0Z"/>' +
+    '<g transform="translate(-5 0)"><path class="w-body w-fluke" d="M-2.2 0C-2-6-1.2-9-1-11-5-12-10.5-15.5-13-20-8-18.5-3.5-17.5 0-15 3.5-17.5 8-18.5 13-20 10.5-15.5 5-12 1-11 1.2-9 2-6 2.2 0Z"/></g></g>' +
+    '<g transform="translate(-14 -10)"><path class="w-spout" d="M0 0q-1-5-5-8M0 0q0-6 0-10M0 0q1-5 5-8"/></g></g>';
+  sea.insertAdjacentHTML("beforeend", whale + whale);
+  var gull = '<g class="bird gull"><path d="M-8 0Q-4.2-5 0-.6 4.2-5 8 0"/></g>';
+  sky.insertAdjacentHTML("beforeend", gull + gull + gull);
+  var streak = '<g class="gust"><path class="g-under"/><path class="g-tail"/><path/></g>';
+  air.insertAdjacentHTML("beforeend", streak + streak + streak + streak + '<g class="bird condor"><path d="M-14-1.5Q-7-3.6 0 0 7-3.6 14-1.5"/></g>');
+
+  // Ballena: asoma el lomo, sopla, levanta la cola y se sumerge
+  var lastY = 0;
+  function surface() {
+    var el = free(".whale"); if (!el) return;
+    var y = rnd(770, 1090); if (Math.abs(y - lastY) < 110) y = y > 930 ? y - 150 : y + 150;
+    lastY = y;
+    var x = Math.max(-95, edge(W, y) - rnd(26, 78)), s = rnd(.85, 1.2) * big(), dir = Math.random() < .5 ? -1 : 1;
+    el.setAttribute("transform", "translate(" + x.toFixed(1) + " " + y.toFixed(1) + ") scale(" + (dir * s).toFixed(2) + " " + s.toFixed(2) + ")");
+    show(el, 11600);
+  }
+
+  // Aves: se mueven cuadro a cuadro siguiendo una ruta
+  var flying = [], raf = 0;
+  function fly(el, dur, pos, alpha) {
+    el.classList.add("on");
+    flying.push({ el: el, t0: performance.now(), dur: dur, pos: pos, a: alpha });
+    if (!raf) raf = requestAnimationFrame(frame);
+  }
+  function frame(now) {
+    raf = 0;
+    flying = flying.filter(function (b) {
+      var p = (now - b.t0) / b.dur;
+      if (p >= 1) { b.el.classList.remove("on"); b.el.style.opacity = 0; return false; }
+      var q = b.pos(p), o = Math.max(0, Math.min(1, p / .16, (1 - p) / .2));
+      b.el.setAttribute("transform", "translate(" + q[0].toFixed(1) + " " + q[1].toFixed(1) + ") scale(" + q[2].toFixed(2) + ")");
+      b.el.style.opacity = (b.a * o * o * (3 - 2 * o)).toFixed(3); // entra y sale suave
+      return true;
+    });
+    if (flying.length) raf = requestAnimationFrame(frame);
+  }
+  // Gaviota: planea a lo largo de la costa, un poco mar adentro; a veces la sigue otra
+  function coast(r) {
+    var el = free(".gull"); if (!el) return;
+    if (!r) {
+      var north = Math.random() < .45, len = north ? rnd(200, 340) : rnd(220, 380), y0 = north ? rnd(70, 425 - len) : rnd(505, 900 - len); // sin cruzar la etiqueta del Pacífico
+      r = { y0: y0, y1: y0 + len, off: rnd(10, 28), ms: len * rnd(27, 36) };
+      if (Math.random() < .5) { r.y0 = r.y1; r.y1 = y0; }
+      if (Math.random() < .35) setTimeout(function () { coast({ y0: r.y0, y1: r.y1, off: r.off + rnd(6, 11), ms: r.ms * rnd(.96, 1.05) }); }, rnd(700, 1300));
+    }
+    var amp = rnd(3, 7), ph = rnd(0, 6.28), k = rnd(1.2, 2.4), s = rnd(.9, 1.3) * big();
+    fly(el, r.ms, function (p) {
+      var y = r.y0 + (r.y1 - r.y0) * p;
+      return [edge(W, y) - r.off + amp * Math.sin(ph + p * k * 6.28), y + 2.5 * Math.sin(ph * 2 + p * 23), s];
+    }, .9);
+  }
+  // Cóndor: planea en círculos lentos sobre la cordillera del norte
+  function soar() {
+    var el = free(".condor"); if (!el) return;
+    var cy = rnd(245, 325), cx = edge(E, cy) - rnd(4, 14), rx = rnd(16, 23), ry = rnd(26, 36), turns = rnd(1.1, 1.6), ph = rnd(0, 6.28), dir = Math.random() < .5 ? 1 : -1, s = rnd(1.3, 1.6) * big();
+    fly(el, turns * 11500, function (p) {
+      var a = ph + dir * p * turns * 6.28;
+      return [cx + rx * Math.cos(a) + p * 12, cy + ry * Math.sin(a), s];
+    }, .8);
+  }
+
+  // Viento: una o dos ráfagas que recorren un tramo de la cordillera
+  function gust() {
+    var len = rnd(200, 360), y0 = rnd(50, 940 - len), up = Math.random() < .5, n = Math.random() < .6 ? 2 : 1;
+    var base = rnd(-4, 9), amp = rnd(7, 13), wave = rnd(5, 9), ph = rnd(0, 6.28), dur = rnd(4, 6);
+    for (var j = 0; j < n; j++) {
+      var el = free(".gust"); if (!el) return;
+      var pts = [], off = base + j * rnd(8, 12), i, t, y;
+      for (i = 0; i <= 12; i++) {
+        t = (up ? 12 - i : i) / 12; y = y0 + j * 16 + (len - j * 32) * t;
+        pts.push([edge(E, y) + off + amp * Math.sin(ph + t * wave + j * .8), y]);
+      }
+      var d = "M" + pts[0][0].toFixed(1) + " " + pts[0][1].toFixed(1); // curva suave por los puntos medios
+      for (i = 1; i < pts.length - 1; i++) d += "Q" + pts[i][0].toFixed(1) + " " + pts[i][1].toFixed(1) + " " + ((pts[i][0] + pts[i + 1][0]) / 2).toFixed(1) + " " + ((pts[i][1] + pts[i + 1][1]) / 2).toFixed(1);
+      // tres trazos sobre la misma curva: sombra, cola tenue y cabeza brillante (más corta y adelante)
+      var paths = el.querySelectorAll("path"), k, sg;
+      for (k = 0; k < 3; k++) paths[k].setAttribute("d", d);
+      var L = paths[0].getTotalLength(), seg = L * rnd(.42, .58);
+      for (k = 0; k < 3; k++) {
+        sg = k < 2 ? seg : seg * .4;
+        paths[k].style.setProperty("--seg", sg.toFixed(0) + "px");
+        paths[k].style.setProperty("--end", (-L - seg + sg).toFixed(0) + "px");
+      }
+      el.style.setProperty("--dur", dur.toFixed(2) + "s");
+      el.style.setProperty("--dl", (j * .4).toFixed(2) + "s");
+      el.style.setProperty("--sw", (1.8 * big()).toFixed(1) + "px");
+      show(el, (dur + j * .4) * 1000 + 150);
+    }
+  }
+
+  // Ritmo: cada cosa vuelve tras una pausa distinta, y todo descansa si el mapa no está a la vista
+  var visible = true;
+  if ("IntersectionObserver" in window) new IntersectionObserver(function (e) { visible = e[0].isIntersecting; }).observe(stage);
+  function every(fn, min, max, first) {
+    setTimeout(function tick() {
+      if (visible && !document.hidden) fn();
+      setTimeout(tick, rnd(min, max));
+    }, first);
+  }
+  every(gust, 3500, 8000, 3600);
+  every(coast, 5000, 11000, 4400);
+  every(surface, 9000, 17000, 6000);
+  every(soar, 20000, 38000, 12000);
 })();
 </script>
 </body>

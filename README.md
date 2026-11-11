@@ -13,6 +13,7 @@ Sitio de Fifty Six South (56°S), expediciones privadas en Chile. Es un sitio es
 | `assets/routes/` | Foto de cada plan |
 | `assets/chile.png` | Silueta de Chile que usa el mapa 3D de la portada |
 | `assets/chile-relief.jpg` | Relieve real de Chile (Natural Earth, dominio público) ajustado a la silueta |
+| `assets/chile-shadow.png` | Sombra difusa del mapa, ya desenfocada (más liviana que calcularla en el navegador) |
 | `assets/logo-light.png`, `assets/logo-mark-light.png` | Logo para fondo oscuro: completo (pie de página) y sin el lema (menú) |
 | `assets/logo-dark.png` | Logo para fondo claro, sin fondo, para otros usos |
 | `favicon.png`, `apple-touch-icon.png` | Ícono de la pestaña y del acceso directo en el celular |
@@ -60,6 +61,12 @@ Hay seis planes, uno por latitud: 23°S Atacama, 33°S The Andes, 34°S Pacific,
 ## Mapa y animaciones
 
 El mapa de la portada es `assets/chile.png` apilado en capas para dar volumen, con el relieve real encima. Cada expedición tiene un marcador (`<a class="pin">`) cuya posición se ajusta con `--x` y `--y`, en porcentaje del mapa. Las animaciones se desactivan solas para quien tiene "reducir movimiento" activado en su equipo.
+
+Sobre el mapa hay tres capas decorativas (`.map-fx`) con vida que aparece y se va sola, a ratos distintos:
+ballenas que asoman en el sur (onda, lomo, soplido y cola), gaviotas que planean por la costa (a veces de a dos),
+un cóndor que da vueltas sobre la cordillera del norte y ráfagas de viento que corren por los Andes.
+Todo lo genera el script "Vida en el mapa" al final de `index.html`; ahí se cambian la frecuencia (`every(...)`)
+y las zonas. Se pausa cuando el mapa no está en pantalla y no aparece con "reducir movimiento".
 
 ## Antes del lanzamiento
 
