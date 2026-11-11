@@ -171,7 +171,6 @@
  "Everything we do happens between those two numbers.": "Всё, что мы делаем, происходит между этими двумя числами.",
  "Tell us which latitude.": "Какую широту вы выберете?",
  "Write to the concierge with your dates and the size of your party. We reply personally.": "Напишите консьержу о датах и количестве путешественников. Мы ответим лично.",
- "concierge@[YOUR-DOMAIN]": "concierge@[YOUR-DOMAIN]",
  "WhatsApp": "WhatsApp",
  "Telegram": "Telegram",
  "Name": "Имя",
@@ -194,5 +193,6 @@
  "Coast · Surf": "Побережье · Сёрфинг",
  "Central Chile · Vineyards": "Центральное Чили · Виноградники",
  "South · Lakes and volcanoes": "Юг · Озёра и вулканы",
- "Patagonia · Navigation": "Патагония · Плавание"
+ "Patagonia · Navigation": "Патагония · Плавание",
+ "concierge@go56south.com": "concierge@go56south.com"
 }

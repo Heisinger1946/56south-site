@@ -171,7 +171,6 @@
  "Everything we do happens between those two numbers.": "Todo lo que hacemos ocurre entre esos dos números.",
  "Tell us which latitude.": "Dinos qué latitud.",
  "Write to the concierge with your dates and the size of your party. We reply personally.": "Escríbele al concierge con tus fechas y cuántas personas viajan. Respondemos personalmente.",
- "concierge@[YOUR-DOMAIN]": "concierge@[YOUR-DOMAIN]",
  "WhatsApp": "WhatsApp",
  "Telegram": "Telegram",
  "Name": "Nombre",
@@ -194,5 +193,6 @@
  "Coast · Surf": "Costa · Surf",
  "Central Chile · Vineyards": "Chile central · Viñas",
  "South · Lakes and volcanoes": "Sur · Lagos y volcanes",
- "Patagonia · Navigation": "Patagonia · Navegación"
+ "Patagonia · Navigation": "Patagonia · Navegación",
+ "concierge@go56south.com": "concierge@go56south.com"
 }
