@@ -23,7 +23,7 @@ Las fuentes van dentro del sitio y no se cargan desde Google. Así se evitan pro
 
 **Opción 1: pedírselo a Claude.** Basta con decir qué cambiar, por ejemplo "agrega el precio de la expedición 23°S" o "suma una expedición a Rapa Nui". Claude edita el archivo y publica el cambio.
 
-**Opción 2: editar en GitHub.** Abre `index.html` en el repositorio, toca el lápiz ("Edit"), cambia el texto y presiona "Commit changes". El sitio se actualiza solo en uno o dos minutos.
+**Opción 2: editar en GitHub.** Abre `index.html` en el repositorio, toca el lápiz ("Edit"), cambia el texto y presiona "Commit changes". Netlify publica el cambio en go56south.com en uno o dos minutos.
 
 Cada cambio queda en el historial del repositorio y se puede deshacer.
 
@@ -40,21 +40,18 @@ El mapa de la portada es `assets/chile.png` apilado en capas para dar volumen, c
 ## Antes del lanzamiento
 
 - [ ] Reemplazar todo lo que está entre corchetes: `[PRICE]`, `[DAYS]`, `[YOUR-DOMAIN]`, `[YOUR-NUMBER]`, `[YOUR-HANDLE]`, `[LEGAL NAME]`, `[CITY]`, y los textos de 51°S, 56°S, seguridad e idiomas
-- [ ] Comprar el dominio y conectarlo (ver abajo)
+- [x] Comprar el dominio y conectarlo
 - [ ] Borrar la línea `<meta name="robots" content="noindex">` para que Google indexe el sitio
-- [ ] Configurar el formulario (ver abajo)
+- [x] Configurar el formulario (Netlify Forms)
 - [ ] Agregar fotos propias de las expediciones
 - [ ] Probar que el sitio cargue desde Rusia y desde Europa
 
-## Conectar el dominio propio
+## Hosting y dominio
 
-1. En el repositorio: Settings › Pages › Custom domain, escribir el dominio (por ejemplo `56south.travel`) y guardar. GitHub crea un archivo `CNAME`.
-2. En el registrador del dominio, crear estos registros DNS:
-   - Cuatro registros `A` para el dominio raíz: `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
-   - Un `CNAME` para `www` que apunte a `<usuario>.github.io`
-3. Cuando GitHub muestre el dominio como verificado, activar "Enforce HTTPS".
-
-Direcciones según la [documentación de GitHub Pages](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site), revisada en noviembre de 2026.
+- **Sitio:** https://go56south.com (www.go56south.com redirige ahí). HTTPS automático.
+- **Hosting:** Netlify, proyecto `go56south`. Publica solo cada cambio que entra a la rama `main` de este repositorio.
+- **Dominio:** go56south.com, registrado en Porkbun, con renovación automática y privacidad WHOIS.
+- **DNS en Porkbun:** `ALIAS` en la raíz → `apex-loadbalancer.netlify.com`; `CNAME www` → `go56south.netlify.app`. Los registros `MX` y `TXT` de Porkbun quedan para el reenvío de correo.
 
 ## Formulario de contacto
 
