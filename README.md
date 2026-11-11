@@ -6,7 +6,9 @@ Sitio de Fifty Six South (56°S), expediciones privadas en Chile. Es un sitio es
 
 | Archivo | Qué contiene |
 | --- | --- |
-| `index.html` | Toda la página: textos, estilos y el script del formulario |
+| `index.html` | Toda la página en inglés: textos, estilos y el script del formulario |
+| `es/`, `ru/` | Versiones en español y ruso, generadas con `tools/build_i18n.py` |
+| `i18n/` | Traducciones al español y al ruso |
 | `assets/hero.jpg` | Imagen de fondo de la portada |
 | `assets/routes/` | Foto de cada plan |
 | `assets/chile.png` | Silueta de Chile que usa el mapa 3D de la portada |
@@ -28,6 +30,28 @@ Las fuentes van dentro del sitio y no se cargan desde Google. Así se evitan pro
 Cada cambio queda en el historial del repositorio y se puede deshacer.
 
 Dentro de `index.html`, los comentarios en español (`<!-- ... -->`) marcan cada sección. Los colores de la marca están todos juntos al inicio, en `:root`.
+
+## Idiomas
+
+El sitio está en tres idiomas, con botones EN · ES · RU en el menú:
+
+| Idioma | Dirección | Archivo |
+| --- | --- | --- |
+| Inglés (original) | go56south.com | `index.html` |
+| Español | go56south.com/es/ | `es/index.html` (generado) |
+| Ruso | go56south.com/ru/ | `ru/index.html` (generado) |
+
+**Solo se edita `index.html`.** Las versiones en español y ruso se generan con:
+
+```
+python3 tools/build_i18n.py
+```
+
+El script toma cada texto en inglés y lo reemplaza por su traducción de `i18n/es.json` e `i18n/ru.json`. Si cambias o agregas un texto en `index.html`, agrega su traducción en los dos JSON y vuelve a ejecutar el script: te avisa qué textos quedaron sin traducir. Los mensajes del formulario en los tres idiomas están en el script de la página (`var ALL = {...}`).
+
+Cada consulta del formulario trae un campo `language` (en, es o ru), y el valor de la expedición siempre llega en inglés, para que sepas qué eligió el cliente aunque haya escrito en ruso.
+
+Para el ruso se usa Manrope en los títulos, porque Space Grotesk no tiene letras cirílicas.
 
 ## Expediciones
 

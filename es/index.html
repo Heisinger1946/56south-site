@@ -1,0 +1,863 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<script>document.documentElement.className="js"</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>56°S — Expediciones privadas en Chile</title>
+<meta name="description" content="Expediciones privadas y fuera de lo común por Chile, del desierto de Atacama al Cabo de Hornos. Un solo grupo, un solo concierge, nadie más en la ruta.">
+<!-- LANZAMIENTO: borrar la línea "robots noindex" cuando el sitio tenga dominio propio y los textos estén completos -->
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0A1317">
+<meta property="og:type" content="website">
+<meta property="og:title" content="56°S — Expediciones privadas en Chile">
+<meta property="og:description" content="+56 es como el mundo llama a Chile. 56° Sur es donde se acaba el mapa. Todo lo que hay entre ambos te lo mostramos en privado.">
+<!-- I18N-HEAD: el script tools/build_i18n.py ajusta estas líneas en /es/ y /ru/ -->
+<link rel="canonical" href="https://go56south.com/es/">
+<link rel="alternate" hreflang="en" href="https://go56south.com/">
+<link rel="alternate" hreflang="es" href="https://go56south.com/es/">
+<link rel="alternate" hreflang="ru" href="https://go56south.com/ru/">
+<link rel="alternate" hreflang="x-default" href="https://go56south.com/">
+<link rel="icon" href="../favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="preload" href="../assets/fonts/space-grotesk-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/chile.png" as="image" crossorigin>
+<link rel="preload" href="../assets/chile-relief.jpg" as="image">
+<link rel="preload" href="../assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+/* Tipografías: Latin para inglés y español; cirílico para ruso (Manrope reemplaza a Space Grotesk, que no tiene cirílico) */
+@font-face{font-family:"Space Grotesk";font-weight:500;font-style:normal;font-display:swap;src:url(../assets/fonts/space-grotesk-latin-500-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Space Grotesk";font-weight:500;font-style:normal;font-display:swap;src:url(../assets/fonts/manrope-cyrillic-500-normal.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:"Space Grotesk";font-weight:700;font-style:normal;font-display:swap;src:url(../assets/fonts/space-grotesk-latin-700-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Space Grotesk";font-weight:700;font-style:normal;font-display:swap;src:url(../assets/fonts/manrope-cyrillic-700-normal.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:"Inter";font-weight:400;font-style:normal;font-display:swap;src:url(../assets/fonts/inter-latin-400-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Inter";font-weight:400;font-style:normal;font-display:swap;src:url(../assets/fonts/inter-cyrillic-400-normal.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:"Inter";font-weight:600;font-style:normal;font-display:swap;src:url(../assets/fonts/inter-latin-600-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Inter";font-weight:600;font-style:normal;font-display:swap;src:url(../assets/fonts/inter-cyrillic-600-normal.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:"JetBrains Mono";font-weight:400;font-style:normal;font-display:swap;src:url(../assets/fonts/jetbrains-mono-latin-400-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"JetBrains Mono";font-weight:400;font-style:normal;font-display:swap;src:url(../assets/fonts/jetbrains-mono-cyrillic-400-normal.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+
+:root{
+  /* Colores de marca: cambiar aquí cambia todo el sitio */
+  --ink:#0A1317;
+  --ink-2:#101C21;
+  --line:#25353A;
+  --line-2:#5B6E72;
+  --paper:#EEF2F1;
+  --text-dim:#C9D3D4;
+  --text-mute:#9FB0B3;
+  --text-on-paper:#3B4A4E;
+  --accent:#E3A857;
+  --display:"Space Grotesk",system-ui,sans-serif;
+  --body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,monospace;
+  --wrap:1240px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:104px;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--ink);color:var(--paper);font-family:var(--body);font-size:1rem;line-height:1.6;-webkit-font-smoothing:antialiased}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--accent);color:var(--ink);padding:10px 16px;border-radius:6px;font-weight:600;text-decoration:none;z-index:10}
+.skip:focus{left:16px}
+.wrap{max-width:var(--wrap);margin:0 auto;padding-left:32px;padding-right:32px}
+@media (max-width:640px){.wrap{padding-left:20px;padding-right:20px}}
+
+.eyebrow{margin:0;font-family:var(--mono);font-size:.8125rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.h1{margin:0;font-family:var(--display);font-weight:700;font-size:clamp(2.75rem,7vw,6rem);line-height:.98;letter-spacing:-.03em}
+.h2{margin:0;font-family:var(--display);font-weight:700;font-size:clamp(2rem,4.2vw,3.5rem);line-height:1.05;letter-spacing:-.02em}
+.h3{margin:0;font-family:var(--display);font-weight:500;font-size:1.5rem;line-height:1.25}
+.lead{margin:0;max-width:34rem;font-size:1.1875rem;color:var(--text-dim)}
+.dim{color:var(--text-dim)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 28px;border-radius:999px;font:inherit;font-weight:600;text-decoration:none;cursor:pointer;border:1px solid transparent;transition:background-color .15s,color .15s,border-color .15s}
+.btn-solid{background:var(--accent);color:var(--ink)}
+.btn-solid:hover{background:#EDBB74}
+.btn-line{border-color:var(--line-2);color:var(--paper)}
+.btn-line:hover{border-color:var(--paper)}
+.btn-ghost{padding-left:8px;padding-right:8px;color:var(--paper)}
+.btn-ghost:hover{color:var(--accent)}
+
+/* Header */
+.site-header{position:sticky;top:0;z-index:5;background:rgba(10,19,23,.88);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid transparent}
+.site-header .wrap{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;align-items:center;padding-top:16px;padding-bottom:16px}
+.logo{display:block;line-height:0;padding:2px 0}
+.logo img{height:66px;width:auto;transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.logo:hover img{transform:scale(1.06) rotate(-2deg)}
+@media (max-width:640px){.logo img{height:52px}}
+.nav{display:flex;flex-wrap:wrap;gap:4px 28px;align-items:center}
+.nav a.link{text-decoration:none;font-size:.9375rem;color:var(--text-dim);padding:12px 0}
+.nav a.link:hover{color:var(--paper)}
+.nav .btn{min-height:44px;padding:8px 22px;font-size:.9375rem}
+@media (max-width:640px){.nav a.link{display:none}}
+.langs{display:flex;gap:2px;padding:3px;border:1px solid var(--line-2);border-radius:999px}
+.langs a{display:inline-flex;align-items:center;justify-content:center;min-width:40px;min-height:38px;padding:0 10px;border-radius:999px;font-family:var(--mono);font-size:.75rem;letter-spacing:.06em;color:var(--text-dim);text-decoration:none;transition:background-color .2s,color .2s}
+.langs a:hover{color:var(--paper);background:rgba(238,242,241,.08)}
+.langs a[aria-current="true"]{background:var(--paper);color:var(--ink)}
+@media (max-width:400px){.nav{gap:4px 10px}.nav .btn{padding:8px 16px}.langs a{min-width:34px;padding:0 6px}}
+
+/* Hero */
+.hero .wrap{display:flex;flex-wrap:wrap;gap:56px;align-items:center;padding-top:72px;padding-bottom:104px}
+.hero-copy{flex:1 1 520px;min-width:0;display:flex;flex-direction:column;gap:28px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px 16px;align-items:center}
+/* Mapa 3D de la portada */
+.hero{position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:-40% -10% -10%;background:repeating-linear-gradient(to bottom,transparent 0 47px,rgba(91,110,114,.16) 47px 48px);transform:perspective(900px) rotateX(58deg);transform-origin:50% 100%;-webkit-mask-image:radial-gradient(ellipse at 70% 60%,#000 0,transparent 68%);mask-image:radial-gradient(ellipse at 70% 60%,#000 0,transparent 68%);animation:drift 14s linear infinite;pointer-events:none}
+@keyframes drift{to{background-position:0 48px}}
+.hero::before{z-index:1}
+.hero-bg{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;object-position:50% 35%;animation:kenburns 28s ease-in-out infinite alternate}
+@media (max-width:640px){.hero-bg{object-position:44% 35%;animation:none}}
+@keyframes kenburns{from{transform:scale(1)}to{transform:scale(1.09) translate(-1.2%,-1%)}}
+.hero-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,19,23,.9) 0%,rgba(10,19,23,.66) 48%,rgba(10,19,23,.58) 100%),linear-gradient(180deg,rgba(10,19,23,.55) 0%,transparent 22%,transparent 70%,var(--ink) 100%)}
+.hero .wrap{position:relative;z-index:2}
+.hero .lead{color:var(--paper)}
+.hero .pin-label i,.hero .map-tag{color:var(--text-dim)}
+.map-stage{flex:0 1 440px;min-width:0;display:flex;justify-content:center;perspective:1100px;padding:24px 0}
+.map-float{transform-style:preserve-3d;animation:sway 9s ease-in-out infinite alternate}
+@keyframes sway{from{transform:rotateY(-24deg) rotateX(7deg) translateY(-6px)}to{transform:rotateY(-10deg) rotateX(3deg) translateY(6px)}}
+.map-3d{position:relative;height:min(660px,74vh);aspect-ratio:275/1200;margin-right:170px;transform-style:preserve-3d;transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.map-slab{position:absolute;inset:0;transform-style:preserve-3d}
+.map-layer{position:absolute;inset:0;-webkit-mask:url(../assets/chile.png) center/100% 100% no-repeat;mask:url(../assets/chile.png) center/100% 100% no-repeat;background:#1B3038;transform:translateZ(calc(var(--i) * -5px));animation:unroll 2.4s cubic-bezier(.6,0,.2,1) .3s both}
+.map-layer[style*="--i:0"]{background:url(../assets/chile-relief.jpg) center/100% 100% no-repeat}
+.map-layer[style*="--i:0"]::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,rgba(255,255,255,.16) 0%,transparent 45%,rgba(10,19,23,.28) 100%)}
+.map-layer[style*="--i:7"]{background:#000;opacity:.45;filter:blur(10px);transform:translateZ(-70px) translateX(26px)}
+@keyframes unroll{from{clip-path:inset(0 0 100% 0)}to{clip-path:inset(0 0 0 0)}}
+.pin{position:absolute;left:0;right:0;top:var(--y);height:0;text-decoration:none;color:var(--paper);transform:translateZ(34px);transform-style:preserve-3d;animation:pin-in .7s cubic-bezier(.2,.7,.2,1) var(--d) both}
+@keyframes pin-in{from{opacity:0;transform:translateZ(34px) translateX(18px)}to{opacity:1;transform:translateZ(34px)}}
+.pin-dot{position:absolute;left:var(--x);top:0;width:8px;height:8px;margin:-4px 0 0 -4px;border-radius:50%;background:#fff;box-shadow:0 0 0 2px rgba(10,19,23,.9),0 0 0 3px var(--accent)}
+.pin-dot::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:1.5px solid var(--accent);animation:ping 2.6s ease-out infinite;animation-delay:var(--d)}
+@keyframes ping{0%{transform:scale(1);opacity:.9}70%,100%{transform:scale(3.4);opacity:0}}
+.pin-line{position:absolute;left:var(--x);right:-22px;top:0;border-top:1px solid var(--accent);opacity:.75;transform-origin:0 0}
+.pin-label{position:absolute;left:calc(100% + 30px);top:-13px;width:160px;display:flex;flex-direction:column;font-family:var(--mono);line-height:1.25;transition:transform .25s,color .25s}
+.pin-label b{font-weight:400;font-size:1.0625rem}
+.pin-label i{font-style:normal;font-size:.75rem;color:var(--text-mute)}
+.pin:hover .pin-label{transform:translateX(6px);color:var(--accent)}
+.pin:hover .pin-dot{transform:scale(1.35)}
+.pin-dot{transition:transform .25s}
+.map-tag{position:absolute;margin:0;font-family:var(--mono);font-size:.75rem;color:var(--text-mute);white-space:nowrap;transform:translateZ(20px);animation:pin-in .7s ease 2.7s both}
+.map-tag-top{left:calc(100% + 30px);top:-4px;animation-delay:.6s}
+.map-tag-bottom{right:calc(100% - 78%);top:calc(100% + 14px);display:flex;align-items:center;gap:10px}
+.map-tag-bottom span{display:block;width:90px;border-top:1px dashed var(--accent)}
+@media (max-width:900px){.map-3d{height:520px}}
+@media (max-width:640px){.map-3d{height:440px;margin-right:150px}.hero .wrap{padding-top:48px;padding-bottom:88px}.pin-label{width:140px}}
+
+/* Titular animado */
+.h1 .line{display:block;overflow:hidden;padding-bottom:.08em}
+.js .h1 .line>span{display:block;animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+.js .h1 .line:nth-child(2)>span{animation-delay:.12s}
+@keyframes rise{from{transform:translateY(110%) rotate(3deg)}to{transform:none}}
+.js .hero-copy>.eyebrow,.js .hero-copy>.lead,.js .hero-copy>.hero-actions{animation:fade-up .8s ease both}
+.js .hero-copy>.lead{animation-delay:.35s}
+.js .hero-copy>.hero-actions{animation-delay:.5s}
+@keyframes fade-up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+
+/* Aparición al hacer scroll */
+.js .reveal{opacity:0;transform:translateY(34px) rotateX(8deg);transform-origin:50% 100%;transition:opacity .8s ease,transform .9s cubic-bezier(.2,.7,.2,1);transition-delay:var(--rd,0s)}
+.js .reveal.in{opacity:1;transform:none}
+
+/* Barra de avance y header */
+.progress{position:absolute;left:0;bottom:-1px;height:2px;width:100%;background:var(--accent);transform:scaleX(var(--p,0));transform-origin:0 50%}
+.site-header{transition:border-color .3s}
+.site-header.scrolled{border-bottom-color:var(--line)}
+
+/* Movimiento en botones, filas y tarjetas */
+.btn{transition:background-color .2s,color .2s,border-color .2s,transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn-solid:hover{box-shadow:0 10px 24px -10px rgba(227,168,87,.7)}
+.btn:active{transform:translateY(0) scale(.98)}
+.exp{transition:padding .35s cubic-bezier(.2,.7,.2,1),background-color .35s}
+.exp-lat{transition:transform .35s cubic-bezier(.2,.7,.2,1),letter-spacing .35s}
+.exp:not(.exp-signature):hover{padding-left:12px;padding-right:12px;background:rgba(10,19,23,.045)}
+.exp:hover .exp-lat{transform:translateX(6px);letter-spacing:-.01em}
+.tilt{transform-style:preserve-3d;transform:perspective(900px) rotateX(var(--tx,0deg)) rotateY(var(--ty,0deg));transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s}
+.exp-signature.tilt:hover{box-shadow:0 30px 50px -28px rgba(10,19,23,.6)}
+.exp-signature.tilt:hover .exp-lat{transform:translateZ(30px)}
+.pillar{transition:border-color .3s,transform .35s cubic-bezier(.2,.7,.2,1)}
+.pillar:hover{border-top-color:var(--accent)}
+.pillar .num,.pillar .h3{transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.pillar.tilt:hover .num,.pillar.tilt:hover .h3{transform:translateZ(22px)}
+.big-mark{transform:perspective(800px) rotateY(var(--my,-14deg)) rotateX(4deg);transform-origin:30% 50%;will-change:transform;filter:drop-shadow(3px 4px 0 rgba(0,0,0,.55)) drop-shadow(18px 26px 28px rgba(0,0,0,.5))}
+input,select,textarea{transition:border-color .2s,box-shadow .2s,background-color .2s}
+input:focus,select:focus,textarea:focus{box-shadow:0 0 0 4px rgba(227,168,87,.18)}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .js .reveal{opacity:1;transform:none}
+  .map-float{transform:rotateY(-16deg) rotateX(5deg)}
+  .big-mark{transform:none}
+}
+
+/* Expeditions */
+.light{background:var(--paper);color:var(--ink)}
+.section{padding-top:104px;padding-bottom:104px}
+@media (max-width:640px){.section{padding-top:72px;padding-bottom:72px}}
+.section-head{display:flex;flex-wrap:wrap;gap:24px 64px;justify-content:space-between;align-items:flex-end;margin-bottom:56px}
+.section-head .h2{flex:1 1 420px}
+.section-head p{margin:0;flex:1 1 320px;max-width:30rem;color:var(--text-on-paper)}
+.exp{display:grid;grid-template-columns:280px 170px minmax(0,1fr) auto;grid-template-areas:"photo lat body btn" "photo lat meta btn";column-gap:36px;row-gap:10px;align-items:center;padding:28px 0;border-top:1px solid var(--ink)}
+.exp-photo{grid-area:photo;aspect-ratio:3/2;overflow:hidden;border-radius:6px;background:var(--line)}
+.exp-photo img{width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.exp:hover .exp-photo img{transform:scale(1.07)}
+.exp-lat{grid-area:lat}
+.exp-body{grid-area:body;align-self:end}
+.exp-meta{grid-area:meta;align-self:start}
+.exp>.btn{grid-area:btn}
+.exp-lat{flex:0 0 180px;font-family:var(--display);font-weight:700;font-size:3.5rem;line-height:1;letter-spacing:-.03em}
+.exp-body{flex:1 1 320px;min-width:0;display:flex;flex-direction:column;gap:6px}
+.exp-body p{margin:0;color:var(--text-on-paper)}
+.exp-meta{flex:0 1 220px;margin:0;font-family:var(--mono);font-size:.8125rem;color:var(--text-on-paper)}
+.exp .btn{border-color:var(--ink);color:var(--ink);min-height:44px;padding:8px 24px}
+.exp .btn:hover{background:var(--ink);color:var(--paper)}
+.exp-signature{background:var(--ink);color:var(--paper);border:0;border-radius:6px;padding:28px;margin:8px -28px 0}
+.exp-signature .exp-lat{color:var(--accent)}
+.exp-signature .exp-body p,.exp-signature .exp-meta{color:var(--text-dim)}
+.exp-signature .btn{background:var(--accent);border-color:var(--accent);color:var(--ink)}
+.exp-signature .btn:hover{background:#EDBB74;color:var(--ink)}
+@media (max-width:1300px){.exp-signature{margin:8px 0 0}}
+@media (max-width:1000px){.exp{grid-template-columns:220px minmax(0,1fr) auto;grid-template-areas:"photo lat btn" "photo body body" "photo meta meta";align-items:start}.exp-lat{font-size:2.75rem}.exp>.btn{align-self:center}}
+@media (max-width:640px){.exp{grid-template-columns:1fr;grid-template-areas:"photo" "lat" "body" "meta" "btn";row-gap:12px}.exp-lat{font-size:3rem;margin-top:8px}.exp>.btn{justify-self:start;margin-top:6px}.exp-signature{padding:20px}}
+
+/* Selector de latitudes y planes */
+.lat-tabs{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;margin-bottom:22px}
+.lat-tab{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:2px;min-height:112px;padding:16px 16px 14px;border:1px solid rgba(10,19,23,.16);border-radius:14px;background:#fff;color:var(--ink);font:inherit;text-align:left;cursor:pointer;overflow:hidden;transition:transform .3s cubic-bezier(.2,.7,.2,1),background-color .3s,color .3s,box-shadow .3s,border-color .3s}
+.lat-tab::before{content:"";position:absolute;left:0;top:0;height:5px;width:100%;background:var(--z);transform:scaleX(.18);transform-origin:0 50%;transition:transform .45s cubic-bezier(.2,.7,.2,1)}
+.lat-tab:hover{transform:translateY(-4px);box-shadow:0 14px 28px -18px rgba(10,19,23,.5)}
+.lat-tab:hover::before,.lat-tab[aria-selected="true"]::before{transform:scaleX(1)}
+.lat-tab[aria-selected="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink);box-shadow:0 18px 30px -18px rgba(10,19,23,.7)}
+.lat-num{font-family:var(--mono);font-size:.75rem;color:var(--text-on-paper)}
+.lat-tab[aria-selected="true"] .lat-num{color:var(--text-dim)}
+.lat-deg{font-family:var(--display);font-weight:700;font-size:2rem;line-height:1.1;letter-spacing:-.03em}
+.lat-name{font-size:.875rem;font-weight:600}
+.plan{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 30px 60px -40px rgba(10,19,23,.45);margin-bottom:24px}
+.js .plan:not(.active){display:none}
+.js .plan.active{animation:plan-in .55s cubic-bezier(.2,.7,.2,1) both}
+.js .plan.active .plan-body>*{animation:fade-up .5s ease both}
+.js .plan.active .plan-body>*:nth-child(2){animation-delay:.05s}.js .plan.active .plan-body>*:nth-child(3),.js .plan.active .plan-body>*:nth-child(4){animation-delay:.1s}.js .plan.active .plan-body>*:nth-child(5){animation-delay:.15s}.js .plan.active .plan-body>*:nth-child(n+6){animation-delay:.2s}
+@keyframes plan-in{from{opacity:0;transform:translateY(16px) scale(.985)}to{opacity:1;transform:none}}
+.plan-visual{position:relative;min-height:420px;background:var(--ink);overflow:hidden}
+.plan-visual>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.js .plan.active .plan-visual>img{animation:photo-in 1.4s cubic-bezier(.2,.7,.2,1) both}
+@keyframes photo-in{from{transform:scale(1.12)}to{transform:none}}
+.plan-badge{position:absolute;left:18px;top:18px;padding:7px 14px;border-radius:999px;background:#fff;color:var(--z);font-family:var(--mono);font-size:.75rem;letter-spacing:.06em;text-transform:uppercase}
+.plan-map{position:absolute;inset:0;background:radial-gradient(circle at 70% 30%,color-mix(in srgb,var(--z) 70%,#fff) 0%,var(--z) 45%,var(--ink) 130%)}
+.plan-map .mini{position:absolute;right:16%;top:7%;height:86%;aspect-ratio:275/1200;filter:drop-shadow(8px 12px 14px rgba(0,0,0,.45))}
+.mini-land{position:absolute;inset:0;background:url(../assets/chile-relief.jpg) center/100% 100% no-repeat;-webkit-mask:url(../assets/chile.png) center/100% 100% no-repeat;mask:url(../assets/chile.png) center/100% 100% no-repeat}
+.mini-dot{position:absolute;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;background:#fff;box-shadow:0 0 0 3px var(--ink)}
+.mini-dot::after{content:"";position:absolute;inset:-3px;border-radius:50%;border:2px solid #fff;animation:ping 2.4s ease-out infinite}
+.plan-map-lat{position:absolute;left:22px;bottom:10px;margin:0;font-family:var(--display);font-weight:700;font-size:clamp(4rem,9vw,7rem);line-height:1;letter-spacing:-.04em;color:#fff}
+.plan-body{padding:40px 44px;display:flex;flex-direction:column;gap:16px;min-width:0}
+.plan-title{margin:0;font-family:var(--display);font-weight:700;font-size:clamp(1.75rem,3vw,2.5rem);line-height:1.05;letter-spacing:-.02em}
+.plan-title span{color:var(--z)}
+.plan-desc{margin:0;color:var(--text-on-paper);font-size:1.0625rem}
+.plan-kicker{margin:6px 0 0;font-family:var(--mono);font-weight:400;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-on-paper)}
+.plan-hl{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 24px}
+.plan-hl li{position:relative;padding-left:18px;display:flex;flex-direction:column;gap:2px}
+.plan-hl li::before{content:"";position:absolute;left:0;top:.5em;width:8px;height:8px;border-radius:50%;background:var(--z)}
+.plan-hl strong{font-weight:600}
+.plan-hl span{font-size:.9375rem;color:var(--text-on-paper)}
+.plan-facts{margin:6px 0 0;padding:18px 0 0;border-top:1px solid rgba(10,19,23,.14);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 24px}
+.plan-facts dt{font-family:var(--mono);font-size:.6875rem;letter-spacing:.12em;text-transform:uppercase;color:var(--z)}
+.plan-facts dd{margin:2px 0 0;font-size:.9375rem;font-weight:600}
+.plan-tip{margin:0;padding:12px 16px;border-radius:12px;background:color-mix(in srgb,var(--z) 10%,#fff);font-size:.9375rem;color:var(--ink)}
+.btn-ink{align-self:flex-start;background:var(--ink);color:var(--paper)}
+.btn-ink:hover{background:var(--z);box-shadow:0 10px 24px -12px var(--z)}
+.routes-head{display:flex;flex-wrap:wrap;gap:12px 48px;justify-content:space-between;align-items:flex-end;margin:64px 0 24px}
+.routes-head p{margin:0;max-width:30rem;color:var(--text-on-paper)}
+.routes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.route{background:#fff;border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:14px;transition:transform .3s cubic-bezier(.2,.7,.2,1),box-shadow .3s}
+.route:hover{transform:translateY(-4px);box-shadow:0 22px 40px -28px rgba(10,19,23,.5)}
+.route header{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.route h4{margin:0;font-family:var(--display);font-weight:700;font-size:1.25rem}
+.route header span{font-family:var(--mono);font-size:.8125rem;color:var(--text-on-paper);white-space:nowrap}
+.route-bar{display:flex;gap:3px;border-radius:8px;overflow:hidden}
+.route-bar button{min-width:0;min-height:44px;padding:6px 4px;border:0;background:var(--z);color:#fff;font:inherit;font-size:.75rem;font-weight:600;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:filter .2s}
+.route-bar button:hover{filter:brightness(1.15)}
+.route p{margin:0;color:var(--text-on-paper);font-size:.9375rem}
+.route .route-when{margin-top:auto;font-family:var(--mono);font-size:.75rem;color:var(--ink)}
+@media (max-width:1000px){.lat-tabs{display:flex;overflow-x:auto;scroll-snap-type:x proximity;margin-left:-20px;margin-right:-20px;padding:6px 20px 10px;scrollbar-width:none}.lat-tabs::-webkit-scrollbar{display:none}.lat-tab{flex:0 0 132px;scroll-snap-align:center}.plan{grid-template-columns:1fr}.plan-visual{min-height:0;aspect-ratio:3/2}.routes{grid-template-columns:1fr}}
+@media (max-width:1000px){#plan-34 .plan-visual>img{object-position:0% 50%!important}}
+@media (max-width:640px){.plan-body{padding:26px 20px}.plan-hl,.plan-facts{grid-template-columns:1fr}.plan{border-radius:16px}}
+/* Etiquetas del mapa: compactas y a la izquierda */
+.pin-sm .pin-label{flex-direction:row;align-items:baseline;gap:7px;top:-8px}
+.pin-sm .pin-label b{font-size:.8125rem}
+.pin-left .pin-line{left:-16px;right:calc(100% - var(--x))}
+.pin-left .pin-label{left:auto;right:calc(100% + 22px);width:auto;white-space:nowrap}
+.pin:hover.pin-left .pin-label{transform:translateX(-6px)}
+.pin-end .pin-label b{color:var(--accent)}
+@media (max-width:640px){.map-3d{margin-left:58px;margin-right:158px}.pin-dot{width:7px;height:7px;margin:-3.5px 0 0 -3.5px;box-shadow:0 0 0 1.5px rgba(10,19,23,.9),0 0 0 2.5px var(--accent)}.pin-dot::after{inset:-3.5px}.pin-left .pin-label i{display:none}}
+
+/* Approach */
+.pillars{display:flex;flex-wrap:wrap;gap:40px;margin-top:56px}
+.pillar{flex:1 1 280px;min-width:0;display:flex;flex-direction:column;gap:12px;padding-top:24px;border-top:1px solid var(--line-2)}
+.pillar .num{font-family:var(--mono);font-size:.8125rem;color:var(--accent)}
+.pillar .h3{font-size:1.375rem}
+.pillar p{margin:0;color:var(--text-dim)}
+
+/* Name */
+.name{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.name .wrap{display:flex;flex-wrap:wrap;gap:40px 56px;align-items:center}
+.big-mark{flex:1 1 320px;min-width:0;margin:0}
+.big-mark img{width:min(100%,440px);height:auto}
+.name-copy{flex:1 1 420px;min-width:0;display:flex;flex-direction:column;gap:20px}
+.name-copy .h3{font-size:1.75rem;line-height:1.2}
+.name-copy p{margin:0;color:var(--text-dim)}
+
+/* Contact */
+.contact .wrap{display:flex;flex-wrap:wrap;gap:56px}
+.contact-copy{flex:1 1 420px;min-width:0;display:flex;flex-direction:column;gap:20px}
+.contact-copy p{margin:0;max-width:30rem;color:var(--text-dim)}
+.contact-mail{font-family:var(--display);font-weight:500;font-size:clamp(1.25rem,2.6vw,2rem);padding:8px 0;overflow-wrap:anywhere}
+.contact-mail:hover{color:var(--accent)}
+.contact-links{display:flex;flex-wrap:wrap;gap:12px}
+form{flex:1 1 420px;min-width:0;display:flex;flex-direction:column;gap:18px}
+.field{display:flex;flex-direction:column;gap:6px}
+label{font-size:.875rem;color:var(--text-dim)}
+input,select,textarea{font:inherit;color:var(--paper);background:var(--ink-2);border:1px solid var(--line-2);border-radius:6px;padding:13px 16px;min-height:48px;width:100%}
+textarea{resize:vertical;min-height:120px}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+.form-note{margin:0;font-size:.875rem;color:var(--text-mute)}
+.form-status{margin:0;font-size:.9375rem;color:var(--accent);min-height:1.5em}
+form .btn{align-self:flex-start}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.hp{position:absolute;left:-5000px;width:1px;height:1px;overflow:hidden}
+
+/* Footer */
+.site-footer{border-top:1px solid var(--line)}
+.site-footer .footer-brand{padding-top:56px;padding-bottom:8px}
+.site-footer .footer-brand img{height:150px;width:auto}
+.site-footer .wrap{display:flex;flex-wrap:wrap;gap:12px 32px;justify-content:space-between;padding-top:32px;padding-bottom:32px;font-size:.875rem;color:var(--text-mute)}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Ir al contenido</a>
+
+<header class="site-header">
+  <div class="progress" aria-hidden="true"></div>
+  <div class="wrap">
+    <a class="logo" href="#top"><img src="../assets/logo-mark-light.png" width="362" height="240" alt="56°S — inicio"></a>
+    <nav class="nav" aria-label="Principal">
+      <a class="link" href="#expeditions">Expediciones</a>
+      <a class="link" href="#approach">Enfoque</a>
+      <a class="link" href="#name">El nombre</a>
+      <a class="btn btn-line" href="#contact">Consultar</a>
+      <div class="langs" role="group" aria-label="Idioma">
+        <a href="/" hreflang="en" lang="en" title="English">EN</a>
+        <a href="/es/" hreflang="es" lang="es" aria-current="true" title="Español">ES</a>
+        <a href="/ru/" hreflang="ru" lang="ru" title="Русский">RU</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============ PORTADA ============ -->
+<section class="hero" id="top">
+  <!-- Imagen de fondo de la portada: assets/hero.jpg -->
+  <img class="hero-bg" src="../assets/hero.jpg" width="1740" height="1160" alt="" fetchpriority="high">
+  <div class="hero-shade" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="hero-copy">
+      <p class="eyebrow">Expediciones privadas · Chile</p>
+      <h1 class="h1" aria-label="Donde se acaba el mapa."><span class="line"><span>Donde se acaba</span></span> <span class="line"><span>el mapa.</span></span></h1>
+      <p class="lead">+56 es como el mundo llama a Chile. 56° Sur es donde se acaba el mapa. Todo lo que hay entre ambos te lo mostramos en privado.</p>
+      <div class="hero-actions">
+        <a class="btn btn-solid" href="#contact">Planifica tu expedición</a>
+        <a class="btn btn-ghost" href="#expeditions">Ver las latitudes ↓</a>
+      </div>
+    </div>
+    <div class="map-stage" id="map-stage">
+      <div class="map-float">
+      <div class="map-3d" id="map-3d">
+        <p class="map-tag map-tag-top">+56 · Chile</p>
+        <div class="map-slab" role="img" aria-label="Mapa en relieve de Chile, desde el desierto de Atacama en el norte hasta el Cabo de Hornos en el sur">
+          <div class="map-layer" style="--i:7"></div>
+          <div class="map-layer" style="--i:6"></div>
+          <div class="map-layer" style="--i:5"></div>
+          <div class="map-layer" style="--i:4"></div>
+          <div class="map-layer" style="--i:3"></div>
+          <div class="map-layer" style="--i:2"></div>
+          <div class="map-layer" style="--i:1"></div>
+          <div class="map-layer" style="--i:0"></div>
+        </div>
+        <a class="pin " href="#expeditions" data-plan="23" style="--x:33.3%;--y:12.3%;--d:1.10s" aria-label="23°S, Atacama"><span class="pin-line"></span><span class="pin-dot"></span><span class="pin-label"><b>23°S</b><i>Atacama</i></span></a>
+        <a class="pin pin-sm" href="#expeditions" data-plan="33" style="--x:23.3%;--y:35.4%;--d:1.47s" aria-label="33°S, Los Andes"><span class="pin-line"></span><span class="pin-dot"></span><span class="pin-label"><b>33°S</b><i>Los Andes</i></span></a>
+        <a class="pin pin-left pin-sm" href="#expeditions" data-plan="34" style="--x:13.1%;--y:38.8%;--d:1.52s" aria-label="34°S, Pacífico"><span class="pin-line"></span><span class="pin-dot"></span><span class="pin-label"><b>34°S</b><i>Pacífico</i></span></a>
+        <a class="pin pin-sm" href="#expeditions" data-plan="35" style="--x:23.3%;--y:42.6%;--d:1.58s" aria-label="35°S, Valles del vino"><span class="pin-line"></span><span class="pin-dot"></span><span class="pin-label"><b>35°S</b><i>Valles del vino</i></span></a>
+        <a class="pin " href="#expeditions" data-plan="39" style="--x:19.4%;--y:52.6%;--d:1.74s" aria-label="39°S, Lagos y volcanes"><span class="pin-line"></span><span class="pin-dot"></span><span class="pin-label"><b>39°S</b><i>Lagos y volcanes</i></span></a>
+        <a class="pin " href="#expeditions" data-plan="51" style="--x:37.1%;--y:85.4%;--d:2.27s" aria-label="51°S, Patagonia"><span class="pin-line"></span><span class="pin-dot"></span><span class="pin-label"><b>51°S</b><i>Patagonia</i></span></a>
+        <div class="pin pin-end" style="--x:93.8%;--y:99.4%;--d:2.49s"><span class="pin-line"></span><span class="pin-dot"></span><span class="pin-label"><b>56°S</b><i>Cabo de Hornos</i></span></div>
+        <p class="map-tag map-tag-bottom"><span></span>más al sur, solo océano</p>
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EXPEDICIONES ============ -->
+<section class="light" id="expeditions">
+  <div class="wrap section">
+    <div class="section-head">
+      <h2 class="h2">Seis latitudes. Un país. Nadie más en la ruta.</h2>
+      <p>Cada expedición lleva el nombre de su paralelo. Elige una latitud para ver el plan, o combina dos o tres en un mismo viaje.</p>
+    </div>
+
+    <!-- Selector de latitudes: cada botón muestra el plan con el mismo número (plan-23, plan-33...) -->
+    <div class="lat-tabs" role="tablist" aria-label="Expediciones por latitud">
+      <button class="lat-tab" role="tab" id="tab-23" aria-controls="plan-23" aria-selected="true" tabindex="0" data-plan="23" style="--z:#B4531F"><span class="lat-num">01</span><span class="lat-deg">23°S</span><span class="lat-name">Atacama</span></button>
+      <button class="lat-tab" role="tab" id="tab-33" aria-controls="plan-33" aria-selected="false" tabindex="-1" data-plan="33" style="--z:#1F6FA3"><span class="lat-num">02</span><span class="lat-deg">33°S</span><span class="lat-name">Los Andes</span></button>
+      <button class="lat-tab" role="tab" id="tab-34" aria-controls="plan-34" aria-selected="false" tabindex="-1" data-plan="34" style="--z:#0E7C78"><span class="lat-num">03</span><span class="lat-deg">34°S</span><span class="lat-name">Pacífico</span></button>
+      <button class="lat-tab" role="tab" id="tab-35" aria-controls="plan-35" aria-selected="false" tabindex="-1" data-plan="35" style="--z:#8E3B5E"><span class="lat-num">04</span><span class="lat-deg">35°S</span><span class="lat-name">Valles del vino</span></button>
+      <button class="lat-tab" role="tab" id="tab-39" aria-controls="plan-39" aria-selected="false" tabindex="-1" data-plan="39" style="--z:#2F7A4A"><span class="lat-num">05</span><span class="lat-deg">39°S</span><span class="lat-name">Lagos y volcanes</span></button>
+      <button class="lat-tab" role="tab" id="tab-51" aria-controls="plan-51" aria-selected="false" tabindex="-1" data-plan="51" style="--z:#2F5FA8"><span class="lat-num">06</span><span class="lat-deg">51°S</span><span class="lat-name">Patagonia</span></button>
+    </div>
+
+    <!-- Planes. Para editar uno, busca su id (plan-23, plan-33, plan-34, plan-35, plan-39, plan-51) -->
+    <div class="plans">
+      <article class="plan active" role="tabpanel" id="plan-23" aria-labelledby="tab-23" style="--z:#B4531F">
+        <div class="plan-visual"><img src="../assets/routes/atacama.jpg" width="960" height="640" alt="Cerros volcánicos rojizos del desierto de Atacama al atardecer" loading="lazy"><span class="plan-badge">01 · Norte · Desierto</span></div>
+        <div class="plan-body">
+          <h3 class="plan-title"><span>23°S</span> Atacama</h3>
+          <p class="plan-desc">El desierto más árido del planeta, a 2.400 m sobre el nivel del mar. Lo recorres en buggy o en bicicleta, con base en los hoteles boutique de San Pedro de Atacama.</p>
+          <h4 class="plan-kicker">Experiencias destacadas</h4>
+          <ul class="plan-hl">
+            <li><strong>Valle de la Luna y Valle de la Muerte</strong><span>Caminata entre dunas y formaciones de sal, con sandboard opcional.</span></li>
+            <li><strong>Géiseres del Tatio</strong><span>Salida de madrugada para verlos en plena actividad, a 4.300 m.</span></li>
+            <li><strong>Lagunas altiplánicas y el salar</strong><span>Flamencos, lagunas de altura y flotar en la Laguna Cejar.</span></li>
+            <li><strong>Noche astronómica</strong><span>Observación con telescopio bajo uno de los cielos más limpios del planeta.</span></li>
+          </ul>
+          <dl class="plan-facts">
+            <div><dt>Mejor época</dt><dd>Todo el año, idealmente de marzo a noviembre</dd></div>
+            <div><dt>Estadía sugerida</dt><dd>3 a 5 días</dd></div>
+            <div><dt>Exigencia</dt><dd>Media, por la altura</dd></div>
+            <div><dt>Cómo llegar</dt><dd>Vuelo a Calama y luego 1 h 20 por carretera</dd></div>
+          </dl>
+          <p class="plan-tip"><b>Dato útil:</b> Los primeros días son suaves, para que te aclimates a la altura.</p>
+          <a class="btn btn-ink" href="#contact" data-exp="23°S — Atacama">Consultar por 23°S</a>
+        </div>
+      </article>
+      <article class="plan" role="tabpanel" id="plan-33" aria-labelledby="tab-33" style="--z:#1F6FA3">
+        <div class="plan-visual"><img src="../assets/routes/andes.jpg" width="1100" height="1650" alt="Hotel de un centro de esquí y andariveles sobre pistas nevadas en Los Andes" loading="lazy" style="object-position:50% 23%"><span class="plan-badge">02 · Cordillera · Nieve</span></div>
+        <div class="plan-body">
+          <h3 class="plan-title"><span>33°S</span> Los Andes</h3>
+          <p class="plan-desc">Los centros de esquí de Santiago están entre los más cercanos a una capital en todo el mundo. En una o dos horas estás esquiando a casi 3.000 m.</p>
+          <h4 class="plan-kicker">Experiencias destacadas</h4>
+          <ul class="plan-hl">
+            <li><strong>Esquí y snowboard</strong><span>Valle Nevado, La Parva, El Colorado y Portillo, con clases privadas.</span></li>
+            <li><strong>Motos de nieve</strong><span>Recorridos guiados por valles fuera de pista.</span></li>
+            <li><strong>Expediciones de montaña</strong><span>Raquetas de nieve y ascensos adaptados a cada nivel.</span></li>
+          </ul>
+          <dl class="plan-facts">
+            <div><dt>Mejor época</dt><dd>Julio y agosto (la temporada va de junio a septiembre)</dd></div>
+            <div><dt>Estadía sugerida</dt><dd>3 a 7 días</dd></div>
+            <div><dt>Exigencia</dt><dd>Media a alta, según la actividad</dd></div>
+            <div><dt>Cómo llegar</dt><dd>1 a 2,5 h por carretera desde Santiago</dd></div>
+          </dl>
+          <p class="plan-tip"><b>Dato útil:</b> Las salidas fuera de pista se confirman cada mañana según el boletín de avalanchas.</p>
+          <a class="btn btn-ink" href="#contact" data-exp="33°S — The Andes">Consultar por 33°S</a>
+        </div>
+      </article>
+      <article class="plan" role="tabpanel" id="plan-34" aria-labelledby="tab-34" style="--z:#0E7C78">
+        <div class="plan-visual"><img src="../assets/routes/pichilemu.jpg" width="1200" height="675" alt="Surfista dentro de una ola turquesa junto a un roquerío de la costa chilena" loading="lazy" style="object-position:40% 50%"><span class="plan-badge">03 · Costa · Surf</span></div>
+        <div class="plan-body">
+          <h3 class="plan-title"><span>34°S</span> Pacífico</h3>
+          <p class="plan-desc">Más de 4.000 km de costa. Pichilemu y Punta de Lobos tienen olas constantes todo el año y son un referente del surf en Sudamérica.</p>
+          <h4 class="plan-kicker">Experiencias destacadas</h4>
+          <ul class="plan-hl">
+            <li><strong>Clases de surf</strong><span>Para principiantes, con instructores certificados y equipo incluido.</span></li>
+            <li><strong>Surf en Punta de Lobos</strong><span>Para surfistas con experiencia, guiados por locales que conocen la ola.</span></li>
+            <li><strong>En el agua</strong><span>Motos de agua y paseos en lancha, según las condiciones del mar.</span></li>
+            <li><strong>Ruta costera</strong><span>Las salinas de Cáhuil, caletas de pescadores y cocina del mar.</span></li>
+          </ul>
+          <dl class="plan-facts">
+            <div><dt>Mejor época</dt><dd>Todo el año. Olas grandes de marzo a octubre</dd></div>
+            <div><dt>Estadía sugerida</dt><dd>2 a 3 días</dd></div>
+            <div><dt>Exigencia</dt><dd>Media</dd></div>
+            <div><dt>Cómo llegar</dt><dd>Pichilemu, a unas 3 h por carretera desde Santiago</dd></div>
+          </dl>
+          <p class="plan-tip"><b>Dato útil:</b> El agua es fría todo el año por la corriente de Humboldt. El traje de neopreno está incluido.</p>
+          <a class="btn btn-ink" href="#contact" data-exp="34°S — Pacific">Consultar por 34°S</a>
+        </div>
+      </article>
+      <article class="plan" role="tabpanel" id="plan-35" aria-labelledby="tab-35" style="--z:#8E3B5E">
+        <div class="plan-visual"><img src="../assets/routes/wine-valleys.jpg" width="1536" height="1024" alt="Cata de vinos en la terraza de una viña, con Los Andes nevados al fondo" loading="lazy" style="object-position:32% 50%"><span class="plan-badge">04 · Chile central · Viñas</span></div>
+        <div class="plan-body">
+          <h3 class="plan-title"><span>35°S</span> Valles del vino</h3>
+          <p class="plan-desc">A pocas horas de Santiago, los valles de Colchagua y Casablanca reúnen algunas de las viñas más premiadas de Sudamérica. Aquí duermes en hoteles rodeados de parras.</p>
+          <h4 class="plan-kicker">Experiencias destacadas</h4>
+          <ul class="plan-hl">
+            <li><strong>Rutas del vino privadas</strong><span>Visitas a viñas boutique y bodegas reconocidas, con guía especialista.</span></li>
+            <li><strong>Catas y gastronomía</strong><span>Almuerzos maridados y cocina con productos locales.</span></li>
+            <li><strong>Vendimia, en marzo y abril</strong><span>Participa en la cosecha de la uva y en la fiesta de la vendimia de cada valle.</span></li>
+            <li><strong>Valparaíso y Cajón del Maipo</strong><span>El puerto patrimonial y sus cerros, o cabalgatas a los pies de Los Andes.</span></li>
+          </ul>
+          <dl class="plan-facts">
+            <div><dt>Mejor época</dt><dd>Septiembre a mayo</dd></div>
+            <div><dt>Estadía sugerida</dt><dd>2 a 4 días</dd></div>
+            <div><dt>Exigencia</dt><dd>Baja</dd></div>
+            <div><dt>Cómo llegar</dt><dd>1 a 2,5 h por carretera desde Santiago</dd></div>
+          </dl>
+          <p class="plan-tip"><b>Dato útil:</b> Por su cercanía al aeropuerto de Santiago, funciona muy bien como inicio o cierre de cualquier ruta.</p>
+          <a class="btn btn-ink" href="#contact" data-exp="35°S — Wine valleys">Consultar por 35°S</a>
+        </div>
+      </article>
+      <article class="plan" role="tabpanel" id="plan-39" aria-labelledby="tab-39" style="--z:#2F7A4A">
+        <div class="plan-visual"><img src="../assets/routes/pucon.jpg" width="1600" height="1200" alt="El volcán Villarrica nevado sobre el bosque al atardecer" loading="lazy" style="object-position:50% 50%"><span class="plan-badge">05 · Sur · Lagos y volcanes</span></div>
+        <div class="plan-body">
+          <h3 class="plan-title"><span>39°S</span> Lagos y volcanes</h3>
+          <p class="plan-desc">Entre Pucón y Puerto Varas el paisaje se vuelve bosque nativo, con volcanes nevados que se reflejan en los lagos. Es la zona más versátil para combinar actividad y descanso.</p>
+          <h4 class="plan-kicker">Experiencias destacadas</h4>
+          <ul class="plan-hl">
+            <li><strong>Trekking en parques nacionales</strong><span>Huerquehue y Vicente Pérez Rosales, entre otros.</span></li>
+            <li><strong>Kayak y rafting</strong><span>Lagos tranquilos, o los rápidos de los ríos Trancura y Petrohué.</span></li>
+            <li><strong>Termas en el bosque</strong><span>Pozones de agua caliente entre helechos y quebradas.</span></li>
+            <li><strong>Ascenso a un volcán</strong><span>Con guía de montaña, sujeto al nivel de alerta vigente.</span></li>
+          </ul>
+          <dl class="plan-facts">
+            <div><dt>Mejor época</dt><dd>Noviembre a abril</dd></div>
+            <div><dt>Estadía sugerida</dt><dd>4 a 6 días</dd></div>
+            <div><dt>Exigencia</dt><dd>Media</dd></div>
+            <div><dt>Cómo llegar</dt><dd>Vuelo a Temuco o Puerto Montt (aprox. 1 h 30)</dd></div>
+          </dl>
+          <p class="plan-tip"><b>Dato útil:</b> El clima cambia rápido. Dejamos días flexibles para aprovechar las ventanas de buen tiempo.</p>
+          <a class="btn btn-ink" href="#contact" data-exp="39°S — Lakes &amp; volcanoes">Consultar por 39°S</a>
+        </div>
+      </article>
+      <article class="plan" role="tabpanel" id="plan-51" aria-labelledby="tab-51" style="--z:#2F5FA8">
+        <div class="plan-visual"><img src="../assets/routes/torres-del-paine.jpg" width="960" height="640" alt="Los Cuernos del Paine sobre un lago turquesa al amanecer" loading="lazy"><span class="plan-badge">06 · Patagonia · Navegación</span></div>
+        <div class="plan-body">
+          <h3 class="plan-title"><span>51°S</span> Patagonia</h3>
+          <p class="plan-desc">En el extremo sur, la Patagonia chilena reúne campos de hielo, fiordos y algunas de las montañas más fotografiadas del continente. Es la zona para quienes buscan aislamiento y paisajes inmensos.</p>
+          <h4 class="plan-kicker">Experiencias destacadas</h4>
+          <ul class="plan-hl">
+            <li><strong>Torres del Paine</strong><span>El circuito W o trekkings de un día, con guía y refugios reservados.</span></li>
+            <li><strong>Navegación a los glaciares</strong><span>Glaciar Grey y los fiordos australes, entre témpanos.</span></li>
+            <li><strong>Yates y expediciones privadas</strong><span>Itinerarios exclusivos por canales a los que no llega ningún camino.</span></li>
+            <li><strong>Pesca con mosca</strong><span>Ríos y lagos patagónicos, con guía y equipo incluidos.</span></li>
+          </ul>
+          <dl class="plan-facts">
+            <div><dt>Mejor época</dt><dd>Octubre a abril</dd></div>
+            <div><dt>Estadía sugerida</dt><dd>5 a 8 días</dd></div>
+            <div><dt>Exigencia</dt><dd>Media a alta</dd></div>
+            <div><dt>Cómo llegar</dt><dd>Vuelo a Punta Arenas (aprox. 3 h 30) y traslado a Puerto Natales</dd></div>
+          </dl>
+          <p class="plan-tip"><b>Dato útil:</b> El viento es parte del paisaje. Antes del viaje te enviamos la lista de equipo recomendado.</p>
+          <a class="btn btn-ink" href="#contact" data-exp="51°S — Patagonia">Consultar por 51°S</a>
+        </div>
+      </article>
+    </div>
+
+    <div class="routes-head">
+      <h3 class="h3">Combina latitudes en un solo viaje</h3>
+      <p>Tres puntos de partida para inspirarte. Ajustamos días, ritmo y nivel de comodidad a lo que buscas.</p>
+    </div>
+    <div class="routes">
+      <article class="route">
+        <header><h4>Chile esencial</h4><span>10 días</span></header>
+        <div class="route-bar"><button type="button" data-plan="35" style="flex:3;--z:#8E3B5E">Vino 3</button><button type="button" data-plan="23" style="flex:4;--z:#B4531F">Atacama 4</button><button type="button" data-plan="39" style="flex:3;--z:#2F7A4A">Lagos 3</button></div>
+        <p>Para una primera visita. Contrasta el desierto con los lagos del sur, partiendo y terminando entre viñas.</p>
+        <p class="route-when">Mejor época: octubre a abril</p>
+      </article>
+      <article class="route">
+        <header><h4>De extremo a extremo</h4><span>12 días</span></header>
+        <div class="route-bar"><button type="button" data-plan="35" style="flex:2;--z:#8E3B5E">Vino 2</button><button type="button" data-plan="23" style="flex:4;--z:#B4531F">Atacama 4</button><button type="button" data-plan="51" style="flex:6;--z:#2F5FA8">Patagonia 6</button></div>
+        <p>Del desierto más árido a los campos de hielo, con vuelos internos y traslados coordinados por nosotros.</p>
+        <p class="route-when">Mejor época: octubre a abril</p>
+      </article>
+      <article class="route">
+        <header><h4>Invierno andino</h4><span>8 días</span></header>
+        <div class="route-bar"><button type="button" data-plan="33" style="flex:5;--z:#1F6FA3">Andes 5</button><button type="button" data-plan="35" style="flex:3;--z:#8E3B5E">Vino 3</button></div>
+        <p>Esquí y motos de nieve en la mañana, vino y alta cocina en la tarde. Todo a menos de tres horas de Santiago.</p>
+        <p class="route-when">Mejor época: julio y agosto</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ENFOQUE ============ -->
+<section id="approach">
+  <div class="wrap section">
+    <h2 class="h2" style="max-width:46rem">No es un tour. Es una expedición hecha para un solo grupo.</h2>
+    <div class="pillars">
+      <div class="pillar">
+        <span class="num">01</span>
+        <h3 class="h3">Privado, siempre</h3>
+        <p>Tu grupo, tus fechas, tu ritmo. Las expediciones nunca se comparten con otros pasajeros.</p>
+      </div>
+      <div class="pillar">
+        <span class="num">02</span>
+        <h3 class="h3">Planificado, no improvisado</h3>
+        <p>[TU ESTÁNDAR DE SEGURIDAD Y LOGÍSTICA — vehículos, guías, equipo de apoyo, seguros]</p>
+      </div>
+      <div class="pillar">
+        <span class="num">03</span>
+        <h3 class="h3">Un solo contacto</h3>
+        <p>Un único concierge desde el primer mensaje hasta el vuelo de regreso. [IDIOMAS QUE HABLAN]</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EL NOMBRE ============ -->
+<section class="name" id="name">
+  <div class="wrap section">
+    <div class="big-mark"><img src="../assets/logo-light.png" width="771" height="520" alt="56°S Travel &amp; Adventure" loading="lazy"></div>
+    <div class="name-copy">
+      <h2 class="h3">Dos significados, un país.</h2>
+      <p>Marca +56 y llegas a Chile. Sigue el paralelo 56 sur y pasas justo bajo el Cabo de Hornos, la primera línea del planeta que solo toca océano.</p>
+      <p>Todo lo que hacemos ocurre entre esos dos números.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACTO ============
+     data-email: correo que recibe las consultas.
+     data-endpoint="/": las consultas las recibe Netlify Forms (data-netlify="true") y te llegan por correo.
+     Si queda vacío, el formulario abre el programa de correo del visitante con el mensaje ya escrito. -->
+<section class="contact" id="contact">
+  <div class="wrap section">
+    <div class="contact-copy">
+      <h2 class="h2">Dinos qué latitud.</h2>
+      <p>Escríbele al concierge con tus fechas y cuántas personas viajan. Respondemos personalmente.</p>
+      <a class="contact-mail" href="mailto:concierge@[YOUR-DOMAIN]">concierge@[YOUR-DOMAIN]</a>
+      <div class="contact-links">
+        <a class="btn btn-line" href="https://wa.me/[YOUR-NUMBER]" rel="noopener">WhatsApp</a>
+        <a class="btn btn-line" href="https://t.me/[YOUR-HANDLE]" rel="noopener">Telegram</a>
+      </div>
+    </div>
+
+    <form id="enquiry" name="enquiry" method="POST" data-netlify="true" netlify-honeypot="website" data-email="concierge@[YOUR-DOMAIN]" data-endpoint="/" novalidate>
+      <input type="hidden" name="form-name" value="enquiry">
+      <input type="hidden" name="language" value="es">
+      <div class="field">
+        <label for="f-name">Nombre</label>
+        <input id="f-name" name="name" type="text" autocomplete="name" required>
+      </div>
+      <div class="field">
+        <label for="f-email">Correo</label>
+        <input id="f-email" name="email" type="email" autocomplete="email" required>
+      </div>
+      <div class="field">
+        <label for="f-exp">Expedición</label>
+        <select id="f-exp" name="expedition">
+          <option value="Not sure yet">Aún no lo sé</option>
+          <option value="23°S — Atacama">23°S — Atacama</option>
+          <option value="33°S — The Andes">33°S — Los Andes</option>
+          <option value="34°S — Pacific">34°S — Pacífico</option>
+          <option value="35°S — Wine valleys">35°S — Valles del vino</option>
+          <option value="39°S — Lakes &amp; volcanoes">39°S — Lagos y volcanes</option>
+          <option value="51°S — Patagonia">51°S — Patagonia</option>
+          <option value="A combination of latitudes">Una combinación de latitudes</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="f-msg">Fechas y número de personas</label>
+        <textarea id="f-msg" name="message" rows="4"></textarea>
+      </div>
+      <div class="hp" aria-hidden="true"><label for="f-web">Dejar vacío</label><input id="f-web" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+      <button class="btn btn-solid" type="submit">Enviar consulta</button>
+      <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-brand">
+    <img src="../assets/logo-light.png" width="771" height="520" alt="56°S Travel &amp; Adventure" loading="lazy">
+  </div>
+  <div class="wrap">
+    <span>56°S — Expediciones privadas en Chile</span>
+    <span>[RAZÓN SOCIAL] · [CIUDAD], Chile · © <span id="year">2026</span></span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var y = document.getElementById("year");
+  if (y) y.textContent = new Date().getFullYear();
+
+  var LANG = (document.documentElement.lang || "en").slice(0, 2);
+  var ALL = {
+    en: { invalid: "Please add your name and a valid email.", sending: "Sending…", ok: "Thank you. The concierge will reply personally.", fail: "Something went wrong. Please write to ", mail: "Your email app should open with the message ready to send.", subject: "Expedition enquiry — " },
+    es: { invalid: "Escribe tu nombre y un correo válido.", sending: "Enviando…", ok: "Gracias. El concierge te responderá personalmente.", fail: "Algo salió mal. Escríbenos a ", mail: "Tu aplicación de correo debería abrirse con el mensaje listo para enviar.", subject: "Consulta de expedición — " },
+    ru: { invalid: "Пожалуйста, укажите имя и действующий email.", sending: "Отправляем…", ok: "Спасибо. Консьерж ответит вам лично.", fail: "Что-то пошло не так. Напишите нам на ", mail: "Должно открыться ваше почтовое приложение с готовым письмом.", subject: "Запрос об экспедиции — " }
+  };
+  var MSG = ALL[LANG] || ALL.en;
+  var form = document.getElementById("enquiry");
+  var status = document.getElementById("form-status");
+  var select = document.getElementById("f-exp");
+
+  // "Enquire" en una expedición deja esa expedición elegida en el formulario
+  document.querySelectorAll("[data-exp]").forEach(function (a) {
+    a.addEventListener("click", function () {
+      var want = a.getAttribute("data-exp");
+      for (var i = 0; i < select.options.length; i++) {
+        if (select.options[i].value === want) { select.selectedIndex = i; break; }
+      }
+    });
+  });
+
+  // Al cambiar de idioma se mantiene la sección en la que está el visitante
+  document.querySelectorAll(".langs a").forEach(function (a) {
+    a.addEventListener("click", function () { if (location.hash) a.href = a.getAttribute("href").split("#")[0] + location.hash; });
+  });
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var name = form.name.value.trim();
+    var email = form.email.value.trim();
+    if (form.website.value) return; // filtro anti-spam
+    if (!name || !email || !form.email.checkValidity()) {
+      status.textContent = MSG.invalid;
+      (name ? form.email : form.name).focus();
+      return;
+    }
+    var endpoint = form.getAttribute("data-endpoint");
+    if (endpoint) {
+      status.textContent = MSG.sending;
+      fetch(endpoint, { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body: new URLSearchParams(new FormData(form)).toString() })
+        .then(function (r) {
+          if (!r.ok) throw new Error();
+          form.reset();
+          status.textContent = MSG.ok;
+        })
+        .catch(function () {
+          status.textContent = MSG.fail + form.getAttribute("data-email") + ".";
+        });
+      return;
+    }
+    var subject = MSG.subject + form.expedition.value;
+    var body = "Name: " + name + "\nEmail: " + email + "\nExpedition: " + form.expedition.value + "\n\n" + form.message.value;
+    window.location.href = "mailto:" + form.getAttribute("data-email") +
+      "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+    status.textContent = MSG.mail;
+  });
+})();
+
+/* Movimiento: aparición al hacer scroll, inclinación 3D y barra de avance */
+(function () {
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var root = document.documentElement;
+
+  // Aparición escalonada
+  var groups = [".section-head", ".lat-tab", ".plans", ".routes-head", ".route", ".pillar", "#approach .h2", ".big-mark", ".name-copy", ".contact-copy", "#enquiry .field", "#enquiry .btn"];
+  var items = [];
+  groups.forEach(function (sel) {
+    document.querySelectorAll(sel).forEach(function (el, i) {
+      el.classList.add("reveal");
+      el.style.setProperty("--rd", Math.min(i, 5) * 0.09 + "s");
+      items.push(el);
+    });
+  });
+  if ("IntersectionObserver" in window && !reduce) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.classList.add("in");
+          io.unobserve(e.target);
+          // al terminar, se libera la transición para que el hover responda al instante
+          setTimeout(function () { e.target.classList.remove("reveal", "in"); }, 1600);
+        }
+      });
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
+    items.forEach(function (el) { io.observe(el); });
+  } else {
+    items.forEach(function (el) { el.classList.remove("reveal"); });
+  }
+  if (reduce) return;
+
+  // Barra de avance, borde del header y giro del 56°S grande
+  var header = document.querySelector(".site-header");
+  var mark = document.querySelector(".big-mark");
+  var ticking = false;
+  function onScroll() {
+    ticking = false;
+    var max = root.scrollHeight - window.innerHeight;
+    header.style.setProperty("--p", max > 0 ? (window.scrollY / max).toFixed(4) : 0);
+    header.classList.toggle("scrolled", window.scrollY > 8);
+    if (mark) {
+      var r = mark.getBoundingClientRect();
+      var t = (r.top + r.height / 2) / window.innerHeight; // 0 arriba, 1 abajo
+      mark.style.setProperty("--my", (Math.max(0, Math.min(1, t)) * 44 - 30).toFixed(1) + "deg");
+    }
+  }
+  window.addEventListener("scroll", function () {
+    if (!ticking) { ticking = true; requestAnimationFrame(onScroll); }
+  }, { passive: true });
+  onScroll();
+
+  // El mapa sigue al puntero
+  var stage = document.getElementById("map-stage");
+  var map = document.getElementById("map-3d");
+  var hero = document.querySelector(".hero");
+  if (stage && map && window.matchMedia("(hover: hover)").matches) {
+    hero.addEventListener("pointermove", function (e) {
+      var r = hero.getBoundingClientRect();
+      var x = (e.clientX - r.left) / r.width - 0.5;
+      var y = (e.clientY - r.top) / r.height - 0.5;
+      map.style.setProperty("--ry", (x * 26).toFixed(1) + "deg");
+      map.style.setProperty("--rx", (-y * 14).toFixed(1) + "deg");
+    });
+    hero.addEventListener("pointerleave", function () {
+      map.style.setProperty("--ry", "0deg");
+      map.style.setProperty("--rx", "0deg");
+    });
+  }
+
+  // Tarjetas que se inclinan con el puntero
+  if (window.matchMedia("(hover: hover)").matches) {
+    document.querySelectorAll(".exp-signature, .pillar").forEach(function (el) {
+      el.classList.add("tilt");
+      el.addEventListener("pointermove", function (e) {
+        var r = el.getBoundingClientRect();
+        var x = (e.clientX - r.left) / r.width - 0.5;
+        var y = (e.clientY - r.top) / r.height - 0.5;
+        var k = el.classList.contains("pillar") ? 10 : 4;
+        el.style.setProperty("--ty", (x * k).toFixed(2) + "deg");
+        el.style.setProperty("--tx", (-y * k).toFixed(2) + "deg");
+      });
+      el.addEventListener("pointerleave", function () {
+        el.style.setProperty("--ty", "0deg");
+        el.style.setProperty("--tx", "0deg");
+      });
+    });
+  }
+})();
+</script>
+<script>
+/* Selector de planes por latitud */
+(function () {
+  var tabs = [].slice.call(document.querySelectorAll(".lat-tab"));
+  var plans = [].slice.call(document.querySelectorAll(".plan"));
+  if (!tabs.length) return;
+  function select(id, opts) {
+    opts = opts || {};
+    tabs.forEach(function (t) {
+      var on = t.getAttribute("data-plan") === id;
+      t.setAttribute("aria-selected", on ? "true" : "false"); t.tabIndex = on ? 0 : -1;
+      if (on) { if (opts.focus) t.focus(); if (t.scrollIntoView && window.innerWidth <= 1000) t.scrollIntoView({ block: "nearest", inline: "center", behavior: "smooth" }); }
+    });
+    plans.forEach(function (p) { p.classList.toggle("active", p.id === "plan-" + id); });
+  }
+  tabs.forEach(function (t, i) {
+    t.addEventListener("click", function () { select(t.getAttribute("data-plan")); });
+    t.addEventListener("keydown", function (e) {
+      var d = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0; if (!d) return;
+      e.preventDefault(); select(tabs[(i + d + tabs.length) % tabs.length].getAttribute("data-plan"), { focus: true });
+    });
+  });
+  // Los marcadores del mapa y los tramos de las rutas abren su plan
+  document.querySelectorAll(".pin[data-plan], .route-bar [data-plan]").forEach(function (el) {
+    el.addEventListener("click", function (e) {
+      e.preventDefault(); select(el.getAttribute("data-plan"));
+      document.querySelector(".lat-tabs").scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  });
+})();
+</script>
+</body>
+</html>
