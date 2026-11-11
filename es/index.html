@@ -415,6 +415,19 @@ form .btn{align-self:flex-start}
 .site-footer .wrap{display:flex;flex-wrap:wrap;gap:12px 32px;justify-content:space-between;padding-top:32px;padding-bottom:32px;font-size:.875rem;color:var(--text-mute)}
 .footer-mail{color:var(--text-dim);text-decoration:none;transition:color .2s}
 .footer-mail:hover{color:var(--accent)}
+.footer-links{display:flex;flex-wrap:wrap;gap:6px 24px}
+.footer-ig{display:inline-flex;align-items:center;gap:6px}
+.footer-ig svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transition:transform .45s cubic-bezier(.25,1,.5,1)}
+.footer-ig:hover svg{transform:rotate(-45deg)}
+/* Botón de Instagram: se rellena de ámbar de izquierda a derecha y la flecha apunta hacia afuera */
+.btn-ig{position:relative;overflow:hidden;isolation:isolate;gap:10px}
+.btn-ig::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--accent);transform:scaleX(0);transform-origin:0 50%;transition:transform .45s cubic-bezier(.2,.7,.2,1)}
+.btn-ig:hover,.btn-ig:focus-visible{color:var(--ink);border-color:var(--accent)}
+.btn-ig:hover::before,.btn-ig:focus-visible::before{transform:scaleX(1)}
+.btn-ig .ig-handle{font-family:var(--mono);font-size:.8125rem;font-weight:400;color:var(--text-mute);transition:color .3s}
+.btn-ig:hover .ig-handle,.btn-ig:focus-visible .ig-handle{color:var(--ink)}
+.btn-ig svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transition:transform .45s cubic-bezier(.25,1,.5,1)}
+.btn-ig:hover svg,.btn-ig:focus-visible svg{transform:rotate(-45deg)}
 </style>
 </head>
 <body>
@@ -774,6 +787,7 @@ form .btn{align-self:flex-start}
       <div class="contact-links">
         <a class="btn btn-line" href="https://wa.me/[YOUR-NUMBER]" rel="noopener">WhatsApp</a>
         <a class="btn btn-line" href="https://t.me/[YOUR-HANDLE]" rel="noopener">Telegram</a>
+        <a class="btn btn-line btn-ig" href="https://www.instagram.com/go56south/" target="_blank" rel="noopener"><span>Instagram</span> <span class="ig-handle">@go56south</span><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a>
       </div>
     </div>
 
@@ -820,8 +834,8 @@ form .btn{align-self:flex-start}
   </div>
   <div class="wrap">
     <span>56°S — Expediciones privadas en Chile</span>
-    <a class="footer-mail" href="mailto:concierge@go56south.com">concierge@go56south.com</a>
-    <span>[RAZÓN SOCIAL] · [CIUDAD], Chile · © <span id="year">2026</span></span>
+    <span class="footer-links"><a class="footer-mail" href="mailto:concierge@go56south.com">concierge@go56south.com</a><a class="footer-mail footer-ig" href="https://www.instagram.com/go56south/" target="_blank" rel="noopener">Instagram @go56south<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a></span>
+    <span>[RAZÓN SOCIAL] · Las Condes, Chile · © <span id="year">2026</span></span>
   </div>
 </footer>
 
