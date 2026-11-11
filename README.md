@@ -70,7 +70,7 @@ y las zonas. Se pausa cuando el mapa no está en pantalla y no aparece con "redu
 
 ## Antes del lanzamiento
 
-- [ ] Reemplazar todo lo que está entre corchetes: `[PRICE]`, `[DAYS]`, `[YOUR-NUMBER]`, `[YOUR-HANDLE]`, `[LEGAL NAME]`, y los textos de 51°S, 56°S, seguridad e idiomas
+- [ ] Reemplazar todo lo que está entre corchetes: `[PRICE]`, `[DAYS]`, y los textos de 51°S, 56°S, seguridad e idiomas
 - [x] Comprar el dominio y conectarlo
 - [ ] Borrar la línea `<meta name="robots" content="noindex">` para que Google indexe el sitio
 - [x] Configurar el formulario (Netlify Forms)
