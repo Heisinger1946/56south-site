@@ -592,8 +592,8 @@ form .btn{align-self:flex-start}
 
 <!-- ============ CONTACTO ============
      data-email: correo que recibe las consultas.
-     data-endpoint: dirección de un servicio de formularios (por ejemplo Formspree). Si queda vacío,
-     el formulario abre el programa de correo del visitante con el mensaje ya escrito. -->
+     data-endpoint="/": las consultas las recibe Netlify Forms (data-netlify="true") y te llegan por correo.
+     Si queda vacío, el formulario abre el programa de correo del visitante con el mensaje ya escrito. -->
 <section class="contact" id="contact">
   <div class="wrap section">
     <div class="contact-copy">
@@ -606,7 +606,8 @@ form .btn{align-self:flex-start}
       </div>
     </div>
 
-    <form id="enquiry" data-email="concierge@[YOUR-DOMAIN]" data-endpoint="" novalidate>
+    <form id="enquiry" name="enquiry" method="POST" data-netlify="true" netlify-honeypot="website" data-email="concierge@[YOUR-DOMAIN]" data-endpoint="/" novalidate>
+      <input type="hidden" name="form-name" value="enquiry">
       <div class="field">
         <label for="f-name">Name</label>
         <input id="f-name" name="name" type="text" autocomplete="name" required>
@@ -683,7 +684,7 @@ form .btn{align-self:flex-start}
     var endpoint = form.getAttribute("data-endpoint");
     if (endpoint) {
       status.textContent = "Sending…";
-      fetch(endpoint, { method: "POST", body: new FormData(form), headers: { Accept: "application/json" } })
+      fetch(endpoint, { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body: new URLSearchParams(new FormData(form)).toString() })
         .then(function (r) {
           if (!r.ok) throw new Error();
           form.reset();

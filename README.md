@@ -58,9 +58,6 @@ Direcciones según la [documentación de GitHub Pages](https://docs.github.com/e
 
 ## Formulario de contacto
 
-En `index.html`, el formulario (`<form id="enquiry">`) tiene dos atributos:
+El sitio está alojado en Netlify y el formulario usa Netlify Forms (`data-netlify="true"` en `<form id="enquiry">`). Cada consulta queda guardada en Netlify (Forms › enquiry) y llega por correo a la cuenta de Netlify. Para cambiar a quién llega: Project configuration › Notifications › Emails and webhooks › Form submission notifications.
 
-- `data-email`: el correo que recibe las consultas.
-- `data-endpoint`: la dirección de un servicio de formularios, como Formspree. Si queda vacío, el formulario abre el programa de correo del visitante con el mensaje ya escrito.
-
-Con un servicio de formularios, las consultas llegan directo a tu correo sin que el visitante tenga que enviar nada por su cuenta. Para eso, crea el formulario en el servicio y pega su dirección en `data-endpoint`.
+El campo oculto `website` es una trampa anti-spam: si un bot lo llena, Netlify descarta la consulta.
