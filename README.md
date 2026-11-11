@@ -56,7 +56,7 @@ Para el ruso se usa Manrope en los títulos, porque Space Grotesk no tiene letra
 
 ## Expediciones
 
-Hay seis planes, uno por latitud: 23°S Atacama, 33°S The Andes, 34°S Pacific, 35°S Wine valleys, 39°S Lakes & volcanoes y 51°S Patagonia. En `index.html` cada uno es un bloque `<article class="plan" id="plan-23">` (el número es la latitud) con su botón `tab-23` y su marcador en el mapa (`data-plan="23"`). Para cambiar la foto de un plan, guarda la imagen nueva en `assets/routes/` y cambia el `src` del `<img>` que está dentro de su `<div class="plan-visual">`. El `object-position` de ese `<img>` indica qué parte de la foto queda visible cuando se recorta.
+Hay seis planes, uno por latitud: 23°S Atacama, 33°S The Andes, 34°S Pacific, 35°S Wine valleys, 39°S Lakes & volcanoes y 51°S Patagonia. Se muestran como una lista (`<div class="lat-list">`): cada fila es un `<button class="lat-row" id="tab-23">` (el número es la latitud) con su foto, y justo debajo va su plan, `<article class="plan" id="plan-23">`, que se despliega al hacer clic. En pantallas con mouse la fila se abre con la foto al pasar por encima. Los marcadores del mapa (`data-plan="23"`) y los tramos de las rutas abren el plan que corresponde. Para cambiar la foto de un plan, guarda la imagen nueva en `assets/routes/` y cambia el `src` del `<img>` que está dentro de su `<span class="lat-photo">`; el `object-position` de ese `<img>` indica qué parte de la foto queda visible cuando se recorta.
 
 ## Mapa y animaciones
 

@@ -264,21 +264,58 @@ input:focus,select:focus,textarea:focus{box-shadow:0 0 0 4px rgba(227,168,87,.18
 @media (max-width:1000px){.exp{grid-template-columns:220px minmax(0,1fr) auto;grid-template-areas:"photo lat btn" "photo body body" "photo meta meta";align-items:start}.exp-lat{font-size:2.75rem}.exp>.btn{align-self:center}}
 @media (max-width:640px){.exp{grid-template-columns:1fr;grid-template-areas:"photo" "lat" "body" "meta" "btn";row-gap:12px}.exp-lat{font-size:3rem;margin-top:8px}.exp>.btn{justify-self:start;margin-top:6px}.exp-signature{padding:20px}}
 
-/* Selector de latitudes y planes */
-.lat-tabs{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;margin-bottom:22px}
-.lat-tab{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:2px;min-height:112px;padding:16px 16px 14px;border:1px solid rgba(10,19,23,.16);border-radius:14px;background:#fff;color:var(--ink);font:inherit;text-align:left;cursor:pointer;overflow:hidden;transition:transform .3s cubic-bezier(.2,.7,.2,1),background-color .3s,color .3s,box-shadow .3s,border-color .3s}
-.lat-tab::before{content:"";position:absolute;left:0;top:0;height:5px;width:100%;background:var(--z);transform:scaleX(.18);transform-origin:0 50%;transition:transform .45s cubic-bezier(.2,.7,.2,1)}
-.lat-tab:hover{transform:translateY(-4px);box-shadow:0 14px 28px -18px rgba(10,19,23,.5)}
-.lat-tab:hover::before,.lat-tab[aria-selected="true"]::before{transform:scaleX(1)}
-.lat-tab[aria-selected="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink);box-shadow:0 18px 30px -18px rgba(10,19,23,.7)}
-.lat-num{font-family:var(--mono);font-size:.75rem;color:var(--text-on-paper)}
-.lat-tab[aria-selected="true"] .lat-num{color:var(--text-dim)}
-.lat-deg{font-family:var(--display);font-weight:700;font-size:2rem;line-height:1.1;letter-spacing:-.03em}
-.lat-name{font-size:.875rem;font-weight:600}
-.plan{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 30px 60px -40px rgba(10,19,23,.45);margin-bottom:24px}
+/* Lista de latitudes (estilo "cinematic list"): filas que se abren con la foto y despliegan su plan */
+.lat-list{border-top:1px solid rgba(10,19,23,.16)}
+.lat-item{border-bottom:1px solid rgba(10,19,23,.16)}
+.lat-head{margin:0;font:inherit}
+.lat-row{position:relative;display:grid;grid-template-columns:auto minmax(0,1fr) auto auto;grid-template-areas:"id title loc go";align-items:center;column-gap:48px;width:100%;height:96px;padding:0 48px;border:0;border-radius:0;background:none;color:var(--ink);font:inherit;text-align:left;cursor:pointer;overflow:hidden;transition:height .7s cubic-bezier(.25,1,.5,1)}
+.lat-row:focus-visible{outline-offset:-3px}
+.lat-photo{position:absolute;inset:0;opacity:0;border-radius:20px;overflow:hidden;transition:opacity .7s ease-out;pointer-events:none}
+.lat-photo img{width:100%;height:100%;max-width:none;object-fit:cover;transform:scale(1.1);transition:transform 1s ease-out}
+.lat-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(10,19,23,.86) 0%,rgba(10,19,23,.46) 52%,rgba(10,19,23,.2) 100%)}
+.lat-id,.lat-title,.lat-loc,.lat-go{position:relative}
+.lat-id{grid-area:id;font-family:var(--mono);font-size:.875rem;color:var(--text-on-paper);transition:color .5s}
+.lat-title{grid-area:title;font-family:var(--display);font-weight:700;font-size:clamp(1.375rem,4vw,3rem);line-height:1.02;letter-spacing:-.02em;text-transform:uppercase;transition:transform .7s cubic-bezier(.25,1,.5,1),color .5s}
+.lat-deg{color:var(--z);transition:color .5s}
+.lat-loc{grid-area:loc;font-family:var(--mono);font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;color:transparent;opacity:0;transform:translateY(32px);transition:opacity .7s,transform .7s cubic-bezier(.25,1,.5,1),color .7s}
+.lat-go{grid-area:go;display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;border:1px solid rgba(10,19,23,.28);color:var(--text-on-paper);transition:background-color .5s,border-color .5s,color .5s,transform .5s}
+.lat-go svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transition:transform .5s cubic-bezier(.25,1,.5,1)}
+/* Abierta (con su plan desplegado) y, en pantallas con mouse, al pasar por encima */
+.lat-row[aria-expanded="true"]{height:320px}
+.lat-row[aria-expanded="true"] .lat-photo{opacity:1}
+.lat-row[aria-expanded="true"] .lat-photo img{transform:scale(1)}
+.lat-row[aria-expanded="true"] .lat-title,.lat-row[aria-expanded="true"] .lat-deg{color:var(--paper)}
+.lat-row[aria-expanded="true"] .lat-title{transform:translateY(-8px)}
+.lat-row[aria-expanded="true"] .lat-id{color:rgba(238,242,241,.72)}
+.lat-row[aria-expanded="true"] .lat-loc{opacity:1;transform:none;color:var(--paper)}
+.lat-row[aria-expanded="true"] .lat-go{background:var(--accent);border-color:var(--accent);color:var(--ink)}
+.lat-row[aria-expanded="true"] .lat-go svg{transform:rotate(90deg)}
+@media (hover:hover) and (min-width:768px){
+  .lat-row:hover,.lat-row:focus-visible{height:400px}
+  .lat-row:hover .lat-photo,.lat-row:focus-visible .lat-photo{opacity:1}
+  .lat-row:hover .lat-photo img,.lat-row:focus-visible .lat-photo img{transform:scale(1)}
+  .lat-row:hover .lat-title,.lat-row:hover .lat-deg,.lat-row:focus-visible .lat-title,.lat-row:focus-visible .lat-deg{color:var(--paper)}
+  .lat-row:hover .lat-title,.lat-row:focus-visible .lat-title{transform:translateY(-8px)}
+  .lat-row:hover .lat-id,.lat-row:focus-visible .lat-id{color:rgba(238,242,241,.72)}
+  .lat-row:hover .lat-loc,.lat-row:focus-visible .lat-loc{opacity:1;transform:none;color:var(--paper)}
+  .lat-row:hover .lat-go,.lat-row:focus-visible .lat-go{background:var(--paper);border-color:var(--paper);color:var(--ink);transform:scale(1.1)}
+  .lat-row:hover .lat-go svg,.lat-row:focus-visible .lat-go svg{transform:rotate(-45deg)}
+  .lat-row[aria-expanded="true"]:hover .lat-go svg{transform:rotate(90deg)}
+}
+@media (max-width:767px){
+  .lat-row{grid-template-columns:auto minmax(0,1fr) auto;grid-template-areas:"id title go" "id loc go";align-content:center;column-gap:16px;row-gap:4px;padding:0 4px}
+  .lat-title{font-size:1.375rem}
+  .lat-photo{border-radius:16px}
+  .lat-loc{opacity:1;transform:none;color:var(--text-on-paper);font-size:.6875rem;letter-spacing:.12em;white-space:normal}
+  .lat-row[aria-expanded="true"]{height:220px;padding:0 16px;align-content:end;padding-bottom:20px}
+  .lat-row[aria-expanded="true"] .lat-title{transform:none}
+}
+.lat-item .plan{margin:8px 0 32px}
+.plan{display:block;background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 30px 60px -40px rgba(10,19,23,.45);margin-bottom:24px}
 .js .plan:not(.active){display:none}
 .js .plan.active{animation:plan-in .55s cubic-bezier(.2,.7,.2,1) both}
 .js .plan.active .plan-body>*{animation:fade-up .5s ease both}
+.js .plan.active .plan-side{animation-delay:.08s}
 .js .plan.active .plan-body>*:nth-child(2){animation-delay:.05s}.js .plan.active .plan-body>*:nth-child(3),.js .plan.active .plan-body>*:nth-child(4){animation-delay:.1s}.js .plan.active .plan-body>*:nth-child(5){animation-delay:.15s}.js .plan.active .plan-body>*:nth-child(n+6){animation-delay:.2s}
 @keyframes plan-in{from{opacity:0;transform:translateY(16px) scale(.985)}to{opacity:1;transform:none}}
 .plan-visual{position:relative;min-height:420px;background:var(--ink);overflow:hidden}
@@ -292,7 +329,11 @@ input:focus,select:focus,textarea:focus{box-shadow:0 0 0 4px rgba(227,168,87,.18
 .mini-dot{position:absolute;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;background:#fff;box-shadow:0 0 0 3px var(--ink)}
 .mini-dot::after{content:"";position:absolute;inset:-3px;border-radius:50%;border:2px solid #fff;animation:ping 2.4s ease-out infinite}
 .plan-map-lat{position:absolute;left:22px;bottom:10px;margin:0;font-family:var(--display);font-weight:700;font-size:clamp(4rem,9vw,7rem);line-height:1;letter-spacing:-.04em;color:#fff}
-.plan-body{padding:40px 44px;display:flex;flex-direction:column;gap:16px;min-width:0}
+.plan-body{padding:40px 44px;display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:24px 56px;min-width:0}
+.plan-main,.plan-side{display:flex;flex-direction:column;gap:16px;min-width:0}
+.plan-side{padding-left:40px;border-left:1px solid rgba(10,19,23,.14)}
+.plan-side .plan-facts{margin:0;padding:0;border-top:0}
+.plan-side .btn-ink{margin-top:auto}
 .plan-title{margin:0;font-family:var(--display);font-weight:700;font-size:clamp(1.75rem,3vw,2.5rem);line-height:1.05;letter-spacing:-.02em}
 .plan-title span{color:var(--z)}
 .plan-desc{margin:0;color:var(--text-on-paper);font-size:1.0625rem}
@@ -321,8 +362,7 @@ input:focus,select:focus,textarea:focus{box-shadow:0 0 0 4px rgba(227,168,87,.18
 .route-bar button:hover{filter:brightness(1.15)}
 .route p{margin:0;color:var(--text-on-paper);font-size:.9375rem}
 .route .route-when{margin-top:auto;font-family:var(--mono);font-size:.75rem;color:var(--ink)}
-@media (max-width:1000px){.lat-tabs{display:flex;overflow-x:auto;scroll-snap-type:x proximity;margin-left:-20px;margin-right:-20px;padding:6px 20px 10px;scrollbar-width:none}.lat-tabs::-webkit-scrollbar{display:none}.lat-tab{flex:0 0 132px;scroll-snap-align:center}.plan{grid-template-columns:1fr}.plan-visual{min-height:0;aspect-ratio:3/2}.routes{grid-template-columns:1fr}}
-@media (max-width:1000px){#plan-34 .plan-visual>img{object-position:0% 50%!important}}
+@media (max-width:1000px){.plan-body{grid-template-columns:1fr}.plan-side{padding-left:0;border-left:0;padding-top:20px;border-top:1px solid rgba(10,19,23,.14)}.routes{grid-template-columns:1fr}}
 @media (max-width:640px){.plan-body{padding:26px 20px}.plan-hl,.plan-facts{grid-template-columns:1fr}.plan{border-radius:16px}}
 /* Etiquetas del mapa: compactas y a la izquierda */
 .pin-sm .pin-label{flex-direction:row;align-items:baseline;gap:7px;top:-8px}
@@ -455,23 +495,20 @@ form .btn{align-self:flex-start}
       <p>Each expedition is named for its parallel. Pick a latitude to see the plan, or combine two or three in a single journey.</p>
     </div>
 
-    <!-- Selector de latitudes: cada botón muestra el plan con el mismo número (plan-23, plan-33...) -->
-    <div class="lat-tabs" role="tablist" aria-label="Expeditions by latitude">
-      <button class="lat-tab" role="tab" id="tab-23" aria-controls="plan-23" aria-selected="true" tabindex="0" data-plan="23" style="--z:#B4531F"><span class="lat-num">01</span><span class="lat-deg">23°S</span><span class="lat-name">Atacama</span></button>
-      <button class="lat-tab" role="tab" id="tab-33" aria-controls="plan-33" aria-selected="false" tabindex="-1" data-plan="33" style="--z:#1F6FA3"><span class="lat-num">02</span><span class="lat-deg">33°S</span><span class="lat-name">The Andes</span></button>
-      <button class="lat-tab" role="tab" id="tab-34" aria-controls="plan-34" aria-selected="false" tabindex="-1" data-plan="34" style="--z:#0E7C78"><span class="lat-num">03</span><span class="lat-deg">34°S</span><span class="lat-name">Pacific</span></button>
-      <button class="lat-tab" role="tab" id="tab-35" aria-controls="plan-35" aria-selected="false" tabindex="-1" data-plan="35" style="--z:#8E3B5E"><span class="lat-num">04</span><span class="lat-deg">35°S</span><span class="lat-name">Wine valleys</span></button>
-      <button class="lat-tab" role="tab" id="tab-39" aria-controls="plan-39" aria-selected="false" tabindex="-1" data-plan="39" style="--z:#2F7A4A"><span class="lat-num">05</span><span class="lat-deg">39°S</span><span class="lat-name">Lakes &amp; volcanoes</span></button>
-      <button class="lat-tab" role="tab" id="tab-51" aria-controls="plan-51" aria-selected="false" tabindex="-1" data-plan="51" style="--z:#2F5FA8"><span class="lat-num">06</span><span class="lat-deg">51°S</span><span class="lat-name">Patagonia</span></button>
-    </div>
-
-    <!-- Planes. Para editar uno, busca su id (plan-23, plan-33, plan-34, plan-35, plan-39, plan-51) -->
-    <div class="plans">
-      <article class="plan active" role="tabpanel" id="plan-23" aria-labelledby="tab-23" style="--z:#B4531F">
-        <div class="plan-visual"><img src="assets/routes/atacama.jpg" width="960" height="640" alt="Reddish volcanic hills of the Atacama Desert at sunset" loading="lazy"><span class="plan-badge">01 · North · Desert</span></div>
-        <div class="plan-body">
-          <h3 class="plan-title"><span>23°S</span> Atacama</h3>
-          <p class="plan-desc">The driest desert on Earth, at 2,400 m above sea level. You cross it by buggy or by bike, based in the boutique hotels of San Pedro de Atacama.</p>
+    <!-- Lista de latitudes: cada fila abre debajo su plan (plan-23, plan-33...). Al pasar el mouse la fila se abre con su foto. -->
+    <div class="lat-list" aria-label="Expeditions by latitude">
+      <div class="lat-item" style="--z:#B4531F">
+        <h3 class="lat-head"><button class="lat-row" type="button" id="tab-23" data-plan="23" aria-expanded="false" aria-controls="plan-23">
+          <span class="lat-photo" aria-hidden="true"><img src="assets/routes/atacama.jpg" width="960" height="640" alt="" loading="lazy"></span>
+          <span class="lat-id">01</span>
+          <span class="lat-title"><span class="lat-deg">23°S</span> Atacama</span>
+          <span class="lat-loc">North · Desert</span>
+          <span class="lat-go" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span>
+        </button></h3>
+        <article class="plan" id="plan-23" aria-labelledby="tab-23">
+          <div class="plan-body">
+            <div class="plan-main">
+            <p class="plan-desc">The driest desert on Earth, at 2,400 m above sea level. You cross it by buggy or by bike, based in the boutique hotels of San Pedro de Atacama.</p>
           <h4 class="plan-kicker">Featured experiences</h4>
           <ul class="plan-hl">
             <li><strong>Valle de la Luna and Valle de la Muerte</strong><span>A walk among dunes and salt formations, with optional sandboarding.</span></li>
@@ -479,7 +516,9 @@ form .btn{align-self:flex-start}
             <li><strong>Altiplano lagoons and the salt flat</strong><span>Flamingos, high-altitude lagoons and floating in Laguna Cejar.</span></li>
             <li><strong>Astronomy night</strong><span>Telescope observation under one of the clearest skies on the planet.</span></li>
           </ul>
-          <dl class="plan-facts">
+            </div>
+            <div class="plan-side">
+            <dl class="plan-facts">
             <div><dt>Best season</dt><dd>All year, ideally March to November</dd></div>
             <div><dt>Suggested stay</dt><dd>3 to 5 days</dd></div>
             <div><dt>Effort</dt><dd>Medium, because of the altitude</dd></div>
@@ -487,20 +526,31 @@ form .btn{align-self:flex-start}
           </dl>
           <p class="plan-tip"><b>Good to know:</b> The first days are kept gentle so you can acclimatise to the altitude.</p>
           <a class="btn btn-ink" href="#contact" data-exp="23°S — Atacama">Enquire about 23°S</a>
-        </div>
-      </article>
-      <article class="plan" role="tabpanel" id="plan-33" aria-labelledby="tab-33" style="--z:#1F6FA3">
-        <div class="plan-visual"><img src="assets/routes/andes.jpg" width="1100" height="1650" alt="Ski resort hotel and chairlifts on snow-covered slopes in the Andes" loading="lazy" style="object-position:50% 23%"><span class="plan-badge">02 · Cordillera · Snow</span></div>
-        <div class="plan-body">
-          <h3 class="plan-title"><span>33°S</span> The Andes</h3>
-          <p class="plan-desc">Santiago&#x27;s ski resorts are among the closest to a capital city anywhere in the world. Within one or two hours you are skiing at close to 3,000 m.</p>
+            </div>
+          </div>
+        </article>
+      </div>
+      <div class="lat-item" style="--z:#1F6FA3">
+        <h3 class="lat-head"><button class="lat-row" type="button" id="tab-33" data-plan="33" aria-expanded="false" aria-controls="plan-33">
+          <span class="lat-photo" aria-hidden="true"><img src="assets/routes/andes.jpg" width="1100" height="1650" alt="" loading="lazy" style="object-position:50% 23%"></span>
+          <span class="lat-id">02</span>
+          <span class="lat-title"><span class="lat-deg">33°S</span> The Andes</span>
+          <span class="lat-loc">Cordillera · Snow</span>
+          <span class="lat-go" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span>
+        </button></h3>
+        <article class="plan" id="plan-33" aria-labelledby="tab-33">
+          <div class="plan-body">
+            <div class="plan-main">
+            <p class="plan-desc">Santiago&#x27;s ski resorts are among the closest to a capital city anywhere in the world. Within one or two hours you are skiing at close to 3,000 m.</p>
           <h4 class="plan-kicker">Featured experiences</h4>
           <ul class="plan-hl">
             <li><strong>Skiing and snowboarding</strong><span>Valle Nevado, La Parva, El Colorado and Portillo, with private lessons.</span></li>
             <li><strong>Snowmobiles</strong><span>Guided rides through off-piste valleys.</span></li>
             <li><strong>Mountain expeditions</strong><span>Snowshoeing and ascents adapted to each level.</span></li>
           </ul>
-          <dl class="plan-facts">
+            </div>
+            <div class="plan-side">
+            <dl class="plan-facts">
             <div><dt>Best season</dt><dd>July and August (season runs June to September)</dd></div>
             <div><dt>Suggested stay</dt><dd>3 to 7 days</dd></div>
             <div><dt>Effort</dt><dd>Medium to high, depending on the activity</dd></div>
@@ -508,13 +558,22 @@ form .btn{align-self:flex-start}
           </dl>
           <p class="plan-tip"><b>Good to know:</b> Off-piste outings are confirmed each morning according to the avalanche bulletin.</p>
           <a class="btn btn-ink" href="#contact" data-exp="33°S — The Andes">Enquire about 33°S</a>
-        </div>
-      </article>
-      <article class="plan" role="tabpanel" id="plan-34" aria-labelledby="tab-34" style="--z:#0E7C78">
-        <div class="plan-visual"><img src="assets/routes/pichilemu.jpg" width="1200" height="675" alt="Surfer riding inside a turquoise wave beside a rock stack on the Chilean coast" loading="lazy" style="object-position:40% 50%"><span class="plan-badge">03 · Coast · Surf</span></div>
-        <div class="plan-body">
-          <h3 class="plan-title"><span>34°S</span> Pacific</h3>
-          <p class="plan-desc">More than 4,000 km of coastline. Pichilemu and Punta de Lobos get consistent waves all year and are a reference point for surfing in South America.</p>
+            </div>
+          </div>
+        </article>
+      </div>
+      <div class="lat-item" style="--z:#0E7C78">
+        <h3 class="lat-head"><button class="lat-row" type="button" id="tab-34" data-plan="34" aria-expanded="false" aria-controls="plan-34">
+          <span class="lat-photo" aria-hidden="true"><img src="assets/routes/pichilemu.jpg" width="1200" height="675" alt="" loading="lazy" style="object-position:40% 50%"></span>
+          <span class="lat-id">03</span>
+          <span class="lat-title"><span class="lat-deg">34°S</span> Pacific</span>
+          <span class="lat-loc">Coast · Surf</span>
+          <span class="lat-go" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span>
+        </button></h3>
+        <article class="plan" id="plan-34" aria-labelledby="tab-34">
+          <div class="plan-body">
+            <div class="plan-main">
+            <p class="plan-desc">More than 4,000 km of coastline. Pichilemu and Punta de Lobos get consistent waves all year and are a reference point for surfing in South America.</p>
           <h4 class="plan-kicker">Featured experiences</h4>
           <ul class="plan-hl">
             <li><strong>Surf lessons</strong><span>For beginners, with certified instructors and equipment included.</span></li>
@@ -522,7 +581,9 @@ form .btn{align-self:flex-start}
             <li><strong>On the water</strong><span>Jet skis and boat trips, depending on sea conditions.</span></li>
             <li><strong>Coastal route</strong><span>The Cáhuil salt flats, fishing coves and seafood cooking.</span></li>
           </ul>
-          <dl class="plan-facts">
+            </div>
+            <div class="plan-side">
+            <dl class="plan-facts">
             <div><dt>Best season</dt><dd>All year. Big waves from March to October</dd></div>
             <div><dt>Suggested stay</dt><dd>2 to 3 days</dd></div>
             <div><dt>Effort</dt><dd>Medium</dd></div>
@@ -530,13 +591,22 @@ form .btn{align-self:flex-start}
           </dl>
           <p class="plan-tip"><b>Good to know:</b> The water is cold all year because of the Humboldt Current. A wetsuit is included.</p>
           <a class="btn btn-ink" href="#contact" data-exp="34°S — Pacific">Enquire about 34°S</a>
-        </div>
-      </article>
-      <article class="plan" role="tabpanel" id="plan-35" aria-labelledby="tab-35" style="--z:#8E3B5E">
-        <div class="plan-visual"><img src="assets/routes/wine-valleys.jpg" width="1536" height="1024" alt="Wine tasting on a vineyard terrace with the snow-capped Andes behind" loading="lazy" style="object-position:32% 50%"><span class="plan-badge">04 · Central Chile · Vineyards</span></div>
-        <div class="plan-body">
-          <h3 class="plan-title"><span>35°S</span> Wine valleys</h3>
-          <p class="plan-desc">A few hours from Santiago, the Colchagua and Casablanca valleys hold some of the most awarded wineries in South America. Here you sleep in hotels surrounded by vines.</p>
+            </div>
+          </div>
+        </article>
+      </div>
+      <div class="lat-item" style="--z:#8E3B5E">
+        <h3 class="lat-head"><button class="lat-row" type="button" id="tab-35" data-plan="35" aria-expanded="false" aria-controls="plan-35">
+          <span class="lat-photo" aria-hidden="true"><img src="assets/routes/wine-valleys.jpg" width="1536" height="1024" alt="" loading="lazy" style="object-position:32% 50%"></span>
+          <span class="lat-id">04</span>
+          <span class="lat-title"><span class="lat-deg">35°S</span> Wine valleys</span>
+          <span class="lat-loc">Central Chile · Vineyards</span>
+          <span class="lat-go" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span>
+        </button></h3>
+        <article class="plan" id="plan-35" aria-labelledby="tab-35">
+          <div class="plan-body">
+            <div class="plan-main">
+            <p class="plan-desc">A few hours from Santiago, the Colchagua and Casablanca valleys hold some of the most awarded wineries in South America. Here you sleep in hotels surrounded by vines.</p>
           <h4 class="plan-kicker">Featured experiences</h4>
           <ul class="plan-hl">
             <li><strong>Private wine routes</strong><span>Visits to boutique vineyards and renowned cellars, with a specialist guide.</span></li>
@@ -544,7 +614,9 @@ form .btn{align-self:flex-start}
             <li><strong>Harvest, in March and April</strong><span>Take part in the grape harvest and each valley&#x27;s wine festivals.</span></li>
             <li><strong>Valparaíso and Cajón del Maipo</strong><span>The heritage port and its hills, or horseback rides at the foot of the Andes.</span></li>
           </ul>
-          <dl class="plan-facts">
+            </div>
+            <div class="plan-side">
+            <dl class="plan-facts">
             <div><dt>Best season</dt><dd>September to May</dd></div>
             <div><dt>Suggested stay</dt><dd>2 to 4 days</dd></div>
             <div><dt>Effort</dt><dd>Low</dd></div>
@@ -552,13 +624,22 @@ form .btn{align-self:flex-start}
           </dl>
           <p class="plan-tip"><b>Good to know:</b> Being close to Santiago airport, it works very well as the start or the end of any route.</p>
           <a class="btn btn-ink" href="#contact" data-exp="35°S — Wine valleys">Enquire about 35°S</a>
-        </div>
-      </article>
-      <article class="plan" role="tabpanel" id="plan-39" aria-labelledby="tab-39" style="--z:#2F7A4A">
-        <div class="plan-visual"><img src="assets/routes/pucon.jpg" width="1600" height="1200" alt="Snow-capped Villarrica volcano above the forest at sunset" loading="lazy" style="object-position:50% 50%"><span class="plan-badge">05 · South · Lakes and volcanoes</span></div>
-        <div class="plan-body">
-          <h3 class="plan-title"><span>39°S</span> Lakes &amp; volcanoes</h3>
-          <p class="plan-desc">Between Pucón and Puerto Varas the landscape turns to native forest, with snow-capped volcanoes reflected in the lakes. It is the most versatile area for combining activity and rest.</p>
+            </div>
+          </div>
+        </article>
+      </div>
+      <div class="lat-item" style="--z:#2F7A4A">
+        <h3 class="lat-head"><button class="lat-row" type="button" id="tab-39" data-plan="39" aria-expanded="false" aria-controls="plan-39">
+          <span class="lat-photo" aria-hidden="true"><img src="assets/routes/pucon.jpg" width="1600" height="1200" alt="" loading="lazy" style="object-position:50% 50%"></span>
+          <span class="lat-id">05</span>
+          <span class="lat-title"><span class="lat-deg">39°S</span> Lakes &amp; volcanoes</span>
+          <span class="lat-loc">South · Lakes and volcanoes</span>
+          <span class="lat-go" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span>
+        </button></h3>
+        <article class="plan" id="plan-39" aria-labelledby="tab-39">
+          <div class="plan-body">
+            <div class="plan-main">
+            <p class="plan-desc">Between Pucón and Puerto Varas the landscape turns to native forest, with snow-capped volcanoes reflected in the lakes. It is the most versatile area for combining activity and rest.</p>
           <h4 class="plan-kicker">Featured experiences</h4>
           <ul class="plan-hl">
             <li><strong>Trekking in national parks</strong><span>Huerquehue and Vicente Pérez Rosales, among others.</span></li>
@@ -566,7 +647,9 @@ form .btn{align-self:flex-start}
             <li><strong>Hot springs in the forest</strong><span>Warm pools among ferns and ravines.</span></li>
             <li><strong>Volcano ascent</strong><span>With a mountain guide, subject to the current alert level.</span></li>
           </ul>
-          <dl class="plan-facts">
+            </div>
+            <div class="plan-side">
+            <dl class="plan-facts">
             <div><dt>Best season</dt><dd>November to April</dd></div>
             <div><dt>Suggested stay</dt><dd>4 to 6 days</dd></div>
             <div><dt>Effort</dt><dd>Medium</dd></div>
@@ -574,13 +657,22 @@ form .btn{align-self:flex-start}
           </dl>
           <p class="plan-tip"><b>Good to know:</b> The weather changes fast. We leave flexible days to make the most of good-weather windows.</p>
           <a class="btn btn-ink" href="#contact" data-exp="39°S — Lakes &amp; volcanoes">Enquire about 39°S</a>
-        </div>
-      </article>
-      <article class="plan" role="tabpanel" id="plan-51" aria-labelledby="tab-51" style="--z:#2F5FA8">
-        <div class="plan-visual"><img src="assets/routes/torres-del-paine.jpg" width="960" height="640" alt="The Cuernos del Paine peaks above a turquoise lake at sunrise" loading="lazy"><span class="plan-badge">06 · Patagonia · Navigation</span></div>
-        <div class="plan-body">
-          <h3 class="plan-title"><span>51°S</span> Patagonia</h3>
-          <p class="plan-desc">In the far south, Chilean Patagonia brings together ice fields, fjords and some of the most photographed mountains on the continent. It is the area for those seeking isolation and vast scale.</p>
+            </div>
+          </div>
+        </article>
+      </div>
+      <div class="lat-item" style="--z:#2F5FA8">
+        <h3 class="lat-head"><button class="lat-row" type="button" id="tab-51" data-plan="51" aria-expanded="false" aria-controls="plan-51">
+          <span class="lat-photo" aria-hidden="true"><img src="assets/routes/torres-del-paine.jpg" width="960" height="640" alt="" loading="lazy"></span>
+          <span class="lat-id">06</span>
+          <span class="lat-title"><span class="lat-deg">51°S</span> Patagonia</span>
+          <span class="lat-loc">Patagonia · Navigation</span>
+          <span class="lat-go" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span>
+        </button></h3>
+        <article class="plan" id="plan-51" aria-labelledby="tab-51">
+          <div class="plan-body">
+            <div class="plan-main">
+            <p class="plan-desc">In the far south, Chilean Patagonia brings together ice fields, fjords and some of the most photographed mountains on the continent. It is the area for those seeking isolation and vast scale.</p>
           <h4 class="plan-kicker">Featured experiences</h4>
           <ul class="plan-hl">
             <li><strong>Torres del Paine</strong><span>The W circuit or day treks, with a guide and refuges booked.</span></li>
@@ -588,7 +680,9 @@ form .btn{align-self:flex-start}
             <li><strong>Yachts and private expeditions</strong><span>Exclusive itineraries through channels where no road reaches.</span></li>
             <li><strong>Fly fishing</strong><span>Patagonian rivers and lakes, with guide and equipment included.</span></li>
           </ul>
-          <dl class="plan-facts">
+            </div>
+            <div class="plan-side">
+            <dl class="plan-facts">
             <div><dt>Best season</dt><dd>October to April</dd></div>
             <div><dt>Suggested stay</dt><dd>5 to 8 days</dd></div>
             <div><dt>Effort</dt><dd>Medium to high</dd></div>
@@ -596,8 +690,10 @@ form .btn{align-self:flex-start}
           </dl>
           <p class="plan-tip"><b>Good to know:</b> The wind is part of the landscape. Before the trip we send you the recommended equipment list.</p>
           <a class="btn btn-ink" href="#contact" data-exp="51°S — Patagonia">Enquire about 51°S</a>
-        </div>
-      </article>
+            </div>
+          </div>
+        </article>
+      </div>
     </div>
 
     <div class="routes-head">
@@ -795,7 +891,7 @@ form .btn{align-self:flex-start}
   var root = document.documentElement;
 
   // Aparición escalonada
-  var groups = [".section-head", ".lat-tab", ".plans", ".routes-head", ".route", ".pillar", "#approach .h2", ".big-mark", ".name-copy", ".contact-copy", "#enquiry .field", "#enquiry .btn"];
+  var groups = [".section-head", ".lat-item", ".routes-head", ".route", ".pillar", "#approach .h2", ".big-mark", ".name-copy", ".contact-copy", "#enquiry .field", "#enquiry .btn"];
   var items = [];
   groups.forEach(function (sel) {
     document.querySelectorAll(sel).forEach(function (el, i) {
@@ -880,32 +976,46 @@ form .btn{align-self:flex-start}
 })();
 </script>
 <script>
-/* Selector de planes por latitud */
+/* Lista de latitudes: cada fila abre su plan debajo (y cierra el que estaba abierto) */
 (function () {
-  var tabs = [].slice.call(document.querySelectorAll(".lat-tab"));
-  var plans = [].slice.call(document.querySelectorAll(".plan"));
-  if (!tabs.length) return;
-  function select(id, opts) {
-    opts = opts || {};
-    tabs.forEach(function (t) {
-      var on = t.getAttribute("data-plan") === id;
-      t.setAttribute("aria-selected", on ? "true" : "false"); t.tabIndex = on ? 0 : -1;
-      if (on) { if (opts.focus) t.focus(); if (t.scrollIntoView && window.innerWidth <= 1000) t.scrollIntoView({ block: "nearest", inline: "center", behavior: "smooth" }); }
+  var rows = [].slice.call(document.querySelectorAll(".lat-row"));
+  if (!rows.length) return;
+  var still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function open(id, keep) {
+    var target = null, below = false;
+    rows.forEach(function (r) {
+      var me = r.getAttribute("data-plan") === id;
+      var on = me && (keep || r.getAttribute("aria-expanded") !== "true");
+      if (me) below = true;
+      // Una fila abierta que está ARRIBA de la elegida se cierra al instante, para que la página no se corra
+      if (!on && !below && r.getAttribute("aria-expanded") === "true") {
+        r.style.transition = "none"; requestAnimationFrame(function () { requestAnimationFrame(function () { r.style.transition = ""; }); });
+      }
+      r.setAttribute("aria-expanded", on ? "true" : "false");
+      var p = document.getElementById(r.getAttribute("aria-controls"));
+      if (p) p.classList.toggle("active", on);
+      if (on) target = r;
     });
-    plans.forEach(function (p) { p.classList.toggle("active", p.id === "plan-" + id); });
+    return target;
   }
-  tabs.forEach(function (t, i) {
-    t.addEventListener("click", function () { select(t.getAttribute("data-plan")); });
-    t.addEventListener("keydown", function (e) {
-      var d = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0; if (!d) return;
-      e.preventDefault(); select(tabs[(i + d + tabs.length) % tabs.length].getAttribute("data-plan"), { focus: true });
+  function bring(row, force) {
+    // Si la fila quedó fuera de vista (porque se cerró otra arriba), la trae de vuelta
+    setTimeout(function () {
+      var t = row.getBoundingClientRect().top;
+      if (force || t < 80 || t > window.innerHeight * 0.55) row.parentNode.parentNode.scrollIntoView({ behavior: still ? "auto" : "smooth", block: "start" });
+    }, 30);
+  }
+  rows.forEach(function (r, i) {
+    r.addEventListener("click", function () { var t = open(r.getAttribute("data-plan")); if (t) bring(t); });
+    r.addEventListener("keydown", function (e) {
+      var d = e.key === "ArrowDown" ? 1 : e.key === "ArrowUp" ? -1 : 0; if (!d) return;
+      e.preventDefault(); rows[(i + d + rows.length) % rows.length].focus();
     });
   });
   // Los marcadores del mapa y los tramos de las rutas abren su plan
   document.querySelectorAll(".pin[data-plan], .route-bar [data-plan]").forEach(function (el) {
     el.addEventListener("click", function (e) {
-      e.preventDefault(); select(el.getAttribute("data-plan"));
-      document.querySelector(".lat-tabs").scrollIntoView({ behavior: "smooth", block: "start" });
+      e.preventDefault(); var t = open(el.getAttribute("data-plan"), true); if (t) bring(t, true);
     });
   });
 })();
