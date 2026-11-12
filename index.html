@@ -97,6 +97,11 @@ a{color:inherit}
 .langs a{display:inline-flex;align-items:center;justify-content:center;min-width:40px;min-height:38px;padding:0 10px;border-radius:999px;font-family:var(--mono);font-size:.75rem;letter-spacing:.06em;color:var(--text-dim);text-decoration:none;transition:background-color .2s,color .2s}
 .langs a:hover{color:var(--paper);background:rgba(238,242,241,.08)}
 .langs a[aria-current="true"]{background:var(--paper);color:var(--ink)}
+/* Estilo glass en los botones del header (Enquire e idiomas) */
+.nav .btn-line,.langs{background:linear-gradient(180deg,rgba(238,242,241,.14),rgba(238,242,241,.04));-webkit-backdrop-filter:blur(16px) saturate(170%);backdrop-filter:blur(16px) saturate(170%);border:1px solid rgba(238,242,241,.22);box-shadow:inset 0 1px 0 rgba(255,255,255,.22),inset 0 -1px 0 rgba(255,255,255,.04),0 10px 28px -14px rgba(0,0,0,.7)}
+.nav .btn-line:hover,.nav .btn-line:focus-visible{background:linear-gradient(180deg,rgba(238,242,241,.24),rgba(238,242,241,.08));border-color:rgba(238,242,241,.4);color:var(--paper)}
+.langs a[aria-current="true"]{background:rgba(238,242,241,.88);box-shadow:inset 0 1px 0 #fff,0 4px 12px -6px rgba(0,0,0,.6)}
+@media (max-width:640px){.btn-ig{width:100%;padding:14px 16px}.btn-ig .ig-handle{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.btn-ig svg{margin-left:auto;flex:none}}
 @media (max-width:400px){.nav{gap:4px 10px}.nav .btn{padding:8px 16px}.langs a{min-width:34px;padding:0 6px}}
 
 /* Hero */
