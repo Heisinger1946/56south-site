@@ -450,6 +450,7 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent);outline-
 .form-status{margin:0;font-size:.9375rem;color:var(--accent);min-height:1.5em}
 form .btn{align-self:flex-start}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.captcha{min-height:78px}
 .hp{position:absolute;left:-5000px;width:1px;height:1px;overflow:hidden}
 
 /* Footer */
@@ -872,7 +873,7 @@ form .btn{align-self:flex-start}
       </div>
     </div>
 
-    <form id="enquiry" name="enquiry" method="POST" data-netlify="true" netlify-honeypot="website" data-email="concierge@go56south.com" data-endpoint="/" novalidate>
+    <form id="enquiry" name="enquiry" method="POST" data-netlify="true" data-netlify-recaptcha="true" netlify-honeypot="website" data-email="concierge@go56south.com" data-endpoint="/" novalidate>
       <input type="hidden" name="form-name" value="enquiry">
       <input type="hidden" name="language" value="ru">
       <div class="field">
@@ -902,6 +903,7 @@ form .btn{align-self:flex-start}
         <textarea id="f-msg" name="message" rows="4"></textarea>
       </div>
       <div class="hp" aria-hidden="true"><label for="f-web">Оставьте пустым</label><input id="f-web" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+      <div class="captcha" data-netlify-recaptcha="true" data-theme="dark"></div>
       <button class="btn btn-solid" type="submit">Отправить запрос</button>
       <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
     </form>
@@ -928,9 +930,9 @@ form .btn{align-self:flex-start}
 
   var LANG = (document.documentElement.lang || "en").slice(0, 2);
   var ALL = {
-    en: { invalid: "Please add your name and a valid email.", sending: "Sending…", ok: "Thank you. The concierge will reply personally.", fail: "Something went wrong. Please write to ", mail: "Your email app should open with the message ready to send.", subject: "Expedition enquiry — " },
-    es: { invalid: "Escribe tu nombre y un correo válido.", sending: "Enviando…", ok: "Gracias. El concierge te responderá personalmente.", fail: "Algo salió mal. Escríbenos a ", mail: "Tu aplicación de correo debería abrirse con el mensaje listo para enviar.", subject: "Consulta de expedición — " },
-    ru: { invalid: "Пожалуйста, укажите имя и действующий email.", sending: "Отправляем…", ok: "Спасибо. Консьерж ответит вам лично.", fail: "Что-то пошло не так. Напишите нам на ", mail: "Должно открыться ваше почтовое приложение с готовым письмом.", subject: "Запрос об экспедиции — " }
+    en: { invalid: "Please add your name and a valid email.", sending: "Sending…", ok: "Thank you. The concierge will reply personally.", fail: "Something went wrong. Please write to ", mail: "Your email app should open with the message ready to send.", subject: "Expedition enquiry — ", robot: "Please confirm you are not a robot." },
+    es: { invalid: "Escribe tu nombre y un correo válido.", sending: "Enviando…", ok: "Gracias. El concierge te responderá personalmente.", fail: "Algo salió mal. Escríbenos a ", mail: "Tu aplicación de correo debería abrirse con el mensaje listo para enviar.", subject: "Consulta de expedición — ", robot: "Confirma que no eres un robot." },
+    ru: { invalid: "Пожалуйста, укажите имя и действующий email.", sending: "Отправляем…", ok: "Спасибо. Консьерж ответит вам лично.", fail: "Что-то пошло не так. Напишите нам на ", mail: "Должно открыться ваше почтовое приложение с готовым письмом.", subject: "Запрос об экспедиции — ", robot: "Пожалуйста, подтвердите, что вы не робот." }
   };
   var MSG = ALL[LANG] || ALL.en;
   var form = document.getElementById("enquiry");
@@ -952,6 +954,9 @@ form .btn{align-self:flex-start}
     a.addEventListener("click", function () { if (location.hash) a.href = a.getAttribute("href").split("#")[0] + location.hash; });
   });
 
+  // reCAPTCHA en tono oscuro, como el resto de la página
+  form.querySelectorAll(".g-recaptcha").forEach(function (el) { el.setAttribute("data-theme", "dark"); });
+
   form.addEventListener("submit", function (e) {
     e.preventDefault();
     var name = form.name.value.trim();
@@ -963,6 +968,8 @@ form .btn{align-self:flex-start}
       return;
     }
     var endpoint = form.getAttribute("data-endpoint");
+    var cap = form.querySelector('[name="g-recaptcha-response"]');
+    if (endpoint && cap && !cap.value) { status.textContent = MSG.robot; return; }
     if (endpoint) {
       status.textContent = MSG.sending;
       fetch(endpoint, { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body: new URLSearchParams(new FormData(form)).toString() })
@@ -973,7 +980,8 @@ form .btn{align-self:flex-start}
         })
         .catch(function () {
           status.textContent = MSG.fail + form.getAttribute("data-email") + ".";
-        });
+        })
+        .then(function () { if (window.grecaptcha && cap) grecaptcha.reset(); });
       return;
     }
     var subject = MSG.subject + form.expedition.value;
