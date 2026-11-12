@@ -906,6 +906,7 @@ form .btn{align-self:flex-start}
       </div>
       <div class="hp" aria-hidden="true"><label for="f-web">Оставьте пустым</label><input id="f-web" name="website" type="text" tabindex="-1" autocomplete="off"></div>
       <div class="captcha" data-netlify-recaptcha="true" data-theme="dark"></div>
+      <script>document.querySelectorAll(".captcha .g-recaptcha").forEach(function (el) { el.setAttribute("data-theme", "dark"); });</script>
       <button class="btn btn-solid" type="submit">Отправить запрос</button>
       <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
     </form>
@@ -955,9 +956,6 @@ form .btn{align-self:flex-start}
   document.querySelectorAll(".langs a").forEach(function (a) {
     a.addEventListener("click", function () { if (location.hash) a.href = a.getAttribute("href").split("#")[0] + location.hash; });
   });
-
-  // reCAPTCHA en tono oscuro, como el resto de la página
-  form.querySelectorAll(".g-recaptcha").forEach(function (el) { el.setAttribute("data-theme", "dark"); });
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
