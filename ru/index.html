@@ -451,6 +451,8 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent);outline-
 form .btn{align-self:flex-start}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .captcha{min-height:78px}
+.captcha .g-recaptcha>div{border-radius:6px;overflow:hidden;box-shadow:0 0 0 1px var(--line-2)}
+@media (max-width:340px){.captcha{transform:scale(.9);transform-origin:0 0}}
 .hp{position:absolute;left:-5000px;width:1px;height:1px;overflow:hidden}
 
 /* Footer */
@@ -975,6 +977,11 @@ form .btn{align-self:flex-start}
       fetch(endpoint, { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body: new URLSearchParams(new FormData(form)).toString() })
         .then(function (r) {
           if (!r.ok) throw new Error();
+          return r.text();
+        })
+        .then(function (t) {
+          // Si Netlify rechaza el reCAPTCHA devuelve la misma página con el formulario
+          if (cap && /id=["']enquiry["']/.test(t)) { status.textContent = MSG.robot; return; }
           form.reset();
           status.textContent = MSG.ok;
         })
