@@ -316,6 +316,25 @@ input:focus,select:focus,textarea:focus{box-shadow:0 0 0 4px rgba(227,168,87,.18
   .lat-row[aria-expanded="true"] .lat-title{transform:none}
 }
 .lat-item .plan{margin:8px 0 32px}
+/* Ruta premium (47°S): fila destacada con su foto siempre visible, insignia dorada y plan con borde ámbar */
+.is-premium .lat-row{height:150px}
+.is-premium .lat-photo{opacity:1}
+.is-premium .lat-photo img{transform:scale(1.04)}
+.is-premium .lat-photo::after{background:linear-gradient(90deg,rgba(10,19,23,.88) 0%,rgba(10,19,23,.55) 55%,rgba(10,19,23,.3) 100%)}
+.is-premium .lat-title,.is-premium .lat-loc{color:var(--paper)}
+.is-premium .lat-loc{opacity:1;transform:none}
+.is-premium .lat-deg{color:var(--accent)}
+.is-premium .lat-id{color:rgba(238,242,241,.72)}
+.is-premium .lat-go{border-color:var(--accent);color:var(--accent)}
+.lat-premium{display:inline-block;margin-left:14px;padding:5px 12px 4px;border-radius:999px;vertical-align:middle;font-family:var(--mono);font-size:.6875rem;font-weight:400;letter-spacing:.16em;line-height:1.2;color:var(--ink);background:linear-gradient(110deg,#C9893A 0%,#F3D29B 45%,#E3A857 55%,#C9893A 100%);background-size:220% 100%;animation:premium-shine 3.5s ease-in-out infinite;box-shadow:0 6px 18px -8px rgba(227,168,87,.8)}
+@keyframes premium-shine{0%,100%{background-position:100% 0}50%{background-position:0 0}}
+.plan.is-premium{box-shadow:0 0 0 1.5px var(--accent),0 30px 60px -36px rgba(176,122,48,.55)}
+.plan-premium{display:inline-block;align-self:flex-start;margin:0;padding:6px 12px 5px;border-radius:999px;background:var(--ink);color:var(--accent);font-family:var(--mono);font-size:.6875rem;letter-spacing:.14em;text-transform:uppercase}
+.pin-premium .pin-dot{background:var(--accent);box-shadow:0 0 0 2px var(--ink),0 0 0 4px var(--accent)}
+.pin-premium .pin-label b{color:var(--accent)}
+.is-premium .lat-row[aria-expanded="true"]{height:320px}
+@media (hover:hover) and (min-width:768px){.is-premium .lat-row:hover,.is-premium .lat-row:focus-visible{height:400px}}
+@media (max-width:767px){.is-premium .lat-row{height:132px;padding:0 16px}.is-premium .lat-row[aria-expanded="true"]{height:220px}.lat-premium{margin:6px 0 0;display:table;font-size:.625rem}}
 .plan{display:block;background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 30px 60px -40px rgba(10,19,23,.45);margin-bottom:24px}
 .js .plan:not(.active){display:none}
 .js .plan.active{animation:plan-in .55s cubic-bezier(.2,.7,.2,1) both}
@@ -499,6 +518,7 @@ form .btn{align-self:flex-start}
         <a class="pin pin-left pin-sm" href="#expeditions" data-plan="34" style="--x:13.1%;--y:38.8%;--d:1.52s" aria-label="34°S, Pacific"><span class="pin-line"></span><span class="pin-dot"></span><span class="pin-label"><b>34°S</b><i>Pacific</i></span></a>
         <a class="pin pin-sm" href="#expeditions" data-plan="35" style="--x:23.3%;--y:42.6%;--d:1.58s" aria-label="35°S, Wine valleys"><span class="pin-line"></span><span class="pin-dot"></span><span class="pin-label"><b>35°S</b><i>Wine valleys</i></span></a>
         <a class="pin " href="#expeditions" data-plan="39" style="--x:19.4%;--y:52.6%;--d:1.74s" aria-label="39°S, Lakes &amp; volcanoes"><span class="pin-line"></span><span class="pin-dot"></span><span class="pin-label"><b>39°S</b><i>Lakes &amp; volcanoes</i></span></a>
+        <a class="pin pin-premium" href="#expeditions" data-plan="47" style="--x:18%;--y:74.4%;--d:2.05s" aria-label="47°S, Fjords &amp; ice, Premium"><span class="pin-line"></span><span class="pin-dot"></span><span class="pin-label"><b>47°S</b><i>Fjords &amp; ice</i></span></a>
         <a class="pin " href="#expeditions" data-plan="51" style="--x:37.1%;--y:85.4%;--d:2.27s" aria-label="51°S, Patagonia"><span class="pin-line"></span><span class="pin-dot"></span><span class="pin-label"><b>51°S</b><i>Patagonia</i></span></a>
         <div class="pin pin-end" style="--x:93.8%;--y:99.4%;--d:2.49s"><span class="pin-line"></span><span class="pin-dot"></span><span class="pin-label"><b>56°S</b><i>Cape Horn</i></span></div>
         <p class="map-tag map-tag-bottom"><span></span>only ocean below</p>
@@ -512,7 +532,7 @@ form .btn{align-self:flex-start}
 <section class="light" id="expeditions">
   <div class="wrap section">
     <div class="section-head">
-      <h2 class="h2">Six latitudes. One country. No one else on the route.</h2>
+      <h2 class="h2">Seven latitudes. One country. No one else on the route.</h2>
       <p>Each expedition is named for its parallel. Pick a latitude to see the plan, or combine two or three in a single journey.</p>
     </div>
 
@@ -682,10 +702,45 @@ form .btn{align-self:flex-start}
           </div>
         </article>
       </div>
+      <div class="lat-item is-premium" style="--z:#8A5A1C">
+        <h3 class="lat-head"><button class="lat-row" type="button" id="tab-47" data-plan="47" aria-expanded="false" aria-controls="plan-47">
+          <span class="lat-photo" aria-hidden="true"><img src="assets/routes/fjords-premium.jpg" width="1280" height="720" alt="" loading="lazy"></span>
+          <span class="lat-id">06</span>
+          <span class="lat-title"><span class="lat-deg">47°S</span> Fjords &amp; ice <span class="lat-premium">Premium</span></span>
+          <span class="lat-loc">Fjords · Private yacht</span>
+          <span class="lat-go" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span>
+        </button></h3>
+        <article class="plan is-premium" id="plan-47" aria-labelledby="tab-47">
+          <div class="plan-body">
+            <div class="plan-main">
+            <p class="plan-premium">Signature expedition · Premium</p>
+            <p class="plan-desc">Our signature expedition. A private expedition yacht becomes your base camp for ten days through the fjords of northern Patagonia, from Puerto Montt to the face of the San Rafael glacier. Each morning you wake at a different anchorage, with volcanoes, hot springs and rivers a short tender ride away.</p>
+          <h4 class="plan-kicker">The route, anchorage by anchorage</h4>
+          <ul class="plan-hl">
+            <li><strong>Cochamó and Tronador</strong><span>Ski touring on the volcano in winter and spring, or the Cochamó valley trail and an asado on the shore in summer.</span></li>
+            <li><strong>Pumalín and the Huequi hot springs</strong><span>Remote thermal pools at the foot of the volcano, reached by tender from Caleta Gonzalo.</span></li>
+            <li><strong>Futaleufú and Palena</strong><span>Rafting on one of the world's great white-water rivers, and fly fishing on the Palena.</span></li>
+            <li><strong>Queulat and Puyuhuapi</strong><span>The hanging glacier from the trail, then an evening in the fjord's hot springs.</span></li>
+            <li><strong>Laguna San Rafael by jet ski</strong><span>On the last day you ride up to the face of the San Rafael glacier, with a guide and a support boat.</span></li>
+          </ul>
+            </div>
+            <div class="plan-side">
+            <dl class="plan-facts">
+            <div><dt>Best season</dt><dd>July to October for ski touring; November to March for fjords and rivers</dd></div>
+            <div><dt>Suggested stay</dt><dd>8 to 10 days on board</dd></div>
+            <div><dt>Effort</dt><dd>Tailored, from easy to high</dd></div>
+            <div><dt>Getting there</dt><dd>Flight to Puerto Montt (about 1 h 45) and boarding at the marina; return by light aircraft from Laguna San Rafael</dd></div>
+          </dl>
+          <p class="plan-tip"><b>Good to know:</b> The itinerary follows the weather and the snow, so the captain may change the order of anchorages. Cabins for up to eight guests, with crew, guides and a chef on board.</p>
+          <a class="btn btn-ink" href="#contact" data-exp="47°S — Fjords &amp; ice">Enquire about 47°S</a>
+            </div>
+          </div>
+        </article>
+      </div>
       <div class="lat-item" style="--z:#2F5FA8">
         <h3 class="lat-head"><button class="lat-row" type="button" id="tab-51" data-plan="51" aria-expanded="false" aria-controls="plan-51">
           <span class="lat-photo" aria-hidden="true"><img src="assets/routes/torres-del-paine.jpg" width="960" height="640" alt="" loading="lazy"></span>
-          <span class="lat-id">06</span>
+          <span class="lat-id">07</span>
           <span class="lat-title"><span class="lat-deg">51°S</span> Patagonia</span>
           <span class="lat-loc">Patagonia · Navigation</span>
           <span class="lat-go" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span>
@@ -815,6 +870,7 @@ form .btn{align-self:flex-start}
           <option value="34°S — Pacific">34°S — Pacific</option>
           <option value="35°S — Wine valleys">35°S — Wine valleys</option>
           <option value="39°S — Lakes &amp; volcanoes">39°S — Lakes &amp; volcanoes</option>
+          <option value="47°S — Fjords &amp; ice">47°S — Fjords &amp; ice (Premium)</option>
           <option value="51°S — Patagonia">51°S — Patagonia</option>
           <option value="A combination of latitudes">A combination of latitudes</option>
         </select>
