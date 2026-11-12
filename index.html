@@ -97,10 +97,16 @@ a{color:inherit}
 .langs a{display:inline-flex;align-items:center;justify-content:center;min-width:40px;min-height:38px;padding:0 10px;border-radius:999px;font-family:var(--mono);font-size:.75rem;letter-spacing:.06em;color:var(--text-dim);text-decoration:none;transition:background-color .2s,color .2s}
 .langs a:hover{color:var(--paper);background:rgba(238,242,241,.08)}
 .langs a[aria-current="true"]{background:var(--paper);color:var(--ink)}
-/* Estilo glass en los botones del header (Enquire e idiomas) */
-.nav .btn-line,.langs{background:linear-gradient(180deg,rgba(238,242,241,.14),rgba(238,242,241,.04));-webkit-backdrop-filter:blur(16px) saturate(170%);backdrop-filter:blur(16px) saturate(170%);border:1px solid rgba(238,242,241,.22);box-shadow:inset 0 1px 0 rgba(255,255,255,.22),inset 0 -1px 0 rgba(255,255,255,.04),0 10px 28px -14px rgba(0,0,0,.7)}
-.nav .btn-line:hover,.nav .btn-line:focus-visible{background:linear-gradient(180deg,rgba(238,242,241,.24),rgba(238,242,241,.08));border-color:rgba(238,242,241,.4);color:var(--paper)}
-.langs a[aria-current="true"]{background:rgba(238,242,241,.88);box-shadow:inset 0 1px 0 #fff,0 4px 12px -6px rgba(0,0,0,.6)}
+/* Header estilo "liquid glass" (como iOS): cápsulas translúcidas con desenfoque, borde especular y brillo interior */
+.nav-links{display:flex;align-items:center;gap:2px;padding:4px;border-radius:999px}
+.nav-links a.link{padding:10px 16px;border-radius:999px;transition:background-color .35s,color .35s,box-shadow .35s}
+.nav-links,.nav .btn-line,.langs{position:relative;isolation:isolate;border:0;background:linear-gradient(135deg,rgba(255,255,255,.16) 0%,rgba(255,255,255,.06) 45%,rgba(255,255,255,.03) 100%);-webkit-backdrop-filter:blur(22px) saturate(190%);backdrop-filter:blur(22px) saturate(190%);box-shadow:inset 0 1px 1px rgba(255,255,255,.42),inset 0 -1px 1px rgba(255,255,255,.07),inset 0 0 14px rgba(255,255,255,.05),0 10px 30px -12px rgba(0,0,0,.75),0 2px 6px -2px rgba(0,0,0,.4)}
+.nav-links::before,.nav .btn-line::before,.langs::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;padding:1px;background:linear-gradient(140deg,rgba(255,255,255,.65) 0%,rgba(255,255,255,.12) 28%,rgba(255,255,255,0) 50%,rgba(255,255,255,.1) 72%,rgba(255,255,255,.4) 100%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);pointer-events:none}
+.nav .btn-line{color:var(--paper);transition:transform .35s cubic-bezier(.3,1.4,.5,1),background .35s,box-shadow .35s}
+.nav .btn-line:hover,.nav .btn-line:focus-visible{transform:scale(1.05);background:linear-gradient(135deg,rgba(255,255,255,.26) 0%,rgba(255,255,255,.1) 50%,rgba(255,255,255,.06) 100%);color:#fff}
+.nav-links a.link:hover,.nav-links a.link:focus-visible,.langs a:hover{color:#fff;background:rgba(255,255,255,.1);box-shadow:inset 0 1px 0 rgba(255,255,255,.25)}
+.langs a[aria-current="true"]{color:#fff;font-weight:600;background:linear-gradient(180deg,rgba(255,255,255,.34),rgba(255,255,255,.16));box-shadow:inset 0 1px 1px rgba(255,255,255,.6),inset 0 -1px 1px rgba(255,255,255,.1),0 4px 12px -4px rgba(0,0,0,.6)}
+@media (max-width:640px){.nav-links{display:none}}
 @media (max-width:640px){.btn-ig{width:100%;padding:14px 16px}.btn-ig .ig-handle{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.btn-ig svg{margin-left:auto;flex:none}}
 @media (max-width:400px){.nav{gap:4px 10px}.nav .btn{padding:8px 16px}.langs a{min-width:34px;padding:0 6px}}
 
@@ -463,9 +469,11 @@ form .btn{align-self:flex-start}
   <div class="wrap">
     <a class="logo" href="#top"><img src="assets/logo-mark-light.png" width="362" height="240" alt="56°S — home"></a>
     <nav class="nav" aria-label="Main">
-      <a class="link" href="#expeditions">Expeditions</a>
-      <a class="link" href="#approach">Approach</a>
-      <a class="link" href="#name">The name</a>
+      <div class="nav-links">
+        <a class="link" href="#expeditions">Expeditions</a>
+        <a class="link" href="#approach">Approach</a>
+        <a class="link" href="#name">The name</a>
+      </div>
       <a class="btn btn-line" href="#contact">Enquire</a>
       <div class="langs" role="group" aria-label="Language">
         <a href="/" hreflang="en" lang="en" aria-current="true" title="English">EN</a>
