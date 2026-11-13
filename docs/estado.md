@@ -9,6 +9,10 @@ Actualizado: 13 nov 2026.
 
 ## En `borrador`, sin publicar
 
+- Nada (solo esta nota de estado).
+
+## Publicado el 13 nov 2026 (segundo envío)
+
 - Se quitó la sección "Combine latitudes in one journey" (rutas Essential Chile, End to end y Andean winter) bajo la lista de latitudes. Sus traducciones siguen en `i18n/` por si se recupera.
 
 ## Publicado el 13 nov 2026
