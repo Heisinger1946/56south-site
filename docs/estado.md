@@ -9,11 +9,14 @@ Actualizado: 13 nov 2026.
 
 ## En `borrador`, sin publicar
 
-- Se quitó el fondo de montañas en capas de la sección de latitudes (y `assets/wilderness/`): la sección vuelve a fondo claro. Jhon avisó que la página "se caía" al rato de tenerla abierta; ese fondo sumaba 93 MB de imágenes en memoria (17 capas, cada una con su propia capa 3D), de 48 MB a 141 MB en total. No se pudo reproducir la caída en este PC (16 GB), así que es la causa probable, no confirmada.
+- Arreglo: las curvas de nivel se publicaron **quietas** (la duración de la animación quedaba en 0 s por un choque de reglas CSS). En `borrador` ya se mueven: medido a 8 px/s, 100 cuadros por segundo, y en pausa fuera de pantalla. **go56south.com muestra el fondo quieto hasta que se publique.**
+
+## Publicado el 13 nov 2026 (sexto envío)
+
+- Se quitó el fondo de montañas en capas de la sección de latitudes (y `assets/wilderness/`): la sección vuelve a fondo claro. Jhon avisó que la página "se caía" al rato de tenerla abierta; ese fondo sumaba 93 MB de imágenes en memoria (17 capas, cada una con su propia capa 3D), de 48 MB a 141 MB en total. No se pudo reproducir la caída en este PC (16 GB), así que es la causa probable, no confirmada. Si se sigue cayendo, lo siguiente a revisar es la barra Waterline y el mapa 3D de la portada.
 - Se mantiene el resalte de las filas de latitudes (sombra y filo de luz), ajustado al fondo claro.
-- Barra "Waterline": el agua ya no se dibuja sin parar; se mece unos segundos tras cada movimiento y se detiene (antes eran dos lienzos WebGL dibujando todo el tiempo).
-- Fondo animado nuevo en la sección de latitudes: curvas de nivel (carta topográfica de la cordillera) en tinta sobre papel, que derivan lento en dos planos, con seis cumbres de Chile y su altura de norte a sur (Licancabur, Tupungato, Villarrica, San Valentín, Paine Grande, Cabo de Hornos). Dibujos propios: `assets/topo.svg` y `assets/topo-peaks.svg`, generados con `tools/topo_svg.py` (88 KB, sin fotos ni licencias). Solo usa `transform`, se pausa fuera de pantalla y se apaga con "reducir movimiento". Falta medir la fluidez con la página visible (la ventana estaba oculta al probar).
-- **Mientras no se publique, go56south.com sigue con el fondo de montañas.** Si la página se sigue cayendo después de publicar esto, lo siguiente a revisar es la barra Waterline y el mapa 3D de la portada.
+- Barra "Waterline": el agua ya no se dibuja sin parar; se mece unos segundos tras cada movimiento y se detiene.
+- Fondo nuevo en la sección de latitudes: curvas de nivel (carta topográfica de la cordillera) en tinta sobre papel, en dos planos, con seis cumbres de Chile y su altura de norte a sur (Licancabur, Tupungato, Villarrica, San Valentín, Paine Grande, Cabo de Hornos; alturas por confirmar). Dibujos propios: `assets/topo.svg` y `assets/topo-peaks.svg`, generados con `tools/topo_svg.py` (88 KB, sin fotos ni licencias). Solo usa `transform`, se pausa fuera de pantalla y se apaga con "reducir movimiento".
 
 ## Publicado el 13 nov 2026 (quinto envío)
 

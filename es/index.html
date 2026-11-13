@@ -270,10 +270,10 @@ input:focus,select:focus,textarea:focus{box-shadow:0 0 0 4px rgba(227,168,87,.18
 .topo-view{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
 .topo-view i{position:absolute;top:0;left:0;height:100%;background-repeat:repeat;animation:topo-drift linear infinite;animation-play-state:paused}
 .topo.on .topo-view i{animation-play-state:running}
-.topo-a{width:calc(100% + 1200px);background-image:url(../assets/topo.svg);background-size:1200px 1200px;opacity:.13;--shift:-1200px;animation-duration:150s}
-.topo-b{width:calc(100% + 1900px);background-image:url(../assets/topo.svg);background-size:1900px 1900px;background-position:-420px -310px;opacity:.06;--shift:-1900px;animation-duration:260s;animation-direction:reverse}
+.topo-view .topo-a{width:calc(100% + 1200px);background-image:url(../assets/topo.svg);background-size:1200px 1200px;opacity:.13;--shift:-1200px;animation-duration:150s}
+.topo-view .topo-b{width:calc(100% + 1900px);background-image:url(../assets/topo.svg);background-size:1900px 1900px;background-position:-420px -310px;opacity:.06;--shift:-1900px;animation-duration:260s;animation-direction:reverse}
 /* Cumbres de Chile con su altura: viajan pegadas al plano de adelante */
-.topo-p{width:calc(100% + 1200px);background-image:url(../assets/topo-peaks.svg);background-size:1200px 1200px;opacity:.42;--shift:-1200px;animation-duration:150s}
+.topo-view .topo-p{width:calc(100% + 1200px);background-image:url(../assets/topo-peaks.svg);background-size:1200px 1200px;opacity:.42;--shift:-1200px;animation-duration:150s}
 @keyframes topo-drift{to{transform:translate3d(var(--shift),0,0)}}
 @media (prefers-reduced-motion:reduce){.topo-view i{animation:none}}
 .section{padding-top:104px;padding-bottom:104px}
