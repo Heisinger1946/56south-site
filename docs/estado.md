@@ -9,7 +9,7 @@ Actualizado: 13 nov 2026.
 
 ## En `borrador`, sin publicar
 
-- Tipografía más premium: titulares y latitudes en Cormorant Garamond (500/600, con cirílico), texto destacado en Inter Light, rótulos con más interletrado, correo de contacto en cursiva. Reemplaza a Space Grotesk/Manrope. Falta que Jhon diga "publica".
+- Tipografía nueva: titulares y latitudes en Oswald (500/600), texto en IBM Plex Sans (300/400/600), ambas con cirílico; rótulos con más interletrado. Cormorant Garamond + Inter se probó y no le gustó a Jhon. Reemplaza a Space Grotesk/Manrope. Falta que Jhon diga "publica".
 - La carpeta `docs/`, `CLAUDE.md` y `.claude/` (este traslado del proyecto). **Ojo:** Netlify publica la raíz del repo, así que al publicar quedarían visibles en go56south.com/docs/… y /CLAUDE.md. Antes de publicar, preguntar a Jhon si se bloquean (por ejemplo con un archivo `_redirects`) o se mueven.
 
 ## Pendiente

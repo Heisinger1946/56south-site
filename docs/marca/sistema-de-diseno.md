@@ -29,8 +29,8 @@ Colores de zona (solo en elementos de su expedición, pasados con `--z:var(--zon
 
 Nueva tipografía en la rama `borrador` (13 nov 2026, sin publicar todavía):
 
-- `display`: **Cormorant Garamond** 500 (h1, h2, latitudes) y 600 (h3, títulos de plan y rutas); cursiva 500 en el correo de contacto. Cifras de línea (`lining-nums`). Trae cirílico.
-- `body`: **Inter** 300 (lead), 400 (texto) y 600 (énfasis, botones).
+- `display`: **Oswald** 500 (h1, h2, latitudes y correo de contacto) y 600 (h3, títulos de plan y rutas). Sans condensada, estilo aventura/alpino; sin cursiva. Cifras de línea (`lining-nums`). Trae cirílico. Elegida por Jhon el 13 nov 2026 (antes: Cormorant Garamond, que no le gustó).
+- `body`: **IBM Plex Sans** 300 (lead), 400 (texto) y 600 (énfasis, botones). Trae cirílico.
 - `mono`: **JetBrains Mono** para coordenadas, números y rótulos (eyebrow, kicker, fact-label), en mayúsculas con interletrado amplio.
 
 Hasta que se publique, `main` sigue con Space Grotesk 700 en titulares (Manrope para cirílico).

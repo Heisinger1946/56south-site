@@ -12,7 +12,7 @@ Antes de diseñar, lee `docs/marca/sistema-de-diseno.md` (reglas de marca) y `do
 - Clientes: todo en **inglés**; el sitio se genera también en español y ruso. Nombre, números y "°S" nunca se traducen; en ruso el nombre va en letras latinas.
 - Son **"Private Expeditions"**, nunca "packs" ni "tours". Frases cortas y afirmativas, "you" + un "we" discreto, sin signos de exclamación ni emojis.
 - Base oscura `ink` #0A1317 con texto `paper` #EEF2F1; un solo acento `accent` #E3A857; cada latitud con su color de zona vía `--z`, solo en elementos de esa expedición.
-- Tipografía: Cormorant Garamond (titulares y latitudes), Inter (texto), JetBrains Mono (coordenadas, rótulos, números).
+- Tipografía: Oswald (titulares y latitudes), IBM Plex Sans (texto), JetBrains Mono (coordenadas, rótulos, números).
 - Botones en píldora; tarjetas con radios 16–20px; foco con contorno `accent` de 2px. Toda animación nueva se apaga con `prefers-reduced-motion`.
 
 ## Mapa del sitio (index.html)

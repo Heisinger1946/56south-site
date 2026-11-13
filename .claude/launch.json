@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "56south-local",
+      "runtimeExecutable": "py",
+      "runtimeArgs": ["-m", "http.server", "8756", "--bind", "127.0.0.1"],
+      "port": 8756
+    }
+  ]
+}
