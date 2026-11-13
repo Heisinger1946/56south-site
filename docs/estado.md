@@ -9,8 +9,13 @@ Actualizado: 13 nov 2026.
 
 ## En `borrador`, sin publicar
 
-- Tipografía nueva: titulares y latitudes en Oswald (500/600), texto en IBM Plex Sans (300/400/600), ambas con cirílico; rótulos con más interletrado. Cormorant Garamond + Inter se probó y no le gustó a Jhon. Reemplaza a Space Grotesk/Manrope. Falta que Jhon diga "publica".
-- La carpeta `docs/`, `CLAUDE.md` y `.claude/` (este traslado del proyecto). **Ojo:** Netlify publica la raíz del repo, así que al publicar quedarían visibles en go56south.com/docs/… y /CLAUDE.md. Antes de publicar, preguntar a Jhon si se bloquean (por ejemplo con un archivo `_redirects`) o se mueven.
+- Nada: todo publicado el 13 nov 2026.
+
+## Publicado el 13 nov 2026
+
+- Tipografía nueva: titulares y latitudes en Oswald (500/600), texto en IBM Plex Sans (300/400/600), ambas con cirílico. Cormorant Garamond + Inter se probó y no le gustó a Jhon.
+- Barra superior "Waterline": gota de agua (WebGL) que marca la sección activa y el idioma; sin WebGL queda el vidrio anterior.
+- `_redirects` bloquea en la web los archivos internos (`docs/`, `tools/`, `i18n/`, `.claude/`, `CLAUDE.md`, `README.md`): siguen en el repo pero responden 404. Si se agrega otra carpeta interna, sumarla ahí.
 
 ## Pendiente
 
