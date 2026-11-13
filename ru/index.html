@@ -263,6 +263,19 @@ input:focus,select:focus,textarea:focus{box-shadow:0 0 0 4px rgba(227,168,87,.18
 
 /* Expeditions */
 .light{background:var(--paper);color:var(--ink)}
+/* Fondo de curvas de nivel: queda fijo (sticky) mientras se recorre la lista y deriva de lado muy lento */
+.topo-scene{position:relative}
+.topo-scene>.wrap{position:relative;z-index:1}
+.topo{position:absolute;inset:0;z-index:0;overflow:hidden;overflow:clip;pointer-events:none;-webkit-mask-image:linear-gradient(180deg,transparent 0,rgba(0,0,0,.45) 150px,#000 400px,#000 calc(100% - 160px),transparent 100%);mask-image:linear-gradient(180deg,transparent 0,rgba(0,0,0,.45) 150px,#000 400px,#000 calc(100% - 160px),transparent 100%)}
+.topo-view{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+.topo-view i{position:absolute;top:0;left:0;height:100%;background-repeat:repeat;animation:topo-drift linear infinite;animation-play-state:paused}
+.topo.on .topo-view i{animation-play-state:running}
+.topo-a{width:calc(100% + 1200px);background-image:url(../assets/topo.svg);background-size:1200px 1200px;opacity:.13;--shift:-1200px;animation-duration:150s}
+.topo-b{width:calc(100% + 1900px);background-image:url(../assets/topo.svg);background-size:1900px 1900px;background-position:-420px -310px;opacity:.06;--shift:-1900px;animation-duration:260s;animation-direction:reverse}
+/* Cumbres de Chile con su altura: viajan pegadas al plano de adelante */
+.topo-p{width:calc(100% + 1200px);background-image:url(../assets/topo-peaks.svg);background-size:1200px 1200px;opacity:.42;--shift:-1200px;animation-duration:150s}
+@keyframes topo-drift{to{transform:translate3d(var(--shift),0,0)}}
+@media (prefers-reduced-motion:reduce){.topo-view i{animation:none}}
 .section{padding-top:104px;padding-bottom:104px}
 @media (max-width:640px){.section{padding-top:72px;padding-bottom:72px}}
 .section-head{display:flex;flex-wrap:wrap;gap:24px 64px;justify-content:space-between;align-items:flex-end;margin-bottom:56px}
@@ -554,7 +567,10 @@ form .btn{align-self:flex-start}
 </section>
 
 <!-- ============ EXPEDICIONES ============ -->
-<section class="light" id="expeditions">
+<section class="light topo-scene" id="expeditions">
+  <!-- Fondo animado: curvas de nivel (carta topográfica de la cordillera) que derivan lento en dos planos.
+       Encima viajan cumbres de Chile con su altura, de norte a sur. Dibujos: assets/topo.svg y assets/topo-peaks.svg (tools/topo_svg.py). Solo se mueve con transform y se pausa fuera de pantalla. -->
+  <div class="topo" aria-hidden="true"><div class="topo-view"><i class="topo-b"></i><i class="topo-a"></i><i class="topo-p"></i></div></div>
   <div class="wrap section">
     <div class="section-head">
       <h2 class="h2">Семь широт. Одна страна. Никого больше на маршруте.</h2>
@@ -1261,6 +1277,14 @@ form .btn{align-self:flex-start}
     if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(addr).then(ok, function () {});
     else { var t = document.createElement("textarea"); t.value = addr; t.style.position = "fixed"; t.style.opacity = "0"; document.body.appendChild(t); t.select(); try { document.execCommand("copy"); ok(); } catch (e) {} t.remove(); }
   });
+})();
+</script>
+<script>
+/* Curvas de nivel de la sección de latitudes: solo se mueven mientras la sección está a la vista */
+(function () {
+  var topo = document.querySelector(".topo"); if (!topo) return;
+  if (!("IntersectionObserver" in window)) { topo.classList.add("on"); return; }
+  new IntersectionObserver(function (e) { topo.classList.toggle("on", e[0].isIntersecting); }).observe(topo);
 })();
 </script>
 <script>
