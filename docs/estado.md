@@ -9,7 +9,7 @@ Actualizado: 13 nov 2026.
 
 ## En `borrador`, sin publicar
 
-- Nada (solo esta nota de estado).
+- Arreglo: los títulos dentro de los planes desplegables (fondo blanco) habían quedado en blanco al oscurecer la sección de latitudes; vuelven a tinta oscura. **Este error está visible en go56south.com hasta que se publique.**
 
 ## Publicado el 13 nov 2026 (cuarto envío)
 
