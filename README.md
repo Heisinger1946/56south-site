@@ -19,6 +19,7 @@ Sitio de Fifty Six South (56°S), expediciones privadas en Chile. Es un sitio es
 | `favicon.png`, `apple-touch-icon.png` | Ícono de la pestaña y del acceso directo en el celular |
 | `assets/fonts/` | Tipografías (Cormorant Garamond para titulares, Inter para texto, JetBrains Mono para rótulos), alojadas en el mismo sitio |
 | `.nojekyll` | Le indica a GitHub Pages que publique los archivos tal cual |
+| `CLAUDE.md`, `.claude/skills/`, `docs/` | Contexto del proyecto para Claude Code: marca, estado, pendientes y cómo trabajar. No es parte de la página |
 
 Las fuentes van dentro del sitio y no se cargan desde Google. Así se evitan problemas de privacidad con visitantes europeos (RGPD) y la página no depende de servicios que pueden fallar en Rusia.
 
