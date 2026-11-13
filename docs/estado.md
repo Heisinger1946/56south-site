@@ -9,6 +9,10 @@ Actualizado: 13 nov 2026.
 
 ## En `borrador`, sin publicar
 
+- Nada (solo esta nota de estado).
+
+## Publicado el 13 nov 2026 (cuarto envío)
+
 - Transición más suave entre la portada y las latitudes (y entre las latitudes y "Not a tour…"): fundidos largos a `ink`, sin el corte ni la franja oscura.
 
 ## Publicado el 13 nov 2026 (tercer envío)
