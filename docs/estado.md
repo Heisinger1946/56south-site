@@ -9,7 +9,11 @@ Actualizado: 13 nov 2026.
 
 ## En `borrador`, sin publicar
 
-- Arreglo: las curvas de nivel se publicaron **quietas** (la duración de la animación quedaba en 0 s por un choque de reglas CSS). En `borrador` ya se mueven: medido a 8 px/s, 100 cuadros por segundo, y en pausa fuera de pantalla. **go56south.com muestra el fondo quieto hasta que se publique.**
+- Nada (solo esta nota de estado).
+
+## Publicado el 13 nov 2026 (séptimo envío)
+
+- Arreglo: las curvas de nivel se habían publicado quietas (la duración de la animación quedaba en 0 s por un choque de reglas CSS). Ya se mueven en el sitio real: medido a 8 px/s y 100 cuadros por segundo. Lección: comprobar que el dibujo avanza, no solo que la animación figure activa.
 
 ## Publicado el 13 nov 2026 (sexto envío)
 
