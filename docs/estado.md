@@ -9,7 +9,13 @@ Actualizado: 13 nov 2026.
 
 ## En `borrador`, sin publicar
 
-- Nada (solo esta nota de estado).
+- Nada.
+
+## Publicado el 13 nov 2026 (tercer envío)
+
+- Sección de latitudes con fondo oscuro y paisaje en capas (montañas y niebla) que se mueve con el cursor o con el scroll; queda fijo mientras se recorre la lista. Las 17 capas están en `assets/wilderness/` (WebP, 2,2 MB). **Vienen de un componente de 21st.dev ("wilderness"): no son de Chile y su licencia no está confirmada.** Jhon las eligió así, sin el texto grande.
+- Filas de latitudes con sombra y filo de luz en el borde (dorado en la premium).
+- En local, sin subir al repo: `assets/peaks/` y `tools/peaks_layers.py` (alternativa con los Cuernos del Paine recortados de `hero.jpg`, descartada por ahora).
 
 ## Publicado el 13 nov 2026 (segundo envío)
 
@@ -26,7 +32,7 @@ Actualizado: 13 nov 2026.
 1. Textos sin completar: "[YOUR SAFETY AND LOGISTICS STANDARD — vehicles, guides, support crew, insurance]" y "[LANGUAGES SPOKEN]".
 2. Lanzamiento: quitar `<meta name="robots" content="noindex">` cuando los textos estén completos.
 3. Ruta premium 47°S: confirmar "cabinas hasta 8 huéspedes" y "regreso en avioneta desde Laguna San Rafael".
-4. Fotos: confirmar licencias antes de uso comercial. La foto de Fitz Roy (premium) no corresponde a la ruta; se puede cambiar.
+4. Fotos: confirmar licencias antes de uso comercial, incluidas las capas de `assets/wilderness/`. La foto de Fitz Roy (premium) no corresponde a la ruta; se puede cambiar.
 5. Instagram @go56south: subir la foto de perfil (`docs/marca/56south-instagram-perfil.png`) y el enlace go56south.com desde la app del celular.
 6. Sistema de diseño en claude.ai (https://claude.ai/artifact/GDsdkypnFfC6pwJfijZdYd): sigue con Space Grotesk; actualizarlo cuando se publique la nueva tipografía.
 7. Opcional: activar Branch deploys para `borrador` en Netlify.
