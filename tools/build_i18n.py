@@ -1,6 +1,6 @@
 """Genera /es/index.html y /ru/index.html a partir de index.html (inglés).
 
-Uso:  python3 tools/build_i18n.py
+Uso:  py tools/build_i18n.py
 Las traducciones están en i18n/es.json e i18n/ru.json (texto en inglés -> traducción).
 Si cambias un texto en index.html, agrega su traducción en ambos JSON y vuelve a ejecutar
 este script: avisa qué textos no tienen traducción.

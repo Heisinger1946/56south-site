@@ -46,7 +46,7 @@ El sitio está en tres idiomas, con botones EN · ES · RU en el menú:
 **Solo se edita `index.html`.** Las versiones en español y ruso se generan con:
 
 ```
-python3 tools/build_i18n.py
+py tools/build_i18n.py
 ```
 
 El script toma cada texto en inglés y lo reemplaza por su traducción de `i18n/es.json` e `i18n/ru.json`. Si cambias o agregas un texto en `index.html`, agrega su traducción en los dos JSON y vuelve a ejecutar el script: te avisa qué textos quedaron sin traducir. Los mensajes del formulario en los tres idiomas están en el script de la página (`var ALL = {...}`).

@@ -26,9 +26,9 @@ Antes de diseñar, lee `docs/marca/sistema-de-diseno.md` (reglas de marca) y `do
 
 1. Trabaja en la rama `borrador` (`git checkout borrador && git pull`).
 2. Edita solo `index.html` (inglés). Nunca edites `es/` ni `ru/` a mano. Lee solo las partes que vas a cambiar (grep por sección).
-3. Si agregas o cambias texto visible (o `alt`, `aria-label`, `placeholder`), agrega su traducción en `i18n/es.json` e `i18n/ru.json` (clave = texto en inglés) y corre `python3 tools/build_i18n.py`. Si falla, lista los textos sin traducir: complétalos.
+3. Si agregas o cambias texto visible (o `alt`, `aria-label`, `placeholder`), agrega su traducción en `i18n/es.json` e `i18n/ru.json` (clave = texto en inglés) y corre `py tools/build_i18n.py` (en Windows Python se llama `py`; en Mac/Linux, `python3`). Si falla, lista los textos sin traducir: complétalos.
 4. Imágenes en `assets/` con rutas `assets/...`; el script las corrige para `/es/` y `/ru/`.
-5. Prueba en local: `python3 -m http.server 8756 --bind 127.0.0.1` y abre http://127.0.0.1:8756 (y /es/, /ru/). Revisa errores de consola y que no haya scroll horizontal en escritorio (1440×900) y celular (390×844).
+5. Prueba en local: `py -m http.server 8756 --bind 127.0.0.1` y abre http://127.0.0.1:8756 (y /es/, /ru/). Revisa errores de consola y que no haya scroll horizontal en escritorio (1440×900) y celular (390×844).
 6. Si cambia la estructura, actualiza `README.md`; al terminar, actualiza `docs/estado.md`.
 7. Commit en español con `git -c user.name="Jhon Heisinger" -c user.email="noreply@56south.invalid" commit` y `git push origin borrador`. Nunca hagas push a `main` sin la orden de Jhon.
 8. Cuando Jhon diga "publica": `git push origin borrador:main` (un solo push con todo junto), espera ~1 minuto y verifica en https://go56south.com. Cuesta 15 créditos; si Netlify ya no publica (créditos agotados), avisa y no lo intentes de nuevo.
