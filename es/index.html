@@ -906,7 +906,22 @@ form .btn{align-self:flex-start}
       </div>
       <div class="hp" aria-hidden="true"><label for="f-web">Dejar vacío</label><input id="f-web" name="website" type="text" tabindex="-1" autocomplete="off"></div>
       <div class="captcha" data-netlify-recaptcha="true" data-theme="dark"></div>
-      <script>document.querySelectorAll(".captcha .g-recaptcha").forEach(function (el) { el.setAttribute("data-theme", "dark"); });</script>
+      <script>
+      /* reCAPTCHA: tema oscuro y mismo idioma que la página (Google usa el del navegador) */
+      (function () {
+        document.querySelectorAll(".captcha .g-recaptcha").forEach(function (el) { el.setAttribute("data-theme", "dark"); });
+        var hl = document.documentElement.lang || "en", re = new RegExp("[?&]hl=" + hl + "(&|$)");
+        function fix(f) {
+          if (f.tagName === "IFRAME" && /\/recaptcha\/api2\/(anchor|bframe)/.test(f.src) && !re.test(f.src)) f.src = f.src.replace(/([?&]hl=)[^&]*/, "$1" + hl);
+        }
+        new MutationObserver(function (list) {
+          list.forEach(function (m) {
+            if (m.type === "attributes") return fix(m.target);
+            m.addedNodes.forEach(function (n) { if (n.nodeType === 1) { if (n.tagName === "IFRAME") fix(n); else n.querySelectorAll("iframe").forEach(fix); } });
+          });
+        }).observe(document.documentElement, { childList: true, subtree: true, attributes: true, attributeFilter: ["src"] });
+      })();
+      </script>
       <button class="btn btn-solid" type="submit">Enviar consulta</button>
       <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
     </form>
