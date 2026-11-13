@@ -9,7 +9,11 @@ Actualizado: 13 nov 2026.
 
 ## En `borrador`, sin publicar
 
-- Arreglo: los títulos dentro de los planes desplegables (fondo blanco) habían quedado en blanco al oscurecer la sección de latitudes; vuelven a tinta oscura. **Este error está visible en go56south.com hasta que se publique.**
+- Nada (solo esta nota de estado).
+
+## Publicado el 13 nov 2026 (quinto envío)
+
+- Arreglo: los títulos dentro de los planes desplegables (fondo blanco) habían quedado en blanco al oscurecer la sección de latitudes; vuelven a tinta oscura. Ojo al cambiar el color de una sección: los planes (`.plan`) fijan su propio color de texto.
 
 ## Publicado el 13 nov 2026 (cuarto envío)
 
