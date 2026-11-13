@@ -135,8 +135,6 @@ a{color:inherit}
 .hero::before{content:"";position:absolute;inset:-40% -10% -10%;background:repeating-linear-gradient(to bottom,transparent 0 47px,rgba(91,110,114,.16) 47px 48px);transform:perspective(900px) rotateX(58deg);transform-origin:50% 100%;-webkit-mask-image:radial-gradient(ellipse at 70% 60%,#000 0,transparent 68%);mask-image:radial-gradient(ellipse at 70% 60%,#000 0,transparent 68%);animation:drift 14s linear infinite;pointer-events:none}
 @keyframes drift{to{background-position:0 48px}}
 .hero::before{z-index:1}
-/* Pie de la portada: se funde a ink poco a poco (tapa también la grilla) para empalmar con la sección siguiente */
-.hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:34%;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(10,19,23,0) 0%,rgba(10,19,23,.18) 22%,rgba(10,19,23,.48) 46%,rgba(10,19,23,.78) 70%,rgba(10,19,23,.94) 88%,var(--ink) 100%)}
 .hero-bg{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;object-position:50% 35%;animation:kenburns 28s ease-in-out infinite alternate}
 @media (max-width:640px){.hero-bg{object-position:44% 35%;animation:none}}
 @keyframes kenburns{from{transform:scale(1)}to{transform:scale(1.09) translate(-1.2%,-1%)}}
@@ -343,10 +341,10 @@ input:focus,select:focus,textarea:focus{box-shadow:0 0 0 4px rgba(227,168,87,.18
 /* Ruta premium (47°S): fila destacada con su foto siempre visible, insignia dorada y plan con borde ámbar */
 /* Todas las filas muestran su foto (estilo de la ruta premium); el color de cada zona se aclara para leerse sobre la foto */
 .lat-item .lat-row{height:132px}
-/* Resalte de cada fila sobre el paisaje: sombra debajo y un filo de luz en el borde */
-.lat-item .lat-row{border-radius:20px;box-shadow:0 22px 44px -20px rgba(0,0,0,.85),0 6px 14px -6px rgba(0,0,0,.55);transition:height .7s cubic-bezier(.25,1,.5,1),box-shadow .5s}
+/* Resalte de cada fila: sombra debajo y un filo de luz en el borde */
+.lat-item .lat-row{border-radius:20px;box-shadow:0 20px 36px -20px rgba(10,19,23,.6),0 5px 12px -6px rgba(10,19,23,.35);transition:height .7s cubic-bezier(.25,1,.5,1),box-shadow .5s}
 .lat-item .lat-row::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.38),inset 0 0 0 1px rgba(255,255,255,.14)}
-.lat-item .lat-row:hover,.lat-item .lat-row[aria-expanded="true"]{box-shadow:0 30px 60px -22px rgba(0,0,0,.9),0 8px 18px -6px rgba(0,0,0,.6)}
+.lat-item .lat-row:hover,.lat-item .lat-row[aria-expanded="true"]{box-shadow:0 30px 52px -22px rgba(10,19,23,.7),0 8px 16px -6px rgba(10,19,23,.4)}
 .is-premium .lat-row::after{box-shadow:inset 0 1px 0 rgba(243,210,155,.55),inset 0 0 0 1px rgba(227,168,87,.4)}
 @media (max-width:767px){.lat-item .lat-row{border-radius:16px}}
 .lat-item .lat-photo{opacity:1}
@@ -427,25 +425,6 @@ input:focus,select:focus,textarea:focus{box-shadow:0 0 0 4px rgba(227,168,87,.18
 .pillar p{margin:0;color:var(--text-dim)}
 
 /* Name */
-/* Montañas en capas: cada imagen se desplaza a su propia velocidad según el cursor */
-/* Expediciones con el paisaje de fondo: queda fijo (sticky) mientras se recorre la lista */
-.exp-scene{position:relative;background:var(--ink);color:var(--paper)}
-.exp-scene>.wrap{position:relative;z-index:1}
-.exp-scene .section-head .h2,.exp-scene .section-head p{text-shadow:0 2px 18px rgba(10,19,23,.85)}
-.exp-scene .section-head p{color:var(--paper)}
-.exp-bg{position:absolute;inset:0;overflow:hidden;overflow:clip;z-index:0;pointer-events:none}
-.exp-bg .peaks{position:sticky;top:0}
-.peaks-shade{position:absolute;inset:0;z-index:140;pointer-events:none;background:linear-gradient(180deg,rgba(10,19,23,.72) 0%,rgba(10,19,23,.4) 45%,rgba(10,19,23,.55) 100%)}
-.peaks{position:relative;height:100vh;height:100svh;min-height:560px;overflow:hidden;background:linear-gradient(180deg,#0A1317 0%,#12232B 55%,#1A3038 100%)}
-/* Fundidos largos y graduales al entrar y al salir de la sección, para que no se note el corte con las vecinas */
-.exp-bg::before,.exp-bg::after{content:"";position:absolute;left:0;right:0;z-index:2;pointer-events:none}
-.exp-bg::before{top:0;height:min(58vh,520px);background:linear-gradient(180deg,var(--ink) 0%,rgba(10,19,23,.95) 10%,rgba(10,19,23,.8) 26%,rgba(10,19,23,.56) 46%,rgba(10,19,23,.3) 66%,rgba(10,19,23,.1) 85%,rgba(10,19,23,0) 100%)}
-.exp-bg::after{bottom:0;height:min(46vh,420px);background:linear-gradient(0deg,var(--ink) 0%,rgba(10,19,23,.95) 10%,rgba(10,19,23,.8) 26%,rgba(10,19,23,.56) 46%,rgba(10,19,23,.3) 66%,rgba(10,19,23,.1) 85%,rgba(10,19,23,0) 100%)}
-.peaks-vignette{position:absolute;inset:0;z-index:100;pointer-events:none;background:radial-gradient(ellipse at center,rgba(0,0,0,0) 65%,rgba(0,0,0,.7))}
-.peaks-stage{position:absolute;left:50%;top:50%;width:1920px;height:950px;transform:translate(-50%,-50%) scale(var(--k,1))}
-.peaks img{position:absolute;pointer-events:none;transform:translate(-50%,-50%);transition:transform .45s ease-out}
-.peaks img{max-width:none;height:auto}
-@media (prefers-reduced-motion:reduce){.peaks img{transition:none}}
 .name{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .name .wrap{display:flex;flex-wrap:wrap;gap:40px 56px;align-items:center}
 .big-mark{flex:1 1 320px;min-width:0;margin:0}
@@ -575,10 +554,7 @@ form .btn{align-self:flex-start}
 </section>
 
 <!-- ============ EXPEDICIONES ============ -->
-<section class="light exp-scene" id="expeditions">
-  <!-- Fondo: montañas y niebla en capas que se mueven con el cursor (componente de 21st.dev, rehecho sin React).
-       Las imágenes (assets/wilderness/) vienen de ese componente: licencia por confirmar. -->
-  <div class="exp-bg" aria-hidden="true"><div class="peaks"><div class="peaks-stage"></div></div></div>
+<section class="light" id="expeditions">
   <div class="wrap section">
     <div class="section-head">
       <h2 class="h2">Семь широт. Одна страна. Никого больше на маршруте.</h2>
@@ -1288,82 +1264,6 @@ form .btn{align-self:flex-start}
 })();
 </script>
 <script>
-/* Montañas en capas: con el mouse, cada capa se mueve, gira y se acerca a su propio ritmo;
-   en pantallas táctiles el movimiento sigue al scroll. Con "reducir movimiento" queda quieto. */
-(function () {
-  var box = document.querySelector(".peaks"); if (!box) return;
-  // Capas del componente original de 21st.dev (montañas y niebla), pasadas a WebP en assets/wilderness/ (37 MB -> 2 MB).
-  // OJO: no son de Chile y su licencia no está confirmada.
-  // [archivo, vX, vY, vZ, giro, z-index, top, left, ancho, opacidad]
-  var L = [
-    ["background", .03, .038, 0, 0, 1, "calc(50% - 50px)", "calc(50% + 0px)", 3200],
-    ["fog-7", .27, .32, 0, 0, 2, "calc(50% - 100px)", "calc(50% + 300px)", 1900],
-    ["mountain-10", .095, .005, 0, 0, 3, "calc(50% + 169px)", "calc(50% + 330px)", 1200],
-    ["fog-6", .25, .28, 0, 0, 4, "calc(50% + 285px)", "calc(50%)", 2200, .3],
-    ["mountain-9", .125, .155, .15, .02, 51, "calc(50% + 313px)", "calc(50% - 557px)", 670],
-    ["fog-5", .16, .105, 0, 0, 7, "calc(50% + 360px)", "calc(50% + 40px)", 650],
-    ["mountain-7", .1, .1, 0, .09, 19, "calc(50% + 223px)", "calc(50% + 495px)", 738],
-    ["mountain-6", .065, .05, .05, .12, 18, "calc(50% + 120px)", "calc(50% + 590px)", 408],
-    ["fog-4", .135, .1, 0, 0, 11, "calc(50% + 223px)", "calc(50% + 460px)", 590, .5],
-    ["mountain-5", .08, .05, .13, .1, 12, "calc(50% + 320px)", "calc(50% + 230px)", 725],
-    ["fog-3", .11, .018, 0, 0, 113, "calc(50% + 210px)", "calc(50% + 5px)", 1600],
-    ["mountain-4", .059, .024, .35, .14, 15, "calc(50% + 196px)", "calc(50% - 698px)", 1100],
-    ["mountain-3", .04, .018, .32, .05, 20, "calc(50% - 20px)", "calc(50% + 750px)", 630],
-    ["fog-2", .15, .0115, 0, 0, 16, "calc(50% - 20px)", "calc(50% + 698px)", 1100],
-    ["mountain-2", .0235, .013, .42, .15, 17, "calc(50% + 256px)", "calc(50% + 528px)", 800],
-    ["mountain-1", .027, .018, .53, .2, 18, "calc(50% + 196px)", "calc(50% - 728px)", 1100],
-    ["fog-1", .12, .01, 0, 0, 21, "calc(100% - 355px)", "calc(50% + 100px)", 1900, .5]
-  ];
-  // la escena se diseña en 1920×950 y se escala al alto de la sección, así se ve igual en cualquier pantalla
-  var stage = box.querySelector(".peaks-stage"), SW = 1920, SH = 950, k = 1;
-  var area = box.closest(".exp-bg") || box; // el paisaje queda fijo mientras se recorre esta zona
-  var fit = function () { k = box.clientHeight / SH; stage.style.setProperty("--k", k); };
-  fit(); window.addEventListener("resize", fit);
-  // viñeta y sombra para que el título y las filas se lean bien sobre la foto
-  ["peaks-vignette", "peaks-shade"].forEach(function (c) { var d = document.createElement("div"); d.className = c; box.appendChild(d); });
-  var els = L.map(function (l) {
-    var im = document.createElement("img");
-    im.src = "/assets/wilderness/" + l[0] + ".webp"; im.alt = ""; im.loading = "lazy"; im.decoding = "async";
-    im.style.cssText = "width:" + l[8] + "px;top:" + l[6] + ";left:" + l[7] + ";z-index:" + l[5] + (l[9] ? ";opacity:" + l[9] : "");
-    stage.appendChild(im);
-    return im;
-  });
-  if (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
-  function place(el, cursor, x, y, deg, sx, sy, sz, rot) {
-    var left = el.offsetLeft;
-    var z = (cursor - left) * (left < SW / 2 ? 1 : -1) * 0.1;
-    el.style.transform = "perspective(2300px) translateZ(" + (z * sz) + "px) rotateY(" + (deg * rot) + "deg) translateX(calc(-50% + " + (-x * sx) + "px)) translateY(calc(-50% + " + (y * sy) + "px))";
-  }
-  function update(cx, cy) {
-    // posición del cursor medida en coordenadas de la escena (1920×950)
-    var r = box.getBoundingClientRect();
-    var x = (cx - r.left - r.width / 2) / k, y = (cy - r.top - r.height / 2) / k;
-    var cursor = SW / 2 + x, deg = (x / (r.width / 2 / k)) * 20;
-    els.forEach(function (el, i) { var l = L[i]; place(el, cursor, x, y, deg, l[1], l[2], l[3], l[4]); });
-  }
-
-  var visible = false, pending = null;
-  new IntersectionObserver(function (e) { visible = e[0].isIntersecting; }).observe(box);
-  function queue(cx, cy) {
-    if (!visible) return;
-    if (!pending) requestAnimationFrame(function () { update(pending[0], pending[1]); pending = null; });
-    pending = [cx, cy];
-  }
-  var touch = window.matchMedia && matchMedia("(hover: none)").matches;
-  if (!touch) {
-    window.addEventListener("mousemove", function (e) { queue(e.clientX, e.clientY); }, { passive: true });
-  } else {
-    // táctil: al bajar por la sección es como si el cursor bajara por el paisaje
-    window.addEventListener("scroll", function () {
-      var a = area.getBoundingClientRect(), r = box.getBoundingClientRect();
-      var p = Math.max(0, Math.min(1, (innerHeight - a.top) / (innerHeight + a.height)));
-      queue(r.left + r.width / 2, r.top + r.height * (1 - p));
-    }, { passive: true });
-  }
-})();
-</script>
-<script>
 /* Barra superior "Waterline": una gota de agua dentro de cada cápsula de vidrio sigue la sección activa
    (o el idioma), se estira y se separa en gotitas en saltos largos, el cursor levanta un menisco y cada toque
    manda una onda. Adaptado sin React de Nimbus UI · Liquid Navbar (guglielmogiannattasio.it). */
@@ -1450,7 +1350,7 @@ form .btn{align-self:flex-start}
     var s = {
       a: { x: 0, v: 0 }, b: { x: 0, v: 0 }, sy: { s: 1, v: 0 }, lead: 0, lagFrom: 0,
       sats: [], rips: [], t: { x: 0, cy: 0, q: 0, r: 21 }, q: 0, vis: start >= 0 ? 1 : 0,
-      mouse: { x: 0, y: 0, s: 0, on: false }, moving: false, split: false, ready: false,
+      mouse: { x: 0, y: 0, s: 0, on: false, at: 0 }, amb: 1, busyAt: 0, moving: false, split: false, ready: false,
       w: 0, h: 0, visible: true, raf: 0, last: 0, time: 0, cur: start, keep: Math.max(start, 0)
     };
 
@@ -1476,7 +1376,7 @@ form .btn{align-self:flex-start}
       g.uniform4fv(u.uRip, rips);
       g.uniform3f(u.uMouse, s.mouse.x, s.mouse.y, s.mouse.s);
       g.uniform1f(u.uDark, 1);
-      g.uniform1f(u.uAmb, reduce ? 0 : 1);
+      g.uniform1f(u.uAmb, reduce ? 0 : s.amb);
       g.clearColor(0, 0, 0, 0);
       g.clear(g.COLOR_BUFFER_BIT);
       g.drawArrays(g.TRIANGLES, 0, 3);
@@ -1542,21 +1442,26 @@ form .btn{align-self:flex-start}
       }
       s.rips.forEach(function (p) { p.age += dt; });
       s.rips = s.rips.filter(function (p) { return p.age < 2.4; });
+      if (s.mouse.on && now - s.mouse.at > 4000) s.mouse.on = false; // cursor quieto sobre la barra: el agua también se calma
       s.mouse.s += ((s.mouse.on ? 1 : 0) - s.mouse.s) * Math.min(1, dt * 7);
       return still;
     }
 
     function loop() {
       if (s.raf) return;
-      s.last = performance.now();
+      s.last = s.busyAt = performance.now();
       function tick(now) {
         var dt = Math.min((now - s.last) / 1000, 1 / 30);
         s.last = now;
         var still = step(dt, now);
-        draw();
         var busy = s.moving || !still || s.rips.length || s.sats.length || s.mouse.s > 0.01;
-        // el agua se mueve sola mientras se ve; con "reducir movimiento" solo se anima al cambiar
-        if (s.visible && (!reduce || busy)) s.raf = requestAnimationFrame(tick);
+        if (busy) s.busyAt = now;
+        // El agua se mece unos segundos después de cada movimiento y luego se calma y el dibujo se detiene:
+        // así la barra no gasta gráfica ni batería todo el tiempo que la página está abierta.
+        var calm = now - s.busyAt > 2500;
+        s.amb += ((calm ? 0 : 1) - s.amb) * Math.min(1, dt * 2.5);
+        draw();
+        if (s.visible && (busy || (!reduce && (!calm || s.amb > 0.01)))) s.raf = requestAnimationFrame(tick);
         else s.raf = 0;
       }
       s.raf = requestAnimationFrame(tick);
@@ -1594,7 +1499,7 @@ form .btn{align-self:flex-start}
     pill.addEventListener("pointermove", function (e) {
       if (e.pointerType !== "mouse") return;
       var p = local(e.clientX, e.clientY);
-      s.mouse.x = p.x; s.mouse.y = p.y; s.mouse.on = true; loop();
+      s.mouse.x = p.x; s.mouse.y = p.y; s.mouse.on = true; s.mouse.at = performance.now(); loop();
     });
     pill.addEventListener("pointerleave", function () { s.mouse.on = false; loop(); });
     pill.addEventListener("pointerdown", function (e) { var p = local(e.clientX, e.clientY); ripple(p.x, p.y, 0.8); });
