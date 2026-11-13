@@ -400,20 +400,7 @@ input:focus,select:focus,textarea:focus{box-shadow:0 0 0 4px rgba(227,168,87,.18
 .plan-tip{margin:0;padding:12px 16px;border-radius:12px;background:color-mix(in srgb,var(--z) 10%,#fff);font-size:.9375rem;color:var(--ink)}
 .btn-ink{align-self:flex-start;background:var(--ink);color:var(--paper)}
 .btn-ink:hover{background:var(--z);box-shadow:0 10px 24px -12px var(--z)}
-.routes-head{display:flex;flex-wrap:wrap;gap:12px 48px;justify-content:space-between;align-items:flex-end;margin:64px 0 24px}
-.routes-head p{margin:0;max-width:30rem;color:var(--text-on-paper)}
-.routes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-.route{background:#fff;border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:14px;transition:transform .3s cubic-bezier(.2,.7,.2,1),box-shadow .3s}
-.route:hover{transform:translateY(-4px);box-shadow:0 22px 40px -28px rgba(10,19,23,.5)}
-.route header{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
-.route h4{margin:0;font-family:var(--display);font-weight:600;font-size:1.5rem}
-.route header span{font-family:var(--mono);font-size:.8125rem;color:var(--text-on-paper);white-space:nowrap}
-.route-bar{display:flex;gap:3px;border-radius:8px;overflow:hidden}
-.route-bar button{min-width:0;min-height:44px;padding:6px 4px;border:0;background:var(--z);color:#fff;font:inherit;font-size:.75rem;font-weight:600;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:filter .2s}
-.route-bar button:hover{filter:brightness(1.15)}
-.route p{margin:0;color:var(--text-on-paper);font-size:.9375rem}
-.route .route-when{margin-top:auto;font-family:var(--mono);font-size:.75rem;color:var(--ink)}
-@media (max-width:1000px){.plan-body{grid-template-columns:1fr}.plan-side{padding-left:0;border-left:0;padding-top:20px;border-top:1px solid rgba(10,19,23,.14)}.routes{grid-template-columns:1fr}}
+@media (max-width:1000px){.plan-body{grid-template-columns:1fr}.plan-side{padding-left:0;border-left:0;padding-top:20px;border-top:1px solid rgba(10,19,23,.14)}}
 @media (max-width:640px){.plan-body{padding:26px 20px}.plan-hl,.plan-facts{grid-template-columns:1fr}.plan{border-radius:16px}}
 /* Etiquetas del mapa: compactas y a la izquierda */
 .pin-sm .pin-label{flex-direction:row;align-items:baseline;gap:7px;top:-8px}
@@ -803,31 +790,6 @@ form .btn{align-self:flex-start}
         </article>
       </div>
     </div>
-
-    <div class="routes-head">
-      <h3 class="h3">Combina latitudes en un solo viaje</h3>
-      <p>Tres puntos de partida para inspirarte. Ajustamos días, ritmo y nivel de comodidad a lo que buscas.</p>
-    </div>
-    <div class="routes">
-      <article class="route">
-        <header><h4>Chile esencial</h4><span>10 días</span></header>
-        <div class="route-bar"><button type="button" data-plan="35" style="flex:3;--z:#8E3B5E">Vino 3</button><button type="button" data-plan="23" style="flex:4;--z:#B4531F">Atacama 4</button><button type="button" data-plan="39" style="flex:3;--z:#2F7A4A">Lagos 3</button></div>
-        <p>Para una primera visita. Contrasta el desierto con los lagos del sur, partiendo y terminando entre viñas.</p>
-        <p class="route-when">Mejor época: octubre a abril</p>
-      </article>
-      <article class="route">
-        <header><h4>De extremo a extremo</h4><span>12 días</span></header>
-        <div class="route-bar"><button type="button" data-plan="35" style="flex:2;--z:#8E3B5E">Vino 2</button><button type="button" data-plan="23" style="flex:4;--z:#B4531F">Atacama 4</button><button type="button" data-plan="51" style="flex:6;--z:#2F5FA8">Patagonia 6</button></div>
-        <p>Del desierto más árido a los campos de hielo, con vuelos internos y traslados coordinados por nosotros.</p>
-        <p class="route-when">Mejor época: octubre a abril</p>
-      </article>
-      <article class="route">
-        <header><h4>Invierno andino</h4><span>8 días</span></header>
-        <div class="route-bar"><button type="button" data-plan="33" style="flex:5;--z:#1F6FA3">Andes 5</button><button type="button" data-plan="35" style="flex:3;--z:#8E3B5E">Vino 3</button></div>
-        <p>Esquí y motos de nieve en la mañana, vino y alta cocina en la tarde. Todo a menos de tres horas de Santiago.</p>
-        <p class="route-when">Mejor época: julio y agosto</p>
-      </article>
-    </div>
   </div>
 </section>
 
@@ -1025,7 +987,7 @@ form .btn{align-self:flex-start}
   var root = document.documentElement;
 
   // Aparición escalonada
-  var groups = [".section-head", ".lat-item", ".routes-head", ".route", ".pillar", "#approach .h2", ".big-mark", ".name-copy", ".contact-copy", "#enquiry .field", "#enquiry .btn"];
+  var groups = [".section-head", ".lat-item", ".pillar", "#approach .h2", ".big-mark", ".name-copy", ".contact-copy", "#enquiry .field", "#enquiry .btn"];
   var items = [];
   groups.forEach(function (sel) {
     document.querySelectorAll(sel).forEach(function (el, i) {
@@ -1146,8 +1108,8 @@ form .btn{align-self:flex-start}
       e.preventDefault(); rows[(i + d + rows.length) % rows.length].focus();
     });
   });
-  // Los marcadores del mapa y los tramos de las rutas abren su plan
-  document.querySelectorAll(".pin[data-plan], .route-bar [data-plan]").forEach(function (el) {
+  // Los marcadores del mapa abren su plan
+  document.querySelectorAll(".pin[data-plan]").forEach(function (el) {
     el.addEventListener("click", function (e) {
       e.preventDefault(); var t = open(el.getAttribute("data-plan"), true); if (t) bring(t, true);
     });
