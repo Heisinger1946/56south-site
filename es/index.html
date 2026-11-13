@@ -135,6 +135,8 @@ a{color:inherit}
 .hero::before{content:"";position:absolute;inset:-40% -10% -10%;background:repeating-linear-gradient(to bottom,transparent 0 47px,rgba(91,110,114,.16) 47px 48px);transform:perspective(900px) rotateX(58deg);transform-origin:50% 100%;-webkit-mask-image:radial-gradient(ellipse at 70% 60%,#000 0,transparent 68%);mask-image:radial-gradient(ellipse at 70% 60%,#000 0,transparent 68%);animation:drift 14s linear infinite;pointer-events:none}
 @keyframes drift{to{background-position:0 48px}}
 .hero::before{z-index:1}
+/* Pie de la portada: se funde a ink poco a poco (tapa también la grilla) para empalmar con la sección siguiente */
+.hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:34%;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(10,19,23,0) 0%,rgba(10,19,23,.18) 22%,rgba(10,19,23,.48) 46%,rgba(10,19,23,.78) 70%,rgba(10,19,23,.94) 88%,var(--ink) 100%)}
 .hero-bg{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;object-position:50% 35%;animation:kenburns 28s ease-in-out infinite alternate}
 @media (max-width:640px){.hero-bg{object-position:44% 35%;animation:none}}
 @keyframes kenburns{from{transform:scale(1)}to{transform:scale(1.09) translate(-1.2%,-1%)}}
@@ -435,9 +437,10 @@ input:focus,select:focus,textarea:focus{box-shadow:0 0 0 4px rgba(227,168,87,.18
 .exp-bg .peaks{position:sticky;top:0}
 .peaks-shade{position:absolute;inset:0;z-index:140;pointer-events:none;background:linear-gradient(180deg,rgba(10,19,23,.72) 0%,rgba(10,19,23,.4) 45%,rgba(10,19,23,.55) 100%)}
 .peaks{position:relative;height:100vh;height:100svh;min-height:560px;overflow:hidden;background:linear-gradient(180deg,#0A1317 0%,#12232B 55%,#1A3038 100%)}
-.peaks::before,.peaks::after{content:"";position:absolute;left:0;right:0;z-index:150;pointer-events:none}
-.peaks::before{top:0;height:12%;background:linear-gradient(180deg,var(--ink),rgba(10,19,23,0))}
-.peaks::after{bottom:0;height:14%;background:linear-gradient(0deg,var(--ink),rgba(10,19,23,0))}
+/* Fundidos largos y graduales al entrar y al salir de la sección, para que no se note el corte con las vecinas */
+.exp-bg::before,.exp-bg::after{content:"";position:absolute;left:0;right:0;z-index:2;pointer-events:none}
+.exp-bg::before{top:0;height:min(58vh,520px);background:linear-gradient(180deg,var(--ink) 0%,rgba(10,19,23,.95) 10%,rgba(10,19,23,.8) 26%,rgba(10,19,23,.56) 46%,rgba(10,19,23,.3) 66%,rgba(10,19,23,.1) 85%,rgba(10,19,23,0) 100%)}
+.exp-bg::after{bottom:0;height:min(46vh,420px);background:linear-gradient(0deg,var(--ink) 0%,rgba(10,19,23,.95) 10%,rgba(10,19,23,.8) 26%,rgba(10,19,23,.56) 46%,rgba(10,19,23,.3) 66%,rgba(10,19,23,.1) 85%,rgba(10,19,23,0) 100%)}
 .peaks-vignette{position:absolute;inset:0;z-index:100;pointer-events:none;background:radial-gradient(ellipse at center,rgba(0,0,0,0) 65%,rgba(0,0,0,.7))}
 .peaks-stage{position:absolute;left:50%;top:50%;width:1920px;height:950px;transform:translate(-50%,-50%) scale(var(--k,1))}
 .peaks img{position:absolute;pointer-events:none;transform:translate(-50%,-50%);transition:transform .45s ease-out}
