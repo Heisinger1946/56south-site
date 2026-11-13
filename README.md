@@ -17,7 +17,7 @@ Sitio de Fifty Six South (56°S), expediciones privadas en Chile. Es un sitio es
 | `assets/logo-light.png`, `assets/logo-mark-light.png` | Logo para fondo oscuro: completo (pie de página) y sin el lema (menú) |
 | `assets/logo-dark.png` | Logo para fondo claro, sin fondo, para otros usos |
 | `favicon.png`, `apple-touch-icon.png` | Ícono de la pestaña y del acceso directo en el celular |
-| `assets/fonts/` | Tipografías (Space Grotesk, Inter, JetBrains Mono), alojadas en el mismo sitio |
+| `assets/fonts/` | Tipografías (Cormorant Garamond para titulares, Inter para texto, JetBrains Mono para rótulos), alojadas en el mismo sitio |
 | `.nojekyll` | Le indica a GitHub Pages que publique los archivos tal cual |
 
 Las fuentes van dentro del sitio y no se cargan desde Google. Así se evitan problemas de privacidad con visitantes europeos (RGPD) y la página no depende de servicios que pueden fallar en Rusia.
@@ -52,7 +52,7 @@ El script toma cada texto en inglés y lo reemplaza por su traducción de `i18n/
 
 Cada consulta del formulario trae un campo `language` (en, es o ru), y el valor de la expedición siempre llega en inglés, para que sepas qué eligió el cliente aunque haya escrito en ruso.
 
-Para el ruso se usa Manrope en los títulos, porque Space Grotesk no tiene letras cirílicas.
+Cormorant Garamond e Inter traen letras cirílicas, así que el ruso usa las mismas tipografías. (Los archivos de Space Grotesk y Manrope quedan en `assets/fonts/` pero ya no se cargan.)
 
 ## Expediciones
 

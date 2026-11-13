@@ -29,17 +29,21 @@
 <link rel="alternate" hreflang="x-default" href="https://go56south.com/">
 <link rel="icon" href="../favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
-<link rel="preload" href="../assets/fonts/space-grotesk-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/cormorant-garamond-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/chile.png" as="image" crossorigin>
 <link rel="preload" href="../assets/chile-relief.jpg" as="image">
 <link rel="preload" href="../assets/chile-shadow.png" as="image">
 <link rel="preload" href="../assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-/* Tipografías: Latin para inglés y español; cirílico para ruso (Manrope reemplaza a Space Grotesk, que no tiene cirílico) */
-@font-face{font-family:"Space Grotesk";font-weight:500;font-style:normal;font-display:swap;src:url(../assets/fonts/space-grotesk-latin-500-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-@font-face{font-family:"Space Grotesk";font-weight:500;font-style:normal;font-display:swap;src:url(../assets/fonts/manrope-cyrillic-500-normal.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
-@font-face{font-family:"Space Grotesk";font-weight:700;font-style:normal;font-display:swap;src:url(../assets/fonts/space-grotesk-latin-700-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-@font-face{font-family:"Space Grotesk";font-weight:700;font-style:normal;font-display:swap;src:url(../assets/fonts/manrope-cyrillic-700-normal.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+/* Tipografías: Cormorant Garamond (titulares) e Inter (texto) traen latín y cirílico; JetBrains Mono para rótulos */
+@font-face{font-family:"Cormorant Garamond";font-weight:500;font-style:normal;font-display:swap;src:url(../assets/fonts/cormorant-garamond-latin-500-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Cormorant Garamond";font-weight:500;font-style:normal;font-display:swap;src:url(../assets/fonts/cormorant-garamond-cyrillic-500-normal.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:"Cormorant Garamond";font-weight:600;font-style:normal;font-display:swap;src:url(../assets/fonts/cormorant-garamond-latin-600-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Cormorant Garamond";font-weight:600;font-style:normal;font-display:swap;src:url(../assets/fonts/cormorant-garamond-cyrillic-600-normal.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:"Cormorant Garamond";font-weight:500;font-style:italic;font-display:swap;src:url(../assets/fonts/cormorant-garamond-latin-500-italic.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Cormorant Garamond";font-weight:500;font-style:italic;font-display:swap;src:url(../assets/fonts/cormorant-garamond-cyrillic-500-italic.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:"Inter";font-weight:300;font-style:normal;font-display:swap;src:url(../assets/fonts/inter-latin-300-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Inter";font-weight:300;font-style:normal;font-display:swap;src:url(../assets/fonts/inter-cyrillic-300-normal.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
 @font-face{font-family:"Inter";font-weight:400;font-style:normal;font-display:swap;src:url(../assets/fonts/inter-latin-400-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:"Inter";font-weight:400;font-style:normal;font-display:swap;src:url(../assets/fonts/inter-cyrillic-400-normal.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
 @font-face{font-family:"Inter";font-weight:600;font-style:normal;font-display:swap;src:url(../assets/fonts/inter-latin-600-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
@@ -58,7 +62,7 @@
   --text-mute:#9FB0B3;
   --text-on-paper:#3B4A4E;
   --accent:#E3A857;
-  --display:"Space Grotesk",system-ui,sans-serif;
+  --display:"Cormorant Garamond",Georgia,"Times New Roman",serif;
   --body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
   --mono:"JetBrains Mono",ui-monospace,monospace;
   --wrap:1240px;
@@ -66,7 +70,7 @@
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:104px;-webkit-text-size-adjust:100%}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-body{margin:0;background:var(--ink);color:var(--paper);font-family:var(--body);font-size:1rem;line-height:1.6;-webkit-font-smoothing:antialiased}
+body{margin:0;background:var(--ink);color:var(--paper);font-family:var(--body);font-size:1rem;line-height:1.6;font-variant-numeric:lining-nums;-webkit-font-smoothing:antialiased}
 img,svg{display:block;max-width:100%}
 a{color:inherit}
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
@@ -75,11 +79,11 @@ a{color:inherit}
 .wrap{max-width:var(--wrap);margin:0 auto;padding-left:32px;padding-right:32px}
 @media (max-width:640px){.wrap{padding-left:20px;padding-right:20px}}
 
-.eyebrow{margin:0;font-family:var(--mono);font-size:.8125rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
-.h1{margin:0;font-family:var(--display);font-weight:700;font-size:clamp(2.75rem,7vw,6rem);line-height:.98;letter-spacing:-.03em}
-.h2{margin:0;font-family:var(--display);font-weight:700;font-size:clamp(2rem,4.2vw,3.5rem);line-height:1.05;letter-spacing:-.02em}
-.h3{margin:0;font-family:var(--display);font-weight:500;font-size:1.5rem;line-height:1.25}
-.lead{margin:0;max-width:34rem;font-size:1.1875rem;color:var(--text-dim)}
+.eyebrow{margin:0;font-family:var(--mono);font-size:.75rem;letter-spacing:.3em;text-transform:uppercase;color:var(--accent)}
+.h1{margin:0;font-family:var(--display);font-weight:500;font-size:clamp(3.25rem,8.2vw,7.25rem);line-height:.95;letter-spacing:-.015em;font-variant-numeric:lining-nums}
+.h2{margin:0;font-family:var(--display);font-weight:500;font-size:clamp(2.4rem,4.8vw,4.25rem);line-height:1.04;letter-spacing:-.01em;font-variant-numeric:lining-nums}
+.h3{margin:0;font-family:var(--display);font-weight:600;font-size:1.75rem;line-height:1.2}
+.lead{margin:0;max-width:34rem;font-size:1.25rem;font-weight:300;line-height:1.65;color:var(--text-dim)}
 .dim{color:var(--text-dim)}
 
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 28px;border-radius:999px;font:inherit;font-weight:600;text-decoration:none;cursor:pointer;border:1px solid transparent;transition:background-color .15s,color .15s,border-color .15s}
@@ -269,7 +273,7 @@ input:focus,select:focus,textarea:focus{box-shadow:0 0 0 4px rgba(227,168,87,.18
 .exp-body{grid-area:body;align-self:end}
 .exp-meta{grid-area:meta;align-self:start}
 .exp>.btn{grid-area:btn}
-.exp-lat{flex:0 0 180px;font-family:var(--display);font-weight:700;font-size:3.5rem;line-height:1;letter-spacing:-.03em}
+.exp-lat{flex:0 0 180px;font-family:var(--display);font-weight:500;font-size:4rem;line-height:1;letter-spacing:-.01em;font-variant-numeric:lining-nums}
 .exp-body{flex:1 1 320px;min-width:0;display:flex;flex-direction:column;gap:6px}
 .exp-body p{margin:0;color:var(--text-on-paper)}
 .exp-meta{flex:0 1 220px;margin:0;font-family:var(--mono);font-size:.8125rem;color:var(--text-on-paper)}
@@ -295,7 +299,7 @@ input:focus,select:focus,textarea:focus{box-shadow:0 0 0 4px rgba(227,168,87,.18
 .lat-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(10,19,23,.86) 0%,rgba(10,19,23,.46) 52%,rgba(10,19,23,.2) 100%)}
 .lat-id,.lat-title,.lat-loc,.lat-go{position:relative}
 .lat-id{grid-area:id;font-family:var(--mono);font-size:.875rem;color:var(--text-on-paper);transition:color .5s}
-.lat-title{grid-area:title;font-family:var(--display);font-weight:700;font-size:clamp(1.375rem,4vw,3rem);line-height:1.02;letter-spacing:-.02em;text-transform:uppercase;transition:transform .7s cubic-bezier(.25,1,.5,1),color .5s}
+.lat-title{grid-area:title;font-family:var(--display);font-weight:500;font-size:clamp(1.5rem,4.1vw,3.125rem);line-height:1.02;letter-spacing:.012em;font-variant-numeric:lining-nums;text-transform:uppercase;transition:transform .7s cubic-bezier(.25,1,.5,1),color .5s}
 .lat-deg{color:var(--z);transition:color .5s}
 .lat-loc{grid-area:loc;font-family:var(--mono);font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;color:transparent;opacity:0;transform:translateY(32px);transition:opacity .7s,transform .7s cubic-bezier(.25,1,.5,1),color .7s}
 .lat-go{grid-area:go;display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;border:1px solid rgba(10,19,23,.28);color:var(--text-on-paper);transition:background-color .5s,border-color .5s,color .5s,transform .5s}
@@ -372,13 +376,13 @@ input:focus,select:focus,textarea:focus{box-shadow:0 0 0 4px rgba(227,168,87,.18
 .mini-land{position:absolute;inset:0;background:url(../assets/chile-relief.jpg) center/100% 100% no-repeat;-webkit-mask:url(../assets/chile.png) center/100% 100% no-repeat;mask:url(../assets/chile.png) center/100% 100% no-repeat}
 .mini-dot{position:absolute;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;background:#fff;box-shadow:0 0 0 3px var(--ink)}
 .mini-dot::after{content:"";position:absolute;inset:-3px;border-radius:50%;border:2px solid #fff;animation:ping 2.4s ease-out infinite}
-.plan-map-lat{position:absolute;left:22px;bottom:10px;margin:0;font-family:var(--display);font-weight:700;font-size:clamp(4rem,9vw,7rem);line-height:1;letter-spacing:-.04em;color:#fff}
+.plan-map-lat{position:absolute;left:22px;bottom:10px;margin:0;font-family:var(--display);font-weight:500;font-size:clamp(4.5rem,10vw,8rem);line-height:1;letter-spacing:-.02em;font-variant-numeric:lining-nums;color:#fff}
 .plan-body{padding:40px 44px;display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:24px 56px;min-width:0}
 .plan-main,.plan-side{display:flex;flex-direction:column;gap:16px;min-width:0}
 .plan-side{padding-left:40px;border-left:1px solid rgba(10,19,23,.14)}
 .plan-side .plan-facts{margin:0;padding:0;border-top:0}
 .plan-side .btn-ink{margin-top:auto}
-.plan-title{margin:0;font-family:var(--display);font-weight:700;font-size:clamp(1.75rem,3vw,2.5rem);line-height:1.05;letter-spacing:-.02em}
+.plan-title{margin:0;font-family:var(--display);font-weight:600;font-size:clamp(2rem,3.4vw,2.875rem);line-height:1.05;letter-spacing:-.01em}
 .plan-title span{color:var(--z)}
 .plan-desc{margin:0;color:var(--text-on-paper);font-size:1.0625rem}
 .plan-kicker{margin:6px 0 0;font-family:var(--mono);font-weight:400;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-on-paper)}
@@ -399,7 +403,7 @@ input:focus,select:focus,textarea:focus{box-shadow:0 0 0 4px rgba(227,168,87,.18
 .route{background:#fff;border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:14px;transition:transform .3s cubic-bezier(.2,.7,.2,1),box-shadow .3s}
 .route:hover{transform:translateY(-4px);box-shadow:0 22px 40px -28px rgba(10,19,23,.5)}
 .route header{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
-.route h4{margin:0;font-family:var(--display);font-weight:700;font-size:1.25rem}
+.route h4{margin:0;font-family:var(--display);font-weight:600;font-size:1.5rem}
 .route header span{font-family:var(--mono);font-size:.8125rem;color:var(--text-on-paper);white-space:nowrap}
 .route-bar{display:flex;gap:3px;border-radius:8px;overflow:hidden}
 .route-bar button{min-width:0;min-height:44px;padding:6px 4px;border:0;background:var(--z);color:#fff;font:inherit;font-size:.75rem;font-weight:600;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:filter .2s}
@@ -437,7 +441,7 @@ input:focus,select:focus,textarea:focus{box-shadow:0 0 0 4px rgba(227,168,87,.18
 .contact .wrap{display:flex;flex-wrap:wrap;gap:56px}
 .contact-copy{flex:1 1 420px;min-width:0;display:flex;flex-direction:column;gap:20px}
 .contact-copy p{margin:0;max-width:30rem;color:var(--text-dim)}
-.contact-mail{font-family:var(--display);font-weight:500;font-size:clamp(1.25rem,2.6vw,2rem);padding:8px 0;overflow-wrap:anywhere}
+.contact-mail{font-family:var(--display);font-weight:500;font-style:italic;font-size:clamp(1.25rem,2.6vw,2rem);padding:8px 0;overflow-wrap:anywhere}
 .contact-mail:hover{color:var(--accent)}
 .contact-links{display:flex;flex-wrap:wrap;gap:12px}
 form{flex:1 1 420px;min-width:0;display:flex;flex-direction:column;gap:18px}
@@ -467,7 +471,7 @@ form .btn{align-self:flex-start}
 .footer-ig svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transition:transform .45s cubic-bezier(.25,1,.5,1)}
 .footer-ig:hover svg{transform:rotate(-45deg)}
 /* Botones de contacto (correo e Instagram): rectángulo con brillo diagonal, flecha que sale y vuelve a entrar */
-.btn-ig{position:relative;overflow:hidden;isolation:isolate;gap:12px;border-radius:12px;padding:14px 22px;background:rgba(238,242,241,.04);border-color:var(--line-2);font-family:var(--display);font-weight:700;font-size:.8125rem;letter-spacing:.12em;text-transform:uppercase}
+.btn-ig{position:relative;overflow:hidden;isolation:isolate;gap:12px;border-radius:12px;padding:14px 22px;background:rgba(238,242,241,.04);border-color:var(--line-2);font-family:var(--body);font-weight:600;font-size:.75rem;letter-spacing:.16em;text-transform:uppercase}
 .btn-ig::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(105deg,transparent 35%,rgba(227,168,87,.32) 50%,transparent 65%);transform:translateX(-110%);transition:transform .8s cubic-bezier(.2,.7,.2,1)}
 .btn-ig:hover,.btn-ig:focus-visible{color:var(--accent);border-color:var(--accent);box-shadow:0 0 0 4px rgba(227,168,87,.12)}
 .btn-ig:hover::before,.btn-ig:focus-visible::before{transform:translateX(110%)}
