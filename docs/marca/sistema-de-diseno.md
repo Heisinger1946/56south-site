@@ -51,7 +51,7 @@ Hasta que se publique, `main` sigue con Space Grotesk 700 en titulares (Manrope 
 
 - Curva de marca `cubic-bezier(.2,.7,.2,1)`, 0.3–0.9 s. Hover: botones suben 2px, tarjetas 4px, fotos se acercan levemente.
 - Lista de latitudes: `cubic-bezier(.25,1,.5,1)` en 0.7 s; la fila crece hasta 400px y la foto pasa de 110% a 100%.
-- Portada: mapa 3D de Chile que se mece, paralelos que avanzan detrás y vida sutil (ballenas, gaviotas, cóndor, viento), nunca todo a la vez.
+- Portada: mapa 3D de Chile que se mece, con oleaje en la costa y un brillo que recorre el relieve; paralelos que avanzan detrás y vida en el mapa (ballenas y orcas en el sur, surfistas frente a Pichilemu, gaviotas, cóndores, viento). Las figuras van en blanco papel, sin acento, y entran de a pocas.
 - Sección de latitudes: curvas de nivel en tinta (13 % y 6 % de opacidad) que derivan de lado en 150–260 s, con cumbres de Chile rotuladas en mono. Solo `transform`; nada de fotos de fondo ni capas 3D (el fondo de montañas en capas se quitó por pesado).
 - Los bloques entran al hacer scroll. Con "reducir movimiento" se apaga toda animación.
 
