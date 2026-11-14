@@ -9,7 +9,7 @@ Actualizado: 14 nov 2026.
 
 ## En `borrador`, sin publicar
 
-- Mapa de la portada con más vida (14 nov 2026): oleaje que sigue la costa y llega a la orilla, una franja de luz que recorre el relieve, surfistas frente a Pichilemu (bajo el pin 34°S), una manada de tres orcas en el sur, cóndores vistos desde arriba con su sombra (norte, Andes centrales y Patagonia; pueden coincidir dos) y ballenas más grandes y frecuentes. Todo dibujado en SVG propio, sin imágenes nuevas. Medido en local: 100 cuadros por segundo, sin fugas, y se pausa cuando el mapa no está a la vista.
+- Mapa de la portada con más vida (14 nov 2026): oleaje que sigue la costa y llega a la orilla, una franja de luz que recorre el relieve, surfistas frente a Pichilemu (bajo el pin 34°S), una manada de tres orcas en el sur, cóndores vistos desde arriba con su sombra (norte, Andes centrales y Patagonia; pueden coincidir dos) y ballenas más grandes y frecuentes. Después se cambió el estilo de la ola del surfista (ahora es una ola llena, con espuma en la cresta, que se levanta y avanza) y se agregó una orca que salta entera del agua cerca de la manada, más o menos en la mitad de las pasadas. Todo dibujado en SVG propio, sin imágenes nuevas. Medido en local: 100 cuadros por segundo, sin fugas, y se pausa cuando el mapa no está a la vista.
 
 ## Publicado el 13 nov 2026 (séptimo envío)
 

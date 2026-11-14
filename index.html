@@ -231,12 +231,34 @@ a{color:inherit}
 @keyframes o-roll{0%{transform:translate(-9px,30px) rotate(-16deg)}40%,54%{transform:translate(0,0) rotate(0deg)}100%{transform:translate(10px,30px) rotate(16deg)}}
 .o-rip{fill:none;stroke:#EEF2F1;stroke-width:1;vector-effect:non-scaling-stroke;opacity:0}
 .orca.on .o-rip{animation:w-rip 3.1s ease-out var(--od,0s) 3 both}
-/* Surfistas frente a Pichilemu: la ola avanza hacia la costa y el surfista baja la pared, gira y vuelve a bajar */
+/* Orca que salta: sale del agua en arco, queda entera en el aire y cae de cabeza; salpica al salir y al caer */
+.breach{opacity:0}
+.breach.on{animation:b-fade 4.4s ease-in-out both}
+@keyframes b-fade{0%,100%{opacity:0}5%,78%{opacity:1}}
+.b-orca{transform:translate(-34px,44px) rotate(-76deg)}
+.breach.on .b-orca{animation:b-jump 2s linear .3s both}
+@keyframes b-jump{0%{transform:translate(-34px,44px) rotate(-76deg)}12.5%{transform:translate(-25.5px,12.9px) rotate(-72deg)}25%{transform:translate(-17px,-9.3px) rotate(-64deg)}37.5%{transform:translate(-8.5px,-22.6px) rotate(-46deg)}50%{transform:translate(0,-27px) rotate(0deg)}62.5%{transform:translate(8.5px,-22.6px) rotate(46deg)}75%{transform:translate(17px,-9.3px) rotate(64deg)}87.5%{transform:translate(25.5px,12.9px) rotate(72deg)}100%{transform:translate(34px,44px) rotate(76deg)}}
+.b-splash{fill:none;stroke:#EEF2F1;stroke-width:1.4;stroke-linecap:round;opacity:0}
+.breach.on .b-splash{animation:b-splash 1s ease-out .5s both}
+.breach.on .b-splash.b2{animation-delay:1.95s;animation-duration:1.25s}
+@keyframes b-splash{0%{transform:translateY(2px) scale(.25);opacity:0}25%{opacity:.95}100%{transform:translateY(-5px) scale(1.3);opacity:0}}
+.b-rip{fill:none;stroke:#EEF2F1;stroke-width:1;vector-effect:non-scaling-stroke;opacity:0}
+.breach.on .b-rip{animation:w-rip 2.2s ease-out .55s both}
+.breach.on .b-rip.r2{animation-delay:2s;animation-duration:2.4s}
+/* Surfistas frente a Pichilemu: una ola llena, con espuma en la cresta, se levanta y avanza hacia la costa; el surfista baja la pared, gira y vuelve a bajar */
 .surfer{opacity:0}
 .surfer.on{animation:fx-fade 8s ease-in-out both}
-.s-wave,.s-man{fill:none;stroke:#EEF2F1;stroke-linecap:round;stroke-linejoin:round}
-.s-wave{stroke-width:1.5;opacity:.85}
-.s-foam{opacity:.6}
+.s-man,.s-streak,.s-flat,.s-spray{fill:none;stroke:#EEF2F1;stroke-linecap:round;stroke-linejoin:round}
+.s-body{fill:rgba(238,242,241,.2);stroke:#EEF2F1;stroke-width:1.3;stroke-linejoin:round}
+.s-streak{stroke-width:.9;opacity:.5}
+.s-flat{stroke-width:1.1;opacity:.45}
+.s-spray{stroke-width:1.1;opacity:.8;stroke-dasharray:1.5 2.5}
+.s-foam circle{fill:#EEF2F1}
+.surfer.on .s-foam{animation:s-foam .55s ease-in-out infinite alternate}
+@keyframes s-foam{from{transform:translate(0,0);opacity:.7}to{transform:translate(1.2px,1.8px);opacity:1}}
+.s-swell{transform:scaleY(.3)}
+.surfer.on .s-swell{animation:s-rise 8s ease-in-out both}
+@keyframes s-rise{0%{transform:scaleY(.3)}13%,84%{transform:scaleY(1)}100%{transform:scale(1.08,.35)}}
 .s-man{stroke-width:1.9}
 .s-board{stroke-width:2.6}
 .s-head{fill:#EEF2F1}
@@ -244,7 +266,7 @@ a{color:inherit}
 .surfer.on .s-set{animation:surf-run 8s cubic-bezier(.3,.1,.4,1) both}
 @keyframes surf-run{from{transform:translateX(-20px)}to{transform:translateX(12px)}}
 .surfer.on .s-ride{animation:surf-ride 8s ease-in-out both}
-@keyframes surf-ride{0%{transform:translate(-6px,-1.5px) rotate(32deg)}28%{transform:translate(5px,3.6px) rotate(12deg)}50%{transform:translate(1px,1.2px) rotate(-10deg)}76%{transform:translate(10px,4.8px) rotate(12deg)}100%{transform:translate(17px,6px) rotate(5deg)}}
+@keyframes surf-ride{0%{transform:translate(7px,-7.9px) rotate(18deg)}26%{transform:translate(15px,-5.6px) rotate(13deg)}50%{transform:translate(10px,-7px) rotate(-14deg)}76%{transform:translate(20px,-4.4px) rotate(13deg)}100%{transform:translate(30px,-2.6px) rotate(7deg)}}
 /* Oleaje: tres frentes de ola con la forma de la costa llegan a la orilla uno tras otro. Se mueve el SVG entero (no repinta). */
 .fx-swell{opacity:0;animation:swell 7.5s linear infinite}
 .fx-swell.s2{animation-delay:-2.5s}
@@ -1214,11 +1236,23 @@ form .btn{align-self:flex-start}
       '<ellipse class="o-white" cx="20.5" cy="-4.2" rx="3.8" ry="1.5" transform="rotate(-14 20.5 -4.2)"/></g></g></g>';
   }
   var pod = '<g class="orca"><g class="o-pod">' + orca(-62, -5, .68, 1.5) + orca(-33, 9, .84, .7) + orca(0, 0, 1, 0) + '</g></g>';
-  // Surfista: la ola (cresta que revienta y pared) avanza hacia la costa y él baja por la pared
-  var surfer = '<g class="surfer"><g class="s-set"><path class="s-wave" d="M-32 8C-25 8-21 3-18-5-15-14-9-20-1-19 5-18 8-13 5-9"/>' +
-    '<path class="s-wave" d="M-15-9C-9-2 2 4 14 6.5 21 7.8 26 8 32 8"/><path class="s-wave s-foam" d="M8-8l1.6 2.4M4-5.5l1.4 2.2M11-4.5l1.4 2"/>' +
-    '<g class="s-ride"><path class="s-man s-board" d="M-11 0H11"/><path class="s-man" d="M-5-1.2L-3.6-6-.5-9.5 4.4-6.4 5-1.2M-.5-9.5L1.5-17M-6.5-14.5L1.5-17 9-15.5"/><circle class="s-head" cx="2.6" cy="-20.6" r="2.5"/></g></g></g>';
-  sea.insertAdjacentHTML("beforeend", whale + whale + pod + surfer + surfer);
+  // Orca que salta: de cuerpo entero (vientre y parche del ojo blancos), sale en arco y cae de cabeza con su salpicón.
+  // La línea del agua es y = 0: el recorte "fx-above" solo deja ver lo que queda sobre ella.
+  var drops = "M0 0l-6-9M0 0l-2.5-11.5M0 0l2.5-11.5M0 0l6-9M0 0l-9.5-5M0 0l9.5-5";
+  var breach = '<g class="breach"><g transform="translate(-24 0)"><ellipse class="b-rip" rx="24" ry="5.5"/></g><g transform="translate(26 0)"><ellipse class="b-rip r2" rx="32" ry="7"/></g>' +
+    '<g clip-path="url(#fx-above)"><g class="b-orca"><path class="o-skin" d="M35 1.5C33-3.5 26-7.6 14-8.4 4-9-8-7.6-18-4.6-24-2.8-29-1.4-33-1L-40-6-37.5 0-40 6.5-33 1.6C-27 3-18 6-6 7.6 6 9 20 8.4 29 5.4 32.5 4.2 34.8 3 35 1.5Z"/>' +
+    '<path class="o-skin" d="M4-8.8C5-15 7-21 10.5-25 11.5-20 12.5-14 14.5-8.4Z"/><path class="o-skin" d="M14 6.5C12 10 9 13.5 5 14.5 7 11 8.5 8 9 6.9Z"/>' +
+    '<path class="o-white" d="M31 4.4C22 7.7 8 8.4-6 7 4 5.4 18 4.6 31 4.4Z"/><path class="o-saddle" d="M-2-7.8C-6-6.6-10-6-14-5.4-10-7.4-6-8.2-2-7.8Z"/>' +
+    '<ellipse class="o-white" cx="24" cy="-2.6" rx="3.6" ry="1.5" transform="rotate(-10 24 -2.6)"/></g></g>' +
+    '<g transform="translate(-24 0)"><path class="b-splash" d="' + drops + '"/></g><g transform="translate(26 0)"><path class="b-splash b2" d="' + drops + '"/></g></g>';
+  // Surfista: una ola llena, con la cresta que revienta en espuma, se levanta y avanza hacia la costa; él baja la pared
+  // delante de la espuma, gira hacia arriba y vuelve a bajar. La línea del agua es y = 0.
+  var surfer = '<g class="surfer"><g class="s-set"><path class="s-flat" d="M-58 0H-47M51 0H62"/>' +
+    '<g class="s-swell"><path class="s-body" d="M-40 0C-33 0 -29 -4 -26 -12 -23 -21 -18 -29 -10 -29 -3 -29 2 -25 2 -19 1.5 -22 -2 -24.5 -6 -24 -12 -23.4 -15 -18 -14 -13 -8 -10 6 -6.5 18 -3.6 28 -1.4 36 0 44 0Z"/>' +
+    '<path class="s-streak" d="M-9-9.4C-2-6.4 8-4 20-1.8M-21-10C-19-5-14-2-7-1"/>' +
+    '<g class="s-foam"><circle cx="2.5" cy="-18" r="2.4"/><circle cx="5.2" cy="-14.4" r="1.9"/><circle cx="1" cy="-14" r="1.6"/><circle cx="6.6" cy="-10.4" r="1.4"/><circle cx="3" cy="-10" r="1.1"/></g></g>' +
+    '<g class="s-ride"><path class="s-spray" d="M-12-1.2l-5-2.6M-12.5 .8l-6-.4"/><path class="s-man s-board" d="M-11 0H11"/><path class="s-man" d="M-5-1.2L-3.6-6-.5-9.5 4.4-6.4 5-1.2M-.5-9.5L1.5-17M-6.5-14.5L1.5-17 9-15.5"/><circle class="s-head" cx="2.6" cy="-20.6" r="2.5"/></g></g></g>';
+  sea.insertAdjacentHTML("beforeend", whale + whale + pod + breach + surfer + surfer);
   var gull = '<g class="bird gull"><path d="M-8 0Q-4.2-5 0-.6 4.2-5 8 0"/></g>';
   // Cóndor visto desde arriba: alas abiertas con las puntas en dedos, collar blanco y parches blancos en las alas
   var wing = "M0-7C1.2-7 1.8-5.6 1.9-4.2 6-5.2 12-5.6 17-4.6L22-5.6 20.6-3.4 22.6-3 20.8-1.4 22.4-.2 20 .4C15 2.2 8 3 2.4 2.6L3.4 8.4 0 7-3.4 8.4-2.4 2.6C-8 3-15 2.2-20 .4L-22.4-.2-20.8-1.4-22.6-3-20.6-3.4-22-5.6-17-4.6C-12-5.6-6-5.2-1.9-4.2-1.8-5.6-1.2-7 0-7Z";
@@ -1260,13 +1294,22 @@ form .btn{align-self:flex-start}
     var x = dir > 0 ? rnd(left + 100 * s, shore - 70 * s) : rnd(left + 70 * s, shore - 100 * s);
     el.setAttribute("transform", "translate(" + x.toFixed(1) + " " + y.toFixed(1) + ") scale(" + (dir * s).toFixed(2) + " " + s.toFixed(2) + ")");
     show(el, 10100);
+    // Una que otra vez, una orca salta cerca de la manada: un poco más al norte y mar adentro, para no taparla
+    if (Math.random() < .5) setTimeout(function () { leap(x - dir * rnd(10, 30) * s, y - rnd(58, 70) * s, s * .95, dir); }, rnd(2200, 4800));
+  }
+  function leap(x, y, s, dir) {
+    var el = free(".breach"); if (!el || !visible || document.hidden) return;
+    if (document.querySelector(".whale.on") && Math.abs(y - lastY) < 120) return; // no encima de una ballena
+    x = Math.max(west() + 45 * s, Math.min(x, edge(W, y) - 48 * s));              // ni sobre la costa ni fuera del dibujo
+    el.setAttribute("transform", "translate(" + x.toFixed(1) + " " + y.toFixed(1) + ") scale(" + (dir * s).toFixed(2) + " " + s.toFixed(2) + ")");
+    show(el, 4500);
   }
 
   // Surfistas: frente a Pichilemu (34°S), justo al sur de la etiqueta del Pacífico; a veces entran dos olas seguidas
   function surf(second) {
     var el = free(".surfer"); if (!el) return;
     // la primera ola entra pegada bajo la etiqueta "34°S Pacific"; la segunda, más atrás y más chica
-    var s = (second ? second.s * .78 : rnd(1.6, 1.85) * big()), y = second ? second.y + rnd(44, 54) : rnd(526, 540);
+    var s = (second ? second.s * .78 : rnd(1.35, 1.6) * big()), y = second ? second.y + rnd(40, 50) : rnd(532, 546);
     var x = edge(W, y) - rnd(32, 40) * s - (second ? rnd(26, 44) : 0);
     el.setAttribute("transform", "translate(" + x.toFixed(1) + " " + y.toFixed(1) + ") scale(" + s.toFixed(2) + ")");
     show(el, 8100);
