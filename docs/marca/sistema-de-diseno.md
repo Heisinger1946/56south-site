@@ -44,6 +44,7 @@ Hasta que se publique, `main` sigue con Space Grotesk 700 en titulares (Manrope 
 ## Formas, bordes y sombras
 
 - Botones, selector de idioma e insignias en píldora. Tarjetas con radios 16px (rutas) y 20px (ficha del plan, foto de fila abierta). Campos y fotos chicas, 6px.
+- La sección clara de latitudes es una hoja de esquinas redondeadas (34 px; 24 px en móvil) que se monta sobre la portada, con sombra hacia arriba y filo de luz.
 - Sombras largas, suaves, color ink con dispersión negativa, solo sobre fondos claros. Sobre ink no hay sombras, salvo el halo ámbar del botón principal.
 - Foco: contorno sólido accent de 2px separado 3px.
 

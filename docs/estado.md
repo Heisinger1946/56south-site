@@ -9,7 +9,11 @@ Actualizado: 14 nov 2026.
 
 ## En `borrador`, sin publicar
 
-- Nada (solo esta nota de estado).
+- Nada.
+
+## Publicado el 14 nov 2026 (noveno envío)
+
+- Unión entre la portada y la sección de latitudes: la sección clara ahora es una hoja de esquinas redondeadas (34 px; 24 px en celular) que sube sobre la portada, con sombra hacia arriba y un filo de luz en el borde. Las esquinas de abajo también van redondeadas sobre la sección oscura siguiente. Jhon dejó a criterio elegir entre una difuminación o este resalte con sombra; se probaron los dos y se eligió este.
 
 ## Publicado el 14 nov 2026 (octavo envío)
 
