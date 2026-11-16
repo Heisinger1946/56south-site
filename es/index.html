@@ -520,7 +520,13 @@ input:focus,select:focus,textarea:focus{box-shadow:0 0 0 4px rgba(227,168,87,.18
 .contact-copy p{margin:0;max-width:30rem;color:var(--text-dim)}
 .contact-mail{font-family:var(--display);font-weight:500;font-size:clamp(1.25rem,2.6vw,2rem);padding:8px 0;overflow-wrap:anywhere}
 .contact-mail:hover{color:var(--accent)}
-.contact-links{display:flex;flex-wrap:wrap;gap:12px}
+.contact-links{display:flex;flex-wrap:wrap;align-items:center;gap:12px}
+/* Botón redondo de Instagram: círculo negro con el ícono en blanco */
+.ig-round{flex:none;display:inline-grid;place-items:center;width:52px;height:52px;border-radius:50%;background:#000;color:var(--paper);border:1px solid var(--line-2);text-decoration:none;transition:transform .3s cubic-bezier(.2,.7,.2,1),border-color .3s,color .3s,box-shadow .3s}
+.ig-round svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.ig-round .ig-dot{fill:currentColor;stroke:none}
+.ig-round:hover,.ig-round:focus-visible{transform:translateY(-2px);color:var(--accent);border-color:var(--accent);box-shadow:0 0 0 4px rgba(227,168,87,.12)}
+@media (prefers-reduced-motion:reduce){.ig-round{transition:none}.ig-round:hover,.ig-round:focus-visible{transform:none}}
 form{flex:1 1 420px;min-width:0;display:flex;flex-direction:column;gap:18px}
 .field{display:flex;flex-direction:column;gap:6px}
 label{font-size:.875rem;color:var(--text-dim)}
@@ -930,7 +936,7 @@ form .btn{align-self:flex-start}
       <p>Escríbele al concierge con tus fechas y cuántas personas viajan. Respondemos personalmente.</p>
       <div class="contact-links">
         <a class="btn btn-line btn-ig btn-mail" href="mailto:concierge@go56south.com" data-copy="concierge@go56south.com"><span>Correo</span> <span class="ig-handle">concierge@go56south.com</span><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a>
-        <a class="btn btn-line btn-ig" href="https://www.instagram.com/go56south/" target="_blank" rel="noopener"><span>Instagram</span> <span class="ig-handle">@go56south</span><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a>
+        <a class="ig-round" href="https://www.instagram.com/go56south/" target="_blank" rel="noopener" aria-label="Instagram @go56south"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.2" y="3.2" width="17.6" height="17.6" rx="5.2"/><circle cx="12" cy="12" r="4.1"/><circle class="ig-dot" cx="17.3" cy="6.7" r="1.15"/></svg></a>
       </div>
     </div>
 

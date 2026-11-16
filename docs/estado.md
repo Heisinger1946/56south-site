@@ -9,7 +9,7 @@ Actualizado: 14 nov 2026.
 
 ## En `borrador`, sin publicar
 
-- Nada.
+- Contacto: el botón rectangular de Instagram se cambió por un botón redondo (52 px, círculo negro con borde `line-2` y el ícono de Instagram en blanco; al pasar el mouse sube 2 px y se pone ámbar). Pedido por Jhon con una imagen de referencia. El enlace del pie de página sigue igual.
 
 ## Publicado el 14 nov 2026 (noveno envío)
 
