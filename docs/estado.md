@@ -58,11 +58,10 @@ Actualizado: 14 nov 2026.
 
 1. Textos sin completar: "[YOUR SAFETY AND LOGISTICS STANDARD — vehicles, guides, support crew, insurance]" y "[LANGUAGES SPOKEN]".
 2. Lanzamiento: quitar `<meta name="robots" content="noindex">` cuando los textos estén completos.
-3. Ruta premium 47°S: confirmar "cabinas hasta 8 huéspedes" y "regreso en avioneta desde Laguna San Rafael".
-4. Fotos: confirmar licencias antes de uso comercial, incluidas las capas de `assets/wilderness/`. La foto de Fitz Roy (premium) no corresponde a la ruta; se puede cambiar.
-5. Instagram @go56south: subir la foto de perfil (`docs/marca/56south-instagram-perfil.png`) y el enlace go56south.com desde la app del celular.
-6. Sistema de diseño en claude.ai (https://claude.ai/artifact/GDsdkypnFfC6pwJfijZdYd): sigue con Space Grotesk; actualizarlo cuando se publique la nueva tipografía.
-7. Opcional: activar Branch deploys para `borrador` en Netlify.
+3. Fotos: confirmar licencias antes de uso comercial, incluidas las capas de `assets/wilderness/`.
+4. Instagram @go56south: subir la foto de perfil (`docs/marca/56south-instagram-perfil.png`) y el enlace go56south.com desde la app del celular.
+5. Sistema de diseño en claude.ai (https://claude.ai/artifact/GDsdkypnFfC6pwJfijZdYd): sigue con Space Grotesk; actualizarlo cuando se publique la nueva tipografía.
+6. Opcional: activar Branch deploys para `borrador` en Netlify.
 
 ## Ya listo (no repetir)
 
