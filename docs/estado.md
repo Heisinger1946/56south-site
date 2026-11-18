@@ -1,6 +1,6 @@
 # Estado del sitio go56south.com
 
-Actualizado: 14 nov 2026.
+Actualizado: 18 nov 2026.
 
 ## Cómo se trabaja
 
@@ -9,6 +9,11 @@ Actualizado: 14 nov 2026.
 
 ## En `borrador`, sin publicar
 
+- Nada pendiente.
+
+## Publicado el 18 nov 2026 (décimo envío)
+
+- Se quitó la expedición **47°S Fjords & ice**, la ruta premium: su pin en el mapa de la portada, su fila de latitud con el plan, la insignia dorada "Premium" y la opción del formulario. Jhon pidió eliminarla. Con ella se fue todo el estilo premium (`.is-premium`, `.lat-premium`, `.plan-premium`, `.pin-premium` y la animación `premium-shine`) y sus tres traducciones en `i18n/`. Quedan seis latitudes: 23, 33, 34, 35, 39 y 51°S. La foto de Fitz Roy que se usaba ahí ya no se muestra en ninguna parte.
 - Contacto: el botón rectangular de Instagram se cambió por un botón redondo (52 px, círculo negro con borde `line-2` y el ícono de Instagram en blanco; al pasar el mouse sube 2 px y se pone ámbar). Pedido por Jhon con una imagen de referencia. El enlace del pie de página sigue igual.
 
 ## Publicado el 14 nov 2026 (noveno envío)

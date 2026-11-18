@@ -419,14 +419,12 @@ input:focus,select:focus,textarea:focus{box-shadow:0 0 0 4px rgba(227,168,87,.18
   .lat-row[aria-expanded="true"] .lat-title{transform:none}
 }
 .lat-item .plan{margin:8px 0 32px}
-/* Ruta premium (47°S): fila destacada con su foto siempre visible, insignia dorada y plan con borde ámbar */
-/* Todas las filas muestran su foto (estilo de la ruta premium); el color de cada zona se aclara para leerse sobre la foto */
+/* Todas las filas muestran su foto; el color de cada zona se aclara para leerse sobre la foto */
 .lat-item .lat-row{height:132px}
 /* Resalte de cada fila: sombra debajo y un filo de luz en el borde */
 .lat-item .lat-row{border-radius:20px;box-shadow:0 20px 36px -20px rgba(10,19,23,.6),0 5px 12px -6px rgba(10,19,23,.35);transition:height .7s cubic-bezier(.25,1,.5,1),box-shadow .5s}
 .lat-item .lat-row::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.38),inset 0 0 0 1px rgba(255,255,255,.14)}
 .lat-item .lat-row:hover,.lat-item .lat-row[aria-expanded="true"]{box-shadow:0 30px 52px -22px rgba(10,19,23,.7),0 8px 16px -6px rgba(10,19,23,.4)}
-.is-premium .lat-row::after{box-shadow:inset 0 1px 0 rgba(243,210,155,.55),inset 0 0 0 1px rgba(227,168,87,.4)}
 @media (max-width:767px){.lat-item .lat-row{border-radius:16px}}
 .lat-item .lat-photo{opacity:1}
 .lat-item .lat-photo img{transform:scale(1.04)}
@@ -436,19 +434,9 @@ input:focus,select:focus,textarea:focus{box-shadow:0 0 0 4px rgba(227,168,87,.18
 .lat-item .lat-deg{color:color-mix(in srgb,var(--z) 45%,#fff)}
 .lat-item .lat-id{color:rgba(238,242,241,.72)}
 .lat-item .lat-go{border-color:rgba(238,242,241,.5);color:var(--paper)}
-/* Solo la premium: más alta, latitud y flecha en ámbar */
-.is-premium .lat-row{height:150px}
-.is-premium .lat-deg{color:var(--accent)}
-.is-premium .lat-go{border-color:var(--accent);color:var(--accent)}
-.lat-premium{display:inline-block;margin-left:14px;padding:5px 12px 4px;border-radius:999px;vertical-align:middle;font-family:var(--mono);font-size:.6875rem;font-weight:400;letter-spacing:.16em;line-height:1.2;color:var(--ink);background:linear-gradient(110deg,#C9893A 0%,#F3D29B 45%,#E3A857 55%,#C9893A 100%);background-size:220% 100%;animation:premium-shine 3.5s ease-in-out infinite;box-shadow:0 6px 18px -8px rgba(227,168,87,.8)}
-@keyframes premium-shine{0%,100%{background-position:100% 0}50%{background-position:0 0}}
-.plan.is-premium{box-shadow:0 0 0 1.5px var(--accent),0 30px 60px -36px rgba(176,122,48,.55)}
-.plan-premium{display:inline-block;align-self:flex-start;margin:0;padding:6px 12px 5px;border-radius:999px;background:var(--ink);color:var(--accent);font-family:var(--mono);font-size:.6875rem;letter-spacing:.14em;text-transform:uppercase}
-.pin-premium .pin-dot{background:var(--accent);box-shadow:0 0 0 2px var(--ink),0 0 0 4px var(--accent)}
-.pin-premium .pin-label b{color:var(--accent)}
 .lat-item .lat-row[aria-expanded="true"]{height:320px}
 @media (hover:hover) and (min-width:768px){.lat-item .lat-row:hover,.lat-item .lat-row:focus-visible{height:400px}}
-@media (max-width:767px){.lat-item .lat-row{height:112px;padding:0 16px}.is-premium .lat-row{height:132px}.lat-item .lat-row[aria-expanded="true"]{height:220px}.lat-item .lat-loc{color:rgba(238,242,241,.8)}.lat-premium{margin:6px 0 0;display:table;font-size:.625rem}}
+@media (max-width:767px){.lat-item .lat-row{height:112px;padding:0 16px}.lat-item .lat-row[aria-expanded="true"]{height:220px}.lat-item .lat-loc{color:rgba(238,242,241,.8)}}
 .plan{display:block;background:#fff;color:var(--ink);border-radius:20px;overflow:hidden;box-shadow:0 30px 60px -40px rgba(10,19,23,.45);margin-bottom:24px}
 .js .plan:not(.active){display:none}
 .js .plan.active{animation:plan-in .55s cubic-bezier(.2,.7,.2,1) both}
