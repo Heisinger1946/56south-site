@@ -9,7 +9,11 @@ Actualizado: 18 nov 2026.
 
 ## En `borrador`, sin publicar
 
-- Titular de la sección de expediciones: "Seven latitudes…" pasó a "Six latitudes. One country. No one else on the route." (y sus traducciones), porque con el 47°S fuera quedan seis expediciones.
+- Nada pendiente (solo este archivo, que no se ve en la web).
+
+## Publicado el 18 nov 2026 (undécimo envío)
+
+- Titular de la sección de expediciones: "Seven latitudes…" pasó a "Six latitudes. One country. No one else on the route.", con sus traducciones ("Seis latitudes…", "Шесть широт…"), porque con el 47°S fuera quedan seis expediciones. Verificado en el sitio real en inglés y español.
 
 ## Publicado el 18 nov 2026 (décimo envío)
 
