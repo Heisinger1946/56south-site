@@ -561,21 +561,26 @@ form .btn{align-self:flex-start}
 /* Botones de contacto: círculos que se alargan a una píldora dorada con el nombre (idea del componente
    "gradient menu" de 21st.dev, rehecho sin React; en pantallas táctiles quedan abiertos) */
 .contact-links{gap:16px}
-.gm-item{position:relative;isolation:isolate;flex:none;display:inline-flex;align-items:center;justify-content:center;width:60px;height:60px;border-radius:999px;background:var(--paper);color:#4E5D63;text-decoration:none;box-shadow:0 12px 26px -14px rgba(0,0,0,.75);transition:width .5s cubic-bezier(.2,.7,.2,1),box-shadow .5s}
-.gm-bg,.gm-glow{position:absolute;border-radius:999px;background:linear-gradient(45deg,var(--gf),var(--gt));opacity:0;transition:opacity .5s}
+.gm-item{position:relative;isolation:isolate;flex:none;display:inline-flex;align-items:center;justify-content:center;width:60px;height:60px;border-radius:999px;background:var(--paper);color:#4E5D63;text-decoration:none;box-shadow:0 12px 26px -14px rgba(0,0,0,.75);transition:width .9s cubic-bezier(.65,0,.25,1),box-shadow .6s}
+.gm-bg,.gm-glow{position:absolute;border-radius:999px;background:linear-gradient(45deg,var(--gf),var(--gt));opacity:0;transition:opacity .7s ease}
 .gm-bg{inset:0}
 .gm-glow{left:0;right:0;top:10px;height:100%;z-index:-1;filter:blur(15px)}
-.gm-icon{position:relative;display:grid;place-items:center;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.gm-icon{position:relative;display:grid;place-items:center;transition:transform .45s cubic-bezier(.4,0,.2,1) .25s}
 .gm-icon svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .gm-icon .gm-dot{fill:currentColor;stroke:none}
-.gm-title{position:absolute;font-family:var(--body);font-weight:600;font-size:.8125rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);white-space:nowrap;transform:scale(0);transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.gm-title{position:absolute;font-family:var(--body);font-weight:600;font-size:.8125rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);white-space:nowrap;opacity:0;transform:scale(.6);transition:transform .35s cubic-bezier(.4,0,.2,1),opacity .25s}
+.gm-ig{--gf:#4F5BD5;--gt:#D6A23A;background:linear-gradient(45deg,#3F4AA6 0%,#8E3FA0 24%,#A13E9E 34%,#CB2449 58%,#D2704A 80%,#D8B13A 100%);color:#fff}
+.gm-ig .gm-bg{background:linear-gradient(45deg,#3F4AA6 0%,#A13E9E 30%,#CB2449 60%,#D8B13A 100%)}
+.gm-ig .gm-glow{background:linear-gradient(45deg,#A13E9E,#CB2449 55%,#D8B13A)}
+.gm-ig .gm-icon svg{stroke-width:2.2}
+.gm-ig .gm-title{color:#fff}
 .gm-item:hover,.gm-item:focus-visible{width:180px;box-shadow:none}
 .gm-item:hover .gm-bg,.gm-item:focus-visible .gm-bg{opacity:1}
 .gm-item:hover .gm-glow,.gm-item:focus-visible .gm-glow{opacity:.5}
-.gm-item:hover .gm-icon,.gm-item:focus-visible .gm-icon{transform:scale(0)}
-.gm-item:hover .gm-title,.gm-item:focus-visible .gm-title{transform:scale(1);transition-delay:.15s}
+.gm-item:hover .gm-icon,.gm-item:focus-visible .gm-icon{transform:scale(0);transition-delay:0s}
+.gm-item:hover .gm-title,.gm-item:focus-visible .gm-title{opacity:1;transform:scale(1);transition:transform .55s cubic-bezier(.2,.7,.2,1) .45s,opacity .45s ease .45s}
 .gm-item:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
-@media (hover:none){.gm-item{width:160px;box-shadow:none}.gm-item .gm-bg{opacity:1}.gm-item .gm-glow{opacity:.4}.gm-item .gm-icon{transform:scale(0)}.gm-item .gm-title{transform:scale(1)}}
+@media (hover:none){.gm-item{width:160px;box-shadow:none}.gm-item .gm-bg{opacity:1}.gm-item .gm-glow{opacity:.4}.gm-item .gm-icon{transform:scale(0)}.gm-item .gm-title{opacity:1;transform:scale(1)}}
 @media (prefers-reduced-motion:reduce){.gm-item,.gm-bg,.gm-glow,.gm-icon,.gm-title{transition:none}}
 
 /* Footer */
@@ -1038,7 +1043,7 @@ form .btn{align-self:flex-start}
       <p>Escríbele al concierge con tus fechas y cuántas personas viajan. Respondemos personalmente.</p>
       <div class="contact-links">
         <a class="gm-item btn-mail" href="mailto:concierge@go56south.com" data-copy="concierge@go56south.com" aria-label="Correo concierge@go56south.com" style="--gf:#E3A857;--gt:#F4D59C"><span class="gm-bg" aria-hidden="true"></span><span class="gm-glow" aria-hidden="true"></span><span class="gm-icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="5.5" width="18" height="13" rx="2.6"/><path d="M3.8 7.2l7.1 5.4a1.8 1.8 0 0 0 2.2 0l7.1-5.4"/></svg></span><span class="gm-title" aria-hidden="true">Correo</span></a>
-        <a class="gm-item" href="https://www.instagram.com/go56south/" target="_blank" rel="noopener" aria-label="Instagram @go56south" style="--gf:#C9863A;--gt:#E3A857"><span class="gm-bg" aria-hidden="true"></span><span class="gm-glow" aria-hidden="true"></span><span class="gm-icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.2" y="3.2" width="17.6" height="17.6" rx="5.2"/><circle cx="12" cy="12" r="4.1"/><circle class="gm-dot" cx="17.3" cy="6.7" r="1.15"/></svg></span><span class="gm-title" aria-hidden="true">Instagram</span></a>
+        <a class="gm-item gm-ig" href="https://www.instagram.com/go56south/" target="_blank" rel="noopener" aria-label="Instagram @go56south"><span class="gm-bg" aria-hidden="true"></span><span class="gm-glow" aria-hidden="true"></span><span class="gm-icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.2" y="3.2" width="17.6" height="17.6" rx="5.2"/><circle cx="12" cy="12" r="4.1"/><circle class="gm-dot" cx="17.3" cy="6.7" r="1.15"/></svg></span><span class="gm-title" aria-hidden="true">Instagram</span></a>
       </div>
     </div>
 
