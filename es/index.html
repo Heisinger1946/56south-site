@@ -122,18 +122,7 @@ a{color:inherit}
 .wl-on a{position:relative;z-index:1}
 .nav-links.wl-on a.link:hover,.nav-links.wl-on a.link:focus-visible,.langs.wl-on a:hover,.langs.wl-on a[aria-current="true"]{background:none;box-shadow:none}
 .nav-links a.link.is-active,.langs.wl-on a[aria-current="true"]{color:#fff}
-@media (max-width:640px){.btn-ig{width:100%;padding:14px 16px}/* Botones "origin": un círculo de papel crece desde donde entra el cursor (idea de un componente de 21st.dev, rehecho sin React) */
-.origin{position:relative;overflow:hidden;isolation:isolate}
-.origin-fill{position:absolute;left:var(--ox,50%);top:var(--oy,50%);width:var(--os,0);height:var(--os,0);z-index:-1;border-radius:50%;background:var(--paper);transform:translate(-50%,-50%) scale(0);transition:transform .5s cubic-bezier(.16,1,.3,1);pointer-events:none}
-.origin.is-filled .origin-fill{transform:translate(-50%,-50%) scale(1)}
-.origin.is-filled,.origin.is-filled:hover,.origin.is-filled:focus-visible{color:var(--ink);border-color:var(--paper);box-shadow:0 10px 26px -14px rgba(238,242,241,.55)}
-.btn-ig.origin::before{display:none}
-.btn-ig.origin.is-filled .ig-handle{color:var(--ink);border-color:rgba(10,19,23,.25)}
-.btn-ig.origin,.ig-round.origin{transition:color .3s cubic-bezier(.16,1,.3,1),border-color .3s,box-shadow .3s,transform .2s}
-.origin:active{transform:scale(.985)}
-.origin:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
-@media (prefers-reduced-motion:reduce){.origin-fill{transition:none}.origin:active{transform:none}}
-.btn-ig .ig-handle{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.btn-ig svg{margin-left:auto;flex:none}}
+@media (max-width:640px){.btn-ig{width:100%;padding:14px 16px}.btn-ig .ig-handle{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.btn-ig svg{margin-left:auto;flex:none}}
 @media (max-width:400px){.nav{gap:4px 10px}.nav .btn{padding:8px 16px}.langs a{min-width:34px;padding:0 6px}}
 
 /* Hero */
@@ -568,6 +557,26 @@ form .btn{align-self:flex-start}
 .captcha .g-recaptcha>div{border-radius:6px;overflow:hidden;box-shadow:0 0 0 1px var(--line-2)}
 @media (max-width:340px){.captcha{transform:scale(.9);transform-origin:0 0}}
 .hp{position:absolute;left:-5000px;width:1px;height:1px;overflow:hidden}
+
+/* Botones de contacto: círculos que se alargan a una píldora dorada con el nombre (idea del componente
+   "gradient menu" de 21st.dev, rehecho sin React; en pantallas táctiles quedan abiertos) */
+.contact-links{gap:16px}
+.gm-item{position:relative;isolation:isolate;flex:none;display:inline-flex;align-items:center;justify-content:center;width:60px;height:60px;border-radius:999px;background:var(--paper);color:#4E5D63;text-decoration:none;box-shadow:0 12px 26px -14px rgba(0,0,0,.75);transition:width .5s cubic-bezier(.2,.7,.2,1),box-shadow .5s}
+.gm-bg,.gm-glow{position:absolute;border-radius:999px;background:linear-gradient(45deg,var(--gf),var(--gt));opacity:0;transition:opacity .5s}
+.gm-bg{inset:0}
+.gm-glow{left:0;right:0;top:10px;height:100%;z-index:-1;filter:blur(15px)}
+.gm-icon{position:relative;display:grid;place-items:center;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.gm-icon svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.gm-icon .gm-dot{fill:currentColor;stroke:none}
+.gm-title{position:absolute;font-family:var(--body);font-weight:600;font-size:.8125rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);white-space:nowrap;transform:scale(0);transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.gm-item:hover,.gm-item:focus-visible{width:180px;box-shadow:none}
+.gm-item:hover .gm-bg,.gm-item:focus-visible .gm-bg{opacity:1}
+.gm-item:hover .gm-glow,.gm-item:focus-visible .gm-glow{opacity:.5}
+.gm-item:hover .gm-icon,.gm-item:focus-visible .gm-icon{transform:scale(0)}
+.gm-item:hover .gm-title,.gm-item:focus-visible .gm-title{transform:scale(1);transition-delay:.15s}
+.gm-item:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+@media (hover:none){.gm-item{width:160px;box-shadow:none}.gm-item .gm-bg{opacity:1}.gm-item .gm-glow{opacity:.4}.gm-item .gm-icon{transform:scale(0)}.gm-item .gm-title{transform:scale(1)}}
+@media (prefers-reduced-motion:reduce){.gm-item,.gm-bg,.gm-glow,.gm-icon,.gm-title{transition:none}}
 
 /* Footer */
 .site-footer{border-top:1px solid var(--line)}
@@ -1028,8 +1037,8 @@ form .btn{align-self:flex-start}
       <h2 class="h2">Dinos qué latitud.</h2>
       <p>Escríbele al concierge con tus fechas y cuántas personas viajan. Respondemos personalmente.</p>
       <div class="contact-links">
-        <a class="btn btn-line btn-ig btn-mail origin" href="mailto:concierge@go56south.com" data-copy="concierge@go56south.com"><span>Correo</span> <span class="ig-handle">concierge@go56south.com</span><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a>
-        <a class="ig-round origin" href="https://www.instagram.com/go56south/" target="_blank" rel="noopener" aria-label="Instagram @go56south"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.2" y="3.2" width="17.6" height="17.6" rx="5.2"/><circle cx="12" cy="12" r="4.1"/><circle class="ig-dot" cx="17.3" cy="6.7" r="1.15"/></svg></a>
+        <a class="gm-item btn-mail" href="mailto:concierge@go56south.com" data-copy="concierge@go56south.com" aria-label="Correo concierge@go56south.com" style="--gf:#E3A857;--gt:#F4D59C"><span class="gm-bg" aria-hidden="true"></span><span class="gm-glow" aria-hidden="true"></span><span class="gm-icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="5.5" width="18" height="13" rx="2.6"/><path d="M3.8 7.2l7.1 5.4a1.8 1.8 0 0 0 2.2 0l7.1-5.4"/></svg></span><span class="gm-title" aria-hidden="true">Correo</span></a>
+        <a class="gm-item" href="https://www.instagram.com/go56south/" target="_blank" rel="noopener" aria-label="Instagram @go56south" style="--gf:#C9863A;--gt:#E3A857"><span class="gm-bg" aria-hidden="true"></span><span class="gm-glow" aria-hidden="true"></span><span class="gm-icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.2" y="3.2" width="17.6" height="17.6" rx="5.2"/><circle cx="12" cy="12" r="4.1"/><circle class="gm-dot" cx="17.3" cy="6.7" r="1.15"/></svg></span><span class="gm-title" aria-hidden="true">Instagram</span></a>
       </div>
     </div>
 
@@ -1625,7 +1634,7 @@ form .btn{align-self:flex-start}
 /* Botón del correo: además de abrir el correo, copia la dirección y lo avisa por 2 segundos */
 (function () {
   var b = document.querySelector(".btn-mail"); if (!b) return;
-  var label = b.querySelector(".ig-handle"), text = label.textContent;
+  var label = b.querySelector(".gm-title"), text = label.textContent;
   var done = { es: "Copiado ✓" }[document.documentElement.lang] || "Copied ✓";
   b.addEventListener("click", function () {
     var addr = b.getAttribute("data-copy");
@@ -1939,35 +1948,6 @@ form .btn{align-self:flex-start}
       spy();
     }
   }
-})();
-</script>
-<script>
-/* Botones "origin": el relleno nace desde el punto donde entra el puntero (o desde el centro con teclado) */
-(function () {
-  document.querySelectorAll(".origin").forEach(function (b) {
-    var fill = document.createElement("span");
-    fill.className = "origin-fill";
-    fill.setAttribute("aria-hidden", "true");
-    b.insertBefore(fill, b.firstChild);
-    function at(x, y) {
-      var r = b.getBoundingClientRect();
-      var d = 2 * Math.max(Math.hypot(x, y), Math.hypot(r.width - x, y), Math.hypot(x, r.height - y), Math.hypot(r.width - x, r.height - y));
-      b.style.setProperty("--ox", x + "px");
-      b.style.setProperty("--oy", y + "px");
-      b.style.setProperty("--os", Math.ceil(d) + "px");
-    }
-    function fromEvent(e) { var r = b.getBoundingClientRect(); at(e.clientX - r.left, e.clientY - r.top); }
-    b.addEventListener("pointerenter", function (e) { if (e.pointerType === "touch") return; fromEvent(e); b.classList.add("is-filled"); });
-    b.addEventListener("pointerdown", function (e) { if (e.button !== 0) return; fromEvent(e); b.classList.add("is-filled"); });
-    b.addEventListener("pointerleave", function () { b.classList.remove("is-filled"); });
-    b.addEventListener("pointercancel", function () { b.classList.remove("is-filled"); });
-    b.addEventListener("pointerup", function (e) { if (e.pointerType === "touch") setTimeout(function () { b.classList.remove("is-filled"); }, 450); });
-    b.addEventListener("focus", function () {
-      if (!b.matches(":focus-visible")) return;
-      var r = b.getBoundingClientRect(); at(r.width / 2, r.height / 2); b.classList.add("is-filled");
-    });
-    b.addEventListener("blur", function () { b.classList.remove("is-filled"); });
-  });
 })();
 </script>
 </body>

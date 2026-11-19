@@ -9,7 +9,7 @@ Actualizado: 19 nov 2026.
 
 ## En `borrador`, sin publicar
 
-- Mapa de la portada: las animaciones aparecen junto con el mapa. Cada figura espera a que el despliegue del mapa (norte a sur, 0,3–2,7 s) llegue a su latitud: el norte (buggies, cóndor) a ~1 s, el centro a ~1,3 s y el sur (ballenas, orcas) a ~1,6–1,9 s. El oleaje entra al empezar el despliegue.
+- Botones de contacto (correo e Instagram) con el estilo "gradient menu" de 21st.dev, rehecho sin React: círculos claros con ícono que al pasar el cursor se alargan a una píldora con degradado dorado (colores del botón principal), brillo debajo y el nombre ("Email"/"Correo", "Instagram"). En pantallas táctiles quedan abiertos. El correo sigue copiando la dirección al hacer clic. Se quitó el efecto "origin" anterior, que por un error de CSS solo se veía en celular.
 
 ## Publicado el 19 nov 2026 (tercer envío)
 
