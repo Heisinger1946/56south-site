@@ -11,7 +11,13 @@ Actualizado: 19 nov 2026.
 
 - Nada pendiente (solo este archivo, que no se ve en la web).
 
+## Publicado el 19 nov 2026 (segundo envío)
+
+- Planes 35°S Valles del Vino (8 experiencias) y 39°S Lagos y Volcanes (10 experiencias) reescritos con las propuestas en PDF (carpeta `pdf 56` del escritorio). No se publicaron hoteles, restaurantes, tiempos de helicóptero ni los cinco circuitos de 39°S (nombres de terceros y datos por confirmar según los propios PDF); se pueden agregar si Jhon los quiere.
+
 ## Publicado el 19 nov 2026
+
+- Atacama (8 experiencias + desierto florido, cerca de Copiapó).
 
 - Plan 23°S Atacama reescrito con la propuesta de contenidos (PDF `56S_Atacama_Propuesta_Completa_Helicopteros.pdf`): descripción nueva, 8 experiencias destacadas (antes 4), temporada, estadía, exigencia y cómo llegar actualizados, con helicóptero privado "a pedido". No se publicaron los operadores de helicópteros ni sus teléfonos (el PDF dice que requieren reconfirmación). Traducciones ES/RU al día.
 
