@@ -9,7 +9,7 @@ Actualizado: 19 nov 2026.
 
 ## En `borrador`, sin publicar
 
-- Patagonia dividida en dos latitudes: 45°S Northern Patagonia (Carretera Austral, de Chaitén al lago General Carrera; foto `fjords-premium.jpg`, licencia por confirmar) y 51°S Southern Patagonia (Tortel, Villa O'Higgins, Natales, Torres del Paine). 10 experiencias cada una, con "Touring" (4x4 privado o moto de turismo con vehículo de apoyo) en ambas. Nuevo pin 45°S en el mapa, opción en el formulario, y "Seven latitudes" / "Explore the seven destinations".
+- Galería de fotos referenciales dentro de cada latitud: 4 fotos por latitud (28 en total) con el nombre de la actividad, arriba del texto. En escritorio, 4 columnas; en tablet, 2×2; en celular, una franja que se desliza de lado. Fotos de Wikimedia Commons con licencias libres (CC BY, CC BY-SA, dominio público), recortadas a 4:3 en WebP (`assets/activities/`, ~2,5 MB en total; se cargan solo al abrir la latitud). Créditos obligatorios en el pie de página, en "Photo credits" (desplegable). Las fotos son referenciales: no son de 56°S. Dos las entregó Jhon (esquí en 33°S y salinas de Cáhuil en 34°S): fuente y licencia por confirmar, no figuran en los créditos.
 
 ## Publicado el 19 nov 2026 (tercer envío)
 

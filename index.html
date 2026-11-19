@@ -476,6 +476,25 @@ input:focus,select:focus,textarea:focus{box-shadow:0 0 0 4px rgba(227,168,87,.18
 .btn-ink:hover{background:var(--z);box-shadow:0 10px 24px -12px var(--z)}
 @media (max-width:1000px){.plan-body{grid-template-columns:1fr}.plan-side{padding-left:0;border-left:0;padding-top:20px;border-top:1px solid rgba(10,19,23,.14)}}
 @media (max-width:640px){.plan-body{padding:26px 20px}.plan-hl,.plan-facts{grid-template-columns:1fr}.plan{border-radius:16px}}
+/* Galería de fotos referenciales dentro de cada latitud */
+.plan-gallery{grid-column:1/-1;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:0 0 6px}
+.plan-gallery figure{margin:0;min-width:0;display:flex;flex-direction:column;gap:10px}
+.plan-gallery .ph{aspect-ratio:4/3;border-radius:14px;overflow:hidden;background:#e7ecea}
+.plan-gallery img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.plan-gallery figure:hover img{transform:scale(1.04)}
+.plan-gallery figcaption{position:relative;padding-left:14px;font-family:var(--mono);font-size:.6875rem;line-height:1.35;letter-spacing:.1em;text-transform:uppercase;color:var(--text-on-paper)}
+.plan-gallery figcaption::before{content:"";position:absolute;left:0;top:.36em;width:6px;height:6px;border-radius:50%;background:var(--z)}
+@media (max-width:1000px){.plan-gallery{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.plan-gallery{display:flex;gap:10px;margin:0 -20px 4px;padding:0 20px 6px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:0 20px;scrollbar-width:none}.plan-gallery::-webkit-scrollbar{display:none}.plan-gallery figure{flex:0 0 74%;scroll-snap-align:start}}
+@media (prefers-reduced-motion:reduce){.plan-gallery img{transition:none}.plan-gallery figure:hover img{transform:none}}
+.photo-credits{display:block!important;padding-top:0!important}
+.photo-credits summary{cursor:pointer;width:max-content;font-family:var(--mono);font-size:.6875rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-mute)}
+.photo-credits summary:hover{color:var(--accent)}
+.photo-credits p{margin:14px 0 10px;font-size:.8125rem}
+.photo-credits ul{margin:0;padding:0;list-style:none;columns:3 240px;column-gap:32px;font-size:.75rem;line-height:1.7}
+.photo-credits li{break-inside:avoid}
+.photo-credits a{color:inherit;text-decoration:underline;text-underline-offset:2px}
+.photo-credits a:hover{color:var(--accent)}
 /* Etiquetas del mapa: compactas y a la izquierda */
 .pin-sm .pin-label{flex-direction:row;align-items:baseline;gap:7px;top:-8px}
 .pin-sm .pin-label b{font-size:.8125rem}
@@ -649,6 +668,12 @@ form .btn{align-self:flex-start}
         </button></h3>
         <article class="plan" id="plan-23" aria-labelledby="tab-23">
           <div class="plan-body">
+            <div class="plan-gallery" role="group" aria-label="Reference photos">
+              <figure><span class="ph"><img src="assets/activities/23-valle-luna.webp" width="960" height="720" alt="Valle de la Luna, reference photo" loading="lazy" decoding="async"></span><figcaption>Valle de la Luna</figcaption></figure>
+              <figure><span class="ph"><img src="assets/activities/23-tatio.webp" width="960" height="720" alt="El Tatio geysers, reference photo" loading="lazy" decoding="async"></span><figcaption>El Tatio geysers</figcaption></figure>
+              <figure><span class="ph"><img src="assets/activities/23-miscanti.webp" width="960" height="720" alt="Altiplano lagoons, reference photo" loading="lazy" decoding="async"></span><figcaption>Altiplano lagoons</figcaption></figure>
+              <figure><span class="ph"><img src="assets/activities/23-astronomy.webp" width="960" height="720" alt="Astronomy, reference photo" loading="lazy" decoding="async"></span><figcaption>Astronomy</figcaption></figure>
+            </div>
             <div class="plan-main">
             <p class="plan-desc">Among the driest and most extraordinary deserts on Earth, at 2,400 m above sea level. Salt flats, turquoise lagoons, volcanoes and ancient formations, crossed on private expeditions and based in boutique hotels and desert lodges.</p>
           <h4 class="plan-kicker">Featured experiences</h4>
@@ -687,6 +712,12 @@ form .btn{align-self:flex-start}
         </button></h3>
         <article class="plan" id="plan-33" aria-labelledby="tab-33">
           <div class="plan-body">
+            <div class="plan-gallery" role="group" aria-label="Reference photos">
+              <figure><span class="ph"><img src="assets/activities/33-ski.webp" width="960" height="720" alt="Skiing and snowboarding, reference photo" loading="lazy" decoding="async"></span><figcaption>Skiing and snowboarding</figcaption></figure>
+              <figure><span class="ph"><img src="assets/activities/33-portillo.webp" width="960" height="720" alt="Portillo and Laguna del Inca, reference photo" loading="lazy" decoding="async"></span><figcaption>Portillo and Laguna del Inca</figcaption></figure>
+              <figure><span class="ph"><img src="assets/activities/33-snowmobile.webp" width="960" height="720" alt="Snowmobiles, reference photo" loading="lazy" decoding="async"></span><figcaption>Snowmobiles</figcaption></figure>
+              <figure><span class="ph"><img src="assets/activities/33-andes.webp" width="960" height="720" alt="Mountain expeditions, reference photo" loading="lazy" decoding="async"></span><figcaption>Mountain expeditions</figcaption></figure>
+            </div>
             <div class="plan-main">
             <p class="plan-desc">Santiago&#x27;s ski resorts are among the closest to a capital city anywhere in the world. Within one or two hours you are skiing at close to 3,000 m.</p>
           <h4 class="plan-kicker">Featured experiences</h4>
@@ -719,6 +750,12 @@ form .btn{align-self:flex-start}
         </button></h3>
         <article class="plan" id="plan-34" aria-labelledby="tab-34">
           <div class="plan-body">
+            <div class="plan-gallery" role="group" aria-label="Reference photos">
+              <figure><span class="ph"><img src="assets/activities/34-punta-lobos.webp" width="960" height="720" alt="Surfing Punta de Lobos, reference photo" loading="lazy" decoding="async"></span><figcaption>Surfing Punta de Lobos</figcaption></figure>
+              <figure><span class="ph"><img src="assets/activities/34-pichilemu-surf.webp" width="960" height="720" alt="Surfing Pichilemu, reference photo" loading="lazy" decoding="async"></span><figcaption>Surfing Pichilemu</figcaption></figure>
+              <figure><span class="ph"><img src="assets/activities/34-cahuil.webp" width="960" height="720" alt="Cáhuil salt flats, reference photo" loading="lazy" decoding="async"></span><figcaption>Cáhuil salt flats</figcaption></figure>
+              <figure><span class="ph"><img src="assets/activities/34-coast.webp" width="960" height="720" alt="Coastal route, reference photo" loading="lazy" decoding="async"></span><figcaption>Coastal route</figcaption></figure>
+            </div>
             <div class="plan-main">
             <p class="plan-desc">More than 4,000 km of coastline. Pichilemu and Punta de Lobos get consistent waves all year and are a reference point for surfing in South America.</p>
           <h4 class="plan-kicker">Featured experiences</h4>
@@ -752,6 +789,12 @@ form .btn{align-self:flex-start}
         </button></h3>
         <article class="plan" id="plan-35" aria-labelledby="tab-35">
           <div class="plan-body">
+            <div class="plan-gallery" role="group" aria-label="Reference photos">
+              <figure><span class="ph"><img src="assets/activities/35-vineyards.webp" width="960" height="720" alt="Vineyards, reference photo" loading="lazy" decoding="async"></span><figcaption>Vineyards</figcaption></figure>
+              <figure><span class="ph"><img src="assets/activities/35-cellar.webp" width="960" height="720" alt="Cellar tastings, reference photo" loading="lazy" decoding="async"></span><figcaption>Cellar tastings</figcaption></figure>
+              <figure><span class="ph"><img src="assets/activities/35-harvest.webp" width="960" height="720" alt="Harvest, reference photo" loading="lazy" decoding="async"></span><figcaption>Harvest</figcaption></figure>
+              <figure><span class="ph"><img src="assets/activities/35-horses.webp" width="960" height="720" alt="Horseback among the vines, reference photo" loading="lazy" decoding="async"></span><figcaption>Horseback among the vines</figcaption></figure>
+            </div>
             <div class="plan-main">
             <p class="plan-desc">Between the Andes and the Pacific, Chile&#x27;s wine valleys combine sunny days, cool nights, ocean influence and varied soils. From the elegant whites of Casablanca to the great reds of Colchagua, Maipo and Cachapoal, you stay in boutique hotels among the vines.</p>
           <h4 class="plan-kicker">Featured experiences</h4>
@@ -789,6 +832,12 @@ form .btn{align-self:flex-start}
         </button></h3>
         <article class="plan" id="plan-39" aria-labelledby="tab-39">
           <div class="plan-body">
+            <div class="plan-gallery" role="group" aria-label="Reference photos">
+              <figure><span class="ph"><img src="assets/activities/39-villarrica.webp" width="960" height="720" alt="Villarrica volcano, reference photo" loading="lazy" decoding="async"></span><figcaption>Villarrica volcano</figcaption></figure>
+              <figure><span class="ph"><img src="assets/activities/39-rafting.webp" width="960" height="720" alt="Rafting, reference photo" loading="lazy" decoding="async"></span><figcaption>Rafting</figcaption></figure>
+              <figure><span class="ph"><img src="assets/activities/39-petrohue.webp" width="960" height="720" alt="Petrohué river, reference photo" loading="lazy" decoding="async"></span><figcaption>Petrohué river</figcaption></figure>
+              <figure><span class="ph"><img src="assets/activities/39-hot-springs.webp" width="960" height="720" alt="Forest hot springs, reference photo" loading="lazy" decoding="async"></span><figcaption>Forest hot springs</figcaption></figure>
+            </div>
             <div class="plan-main">
             <p class="plan-desc">Between Pucón and Puerto Varas, snow-capped volcanoes rise over clear lakes, glacial rivers cross ancient forests and small towns keep the traditions of the south. A route linking lakes, volcanoes, national parks and reserves, built around private adventures, local food and boutique hotels.</p>
           <h4 class="plan-kicker">Featured experiences</h4>
@@ -828,6 +877,12 @@ form .btn{align-self:flex-start}
         </button></h3>
         <article class="plan" id="plan-45" aria-labelledby="tab-45">
           <div class="plan-body">
+            <div class="plan-gallery" role="group" aria-label="Reference photos">
+              <figure><span class="ph"><img src="assets/activities/45-marble-caves.webp" width="960" height="720" alt="Marble Caves, reference photo" loading="lazy" decoding="async"></span><figcaption>Marble Caves</figcaption></figure>
+              <figure><span class="ph"><img src="assets/activities/45-san-rafael.webp" width="960" height="720" alt="Laguna San Rafael, reference photo" loading="lazy" decoding="async"></span><figcaption>Laguna San Rafael</figcaption></figure>
+              <figure><span class="ph"><img src="assets/activities/45-futaleufu.webp" width="960" height="720" alt="Rafting the Futaleufú, reference photo" loading="lazy" decoding="async"></span><figcaption>Rafting the Futaleufú</figcaption></figure>
+              <figure><span class="ph"><img src="assets/activities/45-carretera-austral.webp" width="960" height="720" alt="Touring the Carretera Austral, reference photo" loading="lazy" decoding="async"></span><figcaption>Touring the Carretera Austral</figcaption></figure>
+            </div>
             <div class="plan-main">
             <p class="plan-desc">From the forests and fjords of Chaitén to Lago General Carrera, Northern Patagonia runs along the Carretera Austral: hanging glaciers, white-water rivers, hot springs and the Northern Ice Field. It covers Chaitén, Futaleufú, Pumalín, Puyuhuapi, Queulat, Coyhaique and Laguna San Rafael.</p>
           <h4 class="plan-kicker">Featured experiences</h4>
@@ -867,6 +922,12 @@ form .btn{align-self:flex-start}
         </button></h3>
         <article class="plan" id="plan-51" aria-labelledby="tab-51">
           <div class="plan-body">
+            <div class="plan-gallery" role="group" aria-label="Reference photos">
+              <figure><span class="ph"><img src="assets/activities/51-paine.webp" width="960" height="720" alt="Torres del Paine, reference photo" loading="lazy" decoding="async"></span><figcaption>Torres del Paine</figcaption></figure>
+              <figure><span class="ph"><img src="assets/activities/51-grey.webp" width="960" height="720" alt="Grey Glacier, reference photo" loading="lazy" decoding="async"></span><figcaption>Grey Glacier</figcaption></figure>
+              <figure><span class="ph"><img src="assets/activities/51-serrano.webp" width="960" height="720" alt="Serrano Glacier, reference photo" loading="lazy" decoding="async"></span><figcaption>Serrano Glacier</figcaption></figure>
+              <figure><span class="ph"><img src="assets/activities/51-tortel.webp" width="960" height="720" alt="Caleta Tortel, reference photo" loading="lazy" decoding="async"></span><figcaption>Caleta Tortel</figcaption></figure>
+            </div>
             <div class="plan-main">
             <p class="plan-desc">From Caleta Tortel and the Southern Ice Field to the granite towers of Torres del Paine, Southern Patagonia is a land of glaciers, fjords and wind. It covers Caleta Tortel, Villa O&#x27;Higgins, Puerto Natales and Torres del Paine, and combines with the north into expeditions of about 18 to 25 days.</p>
           <h4 class="plan-kicker">Featured experiences</h4>
@@ -1014,6 +1075,40 @@ form .btn{align-self:flex-start}
     <span>56°S — Private Expeditions, Chile</span>
     <span class="footer-links"><a class="footer-mail" href="mailto:concierge@go56south.com">concierge@go56south.com</a><a class="footer-mail footer-ig" href="https://www.instagram.com/go56south/" target="_blank" rel="noopener">Instagram @go56south<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a></span>
     <span>Las Condes, Chile · © <span id="year">2026</span></span>
+  </div>
+  <div class="wrap photo-credits">
+    <details>
+      <summary>Photo credits</summary>
+      <p>Reference photos from Wikimedia Commons, cropped and resized. They show the kind of place and activity; every expedition is designed privately.</p>
+      <ul>
+          <li>Valle de la Luna — Diego Delso, <a href="https://commons.wikimedia.org/wiki/File:Anfiteatro,_Valle_de_la_Luna,_San_Pedro_de_Atacama,_Chile,_2016-02-01,_DD_149.JPG" target="_blank" rel="noopener">CC BY-SA 4.0</a></li>
+          <li>El Tatio geysers — Diego Delso, <a href="https://commons.wikimedia.org/wiki/File:G%C3%A9iseres_del_Tatio,_Atacama,_Chile,_2016-02-01,_DD_51-53_HDR.JPG" target="_blank" rel="noopener">CC BY-SA 4.0</a></li>
+          <li>Altiplano lagoons — Diego Delso, <a href="https://commons.wikimedia.org/wiki/File:Laguna_Miscanti,_Chile,_2016-02-08,_DD_32.JPG" target="_blank" rel="noopener">CC BY-SA 4.0</a></li>
+          <li>Astronomy — ESO/Luis Calçada/Herbert Zodet, <a href="https://commons.wikimedia.org/wiki/File:Beneath_the_Milky_Way.jpg" target="_blank" rel="noopener">CC BY 4.0</a></li>
+          <li>Portillo and Laguna del Inca — Nbendersky, <a href="https://commons.wikimedia.org/wiki/File:Pink_sunset_at_Laguna_del_Inca,_Ski_Portillo,_Chile_-_Puesta_de_sol_rosada_en_la_Laguna_del_Inca,_Ski_Portillo_Chile.jpg" target="_blank" rel="noopener">CC BY-SA 4.0</a></li>
+          <li>Snowmobiles — Unknown author, <a href="https://commons.wikimedia.org/wiki/File:Volcanic_Legacy_Scenic_Byway_-_A_Confident_Snowmobile_Guide_-_NARA_-_7722691.jpg" target="_blank" rel="noopener">Public domain</a></li>
+          <li>Mountain expeditions — Daniela.tt, <a href="https://commons.wikimedia.org/wiki/File:Monumento_Natural_el_Morado_01.jpg" target="_blank" rel="noopener">CC BY-SA 4.0</a></li>
+          <li>Surfing Punta de Lobos — Christian Córdova from Santiago, Chile, <a href="https://commons.wikimedia.org/wiki/File:Surfer_in_Punta_de_Lobos,_Pichilemu_-_2.jpg" target="_blank" rel="noopener">CC BY 2.0</a></li>
+          <li>Surfing Pichilemu — SERNATUR / Gobierno de Chile, <a href="https://commons.wikimedia.org/wiki/File:Surfista_Diego_Medina_en_el_campeonato_de_Surf_Trucos_Analog_Pichilemu,_Air_and_Style_2012.jpg" target="_blank" rel="noopener">CC BY 3.0 cl</a></li>
+          <li>Coastal route — virso, <a href="https://commons.wikimedia.org/wiki/File:Punta_de_Lobos,_Chilean_Surfing_Place_-_panoramio.jpg" target="_blank" rel="noopener">CC BY-SA 3.0</a></li>
+          <li>Vineyards — Hiroki Ogawa, <a href="https://commons.wikimedia.org/wiki/File:Winery_Valle_Colchagua_Chile_-_panoramio_(1).jpg" target="_blank" rel="noopener">CC BY 3.0</a></li>
+          <li>Cellar tastings — Py4nf, <a href="https://commons.wikimedia.org/wiki/File:Wine_barrels_santiago_chile.jpg" target="_blank" rel="noopener">CC BY-SA 4.0</a></li>
+          <li>Harvest — P. Hughes, <a href="https://commons.wikimedia.org/wiki/File:Chile_-_Vi%C3%B1a_Undurraga_04.jpg" target="_blank" rel="noopener">CC BY 4.0</a></li>
+          <li>Horseback among the vines — Psommaruga, <a href="https://commons.wikimedia.org/wiki/File:Vi%C3%B1a_Casa_Silva_-_Vi%C3%B1edo_Angostura_Vineyard.jpg" target="_blank" rel="noopener">CC BY-SA 4.0</a></li>
+          <li>Villarrica volcano — Adolto Toloza, <a href="https://commons.wikimedia.org/wiki/File:Volc%C3%A1n_Villarrica._Puc%C3%B3n._-_panoramio.jpg" target="_blank" rel="noopener">CC BY-SA 3.0</a></li>
+          <li>Rafting — Marco Antonio Correa Flores, <a href="https://commons.wikimedia.org/wiki/File:Rafting_en_R%C3%ADo_Trancura_02.JPG" target="_blank" rel="noopener">CC BY-SA 3.0</a></li>
+          <li>Petrohué river — Diego Delso, <a href="https://commons.wikimedia.org/wiki/File:Saltos_del_Petrohu%C3%A9-Chile1.jpg" target="_blank" rel="noopener">CC BY-SA 3.0</a></li>
+          <li>Forest hot springs — Falk2, <a href="https://commons.wikimedia.org/wiki/File:J27_934_Termas_geom%C3%A9tricas.jpg" target="_blank" rel="noopener">CC BY-SA 4.0</a></li>
+          <li>Marble Caves — Jpmorenosanchez, <a href="https://commons.wikimedia.org/wiki/File:Lago_General_Carrera_-_Capillas_de_M%C3%A1rmol_4.jpg" target="_blank" rel="noopener">CC BY-SA 4.0</a></li>
+          <li>Laguna San Rafael — Javiercamposg7, <a href="https://commons.wikimedia.org/wiki/File:Glaciar_San_Rafael_y_t%C3%A9mpano_en_la_laguna.jpg" target="_blank" rel="noopener">CC BY-SA 4.0</a></li>
+          <li>Rafting the Futaleufú — CollaboCo, <a href="https://commons.wikimedia.org/wiki/File:Bio_Bio_Expeditions_-_Guided_Tours.jpg" target="_blank" rel="noopener">CC BY-SA 4.0</a></li>
+          <li>Touring the Carretera Austral — Rakela, <a href="https://commons.wikimedia.org/wiki/File:Carretera_Austral_-_Leones.JPG" target="_blank" rel="noopener">CC BY-SA 3.0</a></li>
+          <li>Torres del Paine — Diego Delso, <a href="https://commons.wikimedia.org/wiki/File:Cuernos_del_Paine,_Parque_Nacional_Torres_del_Paine,_Chile1.jpg" target="_blank" rel="noopener">CC BY-SA 3.0</a></li>
+          <li>Grey Glacier — Pablo A. Cumillaf, <a href="https://commons.wikimedia.org/wiki/File:Kayakistas_en_Glaciar_Grey.jpg" target="_blank" rel="noopener">CC BY-SA 4.0</a></li>
+          <li>Serrano Glacier — Diego Delso, <a href="https://commons.wikimedia.org/wiki/File:Glaciar_Serrano_Chile2.jpg" target="_blank" rel="noopener">CC BY-SA 3.0</a></li>
+          <li>Caleta Tortel — Manuel Cañón P., <a href="https://commons.wikimedia.org/wiki/File:Pasarelas_en_Caleta_Tortel_-_panoramio.jpg" target="_blank" rel="noopener">CC BY-SA 3.0</a></li>
+      </ul>
+    </details>
   </div>
 </footer>
 
