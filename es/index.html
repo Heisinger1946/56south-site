@@ -288,6 +288,7 @@ a{color:inherit}
 @keyframes surf-ride{0%{transform:translate(7px,-7.9px) rotate(18deg)}26%{transform:translate(15px,-5.6px) rotate(13deg)}50%{transform:translate(10px,-7px) rotate(-14deg)}76%{transform:translate(20px,-4.4px) rotate(13deg)}100%{transform:translate(30px,-2.6px) rotate(7deg)}}
 /* Oleaje: tres frentes de ola con la forma de la costa llegan a la orilla uno tras otro. Se mueve el SVG entero (no repinta). */
 .fx-swell{opacity:0;animation:swell 7.5s linear infinite}
+.map-3d:not(.fx-go) .fx-swell{visibility:hidden}
 .fx-swell.s2{animation-delay:-2.5s}
 .fx-swell.s3{animation-delay:-5s}
 .fx-swell path{fill:none;stroke:#EEF2F1;stroke-width:1;vector-effect:non-scaling-stroke;stroke-linecap:round}
@@ -1354,8 +1355,21 @@ form .btn{align-self:flex-start}
   function big() { return map.offsetHeight < 500 ? 1.3 : 1; } // en pantallas chicas las figuras van un poco más grandes
   // Borde izquierdo hasta donde se puede dibujar (en unidades del mapa): en celular el mapa queda cerca del borde de la pantalla
   function west() { return -Math.min(230, (map.getBoundingClientRect().left - 14) / (map.offsetWidth / 275)); }
-  function free(sel) { return document.querySelector(sel + ":not(.on)"); }
-  function show(el, ms) { el.classList.add("on"); setTimeout(function () { el.classList.remove("on"); }, ms); }
+  function free(sel) { return document.querySelector(sel + ":not(.on):not(.wait)"); }
+  // El mapa se despliega de norte a sur (animación "unroll": 2,4 s desde los 0,3 s). Cada figura espera a que
+  // el despliegue llegue a su latitud, así aparece junto con el mapa y nunca flota sobre el vacío.
+  var T0 = performance.now();
+  function wait(y) {
+    var f = Math.max(0, Math.min(1, y / 1200)), lo = 0, hi = 1, u = 0, i;
+    for (i = 0; i < 22; i++) { u = (lo + hi) / 2; if (3 * u * u * (1 - u) + u * u * u < f) lo = u; else hi = u; } // curva .6,0,.2,1
+    var x = 3 * u * (1 - u) * (1 - u) * .6 + 3 * u * u * (1 - u) * .2 + u * u * u;
+    return T0 + 300 + 2400 * x - performance.now();
+  }
+  function show(el, ms, y) {
+    var w = y == null ? 0 : wait(y);
+    function go() { el.classList.remove("wait"); el.classList.add("on"); setTimeout(function () { el.classList.remove("on"); }, ms); }
+    if (w > 0) { el.classList.add("wait"); setTimeout(go, w); } else go();
+  }
 
   // Las figuras se crean una vez y se reutilizan
   var whale = '<g class="whale"><ellipse class="w-rip" rx="32" ry="7"/><ellipse class="w-rip r2" rx="42" ry="9"/><g transform="translate(-5 0)"><ellipse class="w-rip r3" rx="34" ry="8"/></g>' +
@@ -1422,14 +1436,14 @@ form .btn{align-self:flex-start}
     lastY = y;
     var s = rnd(1.2, 1.55) * big(), x = Math.max(west() + 40 * s, edge(W, y) - rnd(75, 125) * s), dir = Math.random() < .5 ? -1 : 1;
     el.setAttribute("transform", "translate(" + x.toFixed(1) + " " + y.toFixed(1) + ") scale(" + (dir * s).toFixed(2) + " " + s.toFixed(2) + ")");
-    show(el, 11600);
+    show(el, 11600, y);
   }
 
   // Orcas: la manada cruza mar adentro en el sur, lejos de la ballena que esté a la vista
   function pack() {
     var el = free(".orca"); if (!el) return;
     var y, tries = 0;
-    do { y = rnd(920, 1150); } while (document.querySelector(".whale.on") && Math.abs(y - lastY) < 150 && ++tries < 8);
+    do { y = rnd(920, 1150); } while (document.querySelector(".whale.on, .whale.wait") && Math.abs(y - lastY) < 150 && ++tries < 8);
     var dir = Math.random() < .5 ? -1 : 1, shore = edge(W, y), left = west();
     // la manada ocupa unas 100 unidades hacia atrás y 70 hacia adelante: se achica si no cabe entre el borde y la costa
     var s = Math.min(rnd(1.5, 1.8) * big(), (shore - left) / 172);
@@ -1438,22 +1452,22 @@ form .btn{align-self:flex-start}
     var x = dir > 0 ? rnd(left + 100 * s, shore - 70 * s - gap) : rnd(left + 70 * s, shore - 100 * s - gap);
     podY = y;
     el.setAttribute("transform", "translate(" + x.toFixed(1) + " " + y.toFixed(1) + ") scale(" + (dir * s).toFixed(2) + " " + s.toFixed(2) + ")");
-    show(el, 10100);
+    show(el, 10100, y);
     // Una que otra vez, una orca salta cerca de la manada: un poco más al norte y mar adentro, para no taparla
     setTimeout(function () { leap(x - dir * rnd(10, 30) * s, y - rnd(58, 70) * s, s * 1.15, dir); }, rnd(1600, 3600));
   }
   function leap(x, y, s, dir) {
     var el = free(".breach"); if (!el || !visible || document.hidden) return;
-    if (document.querySelector(".whale.on") && Math.abs(y - lastY) < 120) return; // no encima de una ballena
+    if (document.querySelector(".whale.on, .whale.wait") && Math.abs(y - lastY) < 120) return; // no encima de una ballena
     x = Math.max(west() + 45 * s, Math.min(x, edge(W, y) - 70 * s));              // ni cerca de la costa ni fuera del dibujo
     el.setAttribute("transform", "translate(" + x.toFixed(1) + " " + y.toFixed(1) + ") scale(" + (dir * s).toFixed(2) + " " + s.toFixed(2) + ")");
-    show(el, 6300);
+    show(el, 6300, y);
   }
   // Además, una orca salta sola cada tanto en el mar del sur, lejos de la manada
   var podY = -999;
   function jump() {
     var y, tries = 0;
-    do { y = rnd(800, 1130); } while (((document.querySelector(".orca.on") && Math.abs(y - podY) < 110) || (document.querySelector(".whale.on") && Math.abs(y - lastY) < 120)) && ++tries < 10);
+    do { y = rnd(800, 1130); } while (((document.querySelector(".orca.on, .orca.wait") && Math.abs(y - podY) < 110) || (document.querySelector(".whale.on, .whale.wait") && Math.abs(y - lastY) < 120)) && ++tries < 10);
     if (tries >= 10) return;
     var s = rnd(1.45, 1.75) * big();
     leap(edge(W, y) - rnd(85, 150) * s, y, s, Math.random() < .5 ? -1 : 1);
@@ -1466,21 +1480,22 @@ form .btn{align-self:flex-start}
     var s = (second ? second.s * .78 : rnd(1.35, 1.6) * big()), y = second ? second.y + rnd(40, 50) : rnd(532, 546);
     var x = edge(W, y) - rnd(32, 40) * s - (second ? rnd(26, 44) : 0);
     el.setAttribute("transform", "translate(" + x.toFixed(1) + " " + y.toFixed(1) + ") scale(" + s.toFixed(2) + ")");
-    show(el, 8100);
+    show(el, 8100, y);
     if (!second && Math.random() < .6) setTimeout(function () { surf({ y: y, s: s }); }, rnd(1200, 2400));
   }
 
   // Aves: se mueven cuadro a cuadro siguiendo una ruta
   var flying = [], raf = 0;
-  function fly(el, dur, pos, alpha, shadow) {
+  function fly(el, dur, pos, alpha, shadow, y) {
     el.classList.add("on");
-    flying.push({ el: el, t0: performance.now(), dur: dur, pos: pos, a: alpha, sh: shadow });
+    flying.push({ el: el, t0: performance.now() + Math.max(0, y == null ? 0 : wait(y)), dur: dur, pos: pos, a: alpha, sh: shadow });
     if (!raf) raf = requestAnimationFrame(frame);
   }
   function frame(now) {
     raf = 0;
     flying = flying.filter(function (b) {
       var p = (now - b.t0) / b.dur;
+      if (p < 0) { b.el.style.opacity = 0; if (b.sh) b.sh.style.opacity = 0; return true; } // aún no llega el mapa
       if (p >= 1) { b.el.classList.remove("on"); b.el.style.opacity = 0; if (b.sh) b.sh.style.opacity = 0; return false; }
       var q = b.pos(p), o = Math.max(0, Math.min(1, p / .16, (1 - p) / .2));
       var turn = q[3] == null ? "" : " rotate(" + q[3].toFixed(1) + ")"; // rumbo: solo las aves vistas desde arriba
@@ -1508,7 +1523,7 @@ form .btn{align-self:flex-start}
     fly(el, r.ms, function (p) {
       var y = r.y0 + (r.y1 - r.y0) * p;
       return [edge(W, y) - r.off - 10 + amp * Math.sin(ph + p * k * 6.28), y + 2.5 * Math.sin(ph * 2 + p * 23), s];
-    }, .9);
+    }, .9, null, Math.min(r.y0, r.y1));
   }
   // Cóndor: planea en círculos lentos sobre la cordillera (norte, Andes centrales o Patagonia), girando según su rumbo.
   // Pueden coincidir dos, cada uno en una zona distinta.
@@ -1523,7 +1538,7 @@ form .btn{align-self:flex-start}
       var a = ph + dir * p * turns * 6.28;
       // rumbo = tangente al círculo; la figura apunta hacia arriba, por eso los 90° de más
       return [cx + rx * Math.cos(a) + p * drift, cy + ry * Math.sin(a), s, Math.atan2(ry * Math.cos(a) * dir, -rx * Math.sin(a) * dir) * 57.296 + 90];
-    }, .95, shades[i]);
+    }, .95, shades[i], cy - ry);
   }
 
   // Viento: una o dos ráfagas que recorren un tramo de la cordillera
@@ -1551,7 +1566,7 @@ form .btn{align-self:flex-start}
       el.style.setProperty("--dur", dur.toFixed(2) + "s");
       el.style.setProperty("--dl", (j * .4).toFixed(2) + "s");
       el.style.setProperty("--sw", (1.8 * big()).toFixed(1) + "px");
-      show(el, (dur + j * .4) * 1000 + 150);
+      show(el, (dur + j * .4) * 1000 + 150, Math.min(y0, y0 + len));
     }
   }
 
@@ -1577,7 +1592,7 @@ form .btn{align-self:flex-start}
           }
           var hop = Math.abs(Math.sin(ph + p * 38)) * 1.1;
           return [x, y - hop, s, null, !east];
-        }, 1);
+        }, 1, null, y0);
       }, lag);
     });
   }
@@ -1594,14 +1609,16 @@ form .btn{align-self:flex-start}
       setTimeout(tick, rnd(min, max));
     }, first);
   }
-  every(gust, 3500, 8000, 500);
-  every(coast, 5000, 11000, 300);
-  every(surf, 7000, 12000, 200);
-  every(soar, 9000, 17000, 100);
-  every(surface, 8000, 14000, 900);
-  every(pack, 13000, 22000, 1500);
-  every(jump, 5000, 9000, 700);
-  every(drive, 10000, 16000, 400);
+  // todas parten ya; cada una espera a que el mapa se despliegue hasta su latitud
+  every(gust, 3500, 8000, 0);
+  every(coast, 5000, 11000, 0);
+  every(surf, 7000, 12000, 0);
+  every(soar, 9000, 17000, 0);
+  every(surface, 8000, 14000, 0);
+  every(pack, 13000, 22000, 0);
+  every(jump, 5000, 9000, 300);
+  every(drive, 10000, 16000, 0);
+  setTimeout(function () { map.classList.add("fx-go"); }, 300); // el oleaje entra con el despliegue
 })();
 </script>
 <script>
