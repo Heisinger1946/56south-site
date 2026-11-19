@@ -11,6 +11,10 @@ Actualizado: 19 nov 2026.
 
 - Nada pendiente (solo este archivo, que no se ve en la web).
 
+## Publicado el 19 nov 2026 (tercer envío)
+
+- Plan 51°S Patagonia (10 experiencias, circuitos Chaitén a Torres del Paine, 18–25 días combinados) y textos de la portada (etiqueta "56°S · Private expeditions · Chile", introducción nueva, botones "Design your expedition" y "Explore the six destinations"), según los PDF de la carpeta `pdf 56`. Se mantuvo el título "Where the map runs out.". No se publicaron operadores de helicóptero, lodges con nombre, los seis circuitos en detalle, ni la frase de cierre ni el bloque "A new way to explore Chile" de la portada (se pueden agregar si Jhon los quiere).
+
 ## Publicado el 19 nov 2026 (segundo envío)
 
 - Planes 35°S Valles del Vino (8 experiencias) y 39°S Lagos y Volcanes (10 experiencias) reescritos con las propuestas en PDF (carpeta `pdf 56` del escritorio). No se publicaron hoteles, restaurantes, tiempos de helicóptero ni los cinco circuitos de 39°S (nombres de terceros y datos por confirmar según los propios PDF); se pueden agregar si Jhon los quiere.
