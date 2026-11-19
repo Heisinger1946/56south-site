@@ -9,7 +9,7 @@ Actualizado: 19 nov 2026.
 
 ## En `borrador`, sin publicar
 
-- Galería de fotos referenciales dentro de cada latitud: 4 fotos por latitud (28 en total) con el nombre de la actividad, arriba del texto. En escritorio, 4 columnas; en tablet, 2×2; en celular, una franja que se desliza de lado. Fotos de Wikimedia Commons con licencias libres (CC BY, CC BY-SA, dominio público), recortadas a 4:3 en WebP (`assets/activities/`, ~2,5 MB en total; se cargan solo al abrir la latitud). Créditos obligatorios en el pie de página, en "Photo credits" (desplegable). Las fotos son referenciales: no son de 56°S. Dos las entregó Jhon (esquí en 33°S y salinas de Cáhuil en 34°S): fuente y licencia por confirmar, no figuran en los créditos.
+- Botones de contacto (correo e Instagram) con efecto "origin": al pasar el cursor, un círculo color papel crece desde el punto de entrada y el texto pasa a tinta. Idea del componente OriginButton de 21st.dev (React + Tailwind + motion), rehecho en HTML/CSS/JS propio, sin librerías. Con teclado nace desde el centro; en celular se ve al tocar; se apaga con "reducir movimiento".
 
 ## Publicado el 19 nov 2026 (tercer envío)
 
