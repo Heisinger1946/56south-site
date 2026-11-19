@@ -1,6 +1,6 @@
 # Estado del sitio go56south.com
 
-Actualizado: 18 nov 2026.
+Actualizado: 19 nov 2026.
 
 ## Cómo se trabaja
 
@@ -10,6 +10,10 @@ Actualizado: 18 nov 2026.
 ## En `borrador`, sin publicar
 
 - Nada pendiente (solo este archivo, que no se ve en la web).
+
+## Publicado el 19 nov 2026
+
+- Plan 23°S Atacama reescrito con la propuesta de contenidos (PDF `56S_Atacama_Propuesta_Completa_Helicopteros.pdf`): descripción nueva, 8 experiencias destacadas (antes 4), temporada, estadía, exigencia y cómo llegar actualizados, con helicóptero privado "a pedido". No se publicaron los operadores de helicópteros ni sus teléfonos (el PDF dice que requieren reconfirmación). Traducciones ES/RU al día.
 
 ## Publicado el 18 nov 2026 (undécimo envío)
 
