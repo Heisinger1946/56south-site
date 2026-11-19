@@ -9,7 +9,7 @@ Actualizado: 19 nov 2026.
 
 ## En `borrador`, sin publicar
 
-- Botones de contacto (correo e Instagram) con el estilo "gradient menu" de 21st.dev, rehecho sin React: círculos claros con ícono que al pasar el cursor se alargan a una píldora con degradado dorado (colores del botón principal), brillo debajo y el nombre ("Email"/"Correo", "Instagram"). Instagram usa los colores de su logo (degradado violeta–rojo–amarillo, ícono blanco) con la misma forma y comportamiento. El despliegue es lento y en dos tiempos: primero se alarga (1,05 s, curva suave) y a los 0,5 s aparece el correo o la cuenta. En pantallas táctiles quedan abiertos. El correo sigue copiando la dirección al hacer clic. Se quitó el efecto "origin" anterior, que por un error de CSS solo se veía en celular.
+- Botones de contacto (correo e Instagram) con el estilo "gradient menu" de 21st.dev, rehecho sin React: círculos claros con ícono que al pasar el cursor se alargan a una píldora con degradado dorado (colores del botón principal), brillo debajo y el nombre ("Email"/"Correo", "Instagram"). Instagram usa los colores de su logo (degradado violeta–rojo–amarillo, ícono blanco) con la misma forma y comportamiento. El despliegue es lento y en dos tiempos: primero se alarga (1,05 s, curva suave) y a los 0,5 s aparece el correo o la cuenta. Van uno arriba del otro (correo arriba, Instagram abajo). En pantallas táctiles quedan abiertos. El correo sigue copiando la dirección al hacer clic. Se quitó el efecto "origin" anterior, que por un error de CSS solo se veía en celular.
 
 ## Publicado el 19 nov 2026 (tercer envío)
 
