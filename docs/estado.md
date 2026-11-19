@@ -9,7 +9,7 @@ Actualizado: 19 nov 2026.
 
 ## En `borrador`, sin publicar
 
-- Mapa de la portada: las animaciones aparecen de inmediato (antes tardaban 3–8 s); ballenas, orcas y gaviotas van más mar adentro; la orca que salta es más grande, el salto dura más (3,4 s en el aire, 6 s a la vista) y ahora sale con cada manada y además sola cada 5–9 s; dos buggies cruzan el desierto cerca de Calama, uno tras otro, saltando y levantando polvo (cada 10–16 s).
+- Mapa de la portada: las animaciones aparecen de inmediato (antes tardaban 3–8 s); ballenas, orcas y gaviotas van más mar adentro; la orca que salta es más grande, el salto dura más (3,4 s en el aire, 6 s a la vista) y ahora sale con cada manada y además sola cada 5–9 s; dos buggies (color acento, con contorno oscuro) cruzan el desierto cerca de Calama, uno tras otro, saltando y levantando polvo (cada 10–16 s).
 
 ## Publicado el 19 nov 2026 (tercer envío)
 
