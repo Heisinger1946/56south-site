@@ -9,7 +9,7 @@ Actualizado: 19 nov 2026.
 
 ## En `borrador`, sin publicar
 
-- Se quitó el idioma ruso: botón RU, carpeta `ru/`, `i18n/ru.json` y su parte en `tools/build_i18n.py`; `_redirects` manda `/ru/` al inglés. Pendiente de publicar. (Las traducciones al ruso siguen en el historial de git.)
+- Patagonia dividida en dos latitudes: 45°S Northern Patagonia (Carretera Austral, de Chaitén al lago General Carrera; foto `fjords-premium.jpg`, licencia por confirmar) y 51°S Southern Patagonia (Tortel, Villa O'Higgins, Natales, Torres del Paine). 10 experiencias cada una, con "Touring" (4x4 privado o moto de turismo con vehículo de apoyo) en ambas. Nuevo pin 45°S en el mapa, opción en el formulario, y "Seven latitudes" / "Explore the seven destinations".
 
 ## Publicado el 19 nov 2026 (tercer envío)
 
