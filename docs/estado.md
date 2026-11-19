@@ -9,7 +9,7 @@ Actualizado: 19 nov 2026.
 
 ## En `borrador`, sin publicar
 
-- Botones de contacto (correo e Instagram) con efecto "origin": al pasar el cursor, un círculo color papel crece desde el punto de entrada y el texto pasa a tinta. Idea del componente OriginButton de 21st.dev (React + Tailwind + motion), rehecho en HTML/CSS/JS propio, sin librerías. Con teclado nace desde el centro; en celular se ve al tocar; se apaga con "reducir movimiento".
+- Mapa de la portada: las animaciones aparecen de inmediato (antes tardaban 3–8 s); ballenas, orcas y gaviotas van más mar adentro; la orca que salta es más grande, el salto dura más (3,4 s en el aire, 6 s a la vista) y ahora sale con cada manada y además sola cada 5–9 s; dos buggies cruzan el desierto cerca de Calama, uno tras otro, saltando y levantando polvo (cada 10–16 s).
 
 ## Publicado el 19 nov 2026 (tercer envío)
 

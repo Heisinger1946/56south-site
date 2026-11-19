@@ -243,18 +243,27 @@ a{color:inherit}
 .orca.on .o-rip{animation:w-rip 3.1s ease-out var(--od,0s) 3 both}
 /* Orca que salta: sale del agua en arco, queda entera en el aire y cae de cabeza; salpica al salir y al caer */
 .breach{opacity:0}
-.breach.on{animation:b-fade 4.4s ease-in-out both}
-@keyframes b-fade{0%,100%{opacity:0}5%,78%{opacity:1}}
+.breach.on{animation:b-fade 6.2s ease-in-out both}
+@keyframes b-fade{0%,100%{opacity:0}4%,84%{opacity:1}}
 .b-orca{transform:translate(-34px,44px) rotate(-76deg)}
-.breach.on .b-orca{animation:b-jump 2s linear .3s both}
+.breach.on .b-orca{animation:b-jump 3.4s linear .4s both}
 @keyframes b-jump{0%{transform:translate(-34px,44px) rotate(-76deg)}12.5%{transform:translate(-25.5px,12.9px) rotate(-72deg)}25%{transform:translate(-17px,-9.3px) rotate(-64deg)}37.5%{transform:translate(-8.5px,-22.6px) rotate(-46deg)}50%{transform:translate(0,-27px) rotate(0deg)}62.5%{transform:translate(8.5px,-22.6px) rotate(46deg)}75%{transform:translate(17px,-9.3px) rotate(64deg)}87.5%{transform:translate(25.5px,12.9px) rotate(72deg)}100%{transform:translate(34px,44px) rotate(76deg)}}
 .b-splash{fill:none;stroke:#EEF2F1;stroke-width:1.4;stroke-linecap:round;opacity:0}
-.breach.on .b-splash{animation:b-splash 1s ease-out .5s both}
-.breach.on .b-splash.b2{animation-delay:1.95s;animation-duration:1.25s}
+.breach.on .b-splash{animation:b-splash 1.3s ease-out .7s both}
+.breach.on .b-splash.b2{animation-delay:3.15s;animation-duration:1.6s}
 @keyframes b-splash{0%{transform:translateY(2px) scale(.25);opacity:0}25%{opacity:.95}100%{transform:translateY(-5px) scale(1.3);opacity:0}}
 .b-rip{fill:none;stroke:#EEF2F1;stroke-width:1;vector-effect:non-scaling-stroke;opacity:0}
-.breach.on .b-rip{animation:w-rip 2.2s ease-out .55s both}
-.breach.on .b-rip.r2{animation-delay:2s;animation-duration:2.4s}
+.breach.on .b-rip{animation:w-rip 2.6s ease-out .75s both}
+.breach.on .b-rip.r2{animation-delay:3.2s;animation-duration:2.8s}
+/* Buggies cerca de Calama: dos cruzan el desierto, uno detrás del otro, levantando polvo */
+.buggy{opacity:0}
+.buggy .bg-body{fill:#EEF2F1;stroke:#0A1317;stroke-width:.9;stroke-linejoin:round}
+.buggy .bg-cage{fill:none;stroke:#EEF2F1;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round}
+.buggy .bg-wheel{fill:#0A1317;stroke:#EEF2F1;stroke-width:.8}
+.buggy .bg-head{fill:#E3A857}
+.dust{fill:#E6D3B3;opacity:0;transform-box:fill-box;transform-origin:center}
+.dust.on{animation:dust 1.9s ease-out both}
+@keyframes dust{0%{opacity:.75;transform:scale(.35)}35%{opacity:.5}100%{opacity:0;transform:translate(-3px,-5px) scale(2.8)}}
 /* Surfistas frente a Pichilemu: una ola llena, con espuma en la cresta, se levanta y avanza hacia la costa; el surfista baja la pared, gira y vuelve a bajar */
 .surfer{opacity:0}
 .surfer.on{animation:fx-fade 8s ease-in-out both}
@@ -1388,6 +1397,14 @@ form .btn{align-self:flex-start}
   var shade = '<g class="c-shade"><path d="' + wing + '"/></g>'; // la sombra del cóndor va más abajo, sobre el relieve
   air.insertAdjacentHTML("beforeend", streak + streak + streak + streak + shade + shade);
   var condors = sky.querySelectorAll(".condor"), shades = air.querySelectorAll(".c-shade");
+  // Buggy visto de lado (mira a la derecha, la línea del suelo es y = 0) y su polvo
+  var buggy = '<g class="buggy"><g class="bg-bounce"><path class="bg-cage" d="M-6-7.6L-3-12.4H3.6L6.4-7.6M-1.2-12.4L.4-7.6"/>' +
+    '<path class="bg-body" d="M-11-3.6L-9.6-7.8H5.4L10.6-5.2 11.4-3.6Z"/><circle class="bg-head" cx="1.2" cy="-9.8" r="1.5"/></g>' +
+    '<circle class="bg-wheel" cx="-6.6" cy="-2.7" r="2.7"/><circle class="bg-wheel" cx="7" cy="-2.7" r="2.7"/></g>';
+  var dust = "", nd;
+  for (nd = 0; nd < 44; nd++) dust += '<circle class="dust" r="2.6"/>';
+  air.insertAdjacentHTML("beforeend", dust + buggy + buggy);
+  var buggies = air.querySelectorAll(".buggy"), puffs = air.querySelectorAll(".dust"), puffI = 0;
 
   // Oleaje: tres frentes de ola con la forma de la costa, que llegan a la orilla uno tras otro
   var swell = "", pts = W.slice(0, 45).map(function (w, k) { return [w - 16, k * 25]; });
@@ -1403,7 +1420,7 @@ form .btn{align-self:flex-start}
     var el = free(".whale"); if (!el) return;
     var y = rnd(720, 1090); if (Math.abs(y - lastY) < 110) y = y > 905 ? y - 150 : y + 150;
     lastY = y;
-    var s = rnd(1.2, 1.55) * big(), x = Math.max(west() + 40 * s, edge(W, y) - rnd(30, 80) * s), dir = Math.random() < .5 ? -1 : 1;
+    var s = rnd(1.2, 1.55) * big(), x = Math.max(west() + 40 * s, edge(W, y) - rnd(75, 125) * s), dir = Math.random() < .5 ? -1 : 1;
     el.setAttribute("transform", "translate(" + x.toFixed(1) + " " + y.toFixed(1) + ") scale(" + (dir * s).toFixed(2) + " " + s.toFixed(2) + ")");
     show(el, 11600);
   }
@@ -1416,18 +1433,30 @@ form .btn{align-self:flex-start}
     var dir = Math.random() < .5 ? -1 : 1, shore = edge(W, y), left = west();
     // la manada ocupa unas 100 unidades hacia atrás y 70 hacia adelante: se achica si no cabe entre el borde y la costa
     var s = Math.min(rnd(1.5, 1.8) * big(), (shore - left) / 172);
-    var x = dir > 0 ? rnd(left + 100 * s, shore - 70 * s) : rnd(left + 70 * s, shore - 100 * s);
+    // mar adentro: deja al menos 45 unidades de agua entre la manada y la costa, si cabe
+    var gap = Math.max(0, Math.min(45 * s, shore - left - 172 * s));
+    var x = dir > 0 ? rnd(left + 100 * s, shore - 70 * s - gap) : rnd(left + 70 * s, shore - 100 * s - gap);
+    podY = y;
     el.setAttribute("transform", "translate(" + x.toFixed(1) + " " + y.toFixed(1) + ") scale(" + (dir * s).toFixed(2) + " " + s.toFixed(2) + ")");
     show(el, 10100);
     // Una que otra vez, una orca salta cerca de la manada: un poco más al norte y mar adentro, para no taparla
-    if (Math.random() < .5) setTimeout(function () { leap(x - dir * rnd(10, 30) * s, y - rnd(58, 70) * s, s * .95, dir); }, rnd(2200, 4800));
+    setTimeout(function () { leap(x - dir * rnd(10, 30) * s, y - rnd(58, 70) * s, s * 1.15, dir); }, rnd(1600, 3600));
   }
   function leap(x, y, s, dir) {
     var el = free(".breach"); if (!el || !visible || document.hidden) return;
     if (document.querySelector(".whale.on") && Math.abs(y - lastY) < 120) return; // no encima de una ballena
-    x = Math.max(west() + 45 * s, Math.min(x, edge(W, y) - 48 * s));              // ni sobre la costa ni fuera del dibujo
+    x = Math.max(west() + 45 * s, Math.min(x, edge(W, y) - 70 * s));              // ni cerca de la costa ni fuera del dibujo
     el.setAttribute("transform", "translate(" + x.toFixed(1) + " " + y.toFixed(1) + ") scale(" + (dir * s).toFixed(2) + " " + s.toFixed(2) + ")");
-    show(el, 4500);
+    show(el, 6300);
+  }
+  // Además, una orca salta sola cada tanto en el mar del sur, lejos de la manada
+  var podY = -999;
+  function jump() {
+    var y, tries = 0;
+    do { y = rnd(800, 1130); } while (((document.querySelector(".orca.on") && Math.abs(y - podY) < 110) || (document.querySelector(".whale.on") && Math.abs(y - lastY) < 120)) && ++tries < 10);
+    if (tries >= 10) return;
+    var s = rnd(1.45, 1.75) * big();
+    leap(edge(W, y) - rnd(85, 150) * s, y, s, Math.random() < .5 ? -1 : 1);
   }
 
   // Surfistas: frente a Pichilemu (34°S), justo al sur de la etiqueta del Pacífico; a veces entran dos olas seguidas
@@ -1456,7 +1485,7 @@ form .btn{align-self:flex-start}
       var q = b.pos(p), o = Math.max(0, Math.min(1, p / .16, (1 - p) / .2));
       var turn = q[3] == null ? "" : " rotate(" + q[3].toFixed(1) + ")"; // rumbo: solo las aves vistas desde arriba
       o = o * o * (3 - 2 * o); // entra y sale suave
-      b.el.setAttribute("transform", "translate(" + q[0].toFixed(1) + " " + q[1].toFixed(1) + ")" + turn + " scale(" + q[2].toFixed(2) + ")");
+      b.el.setAttribute("transform", "translate(" + q[0].toFixed(1) + " " + q[1].toFixed(1) + ")" + turn + " scale(" + (q[4] ? -q[2] : q[2]).toFixed(2) + " " + q[2].toFixed(2) + ")"); // q[4]: mira a la izquierda
       b.el.style.opacity = (b.a * o).toFixed(3);
       if (b.sh) {
         b.sh.setAttribute("transform", "translate(" + (q[0] + 5).toFixed(1) + " " + (q[1] + 9).toFixed(1) + ")" + turn + " scale(" + (q[2] * .92).toFixed(2) + ")");
@@ -1478,7 +1507,7 @@ form .btn{align-self:flex-start}
     var amp = rnd(3, 7), ph = rnd(0, 6.28), k = rnd(1.2, 2.4), s = rnd(.9, 1.3) * big();
     fly(el, r.ms, function (p) {
       var y = r.y0 + (r.y1 - r.y0) * p;
-      return [edge(W, y) - r.off + amp * Math.sin(ph + p * k * 6.28), y + 2.5 * Math.sin(ph * 2 + p * 23), s];
+      return [edge(W, y) - r.off - 10 + amp * Math.sin(ph + p * k * 6.28), y + 2.5 * Math.sin(ph * 2 + p * 23), s];
     }, .9);
   }
   // Cóndor: planea en círculos lentos sobre la cordillera (norte, Andes centrales o Patagonia), girando según su rumbo.
@@ -1526,6 +1555,33 @@ form .btn{align-self:flex-start}
     }
   }
 
+  // Buggies: dos cruzan el desierto cerca de Calama, uno tras otro, saltando un poco y dejando una estela de polvo
+  function drive() {
+    if (buggies[0].classList.contains("on") || buggies[1].classList.contains("on")) return;
+    var east = Math.random() < .5, y0 = rnd(112, 124), y1 = y0 + rnd(-8, 10);
+    var xa = edge(W, y0) + 8, xb = edge(E, y1) - 6, s = rnd(1.4, 1.55) * big(), ms = rnd(7000, 8500);
+    [0, 1].forEach(function (k) {
+      var lag = k * rnd(650, 900), dy = k * 7, last = 0, ph = rnd(0, 6.28);
+      setTimeout(function () {
+        if (!visible || document.hidden) return;
+        fly(buggies[k], ms, function (p) {
+          var t = east ? p : 1 - p, x = xa + (xb - xa) * t, y = y0 + (y1 - y0) * t + dy;
+          var now = performance.now();
+          if (now - last > 85 && p > .02 && p < .93) { // suelta polvo por detrás de las ruedas
+            last = now;
+            var d = puffs[puffI++ % puffs.length], back = (east ? -1 : 1) * 10 * s;
+            d.setAttribute("cx", (x + back + rnd(-1.5, 1.5)).toFixed(1));
+            d.setAttribute("cy", (y - rnd(1, 3.5) * s).toFixed(1));
+            d.setAttribute("r", (rnd(2.2, 3.4) * s).toFixed(1));
+            d.classList.remove("on"); void d.getBoundingClientRect(); d.classList.add("on");
+          }
+          var hop = Math.abs(Math.sin(ph + p * 38)) * 1.1;
+          return [x, y - hop, s, null, !east];
+        }, 1);
+      }, lag);
+    });
+  }
+
   // Ritmo: cada cosa vuelve tras una pausa distinta, y todo descansa si el mapa no está a la vista
   var visible = true;
   if ("IntersectionObserver" in window) new IntersectionObserver(function (e) {
@@ -1538,12 +1594,14 @@ form .btn{align-self:flex-start}
       setTimeout(tick, rnd(min, max));
     }, first);
   }
-  every(gust, 3500, 8000, 3600);
-  every(coast, 5000, 11000, 4400);
-  every(surf, 7000, 12000, 2600);
-  every(soar, 9000, 17000, 3200);
-  every(surface, 8000, 14000, 5200);
-  every(pack, 13000, 22000, 8500);
+  every(gust, 3500, 8000, 500);
+  every(coast, 5000, 11000, 300);
+  every(surf, 7000, 12000, 200);
+  every(soar, 9000, 17000, 100);
+  every(surface, 8000, 14000, 900);
+  every(pack, 13000, 22000, 1500);
+  every(jump, 5000, 9000, 700);
+  every(drive, 10000, 16000, 400);
 })();
 </script>
 <script>
