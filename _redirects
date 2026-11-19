@@ -6,3 +6,7 @@
 /CLAUDE.md   /404  404!
 /README.md   /404  404!
 /_redirects  /404  404!
+
+# El ruso se retiró: los enlaces antiguos vuelven al inglés
+/ru/*        /  301
+/ru          /  301

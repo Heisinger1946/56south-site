@@ -21,11 +21,10 @@
 <meta property="og:image:alt" content="56°S logo">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://go56south.com/assets/og-image.jpg">
-<!-- I18N-HEAD: el script tools/build_i18n.py ajusta estas líneas en /es/ y /ru/ -->
+<!-- I18N-HEAD: el script tools/build_i18n.py ajusta estas líneas en /es/ -->
 <link rel="canonical" href="https://go56south.com/">
 <link rel="alternate" hreflang="en" href="https://go56south.com/">
 <link rel="alternate" hreflang="es" href="https://go56south.com/es/">
-<link rel="alternate" hreflang="ru" href="https://go56south.com/ru/">
 <link rel="alternate" hreflang="x-default" href="https://go56south.com/">
 <link rel="icon" href="favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -570,7 +569,6 @@ form .btn{align-self:flex-start}
       <div class="langs" role="group" aria-label="Language">
         <a href="/" hreflang="en" lang="en" aria-current="true" title="English">EN</a>
         <a href="/es/" hreflang="es" lang="es" title="Español">ES</a>
-        <a href="/ru/" hreflang="ru" lang="ru" title="Русский">RU</a>
       </div>
     </nav>
   </div>
@@ -987,7 +985,6 @@ form .btn{align-self:flex-start}
   var ALL = {
     en: { invalid: "Please add your name and a valid email.", sending: "Sending…", ok: "Thank you. The concierge will reply personally.", fail: "Something went wrong. Please write to ", mail: "Your email app should open with the message ready to send.", subject: "Expedition enquiry — ", robot: "Please confirm you are not a robot." },
     es: { invalid: "Escribe tu nombre y un correo válido.", sending: "Enviando…", ok: "Gracias. El concierge te responderá personalmente.", fail: "Algo salió mal. Escríbenos a ", mail: "Tu aplicación de correo debería abrirse con el mensaje listo para enviar.", subject: "Consulta de expedición — ", robot: "Confirma que no eres un robot." },
-    ru: { invalid: "Пожалуйста, укажите имя и действующий email.", sending: "Отправляем…", ok: "Спасибо. Консьерж ответит вам лично.", fail: "Что-то пошло не так. Напишите нам на ", mail: "Должно открыться ваше почтовое приложение с готовым письмом.", subject: "Запрос об экспедиции — ", robot: "Пожалуйста, подтвердите, что вы не робот." }
   };
   var MSG = ALL[LANG] || ALL.en;
   var form = document.getElementById("enquiry");
@@ -1407,7 +1404,7 @@ form .btn{align-self:flex-start}
 (function () {
   var b = document.querySelector(".btn-mail"); if (!b) return;
   var label = b.querySelector(".ig-handle"), text = label.textContent;
-  var done = { es: "Copiado ✓", ru: "Скопировано ✓" }[document.documentElement.lang] || "Copied ✓";
+  var done = { es: "Copiado ✓" }[document.documentElement.lang] || "Copied ✓";
   b.addEventListener("click", function () {
     var addr = b.getAttribute("data-copy");
     var ok = function () { label.textContent = done; setTimeout(function () { label.textContent = text; }, 2000); };

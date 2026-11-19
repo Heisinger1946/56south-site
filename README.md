@@ -7,8 +7,8 @@ Sitio de Fifty Six South (56°S), expediciones privadas en Chile. Es un sitio es
 | Archivo | Qué contiene |
 | --- | --- |
 | `index.html` | Toda la página en inglés: textos, estilos y el script del formulario |
-| `es/`, `ru/` | Versiones en español y ruso, generadas con `tools/build_i18n.py` |
-| `i18n/` | Traducciones al español y al ruso |
+| `es/` | Versión en español, generadas con `tools/build_i18n.py` |
+| `i18n/` | Traducciones al español |
 | `assets/hero.jpg` | Imagen de fondo de la portada |
 | `assets/routes/` | Foto de cada plan |
 | `assets/chile.png` | Silueta de Chile que usa el mapa 3D de la portada |
@@ -35,25 +35,24 @@ Dentro de `index.html`, los comentarios en español (`<!-- ... -->`) marcan cada
 
 ## Idiomas
 
-El sitio está en tres idiomas, con botones EN · ES · RU en el menú:
+El sitio está en dos idiomas, con botones EN · ES en el menú:
 
 | Idioma | Dirección | Archivo |
 | --- | --- | --- |
 | Inglés (original) | go56south.com | `index.html` |
 | Español | go56south.com/es/ | `es/index.html` (generado) |
-| Ruso | go56south.com/ru/ | `ru/index.html` (generado) |
 
-**Solo se edita `index.html`.** Las versiones en español y ruso se generan con:
+**Solo se edita `index.html`.** La versión en español se genera con:
 
 ```
 py tools/build_i18n.py
 ```
 
-El script toma cada texto en inglés y lo reemplaza por su traducción de `i18n/es.json` e `i18n/ru.json`. Si cambias o agregas un texto en `index.html`, agrega su traducción en los dos JSON y vuelve a ejecutar el script: te avisa qué textos quedaron sin traducir. Los mensajes del formulario en los tres idiomas están en el script de la página (`var ALL = {...}`).
+El script toma cada texto en inglés y lo reemplaza por su traducción de `i18n/es.json`. Si cambias o agregas un texto en `index.html`, agrega su traducción en el JSON y vuelve a ejecutar el script: te avisa qué textos quedaron sin traducir. Los mensajes del formulario en los tres idiomas están en el script de la página (`var ALL = {...}`).
 
-Cada consulta del formulario trae un campo `language` (en, es o ru), y el valor de la expedición siempre llega en inglés, para que sepas qué eligió el cliente aunque haya escrito en ruso.
+Cada consulta del formulario trae un campo `language` (en o es), y el valor de la expedición siempre llega en inglés.
 
-Cormorant Garamond e Inter traen letras cirílicas, así que el ruso usa las mismas tipografías. (Los archivos de Space Grotesk y Manrope quedan en `assets/fonts/` pero ya no se cargan.)
+(Los archivos de Space Grotesk y Manrope quedan en `assets/fonts/` pero ya no se cargan.)
 
 ## Expediciones
 

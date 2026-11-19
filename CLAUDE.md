@@ -16,8 +16,8 @@ Una empresa propia que vende expediciones privadas y no convencionales por Chile
 | Ruta | Qué es |
 | --- | --- |
 | `index.html` | El sitio en inglés (HTML, CSS y JS en un solo archivo). Es lo único que se edita a mano. |
-| `es/`, `ru/` | Versiones generadas por `tools/build_i18n.py`. No se editan. |
-| `i18n/es.json`, `i18n/ru.json` | Traducciones (clave = texto en inglés). |
+| `es/` | Versión en español generada por `tools/build_i18n.py`. No se editan. |
+| `i18n/es.json` | Traducciones (clave = texto en inglés). |
 | `assets/` | Fotos, mapa, logos y tipografías. |
 | `docs/estado.md` | Estado del sitio y pendientes. Léelo al empezar y actualízalo al terminar. |
 | `docs/marca/brief-de-marca.md` | Brief: concepto, nombre, catálogo por latitud, mensajes, correos. |

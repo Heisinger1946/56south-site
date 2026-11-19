@@ -9,7 +9,7 @@ Actualizado: 19 nov 2026.
 
 ## En `borrador`, sin publicar
 
-- Nada pendiente (solo este archivo, que no se ve en la web).
+- Se quitó el idioma ruso: botón RU, carpeta `ru/`, `i18n/ru.json` y su parte en `tools/build_i18n.py`; `_redirects` manda `/ru/` al inglés. Pendiente de publicar. (Las traducciones al ruso siguen en el historial de git.)
 
 ## Publicado el 19 nov 2026 (tercer envío)
 

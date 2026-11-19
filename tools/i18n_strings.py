@@ -8,7 +8,7 @@ META = {"description", "og:title", "og:description"}
 
 def translatable(s):
     s = s.strip()
-    return bool(s) and re.search(r"[A-Za-z]{2,}", s) and s not in {"EN", "ES", "RU"}
+    return bool(s) and re.search(r"[A-Za-z]{2,}", s) and s not in {"EN", "ES"}
 
 class P(HTMLParser):
     def __init__(self):

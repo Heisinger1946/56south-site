@@ -1,7 +1,7 @@
-"""Genera /es/index.html y /ru/index.html a partir de index.html (inglés).
+"""Genera /es/index.html a partir de index.html (inglés).
 
 Uso:  py tools/build_i18n.py
-Las traducciones están en i18n/es.json e i18n/ru.json (texto en inglés -> traducción).
+Las traducciones están en i18n/es.json (texto en inglés -> traducción).
 Si cambias un texto en index.html, agrega su traducción en ambos JSON y vuelve a ejecutar
 este script: avisa qué textos no tienen traducción.
 """
@@ -11,7 +11,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, "tools"))
 from i18n_strings import strings  # noqa: E402
 
-LANGS = {"es": "es", "ru": "ru"}
+LANGS = {"es": "es"}
 ATTR_RE = re.compile(r'\b(alt|aria-label|placeholder|content)="([^"]*)"')
 
 def norm(s):
