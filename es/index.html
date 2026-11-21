@@ -244,15 +244,6 @@ a{color:inherit}
 .b-rip{fill:none;stroke:#EEF2F1;stroke-width:1;vector-effect:non-scaling-stroke;opacity:0}
 .breach.on .b-rip{animation:w-rip 2.6s ease-out .75s both}
 .breach.on .b-rip.r2{animation-delay:3.2s;animation-duration:2.8s}
-/* Buggies cerca de Calama: dos cruzan el desierto, uno detrás del otro, levantando polvo */
-.buggy{opacity:0;filter:drop-shadow(0 0 1.6px rgba(10,19,23,.85))}
-.buggy .bg-body{fill:#E3A857;stroke:#0A1317;stroke-width:.7;stroke-linejoin:round}
-.buggy .bg-cage{fill:none;stroke:#0A1317;stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round}
-.buggy .bg-wheel{fill:#0A1317;stroke:#E6D3B3;stroke-width:.7}
-.buggy .bg-head{fill:#EEF2F1}
-.dust{fill:#D8C09A;opacity:0;transform-box:fill-box;transform-origin:center}
-.dust.on{animation:dust 2.3s ease-out both}
-@keyframes dust{0%{opacity:.9;transform:scale(.4)}35%{opacity:.62}100%{opacity:0;transform:translate(-4px,-7px) scale(3)}}
 /* Surfistas frente a Pichilemu: una ola llena, con espuma en la cresta, se levanta y avanza hacia la costa; el surfista baja la pared, gira y vuelve a bajar */
 .surfer{opacity:0}
 .surfer.on{animation:fx-fade 8s ease-in-out both}
@@ -1426,14 +1417,6 @@ form .btn{align-self:flex-start}
   var shade = '<g class="c-shade"><path d="' + wing + '"/></g>'; // la sombra del cóndor va más abajo, sobre el relieve
   air.insertAdjacentHTML("beforeend", streak + streak + streak + streak + shade + shade);
   var condors = sky.querySelectorAll(".condor"), shades = air.querySelectorAll(".c-shade");
-  // Buggy visto de lado (mira a la derecha, la línea del suelo es y = 0) y su polvo
-  var buggy = '<g class="buggy"><g class="bg-bounce"><path class="bg-cage" d="M-6-7.6L-3-12.4H3.6L6.4-7.6M-1.2-12.4L.4-7.6"/>' +
-    '<path class="bg-body" d="M-11-3.6L-9.6-7.8H5.4L10.6-5.2 11.4-3.6Z"/><circle class="bg-head" cx="1.2" cy="-9.8" r="1.5"/></g>' +
-    '<circle class="bg-wheel" cx="-6.6" cy="-2.7" r="2.7"/><circle class="bg-wheel" cx="7" cy="-2.7" r="2.7"/></g>';
-  var dust = "", nd;
-  for (nd = 0; nd < 64; nd++) dust += '<circle class="dust" r="2.6"/>';
-  air.insertAdjacentHTML("beforeend", dust + buggy + buggy);
-  var buggies = air.querySelectorAll(".buggy"), puffs = air.querySelectorAll(".dust"), puffI = 0;
 
   // Oleaje: tres frentes de ola con la forma de la costa, que llegan a la orilla uno tras otro
   var swell = "", pts = W.slice(0, 45).map(function (w, k) { return [w - 16, k * 25]; });
@@ -1585,33 +1568,6 @@ form .btn{align-self:flex-start}
     }
   }
 
-  // Buggies: dos cruzan el desierto cerca de Calama, uno tras otro, saltando un poco y dejando una estela de polvo
-  function drive() {
-    if (buggies[0].classList.contains("on") || buggies[1].classList.contains("on")) return;
-    var east = Math.random() < .5, y0 = rnd(112, 124), y1 = y0 + rnd(-8, 10);
-    var xa = edge(W, y0) + 4, xb = edge(E, y1) + 4, s = rnd(2.3, 2.5) * big(), ms = rnd(7000, 8500);
-    [0, 1].forEach(function (k) {
-      var lag = k * rnd(1100, 1400), dy = k * 16, last = 0, ph = rnd(0, 6.28);
-      setTimeout(function () {
-        if (!visible || document.hidden) return;
-        fly(buggies[k], ms, function (p) {
-          var t = east ? p : 1 - p, x = xa + (xb - xa) * t, y = y0 + (y1 - y0) * t + dy;
-          var now = performance.now();
-          if (now - last > 70 && p > .02 && p < .93) { // suelta polvo por detrás de las ruedas
-            last = now;
-            var d = puffs[puffI++ % puffs.length], back = (east ? -1 : 1) * 10 * s;
-            d.setAttribute("cx", (x + back + rnd(-1.5, 1.5)).toFixed(1));
-            d.setAttribute("cy", (y - rnd(1, 3.5) * s).toFixed(1));
-            d.setAttribute("r", (rnd(2.2, 3.4) * s).toFixed(1));
-            d.classList.remove("on"); void d.getBoundingClientRect(); d.classList.add("on");
-          }
-          var hop = Math.abs(Math.sin(ph + p * 38)) * 1.1;
-          return [x, y - hop, s, null, !east];
-        }, 1, null, y0);
-      }, lag);
-    });
-  }
-
   // Ritmo: cada cosa vuelve tras una pausa distinta, y todo descansa si el mapa no está a la vista
   var visible = true;
   if ("IntersectionObserver" in window) new IntersectionObserver(function (e) {
@@ -1632,7 +1588,6 @@ form .btn{align-self:flex-start}
   every(surface, 8000, 14000, 0);
   every(pack, 13000, 22000, 0);
   every(jump, 5000, 9000, 300);
-  every(drive, 10000, 16000, 0);
   setTimeout(function () { map.classList.add("fx-go"); }, 300); // el oleaje entra con el despliegue
 })();
 </script>
