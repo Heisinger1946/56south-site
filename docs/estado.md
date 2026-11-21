@@ -9,8 +9,7 @@ Actualizado: 21 nov 2026.
 
 ## En `borrador`, sin publicar
 
-- Mapa de la portada: se quitaron los buggies que cruzaban el desierto cerca de Calama, con su polvo (estilos `.buggy`/`.dust`, el dibujo SVG y la animación `drive`). Pedido por Jhon. El resto de la vida del mapa sigue igual. La palabra "buggies" en las experiencias de 23°S Atacama se mantiene.
-- Botones de contacto (correo e Instagram) con el estilo "gradient menu" de 21st.dev, rehecho sin React: círculos claros con ícono que al pasar el cursor se alargan a una píldora con degradado dorado (colores del botón principal), brillo debajo y el nombre ("Email"/"Correo", "Instagram"). Instagram usa los colores de su logo (degradado violeta–rojo–amarillo, ícono blanco) con la misma forma y comportamiento. El despliegue es lento y en dos tiempos: primero se alarga (0,63 s, curva suave) y a los 0,3 s aparece el correo o la cuenta. Van uno arriba del otro (correo arriba, Instagram abajo). El correo es dorado también en reposo. En pantallas táctiles quedan abiertos. El correo sigue copiando la dirección al hacer clic. Se quitó el efecto "origin" anterior, que por un error de CSS solo se veía en celular.
+- Sección "Not a tour…": completados los dos textos entre corchetes. 02 "Engineered, not improvised": guías locales, embarcaciones y aeronaves certificadas, vehículos de apoyo, rutas autorizadas con permisos y días ajustados al clima, la altura y las condiciones (no se menciona seguro: falta el dato). 03 "One point of contact": concierge único con un equipo preparado para cualquier terreno y ocasión (sin idiomas, por decisión de Jhon).
 
 ## Publicado el 19 nov 2026 (tercer envío)
 
@@ -80,7 +79,7 @@ Actualizado: 21 nov 2026.
 
 ## Pendiente
 
-1. Textos sin completar: "[YOUR SAFETY AND LOGISTICS STANDARD — vehicles, guides, support crew, insurance]" y "[LANGUAGES SPOKEN]".
+1. Textos entre corchetes: completados el 21 nov 2026 (falta confirmar si se agrega el seguro).
 2. Lanzamiento: quitar `<meta name="robots" content="noindex">` cuando los textos estén completos.
 3. Fotos: confirmar licencias antes de uso comercial, incluidas las capas de `assets/wilderness/`.
 4. Instagram @go56south: subir la foto de perfil (`docs/marca/56south-instagram-perfil.png`) y el enlace go56south.com desde la app del celular.
