@@ -497,6 +497,13 @@ input:focus,select:focus,textarea:focus{box-shadow:0 0 0 4px rgba(227,168,87,.18
 .plan-hl li::before{content:"";position:absolute;left:0;top:.5em;width:8px;height:8px;border-radius:50%;background:var(--z)}
 .plan-hl strong{font-weight:600}
 .plan-hl span{font-size:.9375rem;color:var(--text-on-paper)}
+.plan-hl.is-short li.extra{display:none}
+.hl-more{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;margin-top:2px;padding:9px 18px;border:1px solid rgba(10,19,23,.18);border-radius:999px;background:none;font:inherit;font-size:.8125rem;font-weight:600;color:var(--ink);cursor:pointer;transition:border-color .2s,background-color .2s}
+.hl-more::after{content:"";width:7px;height:7px;border-right:1.6px solid currentColor;border-bottom:1.6px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .25s}
+.hl-more[aria-expanded="true"]::after{transform:translateY(2px) rotate(-135deg)}
+.hl-more:hover{border-color:var(--z);background:rgba(10,19,23,.03)}
+.hl-more:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.plan-hl li.extra.shown{animation:fade-up .45s ease both}
 .plan-facts{margin:6px 0 0;padding:18px 0 0;border-top:1px solid rgba(10,19,23,.14);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 24px}
 .plan-facts dt{font-family:var(--mono);font-size:.6875rem;letter-spacing:.12em;text-transform:uppercase;color:var(--z)}
 .plan-facts dd{margin:2px 0 0;font-size:.9375rem;font-weight:600}
@@ -737,14 +744,14 @@ form .btn{align-self:flex-start}
           <h4 class="plan-kicker">Experiencias destacadas</h4>
           <ul class="plan-hl">
             <li><strong>Valle de la Luna y Valle de la Muerte</strong><span>Dunas, montañas de sal y formaciones esculpidas por millones de años de erosión. Atardeceres y sandboard en sectores habilitados.</span></li>
+            <li><strong>Aventuras en el desierto</strong><span>Vehículos todoterreno, buggy o bicicleta de montaña solo por rutas autorizadas, con operadores especializados.</span></li>
             <li><strong>Géiseres del Tatio</strong><span>Amanecer a más de 4.300 m, entre columnas de vapor y montañas andinas.</span></li>
             <li><strong>Lagunas altiplánicas y Salar de Atacama</strong><span>Lagunas de un azul intenso, salares y reservas donde habitan flamencos.</span></li>
             <li><strong>Astronomía bajo las estrellas</strong><span>Una noche privada de observación, con telescopios y guías especializados.</span></li>
+            <li><strong>Desierto florido</strong><span>En los años con lluvias de invierno, el desierto se cubre de alfombras de flores, por lo general entre septiembre y noviembre, en la Región de Atacama, cerca de Copiapó. Las fechas cambian cada año.</span></li>
             <li><strong>Piedras Rojas y Salar de Aguas Calientes</strong><span>Montañas rojizas, aguas turquesas y la inmensidad del altiplano chileno.</span></li>
             <li><strong>Termas de Puritama</strong><span>Piscinas naturales de aguas termales entre vegetación y quebradas, un oasis escondido en la montaña.</span></li>
-            <li><strong>Aventuras en el desierto</strong><span>Vehículos todoterreno, buggy o bicicleta de montaña solo por rutas autorizadas, con operadores especializados.</span></li>
             <li><strong>Cultura atacameña y gastronomía local</strong><span>Tradiciones ancestrales, pueblos históricos y sabores andinos junto a anfitriones locales.</span></li>
-            <li><strong>Desierto florido</strong><span>En los años con lluvias de invierno, el desierto se cubre de alfombras de flores, por lo general entre septiembre y noviembre, en la Región de Atacama, cerca de Copiapó. Las fechas cambian cada año.</span></li>
           </ul>
             </div>
             <div class="plan-side">
@@ -947,10 +954,10 @@ form .btn{align-self:flex-start}
             <li><strong>Navegaciones privadas</strong><span>Las Capillas de Mármol en el lago General Carrera y la Laguna San Rafael, en embarcaciones pequeñas y certificadas.</span></li>
             <li><strong>Glaciares del Campo de Hielo Norte</strong><span>El Ventisquero Colgante de Queulat, San Rafael y Leones, desde miradores, botes y el aire.</span></li>
             <li><strong>Rafting en el Futaleufú</strong><span>Uno de los grandes ríos de aguas blancas del mundo, con guías y equipamiento especializados.</span></li>
+            <li><strong>Touring por la Carretera Austral</strong><span>En 4x4 privado o en moto de turismo con vehículo de apoyo, entre lagos, glaciares y pueblos.</span></li>
+            <li><strong>Trekking</strong><span>Pumalín, Queulat y las reservas de Aysén, en rutas adaptadas al grupo.</span></li>
             <li><strong>Kayak</strong><span>Travesías guiadas por fiordos y lagos, en sectores habilitados y condiciones seguras.</span></li>
             <li><strong>Pesca con mosca</strong><span>El río Simpson y otros ríos de Aysén, según temporada y permisos.</span></li>
-            <li><strong>Trekking</strong><span>Pumalín, Queulat y las reservas de Aysén, en rutas adaptadas al grupo.</span></li>
-            <li><strong>Touring por la Carretera Austral</strong><span>En 4x4 privado o en moto de turismo con vehículo de apoyo, entre lagos, glaciares y pueblos.</span></li>
             <li><strong>Vuelos panorámicos</strong><span>Circuitos panorámicos sobre el Campo de Hielo Norte y la Laguna San Rafael.</span></li>
             <li><strong>Termas y lodges</strong><span>Las aguas termales de Puyuhuapi, lodges junto al fiordo y spa.</span></li>
             <li><strong>Gastronomía local</strong><span>Trucha, cordero, hongos silvestres y cocina de lodge con productos de la huerta.</span></li>
@@ -1957,6 +1964,29 @@ form .btn{align-self:flex-start}
       spy();
     }
   }
+})();
+</script>
+<script>
+/* Experiencias: cada latitud muestra 6 y el resto aparece con un botón (la lista queda más corta, sobre todo en celular) */
+(function () {
+  var es = document.documentElement.lang === "es", MAX = 6;
+  document.querySelectorAll(".plan-hl").forEach(function (ul) {
+    var items = ul.querySelectorAll("li"), n = items.length - MAX; if (n <= 0) return;
+    for (var i = MAX; i < items.length; i++) items[i].classList.add("extra");
+    ul.classList.add("is-short");
+    var more = es ? "Ver " + n + " experiencias más" : "Show " + n + " more experiences", less = es ? "Ver menos" : "Show fewer";
+    var b = document.createElement("button");
+    b.type = "button"; b.className = "hl-more"; b.textContent = more; b.setAttribute("aria-expanded", "false");
+    if (!ul.id) ul.id = "hl-" + Math.random().toString(36).slice(2, 8);
+    b.setAttribute("aria-controls", ul.id);
+    ul.after(b);
+    b.addEventListener("click", function () {
+      var open = ul.classList.toggle("is-short") === false;
+      b.setAttribute("aria-expanded", String(open)); b.textContent = open ? less : more;
+      for (var i = MAX; i < items.length; i++) items[i].classList.toggle("shown", open);
+      if (!open) b.scrollIntoView({ block: "nearest" });
+    });
+  });
 })();
 </script>
 </body>

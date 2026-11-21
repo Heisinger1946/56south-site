@@ -9,8 +9,7 @@ Actualizado: 21 nov 2026.
 
 ## En `borrador`, sin publicar
 
-- 33°S Touring: ahora son caminatas guiadas con raquetas por la nieve (antes 4x4 o moto). Foto nueva en la galería (grupo caminando en la nieve en Lofoten, Noruega; Christoph Strässler, CC BY-SA 2.0), reemplaza la de Trekking (`33-andes.webp`, borrada).
-- Ya no se nombran helicópteros: en "Getting there" dice "air transport on request" (transporte aéreo a pedido) y las experiencias "Helicopter flights" pasan a "Panoramic flights" (vuelos panorámicos).
+- Latitudes más cortas: cada una muestra 6 experiencias y el resto se abre con "Show N more experiences" / "Ver N experiencias más" (23°S, 39°S, 45°S y 51°S). Reordenadas para que se vea lo clave: en 23°S suben Desert adventures y Flowering desert; en 45°S sube Touring the Carretera Austral. Sin JavaScript se ven todas.
 
 ## Publicado el 19 nov 2026 (tercer envío)
 

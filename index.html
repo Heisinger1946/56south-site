@@ -497,6 +497,13 @@ input:focus,select:focus,textarea:focus{box-shadow:0 0 0 4px rgba(227,168,87,.18
 .plan-hl li::before{content:"";position:absolute;left:0;top:.5em;width:8px;height:8px;border-radius:50%;background:var(--z)}
 .plan-hl strong{font-weight:600}
 .plan-hl span{font-size:.9375rem;color:var(--text-on-paper)}
+.plan-hl.is-short li.extra{display:none}
+.hl-more{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;margin-top:2px;padding:9px 18px;border:1px solid rgba(10,19,23,.18);border-radius:999px;background:none;font:inherit;font-size:.8125rem;font-weight:600;color:var(--ink);cursor:pointer;transition:border-color .2s,background-color .2s}
+.hl-more::after{content:"";width:7px;height:7px;border-right:1.6px solid currentColor;border-bottom:1.6px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .25s}
+.hl-more[aria-expanded="true"]::after{transform:translateY(2px) rotate(-135deg)}
+.hl-more:hover{border-color:var(--z);background:rgba(10,19,23,.03)}
+.hl-more:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.plan-hl li.extra.shown{animation:fade-up .45s ease both}
 .plan-facts{margin:6px 0 0;padding:18px 0 0;border-top:1px solid rgba(10,19,23,.14);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 24px}
 .plan-facts dt{font-family:var(--mono);font-size:.6875rem;letter-spacing:.12em;text-transform:uppercase;color:var(--z)}
 .plan-facts dd{margin:2px 0 0;font-size:.9375rem;font-weight:600}
@@ -737,14 +744,14 @@ form .btn{align-self:flex-start}
           <h4 class="plan-kicker">Featured experiences</h4>
           <ul class="plan-hl">
             <li><strong>Valle de la Luna and Valle de la Muerte</strong><span>Dunes, salt mountains and formations shaped by millions of years of erosion. Sunsets and sandboarding in permitted areas.</span></li>
+            <li><strong>Desert adventures</strong><span>Off-road vehicles, buggies or mountain bikes on authorised routes only, with specialist operators.</span></li>
             <li><strong>El Tatio geysers</strong><span>Dawn at more than 4,300 m, among columns of steam and Andean peaks.</span></li>
             <li><strong>Altiplano lagoons and the Atacama salt flat</strong><span>Intensely blue lagoons, salt flats and reserves home to flamingos.</span></li>
             <li><strong>Astronomy under the stars</strong><span>A private observation night with telescopes and specialist guides.</span></li>
+            <li><strong>Flowering desert</strong><span>In years with winter rain, the desert bursts into carpets of flowers, usually between September and November, in the Atacama Region around Copiapó. Dates vary each year.</span></li>
             <li><strong>Piedras Rojas and Salar de Aguas Calientes</strong><span>Red mountains, turquoise water and the vastness of the Chilean altiplano.</span></li>
             <li><strong>Puritama hot springs</strong><span>Natural thermal pools among vegetation and ravines, a hidden oasis in the mountains.</span></li>
-            <li><strong>Desert adventures</strong><span>Off-road vehicles, buggies or mountain bikes on authorised routes only, with specialist operators.</span></li>
             <li><strong>Atacameño culture and local food</strong><span>Ancestral traditions, historic villages and Andean flavours with local hosts.</span></li>
-            <li><strong>Flowering desert</strong><span>In years with winter rain, the desert bursts into carpets of flowers, usually between September and November, in the Atacama Region around Copiapó. Dates vary each year.</span></li>
           </ul>
             </div>
             <div class="plan-side">
@@ -947,10 +954,10 @@ form .btn{align-self:flex-start}
             <li><strong>Private sailing</strong><span>The Marble Caves on Lago General Carrera and Laguna San Rafael, in small certified boats.</span></li>
             <li><strong>Northern Ice Field glaciers</strong><span>Queulat&#x27;s hanging glacier, San Rafael and Leones, from viewpoints, boats and the air.</span></li>
             <li><strong>Rafting on the Futaleufú</strong><span>One of the world&#x27;s great white-water rivers, with specialist guides and equipment.</span></li>
+            <li><strong>Touring the Carretera Austral</strong><span>By private 4x4 or touring motorcycle with a support vehicle, between lakes, glaciers and villages.</span></li>
+            <li><strong>Trekking</strong><span>Pumalín, Queulat and the Aysén reserves, on routes adapted to the group.</span></li>
             <li><strong>Kayaking</strong><span>Guided crossings on fjords and lakes, in permitted areas and safe conditions.</span></li>
             <li><strong>Fly fishing</strong><span>The Simpson and other Aysén rivers, depending on season and permits.</span></li>
-            <li><strong>Trekking</strong><span>Pumalín, Queulat and the Aysén reserves, on routes adapted to the group.</span></li>
-            <li><strong>Touring the Carretera Austral</strong><span>By private 4x4 or touring motorcycle with a support vehicle, between lakes, glaciers and villages.</span></li>
             <li><strong>Panoramic flights</strong><span>Panoramic circuits over the Northern Ice Field and Laguna San Rafael.</span></li>
             <li><strong>Hot springs and lodges</strong><span>The thermal waters of Puyuhuapi, fjord-side lodges and spa.</span></li>
             <li><strong>Local food</strong><span>Trout, lamb, wild mushrooms and lodge cooking with garden produce.</span></li>
@@ -1957,6 +1964,29 @@ form .btn{align-self:flex-start}
       spy();
     }
   }
+})();
+</script>
+<script>
+/* Experiencias: cada latitud muestra 6 y el resto aparece con un botón (la lista queda más corta, sobre todo en celular) */
+(function () {
+  var es = document.documentElement.lang === "es", MAX = 6;
+  document.querySelectorAll(".plan-hl").forEach(function (ul) {
+    var items = ul.querySelectorAll("li"), n = items.length - MAX; if (n <= 0) return;
+    for (var i = MAX; i < items.length; i++) items[i].classList.add("extra");
+    ul.classList.add("is-short");
+    var more = es ? "Ver " + n + " experiencias más" : "Show " + n + " more experiences", less = es ? "Ver menos" : "Show fewer";
+    var b = document.createElement("button");
+    b.type = "button"; b.className = "hl-more"; b.textContent = more; b.setAttribute("aria-expanded", "false");
+    if (!ul.id) ul.id = "hl-" + Math.random().toString(36).slice(2, 8);
+    b.setAttribute("aria-controls", ul.id);
+    ul.after(b);
+    b.addEventListener("click", function () {
+      var open = ul.classList.toggle("is-short") === false;
+      b.setAttribute("aria-expanded", String(open)); b.textContent = open ? less : more;
+      for (var i = MAX; i < items.length; i++) items[i].classList.toggle("shown", open);
+      if (!open) b.scrollIntoView({ block: "nearest" });
+    });
+  });
 })();
 </script>
 </body>
