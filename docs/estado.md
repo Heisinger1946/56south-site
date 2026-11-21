@@ -10,6 +10,12 @@ Actualizado: 21 nov 2026.
 ## En `borrador`, sin publicar
 
 - Sección "Not a tour…": completados los dos textos entre corchetes. 02 "Engineered, not improvised": guías locales, embarcaciones y aeronaves certificadas, vehículos de apoyo, rutas autorizadas con permisos y días ajustados al clima, la altura y las condiciones (no se menciona seguro: falta el dato). 03 "One point of contact": concierge único con un equipo preparado para cualquier terreno y ocasión (sin idiomas, por decisión de Jhon).
+- "Getting there" en las 7 latitudes: kilómetros desde Santiago (aproximados, por carretera), sin horas, con vuelo y transfer privado, y helicóptero o avioneta a pedido. Distancias usadas: Atacama ~1.600 km; Andes 60–160 km; Pacífico ~200 km; Vinos 45–200 km; Lagos 780–1.020 km; Patagonia Norte 1.200–2.100 km; Patagonia Sur ~3.000 km. Conviene confirmarlas.
+- 33°S: "Santiago ski resorts and Portillo", "Snowmobile expeditions and guided rides", "Trekking" (antes Mountain expeditions) y nuevo "Touring"; leyendas de la galería al día.
+- 34°S: "Surf lessons" para todos los niveles; "Surf" (antes Surfing Punta de Lobos) con tow-in, step-off, kitesurf, windsurf y stand up paddle; el dato útil ya no ofrece traje de neopreno, ahora da la temperatura del mar (12–16 °C aprox.) y el viento.
+- 35°S: se quitaron "Icon wines and vertical tastings" y "Journeys between valleys" (se repetían).
+- 39°S: "Bike and scenic routes" (antes Mountain biking…).
+- Los buggies del mapa ya se habían quitado (commit c5841fa).
 
 ## Publicado el 19 nov 2026 (tercer envío)
 
