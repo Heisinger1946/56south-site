@@ -16,6 +16,7 @@ Actualizado: 21 nov 2026.
 - 35°S: se quitaron "Icon wines and vertical tastings" y "Journeys between valleys" (se repetían).
 - 39°S: "Bike and scenic routes" (antes Mountain biking…).
 - Los buggies del mapa ya se habían quitado (commit c5841fa).
+- Mapa de la portada, mejora visual: halo celeste por el lado del océano, relieve con algo más de color y contraste, un escaneo dorado que baja con el despliegue del mapa, regla de latitudes (cada grado, marcas largas cada 5° y marcas doradas en cada expedición) junto al borde este, líneas de los pines que se dibujan hacia afuera y etiquetas que aparecen después, y destellos de sol que brillan sobre el mar cerca de la costa.
 
 ## Publicado el 19 nov 2026 (tercer envío)
 

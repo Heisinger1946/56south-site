@@ -168,8 +168,35 @@ a{color:inherit}
 .map-tag-top{left:calc(100% + 30px);top:-4px;animation-delay:.6s}
 .map-tag-bottom{right:calc(100% - 78%);top:calc(100% + 14px);display:flex;align-items:center;gap:10px}
 .map-tag-bottom span{display:block;width:90px;border-top:1px dashed var(--accent)}
+/* Mejora visual del mapa: halo de océano por el lado del mar, relieve más nítido, un escaneo dorado que
+   acompaña el despliegue, una regla de latitudes junto a la costa este y líneas de los pines que se dibujan */
+.map-glow{position:absolute;inset:0;transform:translateZ(-38px) translateX(-7px);filter:blur(14px);opacity:.72;pointer-events:none;animation:glow-in 2.4s cubic-bezier(.6,0,.2,1) .3s both}
+.map-glow i{position:absolute;inset:0;-webkit-mask:url(assets/chile.png) center/100% 100% no-repeat;mask:url(assets/chile.png) center/100% 100% no-repeat;background:linear-gradient(180deg,#5FB3C9,#3B8CA6 55%,#7FC4D6)}
+@keyframes glow-in{from{clip-path:inset(-40px -40px 100% -40px)}to{clip-path:inset(-40px)}}
+.map-layer[style*="--i:0"]{filter:saturate(1.14) contrast(1.06)}
+.map-scan{position:absolute;inset:0;transform:translateZ(1px);pointer-events:none;-webkit-mask:url(assets/chile.png) center/100% 100% no-repeat;mask:url(assets/chile.png) center/100% 100% no-repeat;background:linear-gradient(180deg,transparent 46%,rgba(227,168,87,.55) 49%,rgba(255,240,210,.95) 50%,rgba(227,168,87,.35) 52%,transparent 56%) 0 100%/100% 200% no-repeat;mix-blend-mode:screen;opacity:0;animation:scan 2.4s cubic-bezier(.6,0,.2,1) .3s both}
+@keyframes scan{0%{background-position:0 100%;opacity:0}8%,86%{opacity:1}100%{background-position:0 0;opacity:0}}
+.map-ruler{position:absolute;left:calc(100% + 7px);top:0;width:12px;height:100%;overflow:visible;transform:translateZ(14px);pointer-events:none;animation:unroll 2.4s cubic-bezier(.6,0,.2,1) .3s both}
+.map-ruler path{fill:none;vector-effect:non-scaling-stroke}
+.map-ruler .r-axis{stroke:rgba(238,242,241,.22);stroke-width:1}
+.map-ruler .r-tick{stroke:rgba(238,242,241,.42);stroke-width:1}
+.map-ruler .r-pin{stroke:var(--accent);stroke-width:1.6}
+.pin-line{animation:line-draw .8s cubic-bezier(.2,.7,.2,1) var(--d) both}
+.pin-left .pin-line{transform-origin:100% 0}
+@keyframes line-draw{from{transform:scaleX(0)}}
+.pin-label{animation:label-in .6s ease calc(var(--d) + .3s) both}
+@keyframes label-in{from{opacity:0;translate:-8px 0}}
+.pin-left .pin-label{animation-name:label-in-left}
+@keyframes label-in-left{from{opacity:0;translate:8px 0}}
+.pin:hover .pin-line,.pin:focus-visible .pin-line{opacity:1;box-shadow:0 0 8px rgba(227,168,87,.7)}
+.pin .pin-line{transition:opacity .25s,box-shadow .25s}
+/* Destellos de sol sobre el mar, cerca de la costa */
+.glint{opacity:0;fill:#FFF6E4}
+.glint.on{animation:glint 1.8s ease-in-out both}
+@keyframes glint{0%,100%{opacity:0;transform:scale(.3)}45%{opacity:.85;transform:scale(1)}}
+.glint{transform-box:fill-box;transform-origin:center}
 @media (max-width:900px){.map-3d{height:520px}}
-@media (max-width:640px){.map-3d{height:440px;margin-right:150px}.hero .wrap{padding-top:48px;padding-bottom:88px}.pin-label{width:140px}}
+@media (max-width:640px){.map-ruler{left:calc(100% + 5px);width:9px}.map-3d{height:440px;margin-right:150px}.hero .wrap{padding-top:48px;padding-bottom:88px}.pin-label{width:140px}}
 
 /* Vida en el mapa: oleaje en la costa, ballenas y orcas en el sur, surfistas frente a Pichilemu, gaviotas, cóndores y viento en la cordillera.
    Las tres capas usan las mismas coordenadas del mapa (275 x 1200) y flotan a distinta altura. */
@@ -323,6 +350,7 @@ input:focus,select:focus,textarea:focus{box-shadow:0 0 0 4px rgba(227,168,87,.18
   .js .reveal{opacity:1;transform:none}
   .map-float{transform:rotateY(-16deg) rotateX(5deg)}
   .map-fx{display:none}
+  .map-scan{display:none}
   .big-mark{transform:none}
 }
 
@@ -642,6 +670,7 @@ form .btn{align-self:flex-start}
       <div class="map-3d" id="map-3d">
         <p class="map-tag map-tag-top">+56 · Chile</p>
         <div class="map-slab" role="img" aria-label="Relief map of Chile, from the Atacama Desert in the north to Cape Horn in the south">
+          <div class="map-glow" aria-hidden="true"><i></i></div>
           <div class="map-shadow"></div>
           <div class="map-layer" style="--i:8"></div>
           <div class="map-layer" style="--i:7"></div>
@@ -652,7 +681,9 @@ form .btn{align-self:flex-start}
           <div class="map-layer" style="--i:2"></div>
           <div class="map-layer" style="--i:1"></div>
           <div class="map-layer" style="--i:0"></div>
+          <div class="map-scan" aria-hidden="true"></div>
         </div>
+        <svg class="map-ruler" viewBox="0 0 12 1200" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path class="r-axis" d="M0 0V1200"/><path class="r-tick" d="M0 7.2h4M0 35.3h4M0 63.4h9M0 91.4h4M0 119.5h4M0 147.6h4M0 175.3h4M0 203.0h9M0 230.8h4M0 258.5h4M0 286.2h4M0 313.9h4M0 341.6h9M0 369.4h4M0 397.1h4M0 424.8h4M0 465.6h4M0 511.2h9M0 541.2h4M0 571.2h4M0 601.2h4M0 631.2h4M0 664.0h9M0 696.8h4M0 729.6h4M0 762.4h4M0 795.2h4M0 828.0h9M0 860.8h4M0 893.6h4M0 926.4h4M0 959.2h4M0 992.0h9M0 1024.8h4M0 1058.4h4M0 1092.0h4M0 1125.6h4M0 1159.2h9M0 1192.8h4"/><path class="r-pin" d="M-3 147.6h15M-3 424.8h15M-3 465.6h15M-3 511.2h15M-3 631.2h15M-3 828.0h15M-3 1024.8h15M-3 1192.8h15"/></svg>
         <!-- Vida en el mapa (decorativo): las figuras las crea el script "Vida en el mapa", al final de la página -->
         <svg class="map-fx fx-sea" viewBox="-200 -40 675 1280" aria-hidden="true" focusable="false"><defs><clipPath id="fx-above"><rect x="-80" y="-70" width="160" height="70"/></clipPath></defs></svg>
         <svg class="map-fx fx-wind" viewBox="-200 -40 675 1280" aria-hidden="true" focusable="false"></svg>
@@ -1406,6 +1437,11 @@ form .btn{align-self:flex-start}
     '<g class="s-foam"><circle cx="2.5" cy="-18" r="2.4"/><circle cx="5.2" cy="-14.4" r="1.9"/><circle cx="1" cy="-14" r="1.6"/><circle cx="6.6" cy="-10.4" r="1.4"/><circle cx="3" cy="-10" r="1.1"/></g></g>' +
     '<g class="s-ride"><path class="s-spray" d="M-12-1.2l-5-2.6M-12.5 .8l-6-.4"/><path class="s-man s-board" d="M-11 0H11"/><path class="s-man" d="M-5-1.2L-3.6-6-.5-9.5 4.4-6.4 5-1.2M-.5-9.5L1.5-17M-6.5-14.5L1.5-17 9-15.5"/><circle class="s-head" cx="2.6" cy="-20.6" r="2.5"/></g></g></g>';
   sea.insertAdjacentHTML("beforeend", whale + whale + pod + breach + surfer + surfer);
+  // Destellos de sol: estrellitas de cuatro puntas que brillan un instante sobre el mar, cerca de la costa
+  var star = "M0-3.2L.6-.6 3.2 0 .6.6 0 3.2-.6.6-3.2 0-.6-.6Z", glints = "", ng;
+  for (ng = 0; ng < 14; ng++) glints += '<g><path class="glint" d="' + star + '"/></g>';
+  sea.insertAdjacentHTML("beforeend", glints);
+  var glintEls = sea.querySelectorAll(".glint"), glintI = 0;
   var gull = '<g class="bird gull"><path d="M-8 0Q-4.2-5 0-.6 4.2-5 8 0"/></g>';
   // Cóndor visto desde arriba: alas abiertas con las puntas en dedos, collar blanco y parches blancos en las alas
   var wing = "M0-7C1.2-7 1.8-5.6 1.9-4.2 6-5.2 12-5.6 17-4.6L22-5.6 20.6-3.4 22.6-3 20.8-1.4 22.4-.2 20 .4C15 2.2 8 3 2.4 2.6L3.4 8.4 0 7-3.4 8.4-2.4 2.6C-8 3-15 2.2-20 .4L-22.4-.2-20.8-1.4-22.6-3-20.6-3.4-22-5.6-17-4.6C-12-5.6-6-5.2-1.9-4.2-1.8-5.6-1.2-7 0-7Z";
@@ -1567,6 +1603,18 @@ form .btn{align-self:flex-start}
     }
   }
 
+  // Destello: aparece en un punto al azar del mar, entre 8 y 70 unidades de la costa
+  function glint() {
+    var n = 1 + Math.floor(Math.random() * 3);
+    for (var k = 0; k < n; k++) {
+      var el = glintEls[glintI++ % glintEls.length], y = rnd(180, 1150), x = edge(W, y) - rnd(8, 70);
+      if (x < west() + 6) continue;
+      var s = rnd(1.3, 2.1) * big();
+      el.parentNode.setAttribute("transform", "translate(" + x.toFixed(1) + " " + y.toFixed(1) + ") scale(" + s.toFixed(2) + ")");
+      (function (e, yy, dl) { setTimeout(function () { if (wait(yy) > 0) return; e.classList.remove("on"); void e.getBoundingClientRect(); e.classList.add("on"); }, dl); })(el, y, k * rnd(150, 420));
+    }
+  }
+
   // Ritmo: cada cosa vuelve tras una pausa distinta, y todo descansa si el mapa no está a la vista
   var visible = true;
   if ("IntersectionObserver" in window) new IntersectionObserver(function (e) {
@@ -1587,6 +1635,7 @@ form .btn{align-self:flex-start}
   every(surface, 8000, 14000, 0);
   every(pack, 13000, 22000, 0);
   every(jump, 5000, 9000, 300);
+  every(glint, 450, 1100, 2700);
   setTimeout(function () { map.classList.add("fx-go"); }, 300); // el oleaje entra con el despliegue
 })();
 </script>
