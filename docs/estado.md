@@ -9,6 +9,10 @@ Actualizado: 22 nov 2026.
 
 ## En `borrador`, sin publicar
 
+- Nada.
+
+## Publicado el 22 nov 2026 (segundo envío)
+
 - El logo de Polaris del pie de página ahora enlaza a https://www.polarischile.com/ (se abre en otra pestaña).
 
 ## Publicado el 22 nov 2026
