@@ -614,6 +614,12 @@ form .btn{align-self:flex-start}
 .site-footer{border-top:1px solid var(--line)}
 .site-footer .footer-brand{padding-top:56px;padding-bottom:8px}
 .site-footer .footer-brand img{height:150px;width:auto}
+/* "Powered by": franja de marcas al estilo de los patrocinadores, en gris sobre ink */
+.site-footer .wrap.footer-partners{justify-content:flex-start;align-items:center;gap:16px 40px;padding-top:28px;padding-bottom:4px}
+.partners-label{font-family:var(--mono);font-size:.75rem;letter-spacing:.22em;text-transform:uppercase;color:var(--text-mute)}
+.partner-logo{display:block;height:24px;width:auto;opacity:.5;transition:opacity .3s}
+.partner-logo:hover{opacity:.9}
+@media (max-width:640px){.site-footer .wrap.footer-partners{gap:12px 24px;padding-top:20px}.partner-logo{height:20px}}
 .site-footer .wrap{display:flex;flex-wrap:wrap;gap:12px 32px;justify-content:space-between;padding-top:32px;padding-bottom:32px;font-size:.875rem;color:var(--text-mute)}
 .footer-mail{color:var(--text-dim);text-decoration:none;transition:color .2s}
 .footer-mail:hover{color:var(--accent)}
@@ -1134,6 +1140,11 @@ form .btn{align-self:flex-start}
 <footer class="site-footer">
   <div class="wrap footer-brand">
     <img src="../assets/logo-light.png" width="771" height="520" alt="56°S Travel &amp; Adventure" loading="lazy">
+  </div>
+  <!-- Marcas que nos acompañan: rótulo a la izquierda y logos en gris, que se encienden al pasar el mouse -->
+  <div class="wrap footer-partners">
+    <span class="partners-label">Impulsado por</span>
+    <img class="partner-logo" src="../assets/partner-polaris.png" width="959" height="114" alt="Polaris" loading="lazy">
   </div>
   <div class="wrap">
     <span>56°S — Expediciones privadas en Chile</span>

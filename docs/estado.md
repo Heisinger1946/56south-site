@@ -1,6 +1,6 @@
 # Estado del sitio go56south.com
 
-Actualizado: 21 nov 2026.
+Actualizado: 22 nov 2026.
 
 ## Cómo se trabaja
 
@@ -9,6 +9,7 @@ Actualizado: 21 nov 2026.
 
 ## En `borrador`, sin publicar
 
+- Pie de página: franja "Powered by" (ES: "Impulsado por") con el logo de Polaris en gris, que se enciende al pasar el mouse; al estilo de una franja de patrocinadores. Logo en `assets/partner-polaris.png`, recortado del PNG que mandó Jhon. **Usar el logo de Polaris y decir "Powered by" sugiere un acuerdo con la marca: confirmar que Polaris lo autoriza antes de publicar.**
 - Touring en 45°S y 51°S: también son caminatas guiadas con raquetas por la nieve (ya no hay 4x4 ni moto en el sitio). Foto nueva de Touring en 45°S (grupo con raquetas en Troms, Noruega; Christoph Strässler, CC BY-SA 2.0), reemplaza la de la carretera (`45-carretera-austral.webp`, borrada).
 
 ## Publicado el 19 nov 2026 (tercer envío)
