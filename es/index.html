@@ -618,7 +618,8 @@ form .btn{align-self:flex-start}
 .site-footer .wrap.footer-partners{justify-content:flex-start;align-items:center;gap:16px 40px;padding-top:28px;padding-bottom:4px}
 .partners-label{font-family:var(--mono);font-size:.75rem;letter-spacing:.22em;text-transform:uppercase;color:var(--text-mute)}
 .partner-logo{display:block;height:24px;width:auto;opacity:.5;transition:opacity .3s}
-.partner-logo:hover{opacity:.9}
+.partner-link{display:block;border-radius:4px}
+.partner-link:hover .partner-logo,.partner-link:focus-visible .partner-logo{opacity:.9}
 @media (max-width:640px){.site-footer .wrap.footer-partners{gap:12px 24px;padding-top:20px}.partner-logo{height:20px}}
 .site-footer .wrap{display:flex;flex-wrap:wrap;gap:12px 32px;justify-content:space-between;padding-top:32px;padding-bottom:32px;font-size:.875rem;color:var(--text-mute)}
 .footer-mail{color:var(--text-dim);text-decoration:none;transition:color .2s}
@@ -1144,7 +1145,7 @@ form .btn{align-self:flex-start}
   <!-- Marcas que nos acompañan: rótulo a la izquierda y logos en gris, que se encienden al pasar el mouse -->
   <div class="wrap footer-partners">
     <span class="partners-label">Impulsado por</span>
-    <img class="partner-logo" src="../assets/partner-polaris.png" width="959" height="114" alt="Polaris" loading="lazy">
+    <a class="partner-link" href="https://www.polarischile.com/" target="_blank" rel="noopener"><img class="partner-logo" src="../assets/partner-polaris.png" width="959" height="114" alt="Polaris" loading="lazy"></a>
   </div>
   <div class="wrap">
     <span>56°S — Expediciones privadas en Chile</span>
