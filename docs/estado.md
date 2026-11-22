@@ -9,7 +9,7 @@ Actualizado: 22 nov 2026.
 
 ## En `borrador`, sin publicar
 
-- Nada.
+- Pie de página: el logo de Polaris se cambió por el de Polaris RZR que mandó Jhon (`assets/partner-polaris-rzr.png`, en blanco con fondo transparente). Mantiene el enlace a polarischile.com y el estilo gris que se enciende al pasar el mouse; va a 46 px de alto (38 px en celular) porque tiene dos líneas.
 
 ## Publicado el 22 nov 2026 (segundo envío)
 
